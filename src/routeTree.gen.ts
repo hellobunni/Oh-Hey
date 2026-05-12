@@ -9,9 +9,21 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as WorkWithMeRouteImport } from './routes/work-with-me'
+import { Route as QuestionnaireRouteImport } from './routes/questionnaire'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 
+const WorkWithMeRoute = WorkWithMeRouteImport.update({
+  id: '/work-with-me',
+  path: '/work-with-me',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QuestionnaireRoute = QuestionnaireRouteImport.update({
+  id: '/questionnaire',
+  path: '/questionnaire',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
@@ -26,31 +38,53 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/questionnaire': typeof QuestionnaireRoute
+  '/work-with-me': typeof WorkWithMeRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/questionnaire': typeof QuestionnaireRoute
+  '/work-with-me': typeof WorkWithMeRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/questionnaire': typeof QuestionnaireRoute
+  '/work-with-me': typeof WorkWithMeRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about'
+  fullPaths: '/' | '/about' | '/questionnaire' | '/work-with-me'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about'
-  id: '__root__' | '/' | '/about'
+  to: '/' | '/about' | '/questionnaire' | '/work-with-me'
+  id: '__root__' | '/' | '/about' | '/questionnaire' | '/work-with-me'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  QuestionnaireRoute: typeof QuestionnaireRoute
+  WorkWithMeRoute: typeof WorkWithMeRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/work-with-me': {
+      id: '/work-with-me'
+      path: '/work-with-me'
+      fullPath: '/work-with-me'
+      preLoaderRoute: typeof WorkWithMeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/questionnaire': {
+      id: '/questionnaire'
+      path: '/questionnaire'
+      fullPath: '/questionnaire'
+      preLoaderRoute: typeof QuestionnaireRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about': {
       id: '/about'
       path: '/about'
@@ -71,6 +105,8 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  QuestionnaireRoute: QuestionnaireRoute,
+  WorkWithMeRoute: WorkWithMeRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

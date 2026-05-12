@@ -1,6 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
 import Hero from '../components/Hero'
-import DomainGrid from '../components/DomainGrid'
 import FeaturedFeed from '../components/FeaturedFeed'
 import NewsletterSignup from '../components/NewsletterSignup'
 
@@ -10,9 +9,8 @@ function HomePage() {
   return (
     <main>
       <Hero />
-      <DomainGrid />
       <FeaturedFeed />
-      <NewsletterSignup />
+<NewsletterSignup />
     </main>
   )
 }

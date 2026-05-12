@@ -34,24 +34,14 @@ export default function Nav() {
         >
           oh-hey-lynae
         </Link>
-
-        <ul className="flex items-center gap-8">
-          {navLinks.map(({ label, href }) => (
-            <li key={href}>
-              <Link
-                to={href as '/'}
-                className={`text-sm transition-colors ${
-                  scrolled
-                    ? 'text-zinc-500 hover:text-zinc-900'
-                    : 'text-white/80 hover:text-white'
-                }`}
-                activeProps={{ className: `text-sm font-semibold ${scrolled ? 'text-zinc-900' : 'text-white'}` }}
-              >
-                {label}
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <a
+          href="/work-with-me"
+          className={`text-sm font-semibold transition-colors ${
+            scrolled ? 'text-zinc-900 hover:text-zinc-500' : 'text-white hover:text-zinc-200'
+          }`}
+        >
+          Work with me
+        </a>
       </nav>
     </header>
   )

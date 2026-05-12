@@ -1,16 +1,16 @@
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex flex-col justify-end overflow-hidden">
+    <section className="relative min-h-[60vh] h-full flex flex-col justify-end overflow-hidden">
       {/* Full-bleed background image */}
-      <img
+      {/* <img
         src="/hero-bg.jpg"
         alt=""
         aria-hidden="true"
         className="absolute inset-0 w-full h-full object-cover object-center"
-      />
+      /> */}
 
       {/* Gradient overlay — bottom fade to white */}
-      <div className="absolute inset-0 bg-gradient-to-t from-white via-white/30 to-transparent" />
+      {/* <div className="absolute inset-0 bg-gradient-to-t from-white via-white/30 to-transparent" /> */}
 
       {/* Content sits above the overlay */}
       <div className="relative z-10 max-w-6xl mx-auto w-full px-6 pb-24">
