@@ -3,20 +3,6 @@ import { useState } from 'react'
 import { Button } from '../components/ui/button'
 import { Input } from '../components/ui/input'
 
-const fullTime = [
-  { year: 'Now',  company: 'Centaur AI',                    field: 'Software engineering' },
-  { year: '2022', company: 'Fanatics, Inc.',                 field: 'Software engineering · UI & design systems' },
-  { year: '2020', company: 'InsideOut Design + Development', field: 'Frontend development' },
-  { year: '2018', company: 'Qualigence International',       field: 'Web development' },
-]
-
-const freelance = [
-  { year: '2025', company: 'Bitwise',          field: 'Software engineering' },
-  { year: '2021', company: 'Red Bull',          field: 'Software engineering' },
-  { year: '2019', company: 'StockX',            field: 'Software engineering' },
-  { year: '2016', company: 'Umich Athletics',   field: 'Design & marketing' },
-  { year: '2015', company: 'Procerus Skin Care', field: 'Marketing & design' },
-]
 
 export const Route = createFileRoute('/work-with-me')({ component: WorkWithMePage })
 
@@ -46,51 +32,6 @@ function WorkWithMePage() {
           I'm open to consulting, creative collaborations, and interesting projects.
           Drop me a note and I'll get back to you.
         </p>
-
-        <div className="mb-20">
-          <h2 className="text-xs font-semibold uppercase tracking-widest text-zinc-400 mb-6">
-            Experience
-          </h2>
-          <ul className="divide-y divide-zinc-100">
-            {fullTime.map((item) => (
-              <li key={`${item.year}-${item.company}`} className="flex items-baseline gap-6 py-4">
-                <span className="text-xs text-zinc-400 w-10 shrink-0">{item.year}</span>
-                <span className="text-sm font-semibold text-zinc-900 w-36 shrink-0">{item.company}</span>
-                <span className="text-sm text-zinc-500">{item.field}</span>
-              </li>
-            ))}
-
-            {/* Freelance dropdown row */}
-            <li className="divide-y divide-zinc-100">
-              <button
-                type="button"
-                onClick={() => setFreelanceOpen((o) => !o)}
-                className="w-full flex items-baseline gap-6 py-4 text-left group"
-              >
-                <span className="text-xs text-zinc-400 w-10 shrink-0">2013</span>
-                <span className="text-sm font-semibold text-zinc-900 w-36 shrink-0 group-hover:text-zinc-500 transition-colors">
-                  Freelance
-                </span>
-                <span className="text-sm text-zinc-500 flex-1">Frontend development & design</span>
-                <span className={`text-xs text-zinc-400 transition-transform duration-200 ${freelanceOpen ? 'rotate-180' : ''}`}>
-                  ▾
-                </span>
-              </button>
-
-              {freelanceOpen && (
-                <ul className="divide-y divide-zinc-50 bg-zinc-50 rounded-lg mb-2">
-                  {freelance.map((item) => (
-                    <li key={`${item.year}-${item.company}`} className="flex items-baseline gap-6 px-4 py-3">
-                      <span className="text-xs text-zinc-400 w-10 shrink-0">{item.year}</span>
-                      <span className="text-sm font-medium text-zinc-700 w-36 shrink-0">{item.company}</span>
-                      <span className="text-sm text-zinc-400">{item.field}</span>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </li>
-          </ul>
-        </div>
 
         {submitted ? (
           <div className="border border-zinc-100 rounded-2xl px-8 py-12 text-center">
