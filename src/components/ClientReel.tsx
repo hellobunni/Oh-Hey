@@ -2,7 +2,7 @@
 // Qualigence uses a wordmark — swap for an official SVG when available.
 // All logos render via fill="currentColor" so the grey treatment applies uniformly.
 
-import { FigmaLogo, QualigenceLogo, RedBullLogo, RocketLogo, StockXLogo, UMichLogo } from "#/utils/logos"
+import { FigmaLogo, QualigenceLogo, RedBullLogo, RocketLogo, StockXLogo, UMichLogo } from "@/utils/logos"
 
 const logos = [
   { id: 'stockx',     Logo: StockXLogo },

@@ -1,4 +1,4 @@
-import { Link } from '@tanstack/react-router'
+import Link from 'next/link'
 
 type Domain = {
   label: string
@@ -45,7 +45,7 @@ export default function DomainGrid() {
           {domains.map((domain) => (
             <li key={domain.href}>
               <Link
-                to={domain.href as '/'}
+                href={domain.href}
                 className="group flex items-center justify-between py-5"
               >
                 <span

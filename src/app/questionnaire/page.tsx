@@ -1,7 +1,8 @@
-import { createFileRoute } from '@tanstack/react-router'
+'use client'
+
 import { useState } from 'react'
-import { Button } from '../components/ui/button'
-import { Input } from '../components/ui/input'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
 
 type FormState = {
   projectType: string
@@ -14,8 +15,6 @@ type FormState = {
   name: string
   email: string
 }
-
-export const Route = createFileRoute('/questionnaire')({ component: QuestionnairePage })
 
 function OptionCard({ label, sublabel, selected, onClick }: { label: string; sublabel?: string; selected: boolean; onClick: () => void }) {
   return (
@@ -40,7 +39,7 @@ function OptionCard({ label, sublabel, selected, onClick }: { label: string; sub
 
 const TOTAL_STEPS = 7
 
-function QuestionnairePage() {
+export default function QuestionnairePage() {
   const [step, setStep] = useState(0)
   const [form, setForm] = useState<FormState>({
     projectType: '',
@@ -74,7 +73,6 @@ function QuestionnairePage() {
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
-    // TODO: wire up to form/email service
     setSubmitted(true)
   }
 
@@ -83,7 +81,7 @@ function QuestionnairePage() {
       <main className="min-h-screen pt-32 pb-24 px-6">
         <div className="max-w-lg mx-auto">
           <div className="border border-zinc-100 rounded-2xl px-8 py-16 text-center">
-            <p className="text-lg font-bold text-zinc-900 mb-2">Thanks — I'll be in touch soon.</p>
+            <p className="text-lg font-bold text-zinc-900 mb-2">Thanks — I&apos;ll be in touch soon.</p>
             <p className="text-sm text-zinc-500">I review every submission and reach out within a few days.</p>
           </div>
         </div>
@@ -96,7 +94,7 @@ function QuestionnairePage() {
       <div className="max-w-lg mx-auto">
         <div className="mb-10">
           <h1 className="text-4xl sm:text-5xl font-black tracking-tighter text-zinc-900 leading-none mb-3">
-            Let's see if<br />we're a fit.
+            Let&apos;s see if<br />we&apos;re a fit.
           </h1>
           <p className="text-sm text-zinc-500">Step {step + 1} of {TOTAL_STEPS}</p>
         </div>
@@ -193,7 +191,7 @@ function QuestionnairePage() {
 
           {step === 5 && (
             <div className="flex flex-col gap-3">
-              <h2 className="text-lg font-bold text-zinc-900 mb-1">What's your rough budget?</h2>
+              <h2 className="text-lg font-bold text-zinc-900 mb-1">What&apos;s your rough budget?</h2>
               {[
                 'Under $5,000',
                 '$5,000 – $15,000',

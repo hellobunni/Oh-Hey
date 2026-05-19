@@ -1,5 +1,5 @@
-import { Link } from '@tanstack/react-router'
-import { posts, domainStyles } from '../data/posts'
+import Link from 'next/link'
+import { posts, domainStyles } from '@/data/posts'
 
 export default function FeaturedFeed() {
   return (
@@ -23,8 +23,7 @@ export default function FeaturedFeed() {
             return (
               <li key={post.id}>
                 <Link
-                  to="/posts/$postId"
-                  params={{ postId: String(post.id) }}
+                  href={`/posts/${post.id}`}
                   className="group flex items-center justify-between gap-4 py-4"
                 >
                   <h3 className="text-sm font-medium text-zinc-800 group-hover:text-zinc-500 transition-colors truncate">

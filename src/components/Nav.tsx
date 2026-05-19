@@ -1,5 +1,7 @@
+'use client'
+
 import { useEffect, useState } from 'react'
-import { Link } from '@tanstack/react-router'
+import Link from 'next/link'
 
 const navLinks = [
   { label: 'Tech', href: '/tech' },
@@ -27,7 +29,7 @@ export default function Nav() {
     >
       <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         <Link
-          to="/"
+          href="/"
           className={`font-black text-lg tracking-tight transition-colors ${
             scrolled ? 'text-zinc-900 hover:text-zinc-600' : 'text-white hover:text-zinc-200'
           }`}

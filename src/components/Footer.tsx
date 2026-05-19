@@ -1,4 +1,4 @@
-import { Link } from '@tanstack/react-router'
+import Link from 'next/link'
 
 const links = [
   { label: 'Tech', href: '/tech' },
@@ -19,7 +19,7 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto flex flex-col sm:flex-row sm:items-center sm:justify-between gap-8">
         <div>
           <Link
-            to="/"
+            href="/"
             className="font-black text-sm tracking-tight text-zinc-900 hover:text-zinc-600 transition-colors"
           >
             oh-hey-lynae
@@ -33,7 +33,7 @@ export default function Footer() {
           {links.map(({ label, href }) => (
             <Link
               key={href}
-              to={href as '/'}
+              href={href}
               className="text-xs text-zinc-400 hover:text-zinc-700 transition-colors"
             >
               {label}
