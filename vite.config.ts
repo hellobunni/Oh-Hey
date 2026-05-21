@@ -10,13 +10,7 @@ import { storybookTest } from '@storybook/addon-vitest/vitest-plugin'
 const dirname = typeof __dirname !== 'undefined' ? __dirname : path.dirname(fileURLToPath(import.meta.url))
 
 const config = defineConfig({
-<<<<<<< HEAD
-  plugins: [devtools(), tsconfigPaths({
-    projects: ['./tsconfig.json']
-  }), tailwindcss(), tanstackStart({ server: { preset: 'vercel' } }), viteReact()],
-=======
   plugins: [tsconfigPaths({ projects: ['./tsconfig.json'] }), tailwindcss(), viteReact()],
->>>>>>> d44ae0fcfcf7a589454ff07977c7e729281afc90
   test: {
     workspace: [{
       extends: true,

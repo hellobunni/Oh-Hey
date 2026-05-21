@@ -1,6 +1,8 @@
-import { createFileRoute, Link } from '@tanstack/react-router'
+'use client'
+
+import Link from 'next/link'
 import { useEffect } from 'react'
-import '../styles/lv.css'
+import '../../styles/lv.css'
 import {
   hero,
   approach,
@@ -9,7 +11,7 @@ import {
   processSteps,
   cta,
   footer,
-} from '../data/consulting'
+} from '../../data/consulting'
 import {
   FigmaLogo,
   QualigenceLogo,
@@ -17,7 +19,7 @@ import {
   RocketLogo,
   StockXLogo,
   UMichLogo,
-} from '../utils/logos'
+} from '../../utils/logos'
 import { buttonVariants } from '@/components/ui/button'
 
 const reelLogos = [
@@ -29,14 +31,7 @@ const reelLogos = [
   { id: 'figma',      Logo: FigmaLogo },
 ]
 
-export const Route = createFileRoute('/consulting')({
-  head: () => ({
-    meta: [{ title: 'Consulting — Lunar Vega' }],
-  }),
-  component: ConsultingPage,
-})
-
-function ConsultingPage() {
+export default function ConsultingPage() {
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -67,8 +62,8 @@ function ConsultingPage() {
   return (
     <div className="lv-page">
       <nav className="lv-nav">
-        <Link to="/" className="nav-wordmark">Lunar Vega</Link>
-        <Link to="/questionnaire" className="nav-cta">Start a project</Link>
+        <Link href="/" className="nav-wordmark">Lunar Vega</Link>
+        <Link href="/questionnaire" className="nav-cta">Start a project</Link>
       </nav>
 
       <section className="hero">
@@ -84,7 +79,7 @@ function ConsultingPage() {
           <p className="hero-subhead fade-up delay-3">{hero.subhead}</p>
           <div className="hero-actions fade-up delay-4">
             <Link
-              to="/questionnaire"
+              href="/questionnaire"
               className={buttonVariants({ variant: 'lv-link', size: 'xl' })}
             >
               {hero.ctaPrimary}
@@ -107,7 +102,6 @@ function ConsultingPage() {
       <div className="section-divider" />
 
       <section className="logo-reel">
-        <p className="logo-reel-label">Worked with</p>
         <div className="logo-reel-track">
           <div className="logo-reel-inner">
             {[0, 1].map((copy) => (
@@ -223,20 +217,18 @@ function ConsultingPage() {
           <p className="cta-eyebrow">{cta.eyebrow}</p>
           <h2 className="cta-headline">{cta.headline}<br /><em>{cta.headlineItalic}</em></h2>
           <p className="cta-sub">{cta.sub}</p>
-          
           <Link
-            to="/questionnaire"
+            href="/questionnaire"
             className={buttonVariants({ variant: 'lv-link', size: 'xl' })}
           >
             {cta.button}
           </Link>
-          
         </div>
       </section>
 
       <footer>
         <span className="footer-copy">{footer.copy}</span>
-        <Link to="/" className="footer-back">{footer.backLabel}</Link>
+        <Link href="/" className="footer-back">{footer.backLabel}</Link>
       </footer>
     </div>
   )
