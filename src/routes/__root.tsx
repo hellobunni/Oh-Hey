@@ -1,4 +1,4 @@
-import { HeadContent, Scripts, createRootRoute } from '@tanstack/react-router'
+import { HeadContent, Scripts, createRootRoute, useRouterState } from '@tanstack/react-router'
 import Nav from '../components/Nav'
 import Footer from '../components/Footer'
 import appCss from '../styles.css?url'
@@ -18,15 +18,18 @@ export const Route = createRootRoute({
 })
 
 function RootDocument({ children }: { children: React.ReactNode }) {
+  const pathname = useRouterState({ select: (s) => s.location.pathname })
+  const isConsulting = pathname === '/consulting' || pathname === '/questionnaire'
+
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
         <HeadContent />
       </head>
       <body className="bg-white text-zinc-900 font-sans antialiased [overflow-wrap:anywhere]">
-        <Nav />
+        {!isConsulting && <Nav />}
         {children}
-        <Footer />
+        {!isConsulting && <Footer />}
         <Scripts />
       </body>
     </html>

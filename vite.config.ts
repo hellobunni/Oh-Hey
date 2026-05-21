@@ -14,7 +14,7 @@ const dirname = typeof __dirname !== 'undefined' ? __dirname : path.dirname(file
 const config = defineConfig({
   plugins: [devtools(), tsconfigPaths({
     projects: ['./tsconfig.json']
-  }), tailwindcss(), tanstackStart(), viteReact()],
+  }), tailwindcss(), tanstackStart({ server: { preset: 'vercel' } }), viteReact()],
   test: {
     workspace: [{
       extends: true,

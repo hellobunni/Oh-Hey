@@ -1,8 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Manrope:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap");
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 @import "@fontsource-variable/inter";
+@import './styles/lv.css';
 
 @custom-variant dark (&:is(.dark *));
 @plugin "@tailwindcss/typography";
@@ -264,6 +265,22 @@ a {
 @keyframes marquee {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
+}
+
+/* ─── Lunar Vega Design Tokens ──────────────────────────────────────────────
+   Edit these to update the LV brand across /consulting and /questionnaire.
+   These become Tailwind utilities: text-lv-gold, bg-lv-paper, font-display, etc.
+*/
+@theme {
+  --color-lv-ink:        #1a1814;
+  --color-lv-ink-dark:   #0d0d0d;
+  --color-lv-paper:      #faf9f6;
+  --color-lv-warm:       #f5f2ec;
+  --color-lv-gold:       #b89a5e;
+  --color-lv-gold-light: #d4b97a;
+  --color-lv-muted:      #6b6560;
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-dm:      'DM Sans', sans-serif;
 }
 
 @theme inline {
