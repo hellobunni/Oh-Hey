@@ -1,3 +1,5 @@
+'use client'
+
 import { useState } from 'react'
 import { Button } from './ui/button'
 import { Input } from './ui/input'
@@ -46,9 +48,12 @@ export default function NewsletterSignup() {
             <p className="text-sm text-zinc-500">I'm available for consulting, collaborations, and projects.</p>
           </div>
 
-          <Button variant="default" className="self-start" asChild>
-            <a href="/work-with-me">Get in touch →</a>
-          </Button>
+          <a
+            href="/work-with-me"
+            className="self-start inline-flex items-center gap-1.5 rounded-md bg-primary px-2.5 h-9 text-sm font-medium text-black hover:bg-primary/80 transition-all"
+          >
+            Get in touch →
+          </a>
         </div>
       </div>
     </section>

@@ -47,6 +47,19 @@
   .lv-page a { color: inherit; text-decoration: none; }
 
   /* Nav */
+  .lv-page .lv-nav {
+    position: fixed;
+    inset: 0 0 auto;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 4rem;
+    background: linear-gradient(to bottom, rgba(250,249,246,0.97) 60%, transparent);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
   .lv-page .nav-wordmark {
     font-family: var(--serif);
     font-size: 1.1rem;
@@ -68,6 +81,40 @@
 
   .lv-page .nav-cta:hover { color: var(--gold); }
 
+  /* Hero */
+  .lv-page .hero {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 4rem;
+    min-height: 100vh;
+    padding: 8rem 4rem 4rem;
+  }
+
+  .lv-page .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(ellipse at 70% 50%, rgba(184,154,94,0.06) 0%, transparent 70%);
+  }
+
+  .lv-page .hero-copy {
+    position: relative;
+  }
+
+  .lv-page .hero-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 0.875rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
   .lv-page .hero-eyebrow::before {
     content: '';
     display: block;
@@ -79,7 +126,30 @@
   .lv-page .hero-headline {
     font-family: var(--serif);
     font-size: clamp(3rem, 5vw, 5rem);
+    font-weight: 300;
+    line-height: 1;
     letter-spacing: -0.01em;
+    margin-bottom: 2rem;
+  }
+
+  .lv-page .hero-headline em {
+    color: var(--gold-light);
+    font-style: italic;
+  }
+
+  .lv-page .hero-subhead {
+    max-width: 28rem;
+    margin-bottom: 3rem;
+    font-size: 1rem;
+    line-height: 1.75;
+    color: rgba(26,24,20,0.55);
+  }
+
+  .lv-page .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.5rem;
   }
 
   .lv-page .btn-ghost {

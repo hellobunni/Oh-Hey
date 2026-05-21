@@ -18,7 +18,7 @@ import {
   StockXLogo,
   UMichLogo,
 } from '../utils/logos'
-import { Button } from '#/components/ui/button'
+import { buttonVariants } from '#/components/ui/button'
 
 const reelLogos = [
   { id: 'stockx',     Logo: StockXLogo },
@@ -66,28 +66,29 @@ function ConsultingPage() {
 
   return (
     <div className="lv-page">
-      <nav className="fixed inset-x-0 top-0 z-[100] flex items-center justify-between bg-linear-to-b from-[rgba(250,249,246,0.97)] from-60% to-transparent px-16 py-6 backdrop-blur-sm">
-      <Link
-    to="/"
-    className="font-[var(--serif)] text-[1.1rem] font-light tracking-[0.2em] uppercase text-[var(--gold)] no-underline"
-  >Lunar Vega</Link>
+      <nav className="lv-nav">
+        <Link to="/" className="nav-wordmark">Lunar Vega</Link>
         <Link to="/questionnaire" className="nav-cta">Start a project</Link>
       </nav>
 
-      <section className="relative grid min-h-screen grid-cols-[1fr_1fr] items-center gap-16 px-16 pt-32 pb-16 before:absolute before:inset-0 before:bg-[radial-gradient(ellipse_at_70%_50%,rgba(184,154,94,0.06)_0%,transparent_70%)] before:pointer-events-none before:content-['']">
-        <div className="relative">
-        <p className="hero-eyebrow fade-up delay-1 mb-4 flex items-center gap-2 text-sm tracking-wider uppercase text-[var(--gold)] before:block before:h-px before:w-8 before:bg-[var(--gold)] before:content-['']">{hero.eyebrow}</p>
-        <h1 className="hero-headline fade-up delay-2 mb-8 font-[var(--serif)] text-[clamp(3rem,5vw,5rem)] font-light leading-16 tracking-[-0.01em]">
+      <section className="hero">
+        <div className="hero-copy">
+          <p className="hero-eyebrow fade-up delay-1">{hero.eyebrow}</p>
+          <h1 className="hero-headline fade-up delay-2">
             {hero.headline.line1}<br />
             {hero.headline.line2italic
-              ? <em className="text-[var(--gold-light)] italic">{hero.headline.line2}</em>
+              ? <em>{hero.headline.line2}</em>
               : hero.headline.line2}<br />
             {hero.headline.line3}
           </h1>
-          <p className="text-base mb-12 leading-7 text-[rgba(26,24,20,0.55)] max-w-md fade-up delay-3">{hero.subhead}</p>
-          <div className="flex gap-6 flex-wrap items-center fade-up delay-4">
-          <Button variant="lv-link" size="xl"><Link to="/questionnaire" className="text-white!">{hero.ctaPrimary}</Link></Button>
-          <Button variant="ghost" href="#offerings">{hero.ctaSecondary}</Button>
+          <p className="hero-subhead fade-up delay-3">{hero.subhead}</p>
+          <div className="hero-actions fade-up delay-4">
+            <Link
+              to="/questionnaire"
+              className={buttonVariants({ variant: 'lv-link', size: 'xl' })}
+            >
+              {hero.ctaPrimary}
+            </Link>
             <a href="#offerings" className="btn-ghost">{hero.ctaSecondary}</a>
           </div>
         </div>
@@ -223,7 +224,12 @@ function ConsultingPage() {
           <h2 className="cta-headline">{cta.headline}<br /><em>{cta.headlineItalic}</em></h2>
           <p className="cta-sub">{cta.sub}</p>
           
-          <Button variant="lv-link" size="xl"><Link to="/questionnaire" className="text-white!">{cta.button}</Link></Button>
+          <Link
+            to="/questionnaire"
+            className={buttonVariants({ variant: 'lv-link', size: 'xl' })}
+          >
+            {cta.button}
+          </Link>
           
         </div>
       </section>
