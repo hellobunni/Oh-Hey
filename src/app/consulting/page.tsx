@@ -60,7 +60,7 @@ export default function ConsultingPage() {
   }, [])
 
   return (
-    <div className="lv-page">
+    <div className="lv-a lv-page">
       <nav className="lv-nav">
         <Link href="/" className="nav-wordmark">Lunar Vega</Link>
         <Link href="/questionnaire" className="nav-cta">Start a project</Link>
@@ -80,7 +80,7 @@ export default function ConsultingPage() {
           <div className="hero-actions fade-up delay-4">
             <Link
               href="/questionnaire"
-              className={buttonVariants({ variant: 'lv-link', size: 'xl' })}
+              className={buttonVariants({ variant: 'accent', size: 'lg' })}
             >
               {hero.ctaPrimary}
             </Link>
@@ -219,7 +219,7 @@ export default function ConsultingPage() {
           <p className="cta-sub">{cta.sub}</p>
           <Link
             href="/questionnaire"
-            className={buttonVariants({ variant: 'lv-link', size: 'xl' })}
+            className={buttonVariants({ variant: 'accent', size: 'lg' })}
           >
             {cta.button}
           </Link>

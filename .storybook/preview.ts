@@ -1,7 +1,22 @@
 import type { Preview } from '@storybook/react-vite'
+import '../src/app/globals.css'
 
 const preview: Preview = {
+  decorators: [
+    (Story) => {
+      document.documentElement.classList.remove('dark')
+      return Story()
+    },
+  ],
   parameters: {
+    backgrounds: {
+      default: 'paper',
+      values: [
+        { name: 'paper', value: '#fafaf7' },
+        { name: 'lv-navy', value: '#0a1424' },
+        { name: 'white', value: '#ffffff' },
+      ],
+    },
     controls: {
       matchers: {
        color: /(background|color)$/i,

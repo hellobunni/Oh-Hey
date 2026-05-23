@@ -1,0 +1,16 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   oh-hey-lynae × Lunar Vega — Design System Tokens
+   ───────────────────────────────────────────────────────────────────────────
+   Single source of truth for both sibling brands.
+   - oh-hey-lynae (public blog)           — :root
+   - Lunar Vega Direction A (navy/electric) — .lv-a
+   - Lunar Vega Direction B (premium black) — .lv-b
+   Dark mode: .dark  |  Density: .density-{packed|cozy|airy}
+   Domain palettes: .palette-{spectrum|mono|warm|electric}
+
+   Fonts are loaded via next/font/google in layout.tsx and injected as:
+     --font-geist-sans, --font-geist-mono, --font-fraunces
+   Fallback: Google Fonts (Geist, Geist Mono, Fraunces) loaded via @import below
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+   @import url('https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&family=Geist+Mono:wght@400;500;600&family=Fraunces:opsz,ital,wght@9..144,0,300;9..144,0,400;9..144,1,300;9..144,1,400;9..144,1,500;9..144,1,700&display=swap');

@@ -12,7 +12,7 @@ function getInitialMode(): ThemeMode {
     return stored
   }
 
-  return 'auto'
+  return 'light'
 }
 
 function applyThemeMode(mode: ThemeMode) {
@@ -32,7 +32,7 @@ function applyThemeMode(mode: ThemeMode) {
 }
 
 export default function ThemeToggle() {
-  const [mode, setMode] = useState<ThemeMode>('auto')
+  const [mode, setMode] = useState<ThemeMode>('light')
 
   useEffect(() => {
     const initialMode = getInitialMode()
