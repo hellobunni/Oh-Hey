@@ -57,13 +57,28 @@ body {
     --color-accent:      #2563eb;
     --color-accent-soft: rgba(37,99,235,0.10);
 
+    /* Lunar Vega colors*/
+    --color-vega-accent: #6ea8ff;
+    --color-vega-accent-soft: rgba(110,168,255,0.10);
+    --color-vega-paper: #0a1424;
+    --color-vega-paper-2: #0f1c33;
+    --color-vega-dark: #0d1117;
+    --color-vega-ink: #eef3fb;
+    --color-vega-ink-2: #2a2a28;
+    --color-vega-ink-soft: #6b6b66;
+    --color-vega-ink-mute: #a3a39c;
+    --color-vega-line: rgba(12,12,12,0.08);
+    --color-vega-line-strong: rgba(12,12,12,0.18);
+    --color-vega-hairline: rgba(12,12,12,0.06);
+
     /* ─── Domain colors ───────────────────────────────────────────────────── */
-    --color-c-tech:        #2563eb;
-    --color-c-fitness:     #059669;
-    --color-c-creative:    #ea580c;
-    --color-c-nerd:        #7c3aed;
-    --color-c-tech-bg:     rgba(37,99,235,0.08);
-    --color-c-fitness-bg:  rgba(5,150,105,0.08);
-    --color-c-creative-bg: rgba(234,88,12,0.08);
-    --color-c-nerd-bg:     rgba(124,58,237,0.08);
+    --color-tech:        #2563eb;
+    --color-fitness:     #059669;
+    --color-creative:    #ea580c;
+    --color-nerd:        #7c3aed;
+    --color-tech-bg:     rgba(37,99,235,0.08);
+    --color-fitness-bg:  rgba(5,150,105,0.08);
+    --color-creative-bg: rgba(234,88,12,0.08);
+    --color-nerd-bg:     rgba(124,58,237,0.08);
 }
+

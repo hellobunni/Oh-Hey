@@ -46,26 +46,26 @@ export const Base: Story = {
   render: () => (
     <div>
       <Group title="Surface">
-        <Swatch token="-paper"   label="Main bg" />
-        <Swatch token="--paper-2" label="Cards / panels" />
+        <Swatch token="--color-paper"   label="Main bg" />
+        <Swatch token="--color-paper-2" label="Cards / panels" />
       </Group>
 
       <Group title="Ink">
-        <Swatch token="--ink"      label="Primary text" />
-        <Swatch token="--ink-2"    label="Prose body" />
-        <Swatch token="--ink-soft" label="Meta / secondary" />
-        <Swatch token="--ink-mute" label="Placeholders" />
+        <Swatch token="--color-ink"      label="Primary text" />
+        <Swatch token="--color-ink-2"    label="Prose body" />
+        <Swatch token="--color-ink-soft" label="Meta / secondary" />
+        <Swatch token="--color-ink-mute" label="Placeholders" />
       </Group>
 
       <Group title="Accent">
-        <Swatch token="--accent"      label="Brand blue" />
-        <Swatch token="--accent-soft" label="Tinted bg" />
+        <Swatch token="--color-accent"      label="Brand blue" />
+        <Swatch token="--color-accent-soft" label="Tinted bg" />
       </Group>
 
       <Group title="Lines">
-        <Swatch token="--hairline"    label="Hairline" />
-        <Swatch token="--line"        label="Default border" />
-        <Swatch token="--line-strong" label="Emphasis border" />
+        <Swatch token="--color-hairline"    label="Hairline" />
+        <Swatch token="--color-line"        label="Default border" />
+        <Swatch token="--color-line-strong" label="Emphasis border" />
       </Group>
     </div>
   ),
@@ -78,65 +78,85 @@ export const Domain: Story = {
   render: () => (
     <div>
       <Group title="Foreground">
-        <Swatch token="--c-tech"     label="Tech" />
-        <Swatch token="--c-fitness"  label="Fitness" />
-        <Swatch token="--c-creative" label="Creative" />
-        <Swatch token="--c-nerd"     label="Nerd" />
+        <Swatch token="--color-tech"     label="Tech" />
+        <Swatch token="--color-fitness"  label="Fitness" />
+        <Swatch token="--color-creative" label="Creative" />
+        <Swatch token="--color-nerd"     label="Nerd" />
       </Group>
 
       <Group title="Background tints">
-        <Swatch token="--c-tech-bg"     label="Tech bg" />
-        <Swatch token="--c-fitness-bg"  label="Fitness bg" />
-        <Swatch token="--c-creative-bg" label="Creative bg" />
-        <Swatch token="--c-nerd-bg"     label="Nerd bg" />
+        <Swatch token="--color-tech-bg"     label="Tech bg" />
+        <Swatch token="--color-fitness-bg"  label="Fitness bg" />
+        <Swatch token="--color-creative-bg" label="Creative bg" />
+        <Swatch token="--color-nerd-bg"     label="Nerd bg" />
       </Group>
     </div>
   ),
 }
 
-// ─── Lunar Vega A ─────────────────────────────────────────────────────────────
 
-export const LunarVegaA: Story = {
-  name: 'Lunar Vega — Direction A',
-  decorators: [
-    (Story) => (
-      <div className="lv-a" style={{ padding: '32px', background: 'var(--paper)' }}>
-        <Story />
-      </div>
-    ),
-  ],
+// ─── Domain Palette Variants ──────────────────────────────────────────────────
+
+const DOMAINS = ['Tech', 'Fitness', 'Creative', 'Nerd'] as const
+
+const PALETTES = [
+  { name: 'Spectrum (default)', cls: 'palette-spectrum', colors: ['#2563eb', '#059669', '#ea580c', '#7c3aed'] },
+  { name: 'Monochrome',         cls: 'palette-mono',     colors: ['#0c0c0c', '#0c0c0c', '#0c0c0c', '#0c0c0c'] },
+  { name: 'Warm earth',         cls: 'palette-warm',     colors: ['#b45309', '#15803d', '#be185d', '#7c2d12'] },
+  { name: 'Electric',           cls: 'palette-electric', colors: ['#06b6d4', '#84cc16', '#f43f5e', '#a855f7'] },
+] as const
+
+export const DomainPaletteVariants: Story = {
+  name: 'Domain — palette variants',
   render: () => (
     <div>
-      <Group title="Surface">
-        <Swatch token="--paper"   label="Navy bg" />
-        <Swatch token="--paper-2" label="Deep panel" />
-      </Group>
+      <h3 className="ds-h3" style={{ marginBottom: '8px' }}>Domain palette variants</h3>
+      <div className="comp-meta" style={{ marginBottom: '24px', fontFamily: 'var(--font-mono)', fontSize: '12px', color: 'var(--color-ink-soft)' }}>
+        Swap class on root:{' '}
+        <code style={{ color: 'var(--color-accent)' }}>
+          .palette-&#123;spectrum | mono | warm | electric&#125;
+        </code>
+      </div>
 
-      <Group title="Ink">
-        <Swatch token="--ink"      label="Primary text" />
-        <Swatch token="--ink-2"    label="Prose body" />
-        <Swatch token="--ink-soft" label="Meta" />
-        <Swatch token="--ink-mute" label="Muted" />
-      </Group>
-
-      <Group title="Accent">
-        <Swatch token="--accent"      label="Electric blue" />
-        <Swatch token="--accent-soft" label="Tinted bg" />
-      </Group>
-
-      <Group title="Lines">
-        <Swatch token="--hairline"    label="Hairline" />
-        <Swatch token="--line"        label="Default border" />
-        <Swatch token="--line-strong" label="Emphasis border" />
-      </Group>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '24px' }}>
+        {PALETTES.map((palette) => (
+          <div key={palette.cls} className={palette.cls}>
+            <div style={{
+              display: 'inline-flex', alignItems: 'center',
+              border: '1px solid var(--color-line, #e2e2dc)',
+              borderRadius: '6px', padding: '3px 10px',
+              fontFamily: 'var(--font-mono)', fontSize: '11px',
+              marginBottom: '12px',
+            }}>
+              <strong>{palette.name}</strong>
+            </div>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
+              {DOMAINS.map((domain, i) => (
+                <span key={domain} style={{
+                  display: 'inline-flex', alignItems: 'center', gap: '6px',
+                  border: '1px solid var(--color-line, #e2e2dc)',
+                  borderRadius: '6px', padding: '3px 10px',
+                  fontFamily: 'var(--font-mono)', fontSize: '11px',
+                }}>
+                  <span style={{
+                    display: 'inline-block', width: '12px', height: '12px',
+                    borderRadius: '2px', background: palette.colors[i], flexShrink: 0,
+                  }} />
+                  {domain}
+                </span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   ),
 }
 
 // ─── Lunar Vega B ─────────────────────────────────────────────────────────────
 
-export const LunarVegaB: Story = {
-  name: 'Lunar Vega — Direction B',
+export const LunarVega: Story = {
+  name: 'Lunar Vega',
   decorators: [
     (Story) => (
       <div className="lv-b" style={{ padding: '32px', background: 'var(--paper)' }}>
@@ -147,26 +167,26 @@ export const LunarVegaB: Story = {
   render: () => (
     <div>
       <Group title="Surface">
-        <Swatch token="--paper"   label="Black bg" />
-        <Swatch token="--paper-2" label="Deep panel" />
+        <Swatch token="--color-vega-paper"   label="Black bg" />
+        <Swatch token="--color-vega-paper-2" label="Deep panel" />
       </Group>
 
       <Group title="Ink">
-        <Swatch token="--ink"      label="Primary text" />
-        <Swatch token="--ink-2"    label="Prose body" />
-        <Swatch token="--ink-soft" label="Meta" />
-        <Swatch token="--ink-mute" label="Muted" />
+        <Swatch token="--color-vega-ink"      label="Primary text" />
+        <Swatch token="--color-vega-ink-2"    label="Prose body" />
+        <Swatch token="--color-vega-ink-soft" label="Meta" />
+        <Swatch token="--color-vega-ink-mute" label="Muted" />
       </Group>
 
       <Group title="Accent">
-        <Swatch token="--accent"      label="Cyan" />
-        <Swatch token="--accent-soft" label="Tinted bg" />
+        <Swatch token="--color-vega-accent"      label="Cyan" />
+        <Swatch token="--color-vega-accent-soft" label="Tinted bg" />
       </Group>
 
       <Group title="Lines">
-        <Swatch token="--hairline"    label="Hairline" />
-        <Swatch token="--line"        label="Default border" />
-        <Swatch token="--line-strong" label="Emphasis border" />
+        <Swatch token="--color-vega-hairline"    label="Hairline" />
+        <Swatch token="--color-vega-line"        label="Default border" />
+        <Swatch token="--color-vega-line-strong" label="Emphasis border" />
       </Group>
     </div>
   ),
