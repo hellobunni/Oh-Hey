@@ -1,50 +1,89 @@
-'use client'
+import { cva, type VariantProps } from 'class-variance-authority'
+import { cn } from '@/lib/utils'
 
-import { useEffect, useState } from 'react'
-import Link from 'next/link'
+const nav = cva(
+  'sticky top-0 z-10 flex items-center justify-between border-b backdrop-blur-md bg-[color-mix(in_oklab,var(--paper)_58%,transparent)]',
+  {
+    variants: {
+      brand: {
+        'oh-a': 'border-line bg-[color-mix(in_oklab,var(--paper)_58%,transparent)]',
+        'lv-a': 'border-red-500',
+      },
+      density: {
+        cozy: 'px-[clamp(20px,5vw,80px)] py-[22px]',
+        packed: 'px-[var(--pad-x)] py-4',
+      },
+    },
+    defaultVariants: { brand: 'oh-a', density: 'cozy' },
+  },
+)
 
-const navLinks = [
+const navLink = cva(
+  'font-mono text-xs text-ink-soft transition-colors hover:text-ink',
+  {
+    variants: {
+      active: { true: 'text-ink', false: '' },
+    },
+    defaultVariants: { active: false },
+  },
+)
+
+type NavItem = { label: string; href: string; active?: boolean }
+
+interface NavProps extends VariantProps<typeof nav> {
+  brandLabel?: string
+  items?: NavItem[]
+  ctaLabel?: string
+  ctaHref?: string
+  className?: string
+}
+
+const DEFAULT_ITEMS: NavItem[] = [
+  { label: 'Writing', href: '/writing', active: true },
   { label: 'Tech', href: '/tech' },
   { label: 'Fitness', href: '/fitness' },
   { label: 'Creative', href: '/creative' },
-  { label: 'Nerd Stuff', href: '/nerd-stuff' },
+  { label: 'Nerd', href: '/nerd' },
+  { label: 'About', href: '/about' },
 ]
 
-export default function Nav() {
-  const [scrolled, setScrolled] = useState(false)
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 10)
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
-
+function Nav({
+  brand,
+  density,
+  brandLabel = 'oh-hey-lynae',
+  items = DEFAULT_ITEMS,
+  ctaLabel = 'Subscribe →',
+  ctaHref = '/subscribe',
+  className,
+}: NavProps) {
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? 'bg-white/90 backdrop-blur-md border-b border-zinc-200 shadow-sm'
-          : 'bg-transparent'
-      }`}
-    >
-      <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-        <Link
-          href="/"
-          className={`font-black text-lg tracking-tight transition-colors ${
-            scrolled ? 'text-zinc-900 hover:text-zinc-600' : 'text-white hover:text-zinc-200'
-          }`}
-        >
-          oh-hey-lynae
-        </Link>
-        <a
-          href="/work-with-me"
-          className={`text-sm font-semibold transition-colors ${
-            scrolled ? 'text-zinc-900 hover:text-zinc-500' : 'text-white hover:text-zinc-200'
-          }`}
-        >
-          Work with me
-        </a>
-      </nav>
-    </header>
+    <nav className={cn(nav({ brand, density }), className)}>
+     
+      {brandLabel ? <a className="inline-flex items-center gap-2.5 font-mono font-semibold text-sm text-ink no-underline">
+            <span className="w-2 h-2 bg-accent shrink-0" />
+            oh-hey-lynae
+          </a> : <a className="inline-flex items-center gap-2.5 font-mono font-semibold text-sm text-ink no-underline">
+            <span className="w-2 h-2 bg-accent shrink-0" />
+            Kodara
+          </a>}
+
+      <div className="flex items-center gap-7">
+        {items.map((item) => (
+          <a key={item.href} href={item.href} className={navLink({ active: item.active })}>
+            {item.label}
+          </a>
+        ))}
+      </div>
+
+      <a
+        href={ctaHref}
+        className="border border-line-strong bg-paper px-3.5 py-2 font-mono text-xs text-ink transition-colors hover:bg-ink hover:text-paper"
+      >
+        {ctaLabel}
+      </a>
+    </nav>
   )
 }
+
+export { Nav }
+export type { NavProps, NavItem }
