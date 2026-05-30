@@ -1,5 +1,6 @@
 import { cva, type VariantProps } from 'class-variance-authority'
 import { cn } from '@/lib/utils'
+import { posts } from '@/data/posts'
 
 const nav = cva(
   'sticky top-0 z-10 flex items-center justify-between border-b backdrop-blur-md bg-[color-mix(in_oklab,var(--paper)_58%,transparent)]',
@@ -11,7 +12,7 @@ const nav = cva(
       },
       density: {
         cozy: 'px-[clamp(20px,5vw,80px)] py-[22px]',
-        packed: 'px-[var(--pad-x)] py-4',
+        packed: 'px-20 py-4',
       },
     },
     defaultVariants: { brand: 'oh-a', density: 'cozy' },
@@ -38,12 +39,17 @@ interface NavProps extends VariantProps<typeof nav> {
   className?: string
 }
 
+const hasPosts = posts.length > 0
 const DEFAULT_ITEMS: NavItem[] = [
   { label: 'Writing', href: '/writing', active: true },
-  { label: 'Tech', href: '/tech' },
-  { label: 'Fitness', href: '/fitness' },
-  { label: 'Creative', href: '/creative' },
-  { label: 'Nerd', href: '/nerd' },
+  ...(hasPosts
+    ? [
+        { label: 'Tech', href: '/tech' },
+        { label: 'Fitness', href: '/fitness' },
+        { label: 'Creative', href: '/creative' },
+        { label: 'Nerd', href: '/nerd' },
+      ]
+    : []),
   { label: 'About', href: '/about' },
 ]
 

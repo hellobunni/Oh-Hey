@@ -86,7 +86,7 @@ export default function ComingSoonClient() {
 
             {/* Email capture */}
             <form className="max-w-[460px]" onSubmit={handleSubmit}>
-              <p className="font-mono text-[11px] text-ink-mute uppercase tracking-wide mb-2.5 m-0">
+              <p className="font-mono text-xs text-ink-mute uppercase tracking-wide mb-2.5 m-0">
                 &#9635;&nbsp;&nbsp;Get notified at launch
               </p>
               {!done ? (
@@ -104,7 +104,7 @@ export default function ComingSoonClient() {
                       notify me &rarr;
                     </Button>
                   </div>
-                  <p className="font-mono text-[11px] text-ink-mute mt-3 tracking-[0.03em] m-0">
+                  <p className="font-mono text-xs text-ink-mute mt-3 tracking-[0.03em] m-0">
                     No spam, no tracking. One email when the doors open.
                   </p>
                 </>
@@ -142,7 +142,7 @@ export default function ComingSoonClient() {
         </main>
 
         {/* ── Footer ── */}
-        <footer className="flex items-center justify-between px-[clamp(20px,5vw,80px)] py-6 border-t border-line font-mono text-[11px] text-ink-mute uppercase tracking-wide max-[540px]:flex-col max-[540px]:gap-3.5 max-[540px]:text-center">
+        <footer className="flex items-center justify-between px-[clamp(20px,5vw,80px)] py-6 border-t border-line font-mono text-xs text-ink-mute uppercase tracking-wide max-[540px]:flex-col max-[540px]:gap-3.5 max-[540px]:text-center">
           <span>&copy; 2026 Lynae Thomas</span>
           <div className="flex gap-[22px]">
             <a className="transition-colors duration-[120ms] hover:text-accent" href="#">GitHub</a>

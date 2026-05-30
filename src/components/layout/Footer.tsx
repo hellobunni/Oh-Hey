@@ -37,8 +37,8 @@ export default function KodaraFooter({
   return (
     <footer
       className={cn(
-        'flex items-center justify-between px-[var(--pad-x)] py-[calc(40px*var(--sp))]',
-        'font-mono text-[11px] uppercase tracking-[0.12em] text-[var(--ink-soft)]',
+        'flex items-center justify-between px-20 py-[calc(40px*var(--sp))]',
+        'font-mono text-xs uppercase tracking-[0.12em] text-ink-soft',
         className,
       )}
     >
@@ -46,7 +46,7 @@ export default function KodaraFooter({
 
       <div className="flex items-center gap-8">
         {links.map((l) => (
-          <a key={l.label} href={l.href} className="transition-colors hover:text-[var(--accent)]">
+          <a key={l.label} href={l.href} className="transition-colors hover:text-accent">
             {l.label}
           </a>
         ))}
@@ -55,9 +55,9 @@ export default function KodaraFooter({
           type="button"
           onClick={() => setLight((v) => !v)}
           aria-label="Toggle theme"
-          className="flex items-center gap-2 uppercase tracking-[0.12em] text-[var(--ink-soft)] transition-colors hover:text-[var(--accent)]"
+          className="flex items-center gap-2 uppercase tracking-[0.12em] text-ink-soft transition-colors hover:text-accent]"
         >
-          <span className="flex h-[18px] w-[18px] items-center justify-center border border-[var(--line-strong)] text-[11px] leading-none text-[var(--accent)]">
+          <span className="flex h-[18px] w-[18px] items-center justify-center border border-line-strong text-xs leading-none text-accent">
             {light ? '☾' : '☀'}
           </span>
           {light ? 'Dark' : 'Light'}
