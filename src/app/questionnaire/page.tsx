@@ -82,7 +82,7 @@ export default function QuestionnairePage() {
     return (
       <div className="lv-a lv-q">
         <nav className="lv-q-nav">
-          <Link href="/" className="lv-q-wordmark">Lunar Vega</Link>
+          <Link href="/" className="lv-q-wordmark">Kodara</Link>
         </nav>
         <div className="lv-q-success">
           <div className="lv-q-success-inner">
@@ -106,7 +106,7 @@ export default function QuestionnairePage() {
   return (
     <div className="lv-a lv-q">
       <nav className="lv-q-nav">
-        <Link href="/" className="lv-q-wordmark">Lunar Vega</Link>
+        <Link href="/" className="lv-q-wordmark">Kodara</Link>
         <Link href="/consulting" className="lv-q-back">← Consulting</Link>
       </nav>
 

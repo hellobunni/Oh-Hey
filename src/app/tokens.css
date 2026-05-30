@@ -288,7 +288,7 @@
 
 /* ─── DS Cards ────────────────────────────────────────────────────────────── */
 
-.ds-card {
+.card {
   border: 1px solid var(--color-line, rgba(12,12,12,0.08));
   padding: 24px;
   display: flex;
@@ -296,34 +296,34 @@
 }
 
 /* Linked card */
-a.ds-card {
+a.card {
   text-decoration: none;
   color: inherit;
   transition: border-color var(--dur-2, 200ms) var(--ease-out);
 }
-a.ds-card:hover { border-color: var(--color-ink, #0c0c0c); }
+a.card:hover { border-color: var(--color-ink, #0c0c0c); }
 
 /* Internal anatomy */
-.ds-card-eyebrow {
+.card-eyebrow {
   font-family: var(--font-mono);
   font-size: 11px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--color-ink-mute, #a3a39c);
 }
-.ds-card-eyebrow--accent { color: var(--color-accent, #2563eb); }
+.card-eyebrow--accent { color: var(--color-accent, #2563eb); }
 
-.ds-card-title {
+.card-title {
   font-size: 24px;
   font-weight: 700;
   letter-spacing: -0.025em;
   line-height: 1.05;
   color: var(--color-ink, #0c0c0c);
 }
-.ds-card-title--lg { font-size: 22px; line-height: 1.1; }
-.ds-card-title--md { font-size: 20px; }
+.card-title--lg { font-size: 22px; line-height: 1.1; }
+.card-title--md { font-size: 20px; }
 
-.ds-card-subtitle {
+.card-subtitle {
   font-family: var(--font-mono);
   font-size: 11px;
   letter-spacing: 0.08em;
@@ -331,20 +331,20 @@ a.ds-card:hover { border-color: var(--color-ink, #0c0c0c); }
   color: var(--color-ink-soft, #6b6b66);
 }
 
-.ds-card-body {
+.card-body {
   font-size: 13px;
   color: var(--color-ink-soft, #6b6b66);
   line-height: 1.55;
 }
 
-.ds-card-meta {
+.card-meta {
   font-family: var(--font-mono);
   font-size: 11px;
   color: var(--color-ink-soft, #6b6b66);
   letter-spacing: 0.04em;
 }
 
-.ds-card-footer {
+.card-footer {
   margin-top: auto;
   padding-top: 12px;
   border-top: 1px solid var(--color-line, rgba(12,12,12,0.08));
@@ -354,8 +354,8 @@ a.ds-card:hover { border-color: var(--color-ink, #0c0c0c); }
   justify-content: space-between;
   align-items: center;
 }
-.ds-card-footer-label { color: var(--color-ink-mute, #a3a39c); letter-spacing: 0.08em; text-transform: uppercase; }
-.ds-card-footer-value { color: var(--color-accent, #2563eb); }
+.card-footer-label { color: var(--color-ink-mute, #a3a39c); letter-spacing: 0.08em; text-transform: uppercase; }
+.card-footer-value { color: var(--color-accent, #2563eb); }
 
 /* ─── Post row ────────────────────────────────────────────────────────────── */
 
@@ -421,7 +421,6 @@ a.ds-card:hover { border-color: var(--color-ink, #0c0c0c); }
 .badge-pill.badge-fitness  { background: var(--color-fitness-bg,  rgba(5,  150, 105, 0.08)); }
 .badge-pill.badge-creative { background: var(--color-creative-bg, rgba(234,  88,  12, 0.08)); }
 .badge-pill.badge-nerd     { background: var(--color-nerd-bg,     rgba(124,  58, 237, 0.08)); }
-
 
 /* ─── Domain palette variants ─────────────────────────────────────────────── */
 

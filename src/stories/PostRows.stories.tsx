@@ -4,7 +4,7 @@ import { PostRow, PostList } from '@/components/ui/post-row'
 import type { PostRowData } from '@/components/ui/post-row'
 
 const meta = {
-  title: 'Design System/Post Rows',
+  title: 'Components/Post Rows',
   parameters: { layout: 'padded' },
 } satisfies Meta
 
@@ -45,7 +45,7 @@ export const Default: Story = {
   name: 'Post Rows — default',
   render: () => (
     <div>
-      <div style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--color-ink-soft)', marginBottom: '8px' }}>
+      <div style={{ fontFamily: 'font-mono', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--color-ink-soft)', marginBottom: '8px' }}>
         11 · Components — Post rows
       </div>
       <h2 style={{ fontFamily: 'var(--font-serif, serif)', fontSize: '32px', fontWeight: 700, margin: '0 0 12px' }}>

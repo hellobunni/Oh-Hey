@@ -7,7 +7,7 @@ import { Field } from '@/components/ui/field'
 import { Button } from '@/components/ui/button'
 
 const meta = {
-  title: 'Design System/Form Fields',
+  title: 'Components/Form Fields',
   parameters: { layout: 'padded' },
 } satisfies Meta
 
@@ -17,13 +17,13 @@ type Story = StoryObj<typeof meta>
 // ─── Story layout helpers ─────────────────────────────────────────────────────
 
 const mono11: React.CSSProperties = {
-  fontFamily: 'var(--font-mono)',
+  fontFamily: 'font-mono',
   fontSize: '11px',
 }
 
 function SectionLabel({ children, style }: { children: React.ReactNode; style?: React.CSSProperties }) {
   return (
-    <div style={{ ...mono11, textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--color-ink-soft)', margin: '40px 0 12px', ...style }}>
+    <div className="font-mono text-xs tracking-wide uppercase text-ink-soft mb-1.5 font-medium" style={style}>
       {children}
     </div>
   )
@@ -31,7 +31,7 @@ function SectionLabel({ children, style }: { children: React.ReactNode; style?: 
 
 function Grid({ cols, children }: { cols: 1 | 2 | 3; children: React.ReactNode }) {
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: `repeat(${cols}, 1fr)`, gap: '12px' }}>
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
       {children}
     </div>
   )
@@ -41,12 +41,12 @@ function Card({
   name, arg, children, style,
 }: { name: string; arg?: string; children: React.ReactNode; style?: React.CSSProperties }) {
   return (
-    <div style={{ border: '1px solid var(--color-line, rgba(12,12,12,0.08))', display: 'flex', flexDirection: 'column' }}>
-      <div style={{ ...mono11, display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '7px 12px', borderBottom: '1px solid var(--color-line)', background: 'var(--color-paper-2, #f4f3ee)' }}>
-        <span style={{ fontWeight: 500 }}>{name}</span>
-        {arg && <span style={{ color: 'var(--color-accent)', opacity: 0.8 }}>{arg}</span>}
+    <div className="border border-line flex flex-col" style={style}>
+      <div className="font-mono text-xs tracking-wide uppercase text-ink-soft flex justify-between items-center p-1.5 border-b border-line bg-paper-2">
+        <span className="font-medium">{name}</span>
+        {arg && <span className="text-accent opacity-80">{arg}</span>}
       </div>
-      <div style={{ padding: '20px', ...style }}>
+      <div className="p-4" style={style}>
         {children}
       </div>
     </div>
@@ -61,7 +61,6 @@ function TextareaWithCounter({ maxLength = 240 }: { maxLength?: number }) {
   return (
     <Field label="Tell me about your project" maxLength={maxLength} currentLength={val.length}>
       <textarea
-        className="tk-field-textarea"
         maxLength={maxLength}
         value={val}
         onChange={e => setVal(e.target.value)}
@@ -74,12 +73,13 @@ function TextareaWithCounter({ maxLength = 240 }: { maxLength?: number }) {
 function PasswordField() {
   const [show, setShow] = React.useState(false)
   return (
-    <Field label="Password" suffix={
-      <span className="tk-field-suffix action" onClick={() => setShow(s => !s)} style={{ cursor: 'pointer' }}>
-        {show ? 'hide' : 'show'}
-      </span>
-    }>
-      <input className="tk-field-input" type={show ? 'text' : 'password'} defaultValue="••••••••••" />
+    <Field
+      label="Password"
+      suffix={show ? 'hide' : 'show'}
+      suffixAction
+      onSuffixClick={() => setShow(s => !s)}
+    >
+      <input type={show ? 'text' : 'password'} defaultValue="••••••••••" />
     </Field>
   )
 }
@@ -176,7 +176,7 @@ function ContactForm() {
     useForm<ContactForm>({ resolver: zodResolver(contactSchema) })
 
   if (isSubmitSuccessful) return (
-    <div style={{ ...mono11, fontSize: '13px', color: 'var(--color-ink-soft)', display: 'flex', flexDirection: 'column', gap: '12px' }}>
+    <div className="font-mono text-sm text-ink-soft flex flex-col gap-3">
       <span>Message sent.</span>
       <button onClick={() => reset()} style={{ background: 'none', border: 'none', cursor: 'pointer', textDecoration: 'underline', fontFamily: 'inherit', fontSize: 'inherit', color: 'var(--color-accent)', textAlign: 'left', padding: 0 }}>
         Send another →
@@ -187,10 +187,10 @@ function ContactForm() {
   return (
     <form onSubmit={handleSubmit(d => console.log(d))} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }} noValidate>
       <Field label="Email" required error={errors.email?.message}>
-        <input className="tk-field-input" type="email" placeholder="your@email.com" {...register('email')} />
+        <input type="email" placeholder="your@email.com" {...register('email')} />
       </Field>
       <Field label="Message" error={errors.message?.message}>
-        <textarea className="tk-field-textarea" rows={4} placeholder="Tell me about your project..." {...register('message')} />
+        <textarea rows={4} placeholder="Tell me about your project..." {...register('message')} />
       </Field>
       <Button type="submit" style={{ alignSelf: 'start' }}>Send →</Button>
     </form>
@@ -206,24 +206,24 @@ export const FieldTypes: Story = {
       <div style={{ ...mono11, textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--color-ink-soft)', marginBottom: '8px' }}>
         10 · Components — Form fields
       </div>
-      <h2 style={{ fontFamily: 'var(--font-serif, serif)', fontSize: '32px', fontWeight: 700, margin: '0 0 8px' }}>
+      <h2 className="font-serif text-4xl font-bold tracking-tight leading-tight mb-2">
         Single border. Monospace label. <em>Many states.</em>
       </h2>
-      <p style={{ ...mono11, fontSize: '13px', color: 'var(--color-ink-soft)', margin: '0 0 32px', maxWidth: '600px', lineHeight: 1.6 }}>
-        Every field composes from one wrapper (<code style={{ color: 'var(--color-accent)' }}>.tk-field</code>) with a label, control, and optional helper/error/counter rows. Size, state, and layout are independent modifier classes — combine freely.
+      <p className="font-mono text-sm text-ink-soft mb-8 max-w-2xl leading-relaxed">
+        Every field composes from one wrapper (<code className="text-accent">.tk-field</code>) with a label, control, and optional helper/error/counter rows. Size, state, and layout are independent modifier classes — combine freely.
       </p>
 
       <SectionLabel>Field types · 6 stories</SectionLabel>
       <Grid cols={2}>
         <Card name="Text Input" arg="type=text">
           <Field label="First name" required>
-            <input className="tk-field-input" placeholder="Lynae" />
+            <input placeholder="Lynae" />
           </Field>
         </Card>
 
         <Card name="Email + Prefix" arg="prefix=@">
           <Field label="Email" prefix="@">
-            <input className="tk-field-input" placeholder="your@email.com" />
+            <input placeholder="your@email.com" />
           </Field>
         </Card>
 
@@ -233,13 +233,13 @@ export const FieldTypes: Story = {
 
         <Card name="Number + Unit" arg="suffix=USD">
           <Field label="Budget range" prefix="$" suffix="USD">
-            <input className="tk-field-input" type="number" placeholder="10,000" />
+            <input type="number" placeholder="10,000" />
           </Field>
         </Card>
 
         <Card name="Select" arg="native">
           <Field label="Project type">
-            <select className="tk-field-select">
+            <select>
               <option>Design system</option>
               <option>Frontend development</option>
               <option>UI/UX consulting</option>
@@ -264,17 +264,17 @@ export const FieldSizes: Story = {
       <Grid cols={3}>
         <Card name="Small" arg=".size-sm">
           <Field label="Compact" size="sm">
-            <input className="tk-field-input" placeholder="size-sm" />
+            <input placeholder="size-sm" />
           </Field>
         </Card>
         <Card name="Medium" arg=".size-md (default)">
           <Field label="Default">
-            <input className="tk-field-input" placeholder="size-md" />
+            <input placeholder="size-md" />
           </Field>
         </Card>
         <Card name="Large" arg=".size-lg">
           <Field label="Hero CTA" size="lg">
-            <input className="tk-field-input" placeholder="your@email.com" />
+            <input placeholder="your@email.com" />
           </Field>
         </Card>
       </Grid>
@@ -290,32 +290,32 @@ export const FieldStates: Story = {
       <Grid cols={3}>
         <Card name="Default" arg="resting">
           <Field label="Email">
-            <input className="tk-field-input" placeholder="your@email.com" />
+            <input placeholder="your@email.com" />
           </Field>
         </Card>
         <Card name="Focused" arg=".state-focus">
           <Field label="Email" state="focus" helper="— we'll never share this">
-            <input className="tk-field-input" defaultValue="lynae@" />
+            <input defaultValue="lynae@" />
           </Field>
         </Card>
         <Card name="Filled" arg="has value">
           <Field label="Email">
-            <input className="tk-field-input" defaultValue="lynae@oh-hey-lynae.com" />
+            <input defaultValue="lynae@oh-hey-lynae.com" />
           </Field>
         </Card>
         <Card name="Error" arg=".state-error">
           <Field label="Email" error="Please enter a valid email address">
-            <input className="tk-field-input" defaultValue="not-an-email" />
+            <input defaultValue="not-an-email" />
           </Field>
         </Card>
         <Card name="Success" arg=".state-success">
           <Field label="Email" state="success" success="Verified">
-            <input className="tk-field-input" defaultValue="lynae@oh-hey-lynae.com" />
+            <input defaultValue="lynae@oh-hey-lynae.com" />
           </Field>
         </Card>
         <Card name="Disabled / Readonly" arg=".state-disabled">
           <Field label="Plan" state="disabled" helper="— locked while engagement is active">
-            <input className="tk-field-input" defaultValue="The Partner (retainer)" readOnly />
+            <input defaultValue="The Partner (retainer)" readOnly />
           </Field>
         </Card>
       </Grid>
@@ -331,12 +331,12 @@ export const FieldLayouts: Story = {
       <Grid cols={2}>
         <Card name="Stacked" arg=".layout-stacked (default)">
           <Field label="Project name">
-            <input className="tk-field-input" defaultValue="Atlas Redesign" />
+            <input defaultValue="Atlas Redesign" />
           </Field>
         </Card>
         <Card name="Inline" arg=".layout-inline">
           <Field label="Timeline" layout="inline">
-            <input className="tk-field-input" defaultValue="4–8 weeks" />
+            <input defaultValue="4–8 weeks" />
           </Field>
         </Card>
       </Grid>
@@ -401,7 +401,7 @@ export const ComposedForm: Story = {
       <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
         <Card name="Newsletter signup" arg="composition">
           <Field label="Get the digest" helper="— every other Sunday · no tracking" suffix="SUBSCRIBE →" suffixAction>
-            <input className="tk-field-input" placeholder="your@email.com" />
+            <input placeholder="your@email.com" />
           </Field>
         </Card>
         <Card name="Contact form" arg="react-hook-form + zod">

@@ -62,7 +62,7 @@ export default function ConsultingPage() {
   return (
     <div className="lv-a lv-page">
       <nav className="lv-nav">
-        <Link href="/" className="nav-wordmark">Lunar Vega</Link>
+        <Link href="/" className="nav-wordmark">Kodara</Link>
         <Link href="/questionnaire" className="nav-cta">Start a project</Link>
       </nav>
 

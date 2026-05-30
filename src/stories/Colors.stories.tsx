@@ -18,7 +18,7 @@ function Swatch({ token, label }: { token: string; label?: string }) {
         className="w-full aspect-square border border-black/10"
         style={{ background: `var(${token})` }}
       />
-      <div style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', lineHeight: 1.4 }}>
+      <div style={{ fontFamily: 'font-mono', fontSize: '11px', lineHeight: 1.4 }}>
         <div style={{ fontWeight: 500 }}>{token}</div>
         {label && <div style={{ color: 'var(--ink-soft, #6b6b66)', marginTop: '2px' }}>{label}</div>}
       </div>
@@ -29,7 +29,7 @@ function Swatch({ token, label }: { token: string; label?: string }) {
 function Group({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <div style={{ marginBottom: '48px' }}>
-      <div style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--ink-soft, #6b6b66)', marginBottom: '16px' }}>
+      <div style={{ fontFamily: 'font-mono', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--ink-soft, #6b6b66)', marginBottom: '16px' }}>
         {title}
       </div>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(100px, 1fr))', gap: '16px' }}>
@@ -111,7 +111,7 @@ export const DomainPaletteVariants: Story = {
   render: () => (
     <div>
       <h3 className="ds-h3" style={{ marginBottom: '8px' }}>Domain palette variants</h3>
-      <div className="comp-meta" style={{ marginBottom: '24px', fontFamily: 'var(--font-mono)', fontSize: '12px', color: 'var(--color-ink-soft)' }}>
+      <div className="comp-meta" style={{ marginBottom: '24px', fontFamily: 'font-mono', fontSize: '12px', color: 'var(--color-ink-soft)' }}>
         Swap class on root:{' '}
         <code style={{ color: 'var(--color-accent)' }}>
           .palette-&#123;spectrum | mono | warm | electric&#125;
@@ -125,7 +125,7 @@ export const DomainPaletteVariants: Story = {
               display: 'inline-flex', alignItems: 'center',
               border: '1px solid var(--color-line, #e2e2dc)',
               borderRadius: '6px', padding: '3px 10px',
-              fontFamily: 'var(--font-mono)', fontSize: '11px',
+              fontFamily: 'font-mono', fontSize: '11px',
               marginBottom: '12px',
             }}>
               <strong>{palette.name}</strong>
@@ -136,7 +136,7 @@ export const DomainPaletteVariants: Story = {
                   display: 'inline-flex', alignItems: 'center', gap: '6px',
                   border: '1px solid var(--color-line, #e2e2dc)',
                   borderRadius: '6px', padding: '3px 10px',
-                  fontFamily: 'var(--font-mono)', fontSize: '11px',
+                  fontFamily: 'font-mono', fontSize: '11px',
                 }}>
                   <span style={{
                     display: 'inline-block', width: '12px', height: '12px',
@@ -153,10 +153,10 @@ export const DomainPaletteVariants: Story = {
   ),
 }
 
-// ─── Lunar Vega B ─────────────────────────────────────────────────────────────
+// ─── Kodara B ─────────────────────────────────────────────────────────────
 
 export const LunarVega: Story = {
-  name: 'Lunar Vega',
+  name: 'Kodara',
   decorators: [
     (Story) => (
       <div className="lv-b" style={{ padding: '32px', background: 'var(--paper)' }}>

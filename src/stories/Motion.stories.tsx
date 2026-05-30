@@ -28,7 +28,7 @@ const ALL_TOKENS = [...DURATIONS, ...EASINGS]
 // ─── Shared styles ────────────────────────────────────────────────────────────
 
 const mono: React.CSSProperties = {
-  fontFamily: 'var(--font-mono)',
+  fontFamily: 'font-mono',
   fontSize: '12px',
 }
 
@@ -38,7 +38,7 @@ export const Tokens: Story = {
   name: 'Motion — tokens',
   render: () => (
     <div>
-      <div style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--color-ink-soft, #6b6b66)', marginBottom: '8px' }}>
+      <div style={{ fontFamily: 'font-mono', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--color-ink-soft, #6b6b66)', marginBottom: '8px' }}>
         07 · Motion
       </div>
       <h2 style={{ fontFamily: 'var(--font-serif, serif)', fontSize: '32px', fontWeight: 700, margin: '0 0 32px' }}>
@@ -76,7 +76,7 @@ export const LivePreview: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
       <div>
-        <div style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--color-ink-soft, #6b6b66)', marginBottom: '16px' }}>
+        <div style={{ fontFamily: 'font-mono', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--color-ink-soft, #6b6b66)', marginBottom: '16px' }}>
           Duration — hover each pill
         </div>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px' }}>
@@ -87,7 +87,7 @@ export const LivePreview: Story = {
       </div>
 
       <div>
-        <div style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--color-ink-soft, #6b6b66)', marginBottom: '16px' }}>
+        <div style={{ fontFamily: 'font-mono', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--color-ink-soft, #6b6b66)', marginBottom: '16px' }}>
           Easing — click to animate
         </div>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px' }}>
@@ -109,7 +109,7 @@ function DurationPill({ token, value }: { token: string; value: string }) {
         padding: '8px 14px',
         border: '1px solid var(--color-line, rgba(12,12,12,0.08))',
         borderRadius: '8px',
-        fontFamily: 'var(--font-mono)', fontSize: '12px',
+        fontFamily: 'font-mono', fontSize: '12px',
         background: 'var(--color-paper, #fafaf7)',
         cursor: 'default',
         transition: `background var(${token}, 200ms) var(--ease-out, cubic-bezier(0.16,1,0.3,1)),
@@ -144,7 +144,7 @@ function EasingDemo({ label, easing }: { label: string; easing: string }) {
           padding: '7px 12px',
           border: '1px solid var(--color-line, rgba(12,12,12,0.08))',
           borderRadius: '6px', background: 'none', cursor: 'pointer',
-          fontFamily: 'var(--font-mono)', fontSize: '12px',
+          fontFamily: 'font-mono', fontSize: '12px',
           color: 'var(--color-accent, #2563eb)',
         }}
       >

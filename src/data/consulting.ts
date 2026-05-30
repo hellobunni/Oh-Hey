@@ -15,7 +15,7 @@ export const hero = {
   ctaPrimary: "Let's see if we're a fit",
   ctaSecondary: 'View offerings',
   nameplate: {
-    name: 'Lynae Thomas',
+    name: 'font-mono',
     title: 'Founder & Principal Consultant',
   },
 }
@@ -153,6 +153,6 @@ export const cta = {
 }
 
 export const footer = {
-  copy: '© 2026 Lunar Vega. All rights reserved.',
+  copy: '© 2026 Kodara. All rights reserved.',
   backLabel: '← Back to oh-hey-lynae',
 }

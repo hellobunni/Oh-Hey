@@ -1,9 +1,9 @@
 import React from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { DSCard, OfferingCard, NewsletterCard, FeaturedCard } from '@/components/ui/ds-cards'
+import { DSCard, OfferingCard, NewsletterCard, FeaturedCard } from '@/components/cards'
 
 const meta = {
-  title: 'Design System/Cards',
+  title: 'Components/Cards',
   parameters: { layout: 'padded' },
 } satisfies Meta
 
@@ -13,7 +13,7 @@ type Story = StoryObj<typeof meta>
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
 const mono11: React.CSSProperties = {
-  fontFamily: 'var(--font-mono)',
+  fontFamily: 'font-mono',
   fontSize: '11px',
 }
 
