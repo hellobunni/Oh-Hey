@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { useEffect } from 'react'
-import '../../styles/lv.css'
+import '../../styles/kodara.css'
 import {
   hero,
   approach,
@@ -21,6 +21,8 @@ import {
   UMichLogo,
 } from '../../utils/logos'
 import { buttonVariants } from '@/components/ui/button'
+import HeroTerminalK from '@/components/hero/HeroTerminalK'
+import ClientReel from '@/components/ClientReel'
 
 const reelLogos = [
   { id: 'stockx',     Logo: StockXLogo },
@@ -47,7 +49,7 @@ export default function ConsultingPage() {
       { threshold: 0.15 }
     )
 
-    document.querySelectorAll('.lv-animate').forEach((el) => {
+    document.querySelectorAll('.kodara-animate').forEach((el) => {
       const htmlEl = el as HTMLElement
       htmlEl.style.opacity = '0'
       htmlEl.style.transform = 'translateY(20px)'
@@ -60,66 +62,13 @@ export default function ConsultingPage() {
   }, [])
 
   return (
-    <div className="lv-a lv-page">
-      <nav className="lv-nav">
-        <Link href="/" className="nav-wordmark">Kodara</Link>
-        <Link href="/questionnaire" className="nav-cta">Start a project</Link>
-      </nav>
+    <div className="kodara kodara-page">
+       <HeroTerminalK />
+       <ClientReel />
 
-      <section className="hero">
-        <div className="hero-copy">
-          <p className="hero-eyebrow fade-up delay-1">{hero.eyebrow}</p>
-          <h1 className="hero-headline fade-up delay-2">
-            {hero.headline.line1}<br />
-            {hero.headline.line2italic
-              ? <em>{hero.headline.line2}</em>
-              : hero.headline.line2}<br />
-            {hero.headline.line3}
-          </h1>
-          <p className="hero-subhead fade-up delay-3">{hero.subhead}</p>
-          <div className="hero-actions fade-up delay-4">
-            <Link
-              href="/questionnaire"
-              className={buttonVariants({ variant: 'accent', size: 'lg' })}
-            >
-              {hero.ctaPrimary}
-            </Link>
-            <a href="#offerings" className="btn-ghost">{hero.ctaSecondary}</a>
-          </div>
-        </div>
 
-        <div className="hero-image-wrap fade-up delay-3">
-          <div className="hero-image-frame">
-            <img src="/images/headshot.png" alt={hero.nameplate.name} />
-            <div className="hero-name-plate">
-              <div className="hero-name">{hero.nameplate.name}</div>
-              <div className="hero-title">{hero.nameplate.title}</div>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      <div className="section-divider" />
-
-      <section className="logo-reel">
-        <div className="logo-reel-track">
-          <div className="logo-reel-inner">
-            {[0, 1].map((copy) => (
-              <div key={copy} className="logo-reel-group">
-                {reelLogos.map(({ id, Logo }) => (
-                  <div key={id} className="logo-reel-item">
-                    <Logo />
-                  </div>
-                ))}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <div className="section-divider" />
-
-      <section className="ai-section lv-animate">
+      <section className="ai-section kodara-animate">
         <div>
           <p className="section-label">The approach</p>
           <h2 className="ai-headline">
@@ -148,7 +97,7 @@ export default function ConsultingPage() {
 
       <div className="section-divider" />
 
-      <section className="offerings-section lv-animate" id="offerings">
+      <section className="offerings-section kodara-animate" id="offerings">
         <div className="offerings-header">
           <div>
             <p className="section-label">What we do together</p>
@@ -179,7 +128,7 @@ export default function ConsultingPage() {
 
       <div className="section-divider" />
 
-      <section className="industries-section lv-animate">
+      <section className="industries-section kodara-animate">
         <div className="industries-left">
           <p className="section-label">Experience across</p>
           <h2 className="industries-headline">12 years.<br />6 industries.<br />Both sides of the table.</h2>
@@ -193,7 +142,7 @@ export default function ConsultingPage() {
 
       <div className="section-divider" />
 
-      <section className="process-section lv-animate">
+      <section className="process-section kodara-animate">
         <div className="process-header">
           <p className="section-label">How it works</p>
           <h2 className="process-headline">A process designed<br />to move fast<br />and move right.</h2>
@@ -212,7 +161,7 @@ export default function ConsultingPage() {
 
       <div className="section-divider" />
 
-      <section className="cta-section lv-animate">
+      <section className="cta-section kodara-animate">
         <div className="cta-inner">
           <p className="cta-eyebrow">{cta.eyebrow}</p>
           <h2 className="cta-headline">{cta.headline}<br /><em>{cta.headlineItalic}</em></h2>

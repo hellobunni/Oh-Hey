@@ -1,95 +1,76 @@
-import { cva, type VariantProps } from 'class-variance-authority'
+'use client'
+
 import { cn } from '@/lib/utils'
-import { posts } from '@/data/posts'
+import { TopNav } from '@/components/ui/navigation'
+import MobileNav from '@/components/navigation/MobileNav'
+import type { NavBrand, NavLinksAlign, NavLink, MobileMenuItem } from '@/components/ui/navigation'
 
-const nav = cva(
-  'sticky top-0 z-10 flex items-center justify-between border-b backdrop-blur-md bg-[color-mix(in_oklab,var(--paper)_58%,transparent)]',
-  {
-    variants: {
-      brand: {
-        'oh-a': 'border-line bg-[color-mix(in_oklab,var(--paper)_58%,transparent)]',
-        'lv-a': 'border-red-500',
-      },
-      density: {
-        cozy: 'px-[clamp(20px,5vw,80px)] py-[22px]',
-        packed: 'px-20 py-4',
-      },
-    },
-    defaultVariants: { brand: 'oh-a', density: 'cozy' },
-  },
-)
+// ─── Types ────────────────────────────────────────────────────────────────────
 
-const navLink = cva(
-  'font-mono text-xs text-ink-soft transition-colors hover:text-ink',
-  {
-    variants: {
-      active: { true: 'text-ink', false: '' },
-    },
-    defaultVariants: { active: false },
-  },
-)
+export type NavItem = { label: string; href: string; active?: boolean }
 
-type NavItem = { label: string; href: string; active?: boolean }
-
-interface NavProps extends VariantProps<typeof nav> {
-  brandLabel?: string
-  items?: NavItem[]
-  ctaLabel?: string
-  ctaHref?: string
-  className?: string
+export interface NavProps {
+  brand?:       NavBrand
+  brandHref?:   string
+  items?:       NavItem[]
+  linksAlign?:  NavLinksAlign
+  ctaLabel?:    string
+  ctaHref?:     string
+  className?:   string
 }
 
-const hasPosts = posts.length > 0
+// ─── Defaults ─────────────────────────────────────────────────────────────────
+
 const DEFAULT_ITEMS: NavItem[] = [
-  { label: 'Writing', href: '/writing', active: true },
-  ...(hasPosts
-    ? [
-        { label: 'Tech', href: '/tech' },
-        { label: 'Fitness', href: '/fitness' },
-        { label: 'Creative', href: '/creative' },
-        { label: 'Nerd', href: '/nerd' },
-      ]
-    : []),
-  { label: 'About', href: '/about' },
+  { label: 'Writing',  href: '/writing', active: true },
+  { label: 'Tech',     href: '/tech'     },
+  { label: 'Fitness',  href: '/fitness'  },
+  { label: 'Creative', href: '/creative' },
+  { label: 'Nerd',     href: '/nerd'     },
+  { label: 'About',    href: '/about'    },
 ]
 
-function Nav({
-  brand,
-  density,
-  brandLabel = 'oh-hey-lynae',
-  items = DEFAULT_ITEMS,
-  ctaLabel = 'Subscribe →',
-  ctaHref = '/subscribe',
+// ─── Component ────────────────────────────────────────────────────────────────
+
+export function Nav({
+  brand       = 'oh-hey-lynae',
+  brandHref   = '/',
+  items       = DEFAULT_ITEMS,
+  linksAlign  = 'left',
+  ctaLabel    = 'Subscribe →',
+  ctaHref     = '/subscribe',
   className,
 }: NavProps) {
-  return (
-    <nav className={cn(nav({ brand, density }), className)}>
-     
-      {brandLabel ? <a className="inline-flex items-center gap-2.5 font-mono font-semibold text-sm text-ink no-underline">
-            <span className="w-2 h-2 bg-accent shrink-0" />
-            oh-hey-lynae
-          </a> : <a className="inline-flex items-center gap-2.5 font-mono font-semibold text-sm text-ink no-underline">
-            <span className="w-2 h-2 bg-accent shrink-0" />
-            Kodara
-          </a>}
+  const navLinks: NavLink[]           = items.map(({ label, href, active }) => ({ label, href, active }))
+  const mobileItems: MobileMenuItem[] = items.map(({ label, href, active }) => ({ label, href, active }))
 
-      <div className="flex items-center gap-7">
-        {items.map((item) => (
-          <a key={item.href} href={item.href} className={navLink({ active: item.active })}>
-            {item.label}
-          </a>
-        ))}
+  const blurBg = brand === 'kodara'
+    ? 'bg-[color-mix(in_oklab,var(--color-kodara-dark)_85%,transparent)]'
+    : 'bg-[color-mix(in_oklab,var(--color-paper)_80%,transparent)]'
+
+  return (
+    <div className={cn('sticky top-0 z-40', className)}>
+      {/* ── Desktop bar (md+) ── */}
+      <div className={cn('hidden md:block backdrop-blur-md', blurBg)}>
+        <TopNav
+          brand={brand}
+          links={navLinks}
+          linksAlign={linksAlign}
+          cta={{ label: ctaLabel, href: ctaHref }}
+          brandHref={brandHref}
+          className="px-[clamp(20px,5vw,80px)]"
+        />
       </div>
 
-      <a
-        href={ctaHref}
-        className="border border-line-strong bg-paper px-3.5 py-2 font-mono text-xs text-ink transition-colors hover:bg-ink hover:text-paper"
-      >
-        {ctaLabel}
-      </a>
-    </nav>
+      {/* ── Mobile bar + drawer (<md) — state lives in MobileNav ── */}
+      <div className={cn('md:hidden backdrop-blur-md', blurBg)}>
+        <MobileNav
+          brand={brand}
+          items={mobileItems}
+          brandHref={brandHref}
+          externalLink={{ label: ctaLabel, href: ctaHref }}
+        />
+      </div>
+    </div>
   )
 }
-
-export { Nav }
-export type { NavProps, NavItem }

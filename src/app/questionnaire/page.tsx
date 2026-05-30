@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import '../../styles/lv.css'
+import '../../styles/kodara.css'
 
 type FormState = {
   projectType: string
@@ -31,10 +31,10 @@ function OptionCard({
     <button
       type="button"
       onClick={onClick}
-      className={`lv-q-option${selected ? ' selected' : ''}`}
+      className={`kodara-q-option${selected ? ' selected' : ''}`}
     >
       <span>{label}</span>
-      {sublabel && <span className="lv-q-option-sublabel">{sublabel}</span>}
+      {sublabel && <span className="kodara-q-option-sublabel">{sublabel}</span>}
     </button>
   )
 }
@@ -80,21 +80,21 @@ export default function QuestionnairePage() {
 
   if (submitted) {
     return (
-      <div className="lv-a lv-q">
-        <nav className="lv-q-nav">
-          <Link href="/" className="lv-q-wordmark">Kodara</Link>
+      <div className="kodara kodara-q">
+        <nav className="kodara-q-nav">
+          <Link href="/" className="kodara-q-wordmark">Kodara</Link>
         </nav>
-        <div className="lv-q-success">
-          <div className="lv-q-success-inner">
-            <p className="lv-q-success-eyebrow">Submission received</p>
-            <h1 className="lv-q-success-headline">
+        <div className="kodara-q-success">
+          <div className="kodara-q-success-inner">
+            <p className="kodara-q-success-eyebrow">Submission received</p>
+            <h1 className="kodara-q-success-headline">
               Thanks —<br /><em>I&apos;ll be in touch.</em>
             </h1>
-            <div className="lv-q-success-divider" />
-            <p className="lv-q-success-body">
+            <div className="kodara-q-success-divider" />
+            <p className="kodara-q-success-body">
               I review every submission personally and respond within 48 hours if it&apos;s a fit.
             </p>
-            <Link href="/" className="lv-q-success-link">← Back to oh-hey-lynae</Link>
+            <Link href="/" className="kodara-q-success-link">← Back to oh-hey-lynae</Link>
           </div>
         </div>
       </div>
@@ -104,27 +104,27 @@ export default function QuestionnairePage() {
   const progressPct = ((step + 1) / TOTAL_STEPS) * 100
 
   return (
-    <div className="lv-a lv-q">
-      <nav className="lv-q-nav">
-        <Link href="/" className="lv-q-wordmark">Kodara</Link>
-        <Link href="/consulting" className="lv-q-back">← Consulting</Link>
+    <div className="kodara kodara-q">
+      <nav className="kodara-q-nav">
+        <Link href="/" className="kodara-q-wordmark">Kodara</Link>
+        <Link href="/consulting" className="kodara-q-back">← Consulting</Link>
       </nav>
 
-      <main className="lv-q-main">
-        <div className="lv-q-inner">
-          <p className="lv-q-eyebrow">New inquiry</p>
-          <h1 className="lv-q-headline">Let&apos;s see if<br />we&apos;re a fit.</h1>
-          <p className="lv-q-step-count">Step {step + 1} of {TOTAL_STEPS}</p>
+      <main className="kodara-q-main">
+        <div className="kodara-q-inner">
+          <p className="kodara-q-eyebrow">New inquiry</p>
+          <h1 className="kodara-q-headline">Let&apos;s see if<br />we&apos;re a fit.</h1>
+          <p className="kodara-q-step-count">Step {step + 1} of {TOTAL_STEPS}</p>
 
-          <div className="lv-q-progress-track">
-            <div className="lv-q-progress-fill" style={{ width: `${progressPct}%` }} />
+          <div className="kodara-q-progress-track">
+            <div className="kodara-q-progress-fill" style={{ width: `${progressPct}%` }} />
           </div>
 
           <form onSubmit={handleSubmit}>
             {step === 0 && (
               <div>
-                <p className="lv-q-question">What type of work are you looking for?</p>
-                <div className="lv-q-options">
+                <p className="kodara-q-question">What type of work are you looking for?</p>
+                <div className="kodara-q-options">
                   {[
                     'Strategic Consulting',
                     'UX / Product Audit',
@@ -141,8 +141,8 @@ export default function QuestionnairePage() {
 
             {step === 1 && (
               <div>
-                <p className="lv-q-question">What kind of engagement are you thinking?</p>
-                <div className="lv-q-options">
+                <p className="kodara-q-question">What kind of engagement are you thinking?</p>
+                <div className="kodara-q-options">
                   {[
                     { label: 'The Blueprint', sublabel: 'Audit & strategy · hourly' },
                     { label: 'The Build', sublabel: 'Project engagement · scoped per project' },
@@ -163,8 +163,8 @@ export default function QuestionnairePage() {
 
             {step === 2 && (
               <div>
-                <p className="lv-q-question">Where is your project right now?</p>
-                <div className="lv-q-options">
+                <p className="kodara-q-question">Where is your project right now?</p>
+                <div className="kodara-q-options">
                   {[
                     'Starting from scratch',
                     'Early prototype or MVP',
@@ -180,8 +180,8 @@ export default function QuestionnairePage() {
 
             {step === 3 && (
               <div>
-                <p className="lv-q-question">How big is your team or company?</p>
-                <div className="lv-q-options">
+                <p className="kodara-q-question">How big is your team or company?</p>
+                <div className="kodara-q-options">
                   {[
                     'Just me',
                     '2–10 people',
@@ -197,8 +197,8 @@ export default function QuestionnairePage() {
 
             {step === 4 && (
               <div>
-                <p className="lv-q-question">When do you need to get started?</p>
-                <div className="lv-q-options">
+                <p className="kodara-q-question">When do you need to get started?</p>
+                <div className="kodara-q-options">
                   {[
                     'As soon as possible',
                     'Within the next month',
@@ -214,8 +214,8 @@ export default function QuestionnairePage() {
 
             {step === 5 && (
               <div>
-                <p className="lv-q-question">What&apos;s your rough budget?</p>
-                <div className="lv-q-options">
+                <p className="kodara-q-question">What&apos;s your rough budget?</p>
+                <div className="kodara-q-options">
                   {[
                     'Under $5,000',
                     '$5,000 – $15,000',
@@ -231,9 +231,9 @@ export default function QuestionnairePage() {
 
             {step === 6 && (
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-                <p className="lv-q-question">Last step — tell me about yourself.</p>
-                <div className="lv-q-field">
-                  <label htmlFor="name" className="lv-q-label">Name</label>
+                <p className="kodara-q-question">Last step — tell me about yourself.</p>
+                <div className="kodara-q-field">
+                  <label htmlFor="name" className="kodara-q-label">Name</label>
                   <input
                     id="name"
                     type="text"
@@ -241,11 +241,11 @@ export default function QuestionnairePage() {
                     value={form.name}
                     onChange={(e) => set('name', e.target.value)}
                     required
-                    className="lv-q-input"
+                    className="kodara-q-input"
                   />
                 </div>
-                <div className="lv-q-field">
-                  <label htmlFor="email" className="lv-q-label">Email</label>
+                <div className="kodara-q-field">
+                  <label htmlFor="email" className="kodara-q-label">Email</label>
                   <input
                     id="email"
                     type="email"
@@ -253,11 +253,11 @@ export default function QuestionnairePage() {
                     value={form.email}
                     onChange={(e) => set('email', e.target.value)}
                     required
-                    className="lv-q-input"
+                    className="kodara-q-input"
                   />
                 </div>
-                <div className="lv-q-field">
-                  <label htmlFor="details" className="lv-q-label">
+                <div className="kodara-q-field">
+                  <label htmlFor="details" className="kodara-q-label">
                     Anything else? <span>(optional)</span>
                   </label>
                   <textarea
@@ -266,18 +266,18 @@ export default function QuestionnairePage() {
                     value={form.details}
                     onChange={(e) => set('details', e.target.value)}
                     rows={4}
-                    className="lv-q-textarea"
+                    className="kodara-q-textarea"
                   />
                 </div>
               </div>
             )}
 
-            <div className="lv-q-controls">
+            <div className="kodara-q-controls">
               {step > 0 ? (
                 <button
                   type="button"
                   onClick={() => setStep((s) => s - 1)}
-                  className="lv-q-btn-back"
+                  className="kodara-q-btn-back"
                 >
                   ← Back
                 </button>
@@ -290,7 +290,7 @@ export default function QuestionnairePage() {
                   type="button"
                   disabled={!canAdvance()}
                   onClick={() => setStep((s) => s + 1)}
-                  className="lv-q-btn-next"
+                  className="kodara-q-btn-next"
                 >
                   Next →
                 </button>
@@ -298,7 +298,7 @@ export default function QuestionnairePage() {
                 <button
                   type="submit"
                   disabled={!canAdvance()}
-                  className="lv-q-btn-next"
+                  className="kodara-q-btn-next"
                 >
                   Submit →
                 </button>

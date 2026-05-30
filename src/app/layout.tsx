@@ -1,6 +1,9 @@
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono, Fraunces } from 'next/font/google'
 import './globals.css'
+import { Nav } from '@/components/Nav'
+import FooterSwitch from '@/components/layout/FooterSwitch'
+import AppChrome from '@/components/layout/AppChrome'
 
 const geistSans = Geist({
   subsets: ['latin'],
@@ -37,8 +40,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`${geistSans.variable} ${geistMono.variable} ${fraunces.variable}`}
       suppressHydrationWarning
     >
+      <head>
+        {/* Reads localStorage before first paint to prevent FOUC */}
+        <script dangerouslySetInnerHTML={{ __html: `(function(){var t=localStorage.getItem('theme')||'light';var r=t==='auto'?(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'):t;document.documentElement.dataset.theme=r;document.documentElement.style.colorScheme=r;})()` }} />
+      </head>
       <body className="antialiased [overflow-wrap:anywhere]" suppressHydrationWarning>
-        {children}
+        <AppChrome>{children}</AppChrome>
       </body>
     </html>
   )

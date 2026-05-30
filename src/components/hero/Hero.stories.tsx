@@ -1,7 +1,7 @@
 import React from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import HeroTerminalOH from './HeroTerminalOH'
-import HeroTerminalLV from './HeroTerminalLV'
+import HeroTerminalK from './HeroTerminalK'
 import HeroBroadsheet from './HeroBroadsheet'
 
 const meta = {
@@ -19,7 +19,7 @@ export const TerminalOH: Story = {
 
 export const TerminalLV: Story = {
   name: 'Hero — Terminal (LV / Kodara)',
-  render: () => <HeroTerminalLV />,
+  render: () => <HeroTerminalK />,
 }
 
 export const BroadsheetOH: Story = {

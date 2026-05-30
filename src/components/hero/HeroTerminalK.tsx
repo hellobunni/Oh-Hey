@@ -18,38 +18,32 @@ export interface HeroTerminalLVProps {
   className?:    string
 }
 
-const GRID_STYLE: React.CSSProperties = {
-  backgroundImage: [
-    'repeating-linear-gradient(',
-    '  to right,',
-    '  rgba(37,99,235,0.07) 0px,',
-    '  rgba(37,99,235,0.07) 1px,',
-    '  transparent 1px,',
-    '  transparent 12.5%',
-    ')',
-  ].join(''),
-}
 
 function CircleArt() {
+  const accent = '#2563eb'
+
   return (
-    <div className="border border-line-strong flex flex-col h-full min-h-[340px]">
-      <div className="flex-1 flex items-center justify-center p-10">
-        <svg
-          viewBox="0 0 200 200"
-          width="200"
-          height="200"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          aria-hidden="true"
-        >
-          <circle cx="100" cy="100" r="90" stroke="#2563eb" strokeWidth="1.5" />
-          <circle cx="100" cy="100" r="56" stroke="#2563eb" strokeWidth="1.5" />
-          <circle cx="100" cy="100" r="20" fill="#2563eb" />
+    <div className="relative z-50 flex h-full min-h-[340px] flex-col border border-line-strong bg-accent-soft">
+      {/* accent corner ticks */}
+      <span className="absolute -left-px -top-px h-px w-8 bg-accent"  />
+      <span className="absolute -left-px -top-px h-8 w-px bg-accent"  />
+      <span className="absolute -right-px -top-px h-px w-8 bg-accent"  />
+      <span className="absolute -bottom-px -left-px h-8 w-px bg-accent"  />
+      <span className="absolute -bottom-px -right-px h-px w-8 bg-accent"  />
+
+      {/* concentric rings */}
+      <div className="flex flex-1 items-center justify-center p-10">
+        <svg viewBox="0 0 200 200" width="200" height="200" fill="none" aria-hidden="true">
+          <circle cx="100" cy="100" r="90" stroke={accent} strokeWidth="1.5" />
+          <circle cx="100" cy="100" r="56" stroke={accent} strokeWidth="1.5" opacity="0.6" />
+          <circle cx="100" cy="100" r="20" fill={accent} />
         </svg>
       </div>
-      <div className="flex justify-between items-center px-4 py-2.5 border-t border-line font-mono text-[10px] text-ink-mute tracking-[0.08em] uppercase">
-        <span>KODARA / 026</span>
-        <span>DESIGN × ENG</span>
+
+      {/* corner labels */}
+      <div className="flex items-center justify-between border-t border-line px-4 py-2.5 font-mono text-[10px] uppercase tracking-[0.08em]">
+        <span className="text-ink-mute">KODARA / 026</span>
+        <span style={{ color: accent }}>DESIGN × ENG</span>
       </div>
     </div>
   )
@@ -57,8 +51,7 @@ function CircleArt() {
 
 const DEFAULT_HEADLINE: React.ReactNode = (
   <>
-    Senior<br />
-    design<br />
+    Design<br />
     &amp; engineering,<br />
     <span className="text-accent">on demand.</span>
   </>
@@ -70,10 +63,10 @@ const DEFAULT_STATS: HeroStat[] = [
   { value: '48',  unit: 'hr', label: 'RESPONSE\nWINDOW'          },
 ]
 
-export default function HeroTerminalLV({
+export default function HeroTerminalK({
   meta         = 'DESIGN + ENGINEERING · EST. 2014',
   headline     = DEFAULT_HEADLINE,
-  body         = 'Kodara is the consulting practice of Lynae Thomas — 12 years of brand, product, and engineering, accelerated by AI. Strategic depth and execution speed in a single engagement, without the agency overhead.',
+  body         = 'Kodara is the consulting practice of Bryanna Gardner — 12 years of brand, product, and engineering, accelerated by AI. Strategic depth and execution speed in a single engagement, without the agency overhead.',
   stats        = DEFAULT_STATS,
   primaryCta   = { label: 'START THE QUESTIONNAIRE →' },
   secondaryCta = { label: 'VIEW SERVICES' },
@@ -81,12 +74,16 @@ export default function HeroTerminalLV({
 }: HeroTerminalLVProps) {
   return (
     <section
-      className={cn('bg-white border-b border-line', className)}
-      style={GRID_STYLE}
+      className={cn(
+        'bg-kodara-accent-soft/50 border-b border-line py-12',
+        '[background-image:linear-gradient(to_right,rgba(37,99,235,0.07)_1px,transparent_1px),linear-gradient(to_bottom,rgba(37,99,235,0.07)_1px,transparent_1px)]',
+        '[background-size:calc(100%/12)_85px]',
+        className,
+      )}
     >
-      <div className="max-w-[1280px] mx-auto px-8 py-16">
+      <div className="max-w-[1280px] mx-auto px-8 py-16 relative z-10">
         {/* Meta row */}
-        <div className="flex items-center gap-3 font-mono text-xs text-ink-soft mb-12">
+        <div className="flex items-center gap-3 font-mono text-[9px] text-accent mb-10 tracking-wider">
           <span className="inline-block w-8 h-px bg-ink-soft shrink-0" />
           {meta}
         </div>
@@ -97,31 +94,30 @@ export default function HeroTerminalLV({
           <div className="flex flex-col gap-8">
             <h1
               className="font-sans font-black text-ink tracking-tight leading-[0.92]"
-              style={{ fontSize: 'clamp(64px, 9vw, 112px)' }}
+              style={{ fontSize: 'clamp(48px, 8vw, 95px)' }}
             >
               {headline}
             </h1>
 
-            <p className="font-sans text-body text-ink-soft leading-normal max-w-[440px]">
+            <p className="font-sans text-body text-ink-soft leading-6 max-w-[440px] text-xs">
               {body}
             </p>
 
             {/* Stats row */}
-            <div className="flex items-start">
+            <div className="flex items-start py-6">
               {stats.map((s, i) => (
                 <div
                   key={i}
-                  className="flex flex-col gap-1.5 pr-8 pl-8 first:pl-0"
-                  style={{ borderRight: i < stats.length - 1 ? '1px solid rgba(12,12,12,0.18)' : 'none' }}
+                  className="flex flex-col gap-1.5 w-1/3 first:pl-0"
                 >
                   <div
-                    className="font-sans font-black text-ink leading-none tracking-tight"
-                    style={{ fontSize: 'clamp(32px, 3.5vw, 44px)' }}
+                    className="font-sans font-bold text-ink leading-9 tracking-tight"
+                    style={{ fontSize: 'clamp(28px, 3vw, 32px)' }}
                   >
                     {s.value}
                     {s.unit && <span className="text-accent">{s.unit}</span>}
                   </div>
-                  <div className="font-mono text-[10px] text-ink-mute tracking-[0.1em] uppercase whitespace-pre-line">
+                  <div className="font-mono text-[9px] text-ink-mute tracking-[0.1em] uppercase">
                     {s.label}
                   </div>
                 </div>

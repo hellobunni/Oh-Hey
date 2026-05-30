@@ -1,9 +1,11 @@
 import React from 'react'
-import { cn, cva, type VariantProps } from '@/lib/utils'
+import { Menu, X } from 'lucide-react'
+import { cn, cva } from '@/lib/utils'
 
 // ─── Top Nav ──────────────────────────────────────────────────────────────────
 
-export type NavBrand = 'oh-a' | 'oh-b' | 'lv-a' | 'lv-b'
+export type NavBrand     = 'oh-hey-lynae' | 'kodara'
+export type NavLinksAlign = 'left' | 'center' | 'right'
 
 export interface NavLink {
   label:   string
@@ -16,24 +18,25 @@ export interface TopNavProps {
   links:         NavLink[]
   cta?:          { label: string; href?: string }
   brandHref?:    string
+  linksAlign?:   NavLinksAlign
   mobile?:       boolean
   menuOpen?:     boolean
   onMenuClick?:  () => void
   className?:    string
 }
 
+// ─── CVA variants ─────────────────────────────────────────────────────────────
+
 const navContainerVariants = cva(
   'flex items-center h-14 border-b px-6',
   {
     variants: {
       brand: {
-        'oh-a': 'bg-paper border-line',
-        'oh-b': 'bg-paper-2 border-line',
-        'lv-a': 'bg-vega-dark border-white/[0.07]',
-        'lv-b': 'bg-ink border-white/[0.06]',
+        'oh-hey-lynae': 'bg-paper border-line',
+        'kodara':        'bg-kodara-dark border-white/[0.07]',
       },
     },
-    defaultVariants: { brand: 'oh-a' },
+    defaultVariants: { brand: 'oh-hey-lynae' },
   }
 )
 
@@ -42,10 +45,8 @@ const navBrandVariants = cva(
   {
     variants: {
       brand: {
-        'oh-a': 'text-body font-medium text-ink',
-        'oh-b': 'font-serif text-[20px] font-bold text-ink',
-        'lv-a': 'font-mono text-sm font-semibold tracking-[0.1em] text-vega-ink',
-        'lv-b': 'font-mono text-sm tracking-[0.06em] text-[#f0f0ee]',
+        'oh-hey-lynae': 'font-mono text-sm font-medium text-ink',
+        'kodara':        'font-mono text-sm font-semibold tracking-[0.1em] text-kodara-ink',
       },
     },
   }
@@ -56,10 +57,8 @@ const navLinkVariants = cva(
   {
     variants: {
       brand: {
-        'oh-a': 'text-[14px] text-ink-soft hover:text-ink',
-        'oh-b': 'text-[14px] text-ink-soft hover:text-ink',
-        'lv-a': 'font-mono text-xs tracking-[0.08em] uppercase text-white/45 hover:text-vega-ink',
-        'lv-b': 'font-mono text-xs tracking-[0.08em] uppercase text-white/40 hover:text-white/75',
+        'oh-hey-lynae': 'text-[14px] text-ink-soft hover:text-ink',
+        'kodara':        'font-mono text-xs tracking-[0.08em] uppercase text-white/45 hover:text-kodara-ink',
       },
       active: {
         true:  '',
@@ -67,10 +66,8 @@ const navLinkVariants = cva(
       },
     },
     compoundVariants: [
-      { brand: 'oh-a', active: true, class: 'text-accent'      },
-      { brand: 'oh-b', active: true, class: 'text-ink'         },
-      { brand: 'lv-a', active: true, class: 'text-vega-accent' },
-      { brand: 'lv-b', active: true, class: 'text-[#f0f0ee]'   },
+      { brand: 'oh-hey-lynae', active: true, class: 'text-accent'        },
+      { brand: 'kodara',        active: true, class: 'text-kodara-accent' },
     ],
     defaultVariants: { active: false },
   }
@@ -81,52 +78,61 @@ const navCtaVariants = cva(
   {
     variants: {
       brand: {
-        'oh-a': 'py-[7px] px-[14px] text-sm font-medium text-ink border border-line-strong hover:bg-paper-2 transition-colors duration-100',
-        'oh-b': 'py-[7px] px-[14px] font-mono text-xs tracking-[0.06em] text-ink-soft border border-[rgba(58,56,53,0.35)]',
-        'lv-a': 'py-2 px-5 bg-vega-accent font-mono text-xs font-bold tracking-[0.1em] uppercase text-vega-dark',
-        'lv-b': 'py-2 px-5 font-mono text-xs tracking-[0.1em] uppercase text-[#f0f0ee] border border-white/15',
+        'oh-hey-lynae': 'py-[7px] px-[14px] text-sm font-medium text-ink border border-line-strong hover:bg-paper-2 transition-colors duration-100',
+        'kodara':        'py-2 px-5 bg-kodara-accent font-mono text-xs font-bold tracking-[0.1em] uppercase text-kodara-dark',
       },
     },
   }
 )
 
+const linksAlignClass: Record<NavLinksAlign, string> = {
+  left:   'justify-start',
+  center: 'justify-center',
+  right:  'justify-end',
+}
+
+// ─── Brand marks ──────────────────────────────────────────────────────────────
+
 const BRAND_MARK: Record<NavBrand, React.ReactNode> = {
-  'oh-a': (
+  'oh-hey-lynae': (
     <>
       <span className="w-3 h-3 bg-accent shrink-0" />
       <span>oh-hey-lynae</span>
     </>
   ),
-  'oh-b': <span>oh-hey-lynae.</span>,
-  'lv-a': (
+  'kodara': (
     <>
       <span className="w-4 h-4 border-[1.5px] border-current shrink-0" />
       <span>Kodara</span>
     </>
   ),
-  'lv-b': (
-    <>
-      <span className="inline-flex items-center justify-center w-[22px] h-[22px] border border-white/20 text-[9px] tracking-[0.04em] text-white/55">
-        LV
-      </span>
-      <span>Kodara</span>
-    </>
-  ),
 }
 
-function TopNav({ brand, links, cta, brandHref, mobile = false, menuOpen = false, onMenuClick, className }: TopNavProps) {
+// ─── TopNav ───────────────────────────────────────────────────────────────────
+
+function TopNav({
+  brand,
+  links,
+  cta,
+  brandHref,
+  linksAlign = 'left',
+  mobile = false,
+  menuOpen = false,
+  onMenuClick,
+  className,
+}: TopNavProps) {
   return (
     <nav className={cn(
       navContainerVariants({ brand }),
       mobile && 'justify-between px-4',
-      className
+      className,
     )}>
       <a href={brandHref} className={navBrandVariants({ brand })}>
         {BRAND_MARK[brand]}
       </a>
 
       {!mobile && (
-        <div className="flex items-center gap-0.5 flex-1 px-6">
+        <div className={cn('flex items-center gap-0.5 flex-1 px-6', linksAlignClass[linksAlign])}>
           {links.map((link) => (
             <a
               key={link.label}
@@ -148,23 +154,12 @@ function TopNav({ brand, links, cta, brandHref, mobile = false, menuOpen = false
       {mobile && (
         <button
           type="button"
-          className="flex flex-col items-center justify-center gap-[5px] cursor-pointer p-1 bg-transparent border-0 text-current"
+          className="flex items-center justify-center cursor-pointer p-1 bg-transparent border-0 text-current"
           aria-label={menuOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={menuOpen}
           onClick={onMenuClick}
         >
-          {menuOpen ? (
-            <>
-              <span className="block w-[22px] h-[1.5px] bg-current rotate-45 translate-y-[3.5px]" />
-              <span className="block w-[22px] h-[1.5px] bg-current -rotate-45 -translate-y-[3.5px]" />
-            </>
-          ) : (
-            <>
-              <span className="block w-[22px] h-[1.5px] bg-current" />
-              <span className="block w-[22px] h-[1.5px] bg-current" />
-              <span className="block w-[22px] h-[1.5px] bg-current" />
-            </>
-          )}
+          {menuOpen ? <X size={20} strokeWidth={1.5} /> : <Menu size={20} strokeWidth={1.5} />}
         </button>
       )}
     </nav>
@@ -198,7 +193,7 @@ function MobileMenu({ items, version = 'VERSION 3.0', externalLink, className }:
             {...(item.href ? { href: item.href } : {})}
             className={cn(
               'flex items-center justify-between px-5 py-[18px] border-b border-line text-[20px] text-ink no-underline cursor-pointer transition-colors duration-100 hover:bg-paper-2',
-              item.active && 'text-accent'
+              item.active && 'text-accent',
             )}
           >
             {item.label}
@@ -220,8 +215,4 @@ function MobileMenu({ items, version = 'VERSION 3.0', externalLink, className }:
   )
 }
 
-
-
-
-
-export { TopNav, MobileMenu}
+export { TopNav, MobileMenu }

@@ -29,7 +29,7 @@ export default function KodaraFooter({
   }, [])
 
   useEffect(() => {
-    const root = document.querySelector('.dc-root.lv-a') ?? document.documentElement
+    const root = document.querySelector('.dc-root.kodara') ?? document.documentElement
     root.classList.toggle('theme-light', light)
     try { localStorage.setItem('kodara-theme', light ? 'light' : 'dark') } catch {}
   }, [light])
