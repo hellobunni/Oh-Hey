@@ -155,11 +155,11 @@ export const DomainPaletteVariants: Story = {
 
 // ─── Kodara B ─────────────────────────────────────────────────────────────
 
-export const LunarVega: Story = {
+export const LunarKodara: Story = {
   name: 'Kodara',
   decorators: [
     (Story) => (
-      <div className="lv-b" style={{ padding: '32px', background: 'var(--paper)' }}>
+      <div className="kodara-b" style={{ padding: '32px', background: 'var(--paper)' }}>
         <Story />
       </div>
     ),
@@ -167,26 +167,26 @@ export const LunarVega: Story = {
   render: () => (
     <div>
       <Group title="Surface">
-        <Swatch token="--color-vega-paper"   label="Black bg" />
-        <Swatch token="--color-vega-paper-2" label="Deep panel" />
+        <Swatch token="--color-kodara-paper"   label="Black bg" />
+        <Swatch token="--color-kodara-paper-2" label="Deep panel" />
       </Group>
 
       <Group title="Ink">
-        <Swatch token="--color-vega-ink"      label="Primary text" />
-        <Swatch token="--color-vega-ink-2"    label="Prose body" />
-        <Swatch token="--color-vega-ink-soft" label="Meta" />
-        <Swatch token="--color-vega-ink-mute" label="Muted" />
+        <Swatch token="--color-kodara-ink"      label="Primary text" />
+        <Swatch token="--color-kodara-ink-2"    label="Prose body" />
+        <Swatch token="--color-kodara-ink-soft" label="Meta" />
+        <Swatch token="--color-kodara-ink-mute" label="Muted" />
       </Group>
 
       <Group title="Accent">
-        <Swatch token="--color-vega-accent"      label="Cyan" />
-        <Swatch token="--color-vega-accent-soft" label="Tinted bg" />
+        <Swatch token="--color-kodara-accent"      label="Cyan" />
+        <Swatch token="--color-kodara-accent-soft" label="Tinted bg" />
       </Group>
 
       <Group title="Lines">
-        <Swatch token="--color-vega-hairline"    label="Hairline" />
-        <Swatch token="--color-vega-line"        label="Default border" />
-        <Swatch token="--color-vega-line-strong" label="Emphasis border" />
+        <Swatch token="--color-kodara-hairline"    label="Hairline" />
+        <Swatch token="--color-kodara-line"        label="Default border" />
+        <Swatch token="--color-kodara-line-strong" label="Emphasis border" />
       </Group>
     </div>
   ),

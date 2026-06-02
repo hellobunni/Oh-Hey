@@ -24,7 +24,7 @@ const SideNav = ({ groups, className }: SideNavProps) => {
         <div className={cn('flex flex-col gap-8 p-6', className)}>
           {groups.map((group) => (
             <div key={group.label} className="flex flex-col">
-              <h6 className="m-0 mb-2 font-mono text-[10px] tracking-[0.1em] uppercase text-ink-mute font-medium">
+              <h6 className="m-0 mb-2 font-mono text-xxs tracking-[0.1em] uppercase text-ink-mute font-medium">
                 {group.label}
               </h6>
               {group.items.map((item) => (

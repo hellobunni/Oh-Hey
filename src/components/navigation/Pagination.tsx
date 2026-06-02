@@ -10,7 +10,7 @@ export interface PaginationProps {
   }
   
   const pgVariants = cva(
-    'inline-flex items-center justify-center min-w-[40px] h-10 px-2 font-mono text-[12px] bg-transparent border-none border-r border-line-strong cursor-pointer transition-colors duration-100 last:border-r-0',
+    'inline-flex items-center justify-center min-w-[40px] h-10 px-2 font-mono text-xs bg-transparent border-none border-r border-line-strong cursor-pointer transition-colors duration-100 last:border-r-0',
     {
       variants: {
         state: {

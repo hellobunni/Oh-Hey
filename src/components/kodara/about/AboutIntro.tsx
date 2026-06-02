@@ -16,7 +16,7 @@ export function AboutIntro() {
       </div>
 
       {/* portrait slot — swap for real <img> when available */}
-      <div className="relative flex aspect-4/5 items-end border border-line-strong bg-kodara-accent-soft-solid p-6">
+      <div className="relative flex aspect-[4/5] items-end border border-line-strong bg-kodara-accent-soft-solid p-6">
         <span className="absolute left-4 top-4 font-mono text-xxs uppercase tracking-[0.18em] text-ink-mute">
           FOUNDER
         </span>

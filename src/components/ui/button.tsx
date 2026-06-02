@@ -9,13 +9,13 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default: "bg-ink font-light text-paper hover:bg-neutral-800",
-        secondary: "border border-ink bg-transparent text-ink font-normal hover:bg-neutral-100",
+        secondary: "border border-ink bg-kodara-accent-soft-solid text-ink font-normal hover:bg-neutral-100",
         accent: "bg-accent text-paper font-medium uppercase tracking-wider",
-        "vega-accent": "bg-vega-accent text-paper font-normal",
+        "kodara-accent": "bg-kodara-accent text-white font-normal",
         ghost: "text-ink underline underline-offset-8 uppercase hover:text-ink",
       },
       size: {
-        default: "px-6 py-3",
+        default: "px-6 py-3 text-xxs",
         sm: "px-3 py-2 text-xs",
         lg: "px-6 py-4",
         icon: "size-9",

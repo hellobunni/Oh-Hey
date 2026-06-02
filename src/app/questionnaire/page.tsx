@@ -1,312 +1,132 @@
 'use client'
 
 import { useState } from 'react'
-import Link from 'next/link'
-import '../../styles/lv.css'
-
-type FormState = {
-  projectType: string
-  engagementType: string
-  projectStage: string
-  companySize: string
-  timeline: string
-  budget: string
-  details: string
-  name: string
-  email: string
-}
-
-function OptionCard({
-  label,
-  sublabel,
-  selected,
-  onClick,
-}: {
-  label: string
-  sublabel?: string
-  selected: boolean
-  onClick: () => void
-}) {
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      className={`lv-q-option${selected ? ' selected' : ''}`}
-    >
-      <span>{label}</span>
-      {sublabel && <span className="lv-q-option-sublabel">{sublabel}</span>}
-    </button>
-  )
-}
-
-const TOTAL_STEPS = 7
+import { STEPS } from '@/data/questionnaire.data'
+import { ProgressRail } from '@/components/kodara/start/ProgressRail'
+import { ChoiceCard } from '@/components/kodara/start/ChoiceCard'
 
 export default function QuestionnairePage() {
-  const [step, setStep] = useState(0)
-  const [form, setForm] = useState<FormState>({
-    projectType: '',
-    engagementType: '',
-    projectStage: '',
-    companySize: '',
-    timeline: '',
-    budget: '',
-    details: '',
-    name: '',
-    email: '',
-  })
-  const [submitted, setSubmitted] = useState(false)
+  const [step, setStep]       = useState(0)
+  const [answers, setAnswers] = useState<Record<string, string>>({})
+  const [done, setDone]       = useState(false)
 
-  function set(key: keyof FormState, value: string) {
-    setForm((prev) => ({ ...prev, [key]: value }))
-  }
+  const s          = STEPS[step]
+  const value      = answers[s.key] ?? ''
+  const setValue   = (v: string) => setAnswers((a) => ({ ...a, [s.key]: v }))
+  const canAdvance = value.trim().length > 0
+  const isLast     = step === STEPS.length - 1
 
-  function canAdvance() {
-    switch (step) {
-      case 0: return !!form.projectType
-      case 1: return !!form.engagementType
-      case 2: return !!form.projectStage
-      case 3: return !!form.companySize
-      case 4: return !!form.timeline
-      case 5: return !!form.budget
-      case 6: return !!form.name && !!form.email
-      default: return false
+  const next = () => {
+    if (!canAdvance) return
+    if (isLast) {
+      // TODO: POST `answers` to Resend server action
+      setDone(true)
+    } else {
+      setStep((n) => n + 1)
     }
   }
 
-  function handleSubmit(e: React.FormEvent) {
-    e.preventDefault()
-    setSubmitted(true)
-  }
-
-  if (submitted) {
+  if (done) {
     return (
-      <div className="lv-a lv-q">
-        <nav className="lv-q-nav">
-          <Link href="/" className="lv-q-wordmark">Kodara</Link>
-        </nav>
-        <div className="lv-q-success">
-          <div className="lv-q-success-inner">
-            <p className="lv-q-success-eyebrow">Submission received</p>
-            <h1 className="lv-q-success-headline">
-              Thanks —<br /><em>I&apos;ll be in touch.</em>
-            </h1>
-            <div className="lv-q-success-divider" />
-            <p className="lv-q-success-body">
-              I review every submission personally and respond within 48 hours if it&apos;s a fit.
-            </p>
-            <Link href="/" className="lv-q-success-link">← Back to oh-hey-lynae</Link>
+      <div className="flex min-h-[calc(100vh-80px)] items-center justify-center px-6">
+        <div className="max-w-[520px] border border-line-strong p-12 text-center">
+          <div className="mb-6 font-mono text-xs uppercase tracking-[0.18em] text-accent">● Received</div>
+          <h2 className="font-sans text-[40px] font-bold leading-tight tracking-tight text-ink">
+            Got it. Talk <span className="text-accent">soon.</span>
+          </h2>
+          <p className="mx-auto mt-4 max-w-[380px] text-base leading-relaxed text-ink-2">
+            I read every submission personally and reply within 48 hours — yes, no, or who'd be a better fit. Want to skip the wait?
+          </p>
+          <a
+            href="https://cal.com/your-handle"
+            className="mt-8 inline-flex items-center gap-3 bg-accent px-8 py-4 font-mono text-xs font-semibold uppercase tracking-[0.18em] text-white"
+          >
+            Book a call now <span>→</span>
+          </a>
+          <div className="mt-6 font-mono text-xs uppercase tracking-[0.12em] text-ink-mute">
+            Or head back to <a href="/consulting" className="text-accent">kodara</a>
           </div>
         </div>
       </div>
     )
   }
 
-  const progressPct = ((step + 1) / TOTAL_STEPS) * 100
-
   return (
-    <div className="lv-a lv-q">
-      <nav className="lv-q-nav">
-        <Link href="/" className="lv-q-wordmark">Kodara</Link>
-        <Link href="/consulting" className="lv-q-back">← Consulting</Link>
-      </nav>
+    <div className="grid grid-cols-[1fr_1.6fr] gap-24 px-[clamp(20px,5vw,80px)] py-24 max-lg:grid-cols-1 max-lg:gap-12">
+      <ProgressRail current={step} />
 
-      <main className="lv-q-main">
-        <div className="lv-q-inner">
-          <p className="lv-q-eyebrow">New inquiry</p>
-          <h1 className="lv-q-headline">Let&apos;s see if<br />we&apos;re a fit.</h1>
-          <p className="lv-q-step-count">Step {step + 1} of {TOTAL_STEPS}</p>
-
-          <div className="lv-q-progress-track">
-            <div className="lv-q-progress-fill" style={{ width: `${progressPct}%` }} />
+      <div>
+        {/* question header */}
+        <div className="border-y border-line-strong py-9">
+          <div className="font-serif text-[32px] font-light italic text-accent">
+            {String(step + 1).padStart(2, '0')}
+            <span className="ml-3.5 align-middle font-mono text-xs uppercase not-italic tracking-[0.18em] text-ink-mute">
+              / {STEPS.length}
+            </span>
           </div>
-
-          <form onSubmit={handleSubmit}>
-            {step === 0 && (
-              <div>
-                <p className="lv-q-question">What type of work are you looking for?</p>
-                <div className="lv-q-options">
-                  {[
-                    'Strategic Consulting',
-                    'UX / Product Audit',
-                    'Brand & Visual Design',
-                    'Full-Stack Build',
-                    'Fractional Tech Leadership',
-                    'Something else',
-                  ].map((opt) => (
-                    <OptionCard key={opt} label={opt} selected={form.projectType === opt} onClick={() => set('projectType', opt)} />
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {step === 1 && (
-              <div>
-                <p className="lv-q-question">What kind of engagement are you thinking?</p>
-                <div className="lv-q-options">
-                  {[
-                    { label: 'The Blueprint', sublabel: 'Audit & strategy · hourly' },
-                    { label: 'The Build', sublabel: 'Project engagement · scoped per project' },
-                    { label: 'The Partner', sublabel: 'Fractional retainer · from $1,000/mo' },
-                    { label: 'Not sure yet', sublabel: undefined },
-                  ].map(({ label, sublabel }) => (
-                    <OptionCard
-                      key={label}
-                      label={label}
-                      sublabel={sublabel}
-                      selected={form.engagementType === label}
-                      onClick={() => set('engagementType', label)}
-                    />
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {step === 2 && (
-              <div>
-                <p className="lv-q-question">Where is your project right now?</p>
-                <div className="lv-q-options">
-                  {[
-                    'Starting from scratch',
-                    'Early prototype or MVP',
-                    'Existing product — adding features',
-                    'Existing product — needs a rethink',
-                    'Ongoing maintenance & scaling',
-                  ].map((opt) => (
-                    <OptionCard key={opt} label={opt} selected={form.projectStage === opt} onClick={() => set('projectStage', opt)} />
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {step === 3 && (
-              <div>
-                <p className="lv-q-question">How big is your team or company?</p>
-                <div className="lv-q-options">
-                  {[
-                    'Just me',
-                    '2–10 people',
-                    '11–50 people',
-                    '51–200 people',
-                    '200+ people',
-                  ].map((opt) => (
-                    <OptionCard key={opt} label={opt} selected={form.companySize === opt} onClick={() => set('companySize', opt)} />
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {step === 4 && (
-              <div>
-                <p className="lv-q-question">When do you need to get started?</p>
-                <div className="lv-q-options">
-                  {[
-                    'As soon as possible',
-                    'Within the next month',
-                    '1–3 months from now',
-                    '3–6 months from now',
-                    'Just exploring for now',
-                  ].map((opt) => (
-                    <OptionCard key={opt} label={opt} selected={form.timeline === opt} onClick={() => set('timeline', opt)} />
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {step === 5 && (
-              <div>
-                <p className="lv-q-question">What&apos;s your rough budget?</p>
-                <div className="lv-q-options">
-                  {[
-                    'Under $5,000',
-                    '$5,000 – $15,000',
-                    '$15,000 – $50,000',
-                    '$50,000+',
-                    'Not sure yet',
-                  ].map((opt) => (
-                    <OptionCard key={opt} label={opt} selected={form.budget === opt} onClick={() => set('budget', opt)} />
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {step === 6 && (
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-                <p className="lv-q-question">Last step — tell me about yourself.</p>
-                <div className="lv-q-field">
-                  <label htmlFor="name" className="lv-q-label">Name</label>
-                  <input
-                    id="name"
-                    type="text"
-                    placeholder="Your name"
-                    value={form.name}
-                    onChange={(e) => set('name', e.target.value)}
-                    required
-                    className="lv-q-input"
-                  />
-                </div>
-                <div className="lv-q-field">
-                  <label htmlFor="email" className="lv-q-label">Email</label>
-                  <input
-                    id="email"
-                    type="email"
-                    placeholder="your@email.com"
-                    value={form.email}
-                    onChange={(e) => set('email', e.target.value)}
-                    required
-                    className="lv-q-input"
-                  />
-                </div>
-                <div className="lv-q-field">
-                  <label htmlFor="details" className="lv-q-label">
-                    Anything else? <span>(optional)</span>
-                  </label>
-                  <textarea
-                    id="details"
-                    placeholder="Share any extra context, links, or questions…"
-                    value={form.details}
-                    onChange={(e) => set('details', e.target.value)}
-                    rows={4}
-                    className="lv-q-textarea"
-                  />
-                </div>
-              </div>
-            )}
-
-            <div className="lv-q-controls">
-              {step > 0 ? (
-                <button
-                  type="button"
-                  onClick={() => setStep((s) => s - 1)}
-                  className="lv-q-btn-back"
-                >
-                  ← Back
-                </button>
-              ) : (
-                <span />
-              )}
-
-              {step < TOTAL_STEPS - 1 ? (
-                <button
-                  type="button"
-                  disabled={!canAdvance()}
-                  onClick={() => setStep((s) => s + 1)}
-                  className="lv-q-btn-next"
-                >
-                  Next →
-                </button>
-              ) : (
-                <button
-                  type="submit"
-                  disabled={!canAdvance()}
-                  className="lv-q-btn-next"
-                >
-                  Submit →
-                </button>
-              )}
+          <div className="mt-3 text-[32px] font-bold leading-tight tracking-tight text-ink max-[640px]:text-2xl">
+            {s.question}
+          </div>
+          {s.hint && (
+            <div className="mt-3.5 font-mono text-xs uppercase tracking-[0.14em] text-ink-mute">
+              {s.hint}
             </div>
-          </form>
+          )}
         </div>
-      </main>
+
+        {/* answer input */}
+        {s.type === 'choice' && (
+          <div className="mt-8 grid grid-cols-2 gap-3 max-[640px]:grid-cols-1">
+            {s.options!.map((o) => (
+              <ChoiceCard
+                key={o.key}
+                optKey={o.key}
+                name={o.name}
+                sub={o.sub}
+                selected={value === o.key}
+                onClick={() => setValue(o.key)}
+              />
+            ))}
+          </div>
+        )}
+        {s.type === 'text' && (
+          <input
+            autoFocus
+            className="mt-8 w-full border border-line-strong bg-paper px-4 py-4 font-mono text-sm text-ink outline-none focus:border-accent placeholder:text-ink-mute"
+            placeholder="Type your answer…"
+            value={value}
+            onChange={(e) => setValue(e.target.value)}
+          />
+        )}
+        {s.type === 'textarea' && (
+          <textarea
+            autoFocus
+            rows={5}
+            className="mt-8 w-full resize-none border border-line-strong bg-paper px-4 py-4 font-mono text-sm text-ink outline-none focus:border-accent placeholder:text-ink-mute"
+            placeholder="A few sentences is plenty…"
+            value={value}
+            onChange={(e) => setValue(e.target.value)}
+          />
+        )}
+
+        {/* nav controls */}
+        <div className="mt-12 flex items-center justify-between">
+          <button
+            onClick={() => setStep((n) => Math.max(0, n - 1))}
+            disabled={step === 0}
+            className="font-mono text-xs uppercase tracking-[0.18em] text-ink-soft transition-colors hover:text-accent disabled:opacity-30"
+          >
+            ← Previous
+          </button>
+          <button
+            onClick={next}
+            disabled={!canAdvance}
+            className="inline-flex items-center gap-3 bg-accent px-8 py-[18px] font-mono text-xs font-semibold uppercase tracking-[0.18em] text-white transition-opacity disabled:opacity-30"
+          >
+            {isLast ? 'Submit' : 'Continue'} <span>→</span>
+          </button>
+        </div>
+      </div>
     </div>
   )
 }
