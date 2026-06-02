@@ -43,7 +43,7 @@ export default function ClientReel({
 }) {
   return (
     <section className={cn('border-b border-line bg-paper px-[clamp(20px,5vw,80px)] py-14', className)}>
-      <div className="mb-8 flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.18em] text-accent">
+      <div className="mb-8 flex items-center gap-3 font-mono text-sm uppercase tracking-wider text-accent">
         <span className="h-px w-8 bg-accent shrink-0" />
         Trusted by teams at
         <span className="ml-auto text-ink-mute">[ SELECTED CLIENTS ]</span>

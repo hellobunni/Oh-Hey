@@ -31,7 +31,7 @@ export interface TabItem {
 
 
 const tabItemVariants = cva(
-    'inline-flex items-center gap-1.5 px-3.5 py-2 font-mono text-[12px] bg-transparent border-none cursor-pointer whitespace-nowrap transition-colors duration-100',
+    'inline-flex items-center gap-1.5 px-3.5 py-2 font-mono text-xs bg-transparent border-none cursor-pointer whitespace-nowrap transition-colors duration-100',
     {
       variants: {
         variant: {
@@ -71,7 +71,7 @@ const Tabs = ({ items, active = 0, variant = 'default', onChange, className }: T
         >
           {item.label}
           {item.count != null && (
-            <span className="text-[10px] opacity-60">{item.count}</span>
+            <span className="text-xxs opacity-60">{item.count}</span>
           )}
         </button>
       ))}

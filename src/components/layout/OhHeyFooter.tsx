@@ -25,7 +25,7 @@ const DEFAULT_COLUMNS: FooterColumn[] = [
 ]
 
 export default function OhHeyFooter({
-  blurb = 'A logbook by Lynae Thomas. Built with care & caffeine in 2026.',
+  blurb = 'A logbook by Bryanna Lynae. Built with care & caffeine in 2026.',
   columns = DEFAULT_COLUMNS,
   version = 'v3.0.0',
   className,
@@ -40,7 +40,7 @@ export default function OhHeyFooter({
     >
       <div>
         <div className="mb-3.5 font-semibold text-ink">oh-hey-lynae</div>
-        <p className="max-w-[280px] font-sans text-[13px] leading-[1.55] text-ink-soft">
+        <p className="max-w-[280px] font-sans text-xs leading-[1.55] text-ink-soft">
           {blurb}
         </p>
       </div>
@@ -61,7 +61,7 @@ export default function OhHeyFooter({
       ))}
 
       <div className="col-span-full mt-7 flex justify-between border-t border-line pt-7 text-ink-mute">
-        <div>© 2026 LYNAE THOMAS · ALL RIGHTS RESERVED</div>
+        <div>© 2026 Bryanna Lynae · ALL RIGHTS RESERVED</div>
         <div>
           {version} ·{' '}
           <a href="/consulting" className="inline text-accent">↗ kodara/</a>

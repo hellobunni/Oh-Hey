@@ -41,7 +41,7 @@ function CircleArt() {
       </div>
 
       {/* corner labels */}
-      <div className="flex items-center justify-between border-t border-line px-4 py-2.5 font-mono text-[10px] uppercase tracking-[0.08em]">
+      <div className="flex items-center justify-between border-t border-line px-4 py-2.5 font-mono text-xxs uppercase tracking-wide">
         <span className="text-ink-mute">KODARA / 026</span>
         <span style={{ color: accent }}>DESIGN × ENG</span>
       </div>
@@ -83,7 +83,7 @@ export default function HeroTerminalK({
     >
       <div className="max-w-[1280px] mx-auto px-8 py-16 relative z-10">
         {/* Meta row */}
-        <div className="flex items-center gap-3 font-mono text-[9px] text-accent mb-10 tracking-wider">
+        <div className="flex items-center gap-3 font-mono text-xxs text-accent mb-10 tracking-wider">
           <span className="inline-block w-8 h-px bg-ink-soft shrink-0" />
           {meta}
         </div>
@@ -117,7 +117,7 @@ export default function HeroTerminalK({
                     {s.value}
                     {s.unit && <span className="text-accent">{s.unit}</span>}
                   </div>
-                  <div className="font-mono text-[9px] text-ink-mute tracking-[0.1em] uppercase">
+                  <div className="font-mono text-xxs text-ink-mute tracking-[0.1em] uppercase">
                     {s.label}
                   </div>
                 </div>
@@ -126,7 +126,7 @@ export default function HeroTerminalK({
 
             {/* CTAs */}
             <div className="flex items-center gap-3">
-              <Button variant="accent" size="default">
+              <Button variant="kodara-accent" size="default">
                 {primaryCta.label}
               </Button>
               {secondaryCta && (

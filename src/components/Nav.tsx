@@ -45,7 +45,7 @@ export function Nav({
   const mobileItems: MobileMenuItem[] = items.map(({ label, href, active }) => ({ label, href, active }))
 
   const blurBg = brand === 'kodara'
-    ? 'bg-[color-mix(in_oklab,var(--color-kodara-dark)_85%,transparent)]'
+    ? 'bg-[color-mix(in_oklab,var(--color-kodara-accent-soft/5)_85%,transparent)]'
     : 'bg-[color-mix(in_oklab,var(--color-paper)_80%,transparent)]'
 
   return (

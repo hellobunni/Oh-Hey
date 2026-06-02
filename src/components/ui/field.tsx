@@ -86,8 +86,8 @@ const inputVariants = cva(
     variants: {
       size: {
         sm: 'px-2.5 py-1.5 text-xs',
-        md: 'px-3.5 py-2.5 text-[13px]',
-        lg: 'px-[18px] py-3.5 text-[15px]',
+        md: 'px-3.5 py-2.5 text-xs',
+        lg: 'px-[18px] py-3.5 text-body',
       },
       state: {
         default:  '',
@@ -106,9 +106,9 @@ const adornmentVariants = cva(
   {
     variants: {
       size: {
-        sm: 'px-2 text-[10px]',
+        sm: 'px-2 text-xxs',
         md: 'px-3 text-xs',
-        lg: 'px-4 text-[13px]',
+        lg: 'px-4 text-xs',
       },
       action: {
         true:  'cursor-pointer text-accent hover:bg-accent-soft transition-colors duration-100',

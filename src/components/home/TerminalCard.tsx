@@ -132,7 +132,7 @@ export default function TerminalCard({ lines, title, className }: TerminalCardPr
           />
         ))}
         {title && (
-          <span className="ml-auto font-mono text-[10px] text-ink-mute tracking-wide">
+          <span className="ml-auto font-mono text-xxs text-ink-mute tracking-wide">
             {title}
           </span>
         )}

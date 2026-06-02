@@ -15,7 +15,7 @@ const DEFAULT_LINKS = [
 ]
 
 export default function KodaraFooter({
-  copy = '© 2026 · KODARA · A PRACTICE BY LYNAE THOMAS',
+  copy = '© 2026 · KODARA · A PRACTICE BY Bryanna Lynae',
   links = DEFAULT_LINKS,
   className,
 }: KodaraFooterProps) {
@@ -38,7 +38,7 @@ export default function KodaraFooter({
     <footer
       className={cn(
         'flex items-center justify-between px-20 py-[calc(40px*var(--sp))]',
-        'font-mono text-xs uppercase tracking-[0.12em] text-ink-soft',
+        'font-mono text-xs uppercase tracking-wider text-ink-soft',
         className,
       )}
     >
@@ -55,7 +55,7 @@ export default function KodaraFooter({
           type="button"
           onClick={() => setLight((v) => !v)}
           aria-label="Toggle theme"
-          className="flex items-center gap-2 uppercase tracking-[0.12em] text-ink-soft transition-colors hover:text-accent]"
+          className="flex items-center gap-2 uppercase tracking-wider text-ink-soft transition-colors hover:text-accent]"
         >
           <span className="flex h-[18px] w-[18px] items-center justify-center border border-line-strong text-xs leading-none text-accent">
             {light ? '☾' : '☀'}

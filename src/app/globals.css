@@ -82,6 +82,7 @@ body {
     /* Kodara brand colors */
     --color-kodara-accent: #6ea8ff;
     --color-kodara-accent-soft: rgba(110,168,255,0.10);
+    --color-kodara-accent-soft-solid: #f5f9ff;
     --color-kodara-paper: #0a1424;
     --color-kodara-paper-2: #0f1c33;
     --color-kodara-dark: #0d1117;

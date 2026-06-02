@@ -23,7 +23,7 @@ function SectionHeader({ num, title, action, className }: SectionHeaderProps) {
       {action && (
         <a
           href={action.href}
-          className="border-b border-ink pb-0.5 font-mono text-[13px] text-ink"
+          className="border-b border-ink pb-0.5 font-mono text-xs text-ink"
         >
           {action.label}
         </a>

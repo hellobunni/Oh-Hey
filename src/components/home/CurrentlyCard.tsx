@@ -18,10 +18,10 @@ const DEFAULT_ITEMS: CurrentlyItem[] = [
 function CurrentlyCard({ items = DEFAULT_ITEMS, updated = 'Apr 2026', className }: CurrentlyCardProps) {
   return (
     <div className={className}>
-      <div className="font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-accent">
+      <div className="font-mono text-sm font-medium uppercase tracking-wide text-accent">
         ▣&nbsp;&nbsp;Currently
       </div>
-      <h3 className="mt-3.5 text-[28px] font-bold leading-tight tracking-[-0.02em] text-ink">
+      <h3 className="mt-3.5 text-xl font-bold leading-tight tracking-[-0.02em] text-ink">
         What I'm into<br />right now.
       </h3>
       <p className="mt-3 max-w-[380px] text-sm text-ink-soft">
@@ -34,7 +34,7 @@ function CurrentlyCard({ items = DEFAULT_ITEMS, updated = 'Apr 2026', className 
             key={it.label}
             className="flex items-baseline gap-4 border-b border-line py-3"
           >
-            <dt className="w-20 shrink-0 font-mono text-[10px] uppercase tracking-[0.12em] text-ink-mute">
+            <dt className="w-20 shrink-0 font-mono text-xxs uppercase tracking-wider text-ink-mute">
               {it.label}
             </dt>
             <dd className="text-sm text-ink">{it.value}</dd>
@@ -42,9 +42,9 @@ function CurrentlyCard({ items = DEFAULT_ITEMS, updated = 'Apr 2026', className 
         ))}
       </dl>
 
-      <div className="mt-4 font-mono text-[10px] uppercase tracking-[0.12em] text-ink-mute">
+      <div className="mt-4 font-mono text-xxs uppercase tracking-wider text-ink-mute">
         Updated {updated} ·{' '}
-        <a href="/now" className="text-[var(--accent)]">full /now page →</a>
+        <a href="/now" className="text-accent">full /now page →</a>
       </div>
     </div>
   )

@@ -33,7 +33,7 @@ function DomainGrid({ domains = DEFAULT_DOMAINS, num = '02', className }: Domain
                 'border-r border-line p-7 transition-colors last:border-r-0 hover:bg-paper-2',
               )}
             >
-              <div className="font-mono text-[11px] text-ink-mute">
+              <div className="font-mono text-sm text-ink-mute">
                 {String(i + 1).padStart(2, '0')} / {String(domains.length).padStart(2, '0')}
               </div>
 
@@ -42,8 +42,8 @@ function DomainGrid({ domains = DEFAULT_DOMAINS, num = '02', className }: Domain
                 {meta.label}
               </div>
 
-              <div className="mt-2.5 text-[13px] leading-[1.55] text-ink-soft">{d.desc}</div>
-              <div className="mt-6 font-mono text-[11px] text-mute ">
+              <div className="mt-2.5 text-xs leading-[1.55] text-ink-soft">{d.desc}</div>
+              <div className="mt-6 font-mono text-sm text-mute ">
                 {String(d.count).padStart(2, '0')} posts
               </div>
             </a>

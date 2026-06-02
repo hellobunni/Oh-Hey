@@ -33,7 +33,7 @@ const navContainerVariants = cva(
     variants: {
       brand: {
         'oh-hey-lynae': 'bg-paper border-line',
-        'kodara':        'bg-kodara-dark border-white/[0.07]',
+        'kodara':        'border-white/[0.07]',
       },
     },
     defaultVariants: { brand: 'oh-hey-lynae' },
@@ -57,8 +57,8 @@ const navLinkVariants = cva(
   {
     variants: {
       brand: {
-        'oh-hey-lynae': 'text-[14px] text-ink-soft hover:text-ink',
-        'kodara':        'font-mono text-xs tracking-[0.08em] uppercase text-white/45 hover:text-kodara-ink',
+        'oh-hey-lynae': 'text-sm text-ink-soft hover:text-ink',
+        'kodara':        'font-mono text-xs tracking-wide uppercase text-kodara-ink-2 hover:text-kodara-accent active:text-kodara-accent',
       },
       active: {
         true:  '',
@@ -79,7 +79,7 @@ const navCtaVariants = cva(
     variants: {
       brand: {
         'oh-hey-lynae': 'py-[7px] px-[14px] text-sm font-medium text-ink border border-line-strong hover:bg-paper-2 transition-colors duration-100',
-        'kodara':        'py-2 px-5 bg-kodara-accent font-mono text-xs font-bold tracking-[0.1em] uppercase text-kodara-dark',
+        'kodara':        'py-2 px-5 bg-accent font-mono text-xs font-bold tracking-[0.1em] uppercase text-white',
       },
     },
   }
@@ -101,10 +101,7 @@ const BRAND_MARK: Record<NavBrand, React.ReactNode> = {
     </>
   ),
   'kodara': (
-    <>
-      <span className="w-4 h-4 border-[1.5px] border-current shrink-0" />
-      <span>Kodara</span>
-    </>
+    <img src="/images/branding/svg/kodara-logo.svg" alt="Kodara" className="w-38 h-20" />
   ),
 }
 
@@ -192,7 +189,7 @@ function MobileMenu({ items, version = 'VERSION 3.0', externalLink, className }:
             key={item.label}
             {...(item.href ? { href: item.href } : {})}
             className={cn(
-              'flex items-center justify-between px-5 py-[18px] border-b border-line text-[20px] text-ink no-underline cursor-pointer transition-colors duration-100 hover:bg-paper-2',
+              'flex items-center justify-between px-5 py-[18px] border-b border-line text-md text-ink no-underline cursor-pointer transition-colors duration-100 hover:bg-paper-2',
               item.active && 'text-accent',
             )}
           >
@@ -203,7 +200,7 @@ function MobileMenu({ items, version = 'VERSION 3.0', externalLink, className }:
           </Tag>
         )
       })}
-      <div className="flex justify-between px-5 py-4 font-mono text-[10px] tracking-[0.1em] text-ink-mute">
+      <div className="flex justify-between px-5 py-4 font-mono text-xxs tracking-[0.1em] text-ink-mute">
         <span>{version}</span>
         {externalLink && (
           <a href={externalLink.href} className="hover:text-ink transition-colors duration-100">

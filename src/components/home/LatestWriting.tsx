@@ -37,7 +37,7 @@ function LatestWriting({ posts, num = '01', className }: LatestWritingProps) {
             >
               <span className="font-mono text-xs text-ink-mute">{p.n}</span>
 
-              <span className="text-[18px] font-medium tracking-[-0.01em] text-ink">
+              <span className="text-md font-medium tracking-[-0.01em] text-ink">
                 {p.title}
                 <span className="mt-1 block text-sm font-normal text-ink-soft">
                   {p.excerpt}

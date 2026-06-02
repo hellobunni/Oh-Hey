@@ -44,7 +44,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* Reads localStorage before first paint to prevent FOUC */}
         <script dangerouslySetInnerHTML={{ __html: `(function(){var t=localStorage.getItem('theme')||'light';var r=t==='auto'?(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'):t;document.documentElement.dataset.theme=r;document.documentElement.style.colorScheme=r;})()` }} />
       </head>
-      <body className="antialiased [overflow-wrap:anywhere]" suppressHydrationWarning>
+      <body className="antialiased wrap-anywhere" suppressHydrationWarning>
         <AppChrome>{children}</AppChrome>
       </body>
     </html>

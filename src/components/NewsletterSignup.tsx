@@ -25,10 +25,10 @@ function NewsletterSignup({ onSubscribe, className }: NewsletterSignupProps) {
 
   return (
     <div className={className}>
-      <div className="font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-accent">
+      <div className="font-mono text-sm font-medium uppercase tracking-wide text-accent">
         ▣&nbsp;&nbsp;Newsletter
       </div>
-      <h3 className="mt-3.5 text-[28px] font-bold leading-tight tracking-[-0.02em] text-ink">
+      <h3 className="mt-3.5 font-bold leading-tight tracking-[-0.02em] text-ink text-xl">
         One letter,<br />every other Sunday.
       </h3>
       <p className="mt-3 max-w-[380px] text-sm text-ink-soft">
@@ -36,7 +36,7 @@ function NewsletterSignup({ onSubscribe, className }: NewsletterSignupProps) {
       </p>
 
       {status === 'done' ? (
-        <p className="mt-5 border border-[color-mix(in_oklab,var(--c-fitness)_35%,transparent)] bg-[var(--c-fitness-bg)] px-3.5 py-3 font-mono text-[13px] text-[var(--c-fitness)]">
+        <p className="mt-5 border border-[color-mix(in_oklab,var(--color-fitness)_35%,transparent)] bg-fitness-bg px-3.5 py-3 font-mono text-xs text-fitness">
           ✓ You're on the list. Talk soon.
         </p>
       ) : (
@@ -49,14 +49,14 @@ function NewsletterSignup({ onSubscribe, className }: NewsletterSignupProps) {
             placeholder="your@email.com"
             className={cn(
               'flex-1 border border-line-strong bg-paper-2 px-3.5 py-3',
-              'font-mono text-[13px] text-ink outline-none focus:border-ink',
+              'font-mono text-xs text-ink outline-none focus:border-ink',
             )}
           />
           <button
             type="submit"
             disabled={status === 'loading'}
             className={cn(
-              'border border-ink bg-ink px-[18px] py-3 font-mono text-[13px] text-paper',
+              'border border-ink bg-ink px-[18px] py-3 font-mono text-xs text-paper',
               'transition-colors hover:bg-paper hover:text-ink disabled:opacity-50',
             )}
           >
