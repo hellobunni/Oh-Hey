@@ -228,4 +228,3 @@ function Field({
 }
 
 export { Field }
-export type { FieldProps, FieldSize, FieldState, FieldLayout }
