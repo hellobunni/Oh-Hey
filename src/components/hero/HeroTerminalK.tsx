@@ -1,6 +1,6 @@
 import React from 'react'
 import { cn } from '@/lib/utils'
-import { Button } from '@/components/ui/button'
+import { buttonVariants } from '@/components/ui/button'
 
 export interface HeroStat {
   value: string
@@ -68,8 +68,8 @@ export default function HeroTerminalK({
   headline     = DEFAULT_HEADLINE,
   body         = 'Kodara is the consulting practice of Bryanna Gardner — 12 years of brand, product, and engineering, accelerated by AI. Strategic depth and execution speed in a single engagement, without the agency overhead.',
   stats        = DEFAULT_STATS,
-  primaryCta   = { label: 'START THE QUESTIONNAIRE →' },
-  secondaryCta = { label: 'VIEW SERVICES' },
+  primaryCta   = { label: 'START THE QUESTIONNAIRE →', href: '/consulting/contact' },
+  secondaryCta = { label: 'VIEW SERVICES', href: '/consulting/services' },
   className,
 }: HeroTerminalLVProps) {
   return (
@@ -126,13 +126,13 @@ export default function HeroTerminalK({
 
             {/* CTAs */}
             <div className="flex items-center gap-3">
-              <Button variant="kodara-accent" size="default">
+              <a href={primaryCta.href} className={buttonVariants({ variant: 'kodara-accent', size: 'default' })}>
                 {primaryCta.label}
-              </Button>
+              </a>
               {secondaryCta && (
-                <Button variant="secondary" size="default">
+                <a href={secondaryCta.href} className={buttonVariants({ variant: 'secondary', size: 'default' })}>
                   {secondaryCta.label}
-                </Button>
+                </a>
               )}
             </div>
           </div>
