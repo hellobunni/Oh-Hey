@@ -13,12 +13,12 @@ export const STEPS: Step[] = [
     question: 'What type of work are you looking for?',
     hint: 'Select one — you can add context next',
     options: [
-      { key: 'A', name: 'Design system',           sub: 'Tokens, components, documentation, governance.' },
-      { key: 'B', name: 'Frontend development',    sub: 'Production builds in React, Next, TanStack.' },
-      { key: 'C', name: 'Full-stack development',  sub: 'Frontend, backend, DB, deploy — end to end.' },
-      { key: 'D', name: 'UI/UX consulting',        sub: 'Audit, strategy, flows, decision frameworks.' },
-      { key: 'E', name: 'Brand & visual design',   sub: 'Identity systems, voice, visual language.' },
-      { key: 'F', name: 'Something else',          sub: 'Tell me what you have in mind — open to it.' },
+      { key: 'A', name: 'Strategic Consulting',        sub: 'Direction, decision frameworks, and roadmap clarity.' },
+      { key: 'B', name: 'UX/Product Audit',            sub: 'Gaps, friction points, and a prioritized action plan.' },
+      { key: 'C', name: 'Brand & Visual Design',       sub: 'Identity systems, voice, and visual language.' },
+      { key: 'D', name: 'Full-Stack Build',            sub: 'Frontend, backend, DB, deploy — end to end.' },
+      { key: 'E', name: 'Fractional Tech Leadership',  sub: 'Part-time CTO or tech lead embedded with your team.' },
+      { key: 'F', name: 'Something else',              sub: 'Tell me what you have in mind — open to it.' },
     ],
   },
   {
@@ -34,11 +34,12 @@ export const STEPS: Step[] = [
   {
     key: 'budget', label: 'Budget range', type: 'choice',
     question: "What's the budget range?",
+    hint: 'Helps me recommend the right scope — no wrong answer',
     options: [
-      { key: 'A', name: 'Under $10K', sub: 'A focused audit or sprint.' },
-      { key: 'B', name: '$10K–$30K',  sub: 'A defined project.' },
-      { key: 'C', name: '$30K–$75K',  sub: 'A larger build.' },
-      { key: 'D', name: '$75K+',      sub: 'Ongoing or multi-phase.' },
+      { key: 'A', name: 'Under $5K',          sub: 'An audit, strategy session, or scoped sprint.' },
+      { key: 'B', name: '$5K–$15K',           sub: 'A defined build or brand project.' },
+      { key: 'C', name: '$15K–$30K',          sub: 'A full build or design system.' },
+      { key: 'D', name: 'Monthly / retainer', sub: 'Ongoing partnership — not a one-time project.' },
     ],
   },
   {
@@ -48,7 +49,8 @@ export const STEPS: Step[] = [
   },
   {
     key: 'details', label: 'The project', type: 'textarea',
-    question: 'What are you trying to build or fix?',
+    question: "What's broken, missing, or holding you back?",
+    hint: 'What you have, what you need, and what a win looks like',
   },
   {
     key: 'contact', label: 'Your details', type: 'text',

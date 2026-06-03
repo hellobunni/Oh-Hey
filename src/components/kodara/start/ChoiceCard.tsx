@@ -16,6 +16,7 @@ export function ChoiceCard({
   return (
     <button
       type="button"
+      aria-pressed={selected}
       onClick={onClick}
       className={cn(
         'flex flex-col gap-2 border p-6 text-left transition-colors',

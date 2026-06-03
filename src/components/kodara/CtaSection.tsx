@@ -13,7 +13,7 @@ function CtaSection({
   eyebrow = 'Ready to scope it?',
   headline = (<>Let's see if<br />we're <span className="text-accent">a fit.</span></>),
   body = 'Six minutes. Eight questions. A response in your inbox inside 48 hours — yes, no, or who you should talk to instead.',
-  cta = { label: 'Start the questionnaire →' },
+  cta = { label: 'Start the questionnaire →', href: '/consulting/contact' },
   className,
 }: CtaSectionProps) {
   return (
@@ -29,7 +29,9 @@ function CtaSection({
         </h2>
         <p className="mx-auto mt-6 max-w-[540px] text-base text-ink-2">{body}</p>
         <div className="mt-10">
-          <Button variant="kodara-accent" size="default">{cta.label}</Button>
+          <a href={cta.href}>
+            <Button variant="kodara-accent" size="default">{cta.label}</Button>
+          </a>
         </div>
       </div>
     </section>

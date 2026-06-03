@@ -8,9 +8,10 @@ interface KodaraFooterProps {
 }
 
 const DEFAULT_LINKS = [
-  { label: 'EMAIL', href: 'mailto:hi@kodara.co' },
-  { label: 'LINKEDIN', href: '#' },
-  { label: 'GITHUB', href: '#' },
+  { label: 'EMAIL', href: 'mailto:kodaraadvisory@gmail.com' },
+  { label: 'LINKEDIN', href: 'https://www.linkedin.com/in/bryannagardner/' },
+  { label: 'GITHUB', href: 'https://github.com/hellobunni' },
+  { label: 'CLIENT WORKSPACE ↗', href: '/consulting/clients' },
   { label: '← OH-HEY-LYNAE', href: '/' },
 ]
 
@@ -37,14 +38,14 @@ export default function KodaraFooter({
   return (
     <footer
       className={cn(
-        'flex items-center justify-between px-20 py-[calc(40px*var(--sp))]',
-        'font-mono text-xs uppercase tracking-wider text-ink-soft',
+        'flex items-center justify-between px-20 py-3',
+        'font-mono text-[9.25px] uppercase tracking-wider text-ink-soft',
         className,
       )}
     >
       <div>{copy}</div>
 
-      <div className="flex items-center gap-8">
+      <div className="flex items-center gap-4 ">
         {links.map((l) => (
           <a key={l.label} href={l.href} className="transition-colors hover:text-accent">
             {l.label}

@@ -19,8 +19,7 @@ const DEFAULT_COLUMNS: FooterColumn[] = [
     { label: 'Now', href: '/now' }, { label: 'RSS', href: '/rss.xml' },
   ]},
   { title: 'ELSEWHERE', links: [
-    { label: 'GitHub', href: '#' }, { label: 'Instagram', href: '#' },
-    { label: 'Are.na', href: '#' }, { label: 'Letterboxd', href: '#' },
+    { label: 'GitHub', href: 'https://github.com/hellobunni' }, { label: 'Instagram', href: 'https://www.instagram.com/ohheylynae/' }
   ]},
 ]
 

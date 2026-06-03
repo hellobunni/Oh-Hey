@@ -8,10 +8,11 @@ interface LaneProps {
   action:   string
   primary?: boolean
   href?:    string
+  linkText?: string
   onClick?: () => void
 }
 
-export function ContactLane({ num, tagline, title, desc, action, primary, href, onClick }: LaneProps) {
+export function ContactLane({ num, tagline, title, desc, action, primary, href, linkText, onClick }: LaneProps) {
   const base = cn(
     'flex min-h-[320px] flex-col border-r border-t border-line p-9 text-left transition-colors hover:bg-paper-2',
     primary && 'bg-accent-soft hover:bg-accent/10',
@@ -32,13 +33,13 @@ export function ContactLane({ num, tagline, title, desc, action, primary, href, 
         'mt-7 flex items-center justify-between gap-3 border-t border-line pt-[18px] font-mono text-xs uppercase tracking-[0.1em] text-accent',
         primary && 'border-accent/20',
       )}>
-        {action} <span>→</span>
+        {linkText ? linkText : action} <span>→</span>
       </span>
     </>
   )
 
   if (href) {
-    return <a href={href} className={base}>{inner}</a>
+    return <a href={href} className={base} target={linkText ? '_blank' : '_self'}>{inner}</a>
   }
   return <button type="button" onClick={onClick} className={base}>{inner}</button>
 }
