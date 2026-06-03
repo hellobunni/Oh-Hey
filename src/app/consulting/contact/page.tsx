@@ -60,7 +60,8 @@ export default function ContactPage() {
           title="Just email me"
           desc="Prefer writing? Drop a note. No template, no form — just tell me what's going on."
           action="Send an email"
-          href="mailto:hi@kodara.co"
+          href="mailto:mail.kodaraadvisory.co"
+          linkText="Send an email"
         />
       </div>
 

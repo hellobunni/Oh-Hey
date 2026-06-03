@@ -5,6 +5,7 @@ import { STEPS } from '@/data/questionnaire.data'
 import { CAL_URL } from '@/data/contact.data'
 import { ProgressRail } from '@/components/kodara/start/ProgressRail'
 import { ChoiceCard } from '@/components/kodara/start/ChoiceCard'
+import { submitQuestionnaire } from '@/app/consulting/contact/actions'
 
 interface Props {
   onExit?: () => void
@@ -14,6 +15,8 @@ export function Questionnaire({ onExit }: Props) {
   const [step, setStep]       = useState(0)
   const [answers, setAnswers] = useState<Record<string, string>>({})
   const [done, setDone]       = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [error, setError]     = useState<string | null>(null)
 
   const s          = STEPS[step]
   const value      = answers[s.key] ?? ''
@@ -21,11 +24,19 @@ export function Questionnaire({ onExit }: Props) {
   const canAdvance = value.trim().length > 0
   const isLast     = step === STEPS.length - 1
 
-  const next = () => {
+  const next = async () => {
     if (!canAdvance) return
     if (isLast) {
-      // TODO: POST `answers` to Resend server action
-      setDone(true)
+      setLoading(true)
+      setError(null)
+      try {
+        await submitQuestionnaire(answers)
+        setDone(true)
+      } catch {
+        setError('Something went wrong — please try again or email me directly.')
+      } finally {
+        setLoading(false)
+      }
     } else {
       setStep((n) => n + 1)
     }
@@ -86,7 +97,7 @@ export function Questionnaire({ onExit }: Props) {
               / {STEPS.length}
             </span>
           </div>
-          <div className="mt-3 text-[28px] font-bold leading-tight tracking-tight text-ink max-[640px]:text-2xl">
+          <div id="question-label" className="mt-3 text-[28px] font-bold leading-tight tracking-tight text-ink max-[640px]:text-2xl">
             {s.question}
           </div>
           {s.hint && (
@@ -114,20 +125,24 @@ export function Questionnaire({ onExit }: Props) {
         {s.type === 'text' && (
           <input
             autoFocus
+            aria-labelledby="question-label"
             className="mt-8 w-full border border-line-strong bg-paper px-4 py-4 font-mono text-sm text-ink outline-none focus:border-accent placeholder:text-ink-mute"
             placeholder="Type your answer…"
             value={value}
             onChange={(e) => setValue(e.target.value)}
+            onKeyDown={(e) => { if (e.key === 'Enter') next() }}
           />
         )}
         {s.type === 'textarea' && (
           <textarea
             autoFocus
+            aria-labelledby="question-label"
             rows={5}
             className="mt-8 w-full resize-none border border-line-strong bg-paper px-4 py-4 font-mono text-sm text-ink outline-none focus:border-accent placeholder:text-ink-mute"
             placeholder="A few sentences is plenty…"
             value={value}
             onChange={(e) => setValue(e.target.value)}
+            onKeyDown={(e) => { if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) next() }}
           />
         )}
 
@@ -135,19 +150,22 @@ export function Questionnaire({ onExit }: Props) {
         <div className="mt-12 flex items-center justify-between">
           <button
             onClick={() => setStep((n) => Math.max(0, n - 1))}
-            disabled={step === 0}
+            disabled={step === 0 || loading}
             className="font-mono text-xs uppercase tracking-[0.18em] text-ink-soft transition-colors hover:text-accent disabled:opacity-30"
           >
             ← Previous
           </button>
           <button
             onClick={next}
-            disabled={!canAdvance}
+            disabled={!canAdvance || loading}
             className="inline-flex items-center gap-3 bg-accent px-8 py-[18px] font-mono text-xs font-semibold uppercase tracking-[0.18em] text-white transition-opacity disabled:opacity-30"
           >
-            {isLast ? 'Submit' : 'Continue'} <span>→</span>
+            {loading ? 'Sending…' : isLast ? 'Submit' : 'Continue'} <span>→</span>
           </button>
         </div>
+        {error && (
+          <p className="mt-4 font-mono text-xs text-red-500">{error}</p>
+        )}
       </div>
     </div>
   )

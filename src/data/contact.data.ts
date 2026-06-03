@@ -1,7 +1,7 @@
 export const CHANNELS = [
-  { k: 'EMAIL',    v: 'hi@kodara.co',              href: 'mailto:hi@kodara.co',                     ext: true  },
-  { k: 'LINKEDIN', v: '/in/lynae-thomas',           href: 'https://linkedin.com/in/lynae-thomas',    ext: true  },
-  { k: 'GITHUB',   v: '@lynae',                     href: 'https://github.com/lynae',                ext: true  },
+  { k: 'EMAIL',    v: 'hi@kodara.co',              href: 'mailto:kodaraadvisory@gmail.com',                     ext: true  },
+  { k: 'LINKEDIN', v: '/in/bryannagardner',           href: 'https://linkedin.com/in/bryannagardner',    ext: true  },
+  { k: 'GITHUB',   v: '@hellobunni',                     href: 'https://github.com/hellobunni',                ext: true  },
   { k: 'LOCATION', v: 'Ann Arbor, MI · Remote',     href: undefined,                                 ext: false },
 ]
 
@@ -11,5 +11,5 @@ export const WHAT_NEXT = [
   { n: '03', h: 'We scope it',      d: 'A short discovery, then a written scope before any work starts.' },
 ]
 
-export const CAL_URL = 'https://cal.com/lynae/30min'
-export const EMAIL   = 'hi@kodara.co'
+export const CAL_URL = 'https://cal.com/kodaraadvisory/discovery'
+export const EMAIL   = 'kodaraadvisory@gmail.com'

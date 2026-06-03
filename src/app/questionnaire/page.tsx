@@ -38,7 +38,7 @@ export default function QuestionnairePage() {
             I read every submission personally and reply within 48 hours — yes, no, or who'd be a better fit. Want to skip the wait?
           </p>
           <a
-            href="https://cal.com/your-handle"
+            href="https://cal.com/kodaraadvisory/discovery"
             className="mt-8 inline-flex items-center gap-3 bg-accent px-8 py-4 font-mono text-xs font-semibold uppercase tracking-[0.18em] text-white"
           >
             Book a call now <span>→</span>

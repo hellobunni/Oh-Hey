@@ -8,9 +8,9 @@ interface KodaraFooterProps {
 }
 
 const DEFAULT_LINKS = [
-  { label: 'EMAIL', href: 'mailto:hi@kodara.co' },
-  { label: 'LINKEDIN', href: '#' },
-  { label: 'GITHUB', href: '#' },
+  { label: 'EMAIL', href: 'mailto:kodaraadvisory@gmail.com' },
+  { label: 'LINKEDIN', href: 'https://www.linkedin.com/in/bryannagardner/' },
+  { label: 'GITHUB', href: 'https://github.com/hellobunni' },
   { label: '← OH-HEY-LYNAE', href: '/' },
 ]
 
