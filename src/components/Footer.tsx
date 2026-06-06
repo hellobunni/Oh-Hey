@@ -1,17 +1,17 @@
-import Link from 'next/link'
+import Link from "next/link";
 
 const links = [
-  { label: 'Tech', href: '/tech' },
-  { label: 'Fitness', href: '/fitness' },
-  { label: 'Creative', href: '/creative' },
-  { label: 'Nerd Stuff', href: '/nerd-stuff' },
-]
+  { label: "Tech", href: "/tech" },
+  { label: "Fitness", href: "/fitness" },
+  { label: "Creative", href: "/creative" },
+  { label: "Nerd Stuff", href: "/nerd-stuff" },
+];
 
 const socials = [
-  { label: 'X', href: 'https://x.com' },
-  { label: 'Instagram', href: 'https://instagram.com' },
-  { label: 'GitHub', href: 'https://github.com' },
-]
+  { label: "X", href: "https://x.com" },
+  { label: "Instagram", href: "https://instagram.com/ohheylynae" },
+  { label: "GitHub", href: "https://github.com/hellobunni" },
+];
 
 export default function Footer() {
   return (
@@ -22,7 +22,7 @@ export default function Footer() {
             href="/"
             className="font-black text-sm tracking-tight text-zinc-900 hover:text-zinc-600 transition-colors"
           >
-            oh-hey-lynae
+            Oh Hey, Lynae.
           </Link>
           <p className="text-xs text-zinc-400 mt-2">
             © {new Date().getFullYear()} Lynae. All rights reserved.
@@ -56,5 +56,5 @@ export default function Footer() {
         </div>
       </div>
     </footer>
-  )
+  );
 }
