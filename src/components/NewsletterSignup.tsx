@@ -7,12 +7,30 @@ import { Input } from './ui/input'
 export default function NewsletterSignup() {
   const [email, setEmail] = useState('')
   const [submitted, setSubmitted] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
     if (!email) return
-    // TODO: wire up to email service
-    setSubmitted(true)
+    setLoading(true)
+    setError('')
+    try {
+      const res = await fetch('/api/subscribe', {
+        method: 'POST',
+        body: JSON.stringify({ email }),
+        headers: { 'Content-Type': 'application/json' },
+      })
+      if (!res.ok) {
+        const data = await res.json()
+        throw new Error(data.error ?? 'Subscription failed')
+      }
+      setSubmitted(true)
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Something went wrong')
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -26,19 +44,22 @@ export default function NewsletterSignup() {
           {submitted ? (
             <p className="text-sm font-medium text-emerald-600">You're in. Talk soon.</p>
           ) : (
-            <form onSubmit={handleSubmit} className="flex gap-2">
-              <Input
-                type="email"
-                placeholder="your@email.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                className="bg-zinc-50 border-zinc-200 text-zinc-900 placeholder:text-zinc-400 w-full"
-              />
-              <Button type="submit" className="bg-zinc-900 text-white hover:bg-zinc-700 shrink-0">
-                Subscribe
-              </Button>
-            </form>
+            <>
+              <form onSubmit={handleSubmit} className="flex gap-2">
+                <Input
+                  type="email"
+                  placeholder="your@email.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  className="bg-zinc-50 border-zinc-200 text-zinc-900 placeholder:text-zinc-400 w-full"
+                />
+                <Button type="submit" disabled={loading} className="bg-zinc-900 text-white hover:bg-zinc-700 shrink-0">
+                  {loading ? 'Subscribing…' : 'Subscribe'}
+                </Button>
+              </form>
+              {error && <p className="text-sm text-red-500">{error}</p>}
+            </>
           )}
         </div>
 

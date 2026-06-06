@@ -58,7 +58,9 @@
   "pnpm": {
     "onlyBuiltDependencies": [
       "esbuild",
-      "lightningcss"
+      "lightningcss",
+      "msw",
+      "sharp"
     ]
   }
 }
