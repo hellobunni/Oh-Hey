@@ -81,7 +81,7 @@ export const EditorialPairing: Story = {
         <em style={{ fontFamily: 'var(--font-serif)', fontWeight: 300, fontStyle: 'italic' }}>everything</em>
         , loudly.
       </div>
-      <div style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--ink-soft)', marginTop: '24px' }}>
+      <div style={{ fontFamily: 'font-mono', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--ink-soft)', marginTop: '24px' }}>
         Sans + italic-serif fragment · use sparingly — one emphasis word per headline
       </div>
     </div>

@@ -267,7 +267,7 @@ a {
   to   { transform: translateX(-50%); }
 }
 
-/* ─── Lunar Vega Design Tokens ──────────────────────────────────────────────
+/* ─── Kodara Design Tokens ──────────────────────────────────────────────
    Edit these to update the LV brand across /consulting and /questionnaire.
    These become Tailwind utilities: text-lv-gold, bg-lv-paper, font-display, etc.
 */
