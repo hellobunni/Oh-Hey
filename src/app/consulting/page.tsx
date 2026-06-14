@@ -20,8 +20,6 @@ import {
   StockXLogo,
   UMichLogo,
 } from '../../utils/logos'
-import { buttonVariants } from '@/components/ui/button'
-import HeroTerminalOH from '@/components/hero/HeroTerminalOH'
 import HeroTerminalK from '@/components/hero/HeroTerminalK'
 import ClientReel from '@/components/ClientReel'
 import { Callout } from '@/components/kodara/Callout'

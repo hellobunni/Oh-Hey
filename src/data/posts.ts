@@ -48,43 +48,7 @@ Where it still shows its age is the ecosystem. Plugins, adapters, and third-part
 I'll keep building here. The repo is clean, the patterns are consistent, and I'm not fighting the framework.`,
   },
   {
-    id: 2,
-    slug: '12-week-strength-block-week-4-check-in',
-    title: '12-week strength block: week 4 check-in',
-    excerpt: "Squats are finally feeling smooth. Here's what's clicking and what still needs work.",
-    domain: 'Fitness',
-    date: 'Apr 5, 2026',
-    body: `Four weeks in. Here's the honest rundown.
-
-Squats finally clicked this week — the cue that fixed it was thinking about "pushing the floor away" rather than "standing up." Sounds obvious in retrospect, but something about the phrasing made my bracing tighten up at the right moment. My depth improved and I wasn't getting that forward lean out of the hole anymore.
-
-Bench is moving steadily. Nothing exciting, just adding 2.5lb each session and hitting the reps. The boring stuff works.
-
-Deadlift is the one I'm watching. My lower back was talking to me after Wednesday's session — not injured, just tired. I think I'm pulling with too much lumbar extension at lockout. Dropping the weight 10% next week to clean up the pattern before I load it again.
-
-Sleep has been the X factor. The two nights I got 8+ hours I felt noticeably stronger. The two nights I got 6 I dragged through the session. I know this, and I still don't prioritize it enough.
-
-Goals for weeks 5–8: keep the squat pattern, fix the deadlift finish, get to bed before midnight at least 5 nights a week.`,
-  },
-  {
     id: 3,
-    slug: 'new-prints-and-the-process-behind-them',
-    title: 'New prints & the process behind them',
-    excerpt: 'A look at the three pieces I finished this month and the tools I used to get there.',
-    domain: 'Creative',
-    date: 'Apr 3, 2026',
-    body: `Three new prints finished this month. I want to talk about the process more than the output, because the output is just the artifact — the interesting part is how I got there.
-
-The first piece started as a gesture drawing I did during a 20-minute warmup session. I liked the negative space in one corner and built the whole composition around it. That doesn't usually work for me, starting from a corner, but this time it did.
-
-The second one I threw away twice. The third version is what you see. I kept the color palette from version one (a warm ochre against a desaturated teal that I mixed and re-mixed six times) and the composition from version two. Frankenstein piece. It works.
-
-For tools: Procreate for the initial sketches and value studies, then I printed a transfer and worked on Fabriano hot press with gouache. The texture you see in the shadows is from a silicone brush I almost never use — I was experimenting and it stuck.
-
-The third piece is the quietest. Just two shapes and a lot of white space. I almost didn't share it because it felt too minimal, but it's the one I keep looking at.`,
-  },
-  {
-    id: 4,
     slug: 'my-top-10-lego-sets-right-now',
     title: 'My top 10 Lego sets right now',
     excerpt: 'The builds sitting on my shelf and why each one earned its spot.',
@@ -105,7 +69,7 @@ The Technic Bugatti Chiron is the oldest set on the shelf and still the most tec
 The rest I'll save for a longer post — this is already getting long and I haven't even gotten to the Millennium Falcon in the closet that I haven't started yet because I'm waiting for the right weekend.`,
   },
   {
-    id: 5,
+    id: 4,
     slug: 'the-tools-i-actually-use-every-day',
     title: 'The tools I actually use every day',
     excerpt: 'A no-fluff rundown of my dev setup, apps, and hardware as of Q2 2026.',
@@ -124,28 +88,7 @@ Design: Figma for anything collaborative or component-based. Pixelmator Pro for 
 Hardware: M3 MacBook Pro 16" at the desk, M2 iPad Pro when I'm moving around. The combination is the most productive I've ever been on hardware.
 
 One underrated tool: Raycast. If you're still using Spotlight I genuinely feel bad for you.`,
-  },
-  {
-    id: 6,
-    slug: 'running-base-phase-what-and-why',
-    title: 'Running base phase: what and why',
-    excerpt: "Taking a break from lifting to rebuild my aerobic base. Here's the plan.",
-    domain: 'Fitness',
-    date: 'Mar 25, 2026',
-    body: `I've been lifting consistently for about three years. My aerobic fitness has quietly atrophied the whole time.
-
-I noticed it on a hike last fall. Steeper sections that used to feel moderate were harder than they should have been. My resting heart rate has crept up. Recovery between sets that aren't even that heavy takes longer than it used to.
-
-So I'm spending eight weeks rebuilding the base. Not replacing lifting entirely — I'll keep two sessions a week — but shifting the priority.
-
-The plan is simple: run five days a week, all Zone 2. That means conversational pace, heart rate under 145, ego off. Most of these runs will feel embarrassingly easy. That's the point. Zone 2 work builds the mitochondrial density and cardiac output that everything else sits on top of.
-
-I'm also doing one longer run on weekends, starting at 60 minutes and adding 10 minutes every two weeks.
-
-Eight weeks from now I expect my resting heart rate to drop, my perceived effort on moderate cardio to decrease, and my recovery between lifting sets to improve. I'll check back in.
-
-If you've been lifting for years and ignoring your aerobic base, you might want to do the same thing.`,
-  },
+  }
 ]
 
 export function getPostById(id: number): Post | undefined {

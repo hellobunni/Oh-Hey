@@ -33,7 +33,7 @@ export default function HomePage() {
           - Use Resend (already installed) to add email to audience + send confirmation
           - Pass action: <HomeOutro onSubscribe={subscribeAction} />
           - Add error state to NewsletterSignup for failed submissions */}
-      <HomeOutro />
+    
     </main>
   )
 }

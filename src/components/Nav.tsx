@@ -22,7 +22,7 @@ export interface NavProps {
 // ─── Defaults ─────────────────────────────────────────────────────────────────
 
 const DEFAULT_ITEMS: NavItem[] = [
-  { label: 'Writing',  href: '/writing', active: true },
+  { label: 'Writing',  href: '/archive', active: true },
   { label: 'Tech',     href: '/tech'     },
   { label: 'Fitness',  href: '/fitness'  },
   { label: 'Creative', href: '/creative' },

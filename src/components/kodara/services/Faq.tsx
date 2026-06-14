@@ -29,7 +29,7 @@ export function Faq() {
             <div key={f.q} className="border-b border-line py-6">
               <button
                 onClick={() => setOpen(isOpen ? null : i)}
-                className="flex w-full items-center justify-between gap-4 text-left"
+                className="flex w-full items-center justify-between gap-4 text-left hover:cursor-pointer"
               >
                 <span className="font-sans text-lg font-semibold tracking-tight text-ink max-[640px]:text-base">
                   <span className="mr-4 font-mono text-sm tracking-[0.1em] text-accent">

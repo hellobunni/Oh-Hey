@@ -11,10 +11,10 @@ interface DomainGridProps {
 }
 
 const DEFAULT_DOMAINS: DomainCard[] = [
-  { domain: 'tech',     desc: 'Frontend craft, dev tools, building in public.', count: 14, href: '/tech' },
-  { domain: 'fitness',  desc: 'Strength training, running, the boring middle.', count: 9,  href: '/fitness' },
-  { domain: 'creative', desc: 'Prints, process, gouache vs procreate.',         count: 6,  href: '/creative' },
-  { domain: 'nerd',     desc: 'Comics, cards, gaming, the Lego shelf.',          count: 11, href: '/nerd' },
+  { domain: 'tech',     desc: 'Frontend craft, dev tools, building in public.', count: 2, href: '/tech' },
+  { domain: 'fitness',  desc: 'Strength training, running, the boring middle.', count: 0,  href: '/fitness' },
+  { domain: 'creative', desc: 'Prints, process, gouache vs procreate.',         count: 0,  href: '/creative' },
+  { domain: 'nerd',     desc: 'Comics, cards, gaming, the Lego shelf.',          count: 1, href: '/nerd' },
 ]
 
 function DomainGrid({ domains = DEFAULT_DOMAINS, num = '02', className }: DomainGridProps) {

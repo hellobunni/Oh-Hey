@@ -11,8 +11,8 @@ interface OhHeyFooterProps {
 
 const DEFAULT_COLUMNS: FooterColumn[] = [
   { title: 'DOMAINS', links: [
-    { label: 'Tech', href: '/tech' }, { label: 'Fitness', href: '/fitness' },
-    { label: 'Creative', href: '/creative' }, { label: 'Nerd Stuff', href: '/nerd' },
+    { label: 'Tech', href: '#' }, { label: 'Fitness', href: '#' },
+    { label: 'Creative', href: '#' }, { label: 'Nerd Stuff', href: '#' },
   ]},
   { title: 'SITE', links: [
     { label: 'Archive', href: '/archive' }, { label: 'About', href: '/about' },
@@ -32,7 +32,7 @@ export default function OhHeyFooter({
   return (
     <footer
       className={cn(
-        'grid grid-cols-[2fr_1fr_1fr_1fr] gap-8 border-t border-line',
+        'grid grid-cols-[2fr_1fr_1fr_1fr] gap-8',
         'px-[clamp(20px,5vw,80px)] py-6 font-mono text-xs',
         className,
       )}
