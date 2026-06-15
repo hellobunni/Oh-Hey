@@ -43,9 +43,11 @@ function DomainGrid({ domains = DEFAULT_DOMAINS, num = '02', className }: Domain
               </div>
 
               <div className="mt-2.5 text-xs leading-[1.55] text-ink-soft">{d.desc}</div>
-              <div className="mt-6 font-mono text-sm text-mute ">
-                {String(d.count).padStart(2, '0')} posts
-              </div>
+              {d.count > 0 && (
+                <div className="mt-6 font-mono text-sm text-mute ">
+                  {String(d.count).padStart(2, '0')} posts
+                </div>
+              )}
             </a>
           )
         })}

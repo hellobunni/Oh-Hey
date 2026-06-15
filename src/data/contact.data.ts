@@ -2,7 +2,7 @@ export const CHANNELS = [
   { k: 'EMAIL',    v: 'hi@kodara.co',              href: 'mailto:kodaraadvisory@gmail.com',                     ext: true  },
   { k: 'LINKEDIN', v: '/in/bryannagardner',           href: 'https://linkedin.com/in/bryannagardner',    ext: true  },
   { k: 'GITHUB',   v: '@hellobunni',                     href: 'https://github.com/hellobunni',                ext: true  },
-  { k: 'LOCATION', v: 'Ann Arbor, MI · Remote',     href: undefined,                                 ext: false },
+  { k: 'LOCATION', v: 'Detroit, MI · Remote',        href: undefined,                                 ext: false },
 ]
 
 export const WHAT_NEXT = [

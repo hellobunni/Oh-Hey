@@ -52,7 +52,7 @@ export function ServiceRow({ service }: { service: Service }) {
           </div>
         ))}
         <a
-          href="/questionnaire"
+          href="/consulting/contact"
           className="mt-5 flex w-full items-center justify-between bg-accent px-4 py-3 font-mono text-xs font-semibold uppercase tracking-wider text-paper"
         >
           SCOPE THIS SERVICE <span>→</span>

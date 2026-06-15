@@ -12,7 +12,6 @@ const DEFAULT_LINKS = [
   { label: 'LINKEDIN', href: 'https://www.linkedin.com/in/bryannagardner/' },
   { label: 'GITHUB', href: 'https://github.com/hellobunni' },
   { label: 'CLIENT WORKSPACE ↗', href: '/consulting/clients' },
-  { label: '← OH-HEY-LYNAE', href: '/' },
 ]
 
 export default function KodaraFooter({

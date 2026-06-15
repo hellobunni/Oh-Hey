@@ -21,9 +21,9 @@ interface LogoItem {
 const DEFAULT_LOGOS: LogoItem[] = [
   { id: 'stockx',     Logo: StockXLogo     },
   { id: 'redbull',    Logo: RedBullLogo    },
+  { id: 'qualigence', Logo: QualigenceLogo },
   { id: 'rocket',     Logo: RocketLogo     },
   { id: 'umich',      Logo: UMichLogo      },
-  { id: 'qualigence', Logo: QualigenceLogo },
   { id: 'figma',      Logo: FigmaLogo      },
 ]
 
