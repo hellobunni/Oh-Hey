@@ -72,7 +72,7 @@ export default async function ArchivePage({ searchParams }: { searchParams: Sear
   return (
     <main>
       {/* ── Hero ── */}
-      <section className="bg-paper border-b border-line grid-bg-transparent">
+      <section className="home-inner">
         <div className="site-inner px-[clamp(20px,5vw,80px)] py-16">
           <div className="font-mono text-xs text-ink-mute mb-10">~/oh-hey-lynae · archive</div>
 
@@ -90,47 +90,51 @@ export default async function ArchivePage({ searchParams }: { searchParams: Sear
       </section>
 
       {/* ── Domain filter ── */}
-      <div className="border-b border-line px-[clamp(20px,5vw,80px)] py-5 flex items-center gap-2.5 flex-wrap">
-        <Link
-          href="/archive"
-          className={cn(
-            'border px-3 py-1.5 font-mono text-xs transition-colors',
-            !activeFilter
-              ? 'border-ink text-ink'
-              : 'border-line text-ink-soft hover:border-ink hover:text-ink',
-          )}
-        >
-          All ({posts.length})
-        </Link>
+      <div className="grid-bg-transparent pt-13">
+        <div className="site-inner flex flex-wrap items-center gap-2.5 px-[clamp(20px,5vw,80px)] py-5">
+          <Link
+            href="/archive"
+            className={cn(
+              'border px-3 py-1.5 font-mono text-xs transition-colors',
+              !activeFilter
+                ? 'border-ink text-ink'
+                : 'border-line text-ink-soft hover:border-ink hover:text-ink',
+            )}
+          >
+            All ({posts.length})
+          </Link>
 
-        {VALID_FILTERS.map((d) => {
-          const count  = posts.filter(p => DOMAIN_SLUG[p.domain] === d).length
-          const meta   = DOMAIN_META[d]
-          const active = activeFilter === d
-          return (
-            <Link
-              key={d}
-              href={`/archive?domain=${d}`}
-              className={cn(
-                'inline-flex items-center gap-1.5 border px-3 py-1.5 font-mono text-xs transition-colors',
-                active
-                  ? 'border-ink text-ink'
-                  : 'border-line text-ink-soft hover:border-ink hover:text-ink',
-              )}
-            >
-              <span
-                className="h-1.5 w-1.5 rounded-full shrink-0"
-                style={{ background: meta.var }}
-              />
-              {DOMAIN_LABELS[d]} ({count})
-            </Link>
-          )
-        })}
+          {VALID_FILTERS.map((d) => {
+            const count  = posts.filter(p => DOMAIN_SLUG[p.domain] === d).length
+            const meta   = DOMAIN_META[d]
+            const active = activeFilter === d
+            return (
+              <Link
+                key={d}
+                href={`/archive?domain=${d}`}
+                className={cn(
+                  'inline-flex items-center gap-1.5 border px-3 py-1.5 font-mono text-xs transition-colors',
+                  active
+                    ? 'border-ink text-ink'
+                    : 'border-line text-ink-soft hover:border-ink hover:text-ink',
+                )}
+              >
+                <span
+                  className="h-1.5 w-1.5 rounded-full shrink-0"
+                  style={{ background: meta.var }}
+                />
+                {DOMAIN_LABELS[d]} ({count})
+              </Link>
+            )
+          })}
+        </div>
       </div>
 
       {/* ── Post list ── */}
+     <div className="grid-bg-transparent"> 
+      <div className="site-inner pb-20">
       {grouped.length === 0 ? (
-        <div className="px-[clamp(20px,5vw,80px)] py-24">
+        <div className="px-[clamp(20px,5vw,80px)] py-24 max-w-[1500px] mx-auto">
           <p className="font-mono text-sm text-ink-mute mb-2">// nothing here yet</p>
           <Link href="/archive" className="font-sans text-sm text-accent border-b border-accent/40">
             View all posts →
@@ -144,7 +148,7 @@ export default async function ArchivePage({ searchParams }: { searchParams: Sear
               title={`${year} · ${yearPosts.length} ${yearPosts.length === 1 ? 'POST' : 'POSTS'}`}
             />
 
-            <div className="border-t border-line px-[clamp(20px,5vw,80px)]">
+            <div className="px-[clamp(20px,5vw,80px)]">
               {yearPosts.map((post) => {
                 const meta = DOMAIN_META[post.domain]
                 return (
@@ -153,7 +157,7 @@ export default async function ArchivePage({ searchParams }: { searchParams: Sear
                     href={post.href}
                     className={cn(
                       'group grid grid-cols-[60px_1fr_160px_120px] items-center gap-5',
-                      'border-b border-line py-5 transition-all',
+                      'py-5 transition-all',
                       'hover:-mx-3 hover:bg-paper-2 hover:px-3',
                     )}
                   >
@@ -188,6 +192,9 @@ export default async function ArchivePage({ searchParams }: { searchParams: Sear
           </section>
         ))
       )}
+      </div>
+     
+     </div>
     </main>
   )
 }

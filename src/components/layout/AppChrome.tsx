@@ -17,8 +17,7 @@ export default function AppChrome({ children }: { children: React.ReactNode }) {
   ]
 
   return (
-    <div className={cn('min-h-screen flex flex-col font-sans tracking-normal antialiased wrap-anywhere',
-      isKodara ? 'bg-kodara-bg' : 'grid-bg-transparent'
+    <div className={cn('min-h-screen flex flex-col font-sans tracking-normal antialiased wrap-anywhere'
     ) }>
       {!isKodara && <Nav />}
       {isKodara && <Nav brand="kodara" items={KODARA_ITEMS} ctaLabel="Start a project →" ctaHref="/consulting/contact" linksAlign="center" brandHref="/consulting" />}

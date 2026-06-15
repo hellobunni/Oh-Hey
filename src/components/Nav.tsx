@@ -37,12 +37,15 @@ export function Nav({
   brandHref   = '/',
   items       = DEFAULT_ITEMS,
   linksAlign  = 'left',
-  ctaLabel    = 'Subscribe →',
-  ctaHref     = '/subscribe',
+  ctaLabel,
+  ctaHref,
   className,
 }: NavProps) {
   const navLinks: NavLink[]           = items.map(({ label, href, active }) => ({ label, href, active }))
   const mobileItems: MobileMenuItem[] = items.map(({ label, href, active }) => ({ label, href, active }))
+  const cta = ctaLabel?.trim() && ctaHref?.trim()
+    ? { label: ctaLabel.trim(), href: ctaHref.trim() }
+    : undefined
 
   const blurBg = brand === 'kodara'
     ? 'bg-[color-mix(in_oklab,var(--color-kodara-accent-soft/5)_85%,transparent)]'
@@ -56,7 +59,7 @@ export function Nav({
           brand={brand}
           links={navLinks}
           linksAlign={linksAlign}
-          cta={{ label: ctaLabel, href: ctaHref }}
+          cta={cta}
           brandHref={brandHref}
           className="px-[clamp(20px,5vw,80px)]"
         />
@@ -68,7 +71,7 @@ export function Nav({
           brand={brand}
           items={mobileItems}
           brandHref={brandHref}
-          externalLink={{ label: ctaLabel, href: ctaHref }}
+          externalLink={cta}
         />
       </div>
     </div>

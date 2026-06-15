@@ -7,5 +7,5 @@ import OhHeyFooter from './OhHeyFooter'
 export default function FooterSwitch() {
   const pathname = usePathname()
   if (pathname.startsWith('/consulting')) return <KodaraFooter />
-  return <OhHeyFooter />
+  return <div className="grid-bg-transparent"><OhHeyFooter /></div>
 }

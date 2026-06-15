@@ -70,7 +70,7 @@ export function WhatIDo({
             <span className="h-px w-8 bg-accent shrink-0" />
             {eyebrow}
           </div>
-          <h2 className="font-sans font-bold leading-6 tracking-tight text-ink [font-size:clamp(36px,4vw,56px)]">
+          <h2 className="font-sans font-bold leading-12 tracking-tight text-ink [font-size:clamp(36px,4vw,56px)]">
             {heading}
           </h2>
         </div>

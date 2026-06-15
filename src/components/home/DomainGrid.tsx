@@ -20,7 +20,7 @@ const DEFAULT_DOMAINS: DomainCard[] = [
 function DomainGrid({ domains = DEFAULT_DOMAINS, num = '02', className }: DomainGridProps) {
   return (
     <section className={className}>
-      <SectionHeader num={num} title="DOMAINS" action={{ label: 'All categories →', href: '/domains' }} />
+      <SectionHeader num={num} title="DOMAINS" />
 
       <div className="grid grid-cols-4 px-[clamp(20px,5vw,50px)] py-12 site-inner">
         {domains.map((d, i) => {

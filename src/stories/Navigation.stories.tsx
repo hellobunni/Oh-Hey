@@ -144,7 +144,7 @@ function ResponsiveNavDemo() {
             brand="oh-hey-lynae"
             links={OH_A_LINKS}
             brandHref="/"
-            cta={{ label: 'Subscribe →' }}
+            cta={{ label: 'Subscribe →', href: '/subscribe' }}
           />
         </div>
       </div>

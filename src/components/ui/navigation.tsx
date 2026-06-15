@@ -118,6 +118,10 @@ function TopNav({
   onMenuClick,
   className,
 }: TopNavProps) {
+  const ctaLabel = cta?.label.trim()
+  const ctaHref  = cta?.href?.trim()
+  const showCta  = !mobile && !!ctaLabel && !!ctaHref
+
   return (
     <nav className={cn(
       navContainerVariants({ brand }),
@@ -142,9 +146,9 @@ function TopNav({
         </div>
       )}
 
-      {cta && !mobile && (
-        <a className={navCtaVariants({ brand })} href={cta.href}>
-          {cta.label}
+      {showCta && (
+        <a className={navCtaVariants({ brand })} href={ctaHref}>
+          {ctaLabel}
         </a>
       )}
 
@@ -200,7 +204,7 @@ function MobileMenu({ items, version = 'VERSION 3.0', externalLink, className }:
           </Tag>
         )
       })}
-      <div className="flex justify-between px-5 py-4 font-mono text-xxs tracking-[0.1em] text-ink-mute">
+      <div className="flex justify-between px-5 py-4 font-mono text-xxs tracking-widest text-ink-mute">
         <span>{version}</span>
         {externalLink && (
           <a href={externalLink.href} className="hover:text-ink transition-colors duration-100">

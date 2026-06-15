@@ -34,8 +34,8 @@ export default async function CategoryPage({ params }: { params: Params }) {
   return (
     <main>
       {/* ── Hero ── */}
-      <section className="site-inner grid-bg-transparent">
-        <div className="py-16">
+      <section className="grid-bg-transparent">
+        <div className="site-inner px-[clamp(20px,5vw,80px)] py-16">
           <div className="font-mono text-xs text-ink-mute mb-10">
             ~/oh-hey-lynae · {domain}/
           </div>
@@ -68,57 +68,62 @@ export default async function CategoryPage({ params }: { params: Params }) {
       </section>
 
       {/* ── Post list ── */}
-      {domainPosts.length === 0 ? (
-        <div className="py-24">
-          <p className="font-mono text-sm text-ink-mute mb-3">// nothing published here yet</p>
-          <p className="font-sans text-sm text-ink-soft">
-            Posts in this domain are on the way.{' '}
-            <Link href="/archive" className="text-accent border-b border-accent/40">
-              Browse all writing →
-            </Link>
-          </p>
+      <div className="grid-bg-transparent">
+        <div className="site-inner pb-20">
+          {domainPosts.length === 0 ? (
+            <div className="px-[clamp(20px,5vw,80px)] py-24">
+              <p className="font-mono text-sm text-ink-mute mb-3">// nothing published here yet</p>
+              <p className="font-sans text-sm text-ink-soft">
+                Posts in this domain are on the way.{' '}
+                <Link href="/archive" className="text-accent border-b border-accent/40">
+                  Browse all writing →
+                </Link>
+              </p>
+            </div>
+          ) : (
+            <>
+              <SectionHeader
+                num="01"
+                title={`${meta.label.toUpperCase()} · ${domainPosts.length} ${domainPosts.length === 1 ? 'POST' : 'POSTS'}`}
+              />
+
+              <div className="px-[clamp(20px,5vw,80px)]">
+                {domainPosts.map((post, i) => (
+                  <Link
+                    key={post.slug}
+                    href={`/${domain}/${post.slug}`}
+                    className={cn(
+                      'group grid grid-cols-[60px_1fr_120px] items-center gap-5',
+                      'py-5 transition-all',
+                      'hover:-mx-3 hover:bg-paper-2 hover:px-3',
+                    )}
+                  >
+                    <span className="font-mono text-xs text-ink-mute">
+                      {String(i + 1).padStart(2, '0')}
+                    </span>
+
+                    <span className="text-base font-medium tracking-[-0.01em] text-ink">
+                      {post.title}
+                      <span className="mt-1 block text-sm font-normal text-ink-soft">
+                        {post.excerpt}
+                      </span>
+                    </span>
+
+                    <span className="text-right font-mono text-xs text-ink-soft">{post.date}</span>
+                  </Link>
+                ))}
+              </div>
+            </>
+          )}
         </div>
-      ) : (
-        <section>
-          <SectionHeader
-            num="01"
-            title={`${meta.label.toUpperCase()} · ${domainPosts.length} ${domainPosts.length === 1 ? 'POST' : 'POSTS'}`}
-          />
+      </div>
 
-          <div className="site-inner">
-            {domainPosts.map((post, i) => (
-              <Link
-                key={post.slug}
-                href={`/${domain}/${post.slug}`}
-                className={cn(
-                  'group grid grid-cols-[60px_1fr_120px] items-center gap-5',
-                  ' py-5 transition-all',
-                  'hover:-mx-3 hover:bg-paper-2 hover:px-3',
-                )}
-              >
-                <span className="font-mono text-xs text-ink-mute">
-                  {String(i + 1).padStart(2, '0')}
-                </span>
-
-                <span className="text-base font-medium tracking-[-0.01em] text-ink">
-                  {post.title}
-                  <span className="mt-1 block text-sm font-normal text-ink-soft">
-                    {post.excerpt}
-                  </span>
-                </span>
-
-                <span className="text-right font-mono text-xs text-ink-soft">{post.date}</span>
-              </Link>
-            ))}
-          </div>
-        </section>
-      )}
 
       {/* ── Other domains ── */}
-      <section>
+      <section className="grid-bg-transparent">
         <SectionHeader num={domainPosts.length > 0 ? '02' : '01'} title="OTHER DOMAINS" />
 
-        <div className="grid grid-cols-3  max-md:grid-cols-1 site-inner">
+        <div className="site-inner grid grid-cols-3 px-[clamp(20px,5vw,80px)] pb-12 max-md:grid-cols-1">
           {otherDomains.map((d) => {
             const m     = DOMAIN_META[d]
             const count = posts.filter(p => p.domain === DOMAIN_CONFIG[d].postsDomain).length

@@ -28,32 +28,32 @@ const BRAND_ROWS: NavRow[] = [
   {
     name: 'oh-hey-lynae · links left (default)',
     arg:  'brand="oh-hey-lynae" linksAlign="left"',
-    node: <TopNav brand="oh-hey-lynae" links={OH_HEY_LINKS} cta={{ label: 'Subscribe →' }} linksAlign="left" />,
+    node: <TopNav brand="oh-hey-lynae" links={OH_HEY_LINKS} cta={{ label: 'Subscribe →', href: '/subscribe' }} linksAlign="left" />,
   },
   {
     name: 'oh-hey-lynae · links center',
     arg:  'brand="oh-hey-lynae" linksAlign="center"',
-    node: <TopNav brand="oh-hey-lynae" links={OH_HEY_LINKS} cta={{ label: 'Subscribe →' }} linksAlign="center" />,
+    node: <TopNav brand="oh-hey-lynae" links={OH_HEY_LINKS} cta={{ label: 'Subscribe →', href: '/subscribe' }} linksAlign="center" />,
   },
   {
     name: 'oh-hey-lynae · links right',
     arg:  'brand="oh-hey-lynae" linksAlign="right"',
-    node: <TopNav brand="oh-hey-lynae" links={OH_HEY_LINKS} cta={{ label: 'Subscribe →' }} linksAlign="right" />,
+    node: <TopNav brand="oh-hey-lynae" links={OH_HEY_LINKS} cta={{ label: 'Subscribe →', href: '/subscribe' }} linksAlign="right" />,
   },
   {
     name: 'Kodara · links left',
     arg:  'brand="kodara" linksAlign="left"',
-    node: <TopNav brand="kodara" links={KODARA_LINKS} cta={{ label: 'Start a project →' }} linksAlign="left" />,
+    node: <TopNav brand="kodara" links={KODARA_LINKS} cta={{ label: 'Start a project →', href: '/consulting/contact' }} linksAlign="left" />,
   },
   {
     name: 'Kodara · links center',
     arg:  'brand="kodara" linksAlign="center"',
-    node: <TopNav brand="kodara" links={KODARA_LINKS} cta={{ label: 'Start a project →' }} linksAlign="center" />,
+    node: <TopNav brand="kodara" links={KODARA_LINKS} cta={{ label: 'Start a project →', href: '/consulting/contact' }} linksAlign="center" />,
   },
   {
     name: 'Kodara · links right',
     arg:  'brand="kodara" linksAlign="right"',
-    node: <TopNav brand="kodara" links={KODARA_LINKS} cta={{ label: 'Start a project →' }} linksAlign="right" />,
+    node: <TopNav brand="kodara" links={KODARA_LINKS} cta={{ label: 'Start a project →', href: '/consulting/contact' }} linksAlign="right" />,
   },
 ]
 
