@@ -71,10 +71,9 @@ export default function HeroTerminalOH({
 
   return (
     <section
-      className={cn('bg-paper border-b border-line', className)}
-      style={GRID_STYLE}
+      className="home-inner"
     >
-      <div className="px-[clamp(20px,5vw,80px)] py-16">
+      <div className="site-inner px-[clamp(20px,5vw,80px)] py-16">
         {/* Meta row */}
         <div className="font-mono text-xs text-ink-mute mb-10">{meta}</div>
 
@@ -96,6 +95,7 @@ export default function HeroTerminalOH({
           {/* Right: terminal card */}
           <TerminalCard lines={terminalLines} className="self-center" />
         </div>
+
       </div>
     </section>
   )

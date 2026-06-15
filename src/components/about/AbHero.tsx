@@ -1,11 +1,5 @@
-import type { CSSProperties } from 'react'
 import { cn } from '@/lib/utils'
 import TerminalCard, { type TerminalLine } from '@/components/home/TerminalCard'
-
-const GRID_STYLE: CSSProperties = {
-  backgroundImage:
-    'repeating-linear-gradient(to right, rgba(12,12,12,0.06) 0px, rgba(12,12,12,0.06) 1px, transparent 1px, transparent 14.285%)',
-}
 
 const TERMINAL_LINES: TerminalLine[] = [
   { type: 'command', text: 'cat about.txt' },
@@ -34,10 +28,9 @@ interface AbHeroProps {
 export function AbHero({ className }: AbHeroProps) {
   return (
     <section
-      className={cn('bg-paper border-b border-line', className)}
-      style={GRID_STYLE}
+      className={cn('bg-paper border-b border-line grid-bg-transparent', className)}
     >
-      <div className="px-[clamp(20px,5vw,80px)] py-16">
+      <div className="site-inner px-[clamp(20px,5vw,80px)] py-16">
         <div className="font-mono text-xs text-ink-mute mb-10">~/oh-hey-lynae · about.txt</div>
 
         <div className="grid gap-12 items-start" style={{ gridTemplateColumns: '55fr 45fr' }}>

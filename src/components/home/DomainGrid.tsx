@@ -22,7 +22,7 @@ function DomainGrid({ domains = DEFAULT_DOMAINS, num = '02', className }: Domain
     <section className={className}>
       <SectionHeader num={num} title="DOMAINS" action={{ label: 'All categories →', href: '/domains' }} />
 
-      <div className="grid grid-cols-4 border-y border-line px-[clamp(20px,5vw,80px)] py-12">
+      <div className="grid grid-cols-4 px-[clamp(20px,5vw,50px)] py-12 site-inner">
         {domains.map((d, i) => {
           const meta = DOMAIN_META[d.domain]
           return (
@@ -30,7 +30,7 @@ function DomainGrid({ domains = DEFAULT_DOMAINS, num = '02', className }: Domain
               key={d.domain}
               href={d.href}
               className={cn(
-                'border-r border-line p-7 transition-colors last:border-r-0 hover:bg-paper-2',
+                'p-7 transition-colors hover:bg-paper-2',
               )}
             >
               <div className="font-mono text-sm text-ink-mute">

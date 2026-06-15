@@ -3,13 +3,6 @@ import { cn } from '@/lib/utils'
 import { posts } from '@/data/posts'
 import { DOMAIN_META, type Domain } from '@/data/domains'
 import { SectionHeader } from '@/components/layout/SectionHeader'
-import type { CSSProperties } from 'react'
-
-const GRID_STYLE: CSSProperties = {
-  backgroundImage:
-    'repeating-linear-gradient(to right, rgba(12,12,12,0.06) 0px, rgba(12,12,12,0.06) 1px, transparent 1px, transparent 14.285%)',
-}
-
 // Maps posts.ts Domain → domains.ts Domain slug
 const DOMAIN_SLUG: Record<string, Domain> = {
   'Tech':       'tech',
@@ -79,8 +72,8 @@ export default async function ArchivePage({ searchParams }: { searchParams: Sear
   return (
     <main>
       {/* ── Hero ── */}
-      <section className="bg-paper border-b border-line" style={GRID_STYLE}>
-        <div className="px-[clamp(20px,5vw,80px)] py-16">
+      <section className="bg-paper border-b border-line grid-bg-transparent">
+        <div className="site-inner px-[clamp(20px,5vw,80px)] py-16">
           <div className="font-mono text-xs text-ink-mute mb-10">~/oh-hey-lynae · archive</div>
 
           <h1

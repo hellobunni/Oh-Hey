@@ -4,13 +4,6 @@ import { cn } from '@/lib/utils'
 import { posts } from '@/data/posts'
 import { DOMAIN_META, type Domain } from '@/data/domains'
 import { SectionHeader } from '@/components/layout/SectionHeader'
-import type { CSSProperties } from 'react'
-
-const GRID_STYLE: CSSProperties = {
-  backgroundImage:
-    'repeating-linear-gradient(to right, rgba(12,12,12,0.06) 0px, rgba(12,12,12,0.06) 1px, transparent 1px, transparent 14.285%)',
-}
-
 const VALID_DOMAINS = ['tech', 'fitness', 'creative', 'nerd'] as const
 type DomainSlug = typeof VALID_DOMAINS[number]
 
@@ -41,8 +34,8 @@ export default async function CategoryPage({ params }: { params: Params }) {
   return (
     <main>
       {/* ── Hero ── */}
-      <section className="bg-paper border-b border-line" style={GRID_STYLE}>
-        <div className="px-[clamp(20px,5vw,80px)] py-16">
+      <section className="site-inner grid-bg-transparent">
+        <div className="py-16">
           <div className="font-mono text-xs text-ink-mute mb-10">
             ~/oh-hey-lynae · {domain}/
           </div>
@@ -76,7 +69,7 @@ export default async function CategoryPage({ params }: { params: Params }) {
 
       {/* ── Post list ── */}
       {domainPosts.length === 0 ? (
-        <div className="px-[clamp(20px,5vw,80px)] py-24 border-b border-line">
+        <div className="py-24">
           <p className="font-mono text-sm text-ink-mute mb-3">// nothing published here yet</p>
           <p className="font-sans text-sm text-ink-soft">
             Posts in this domain are on the way.{' '}
@@ -92,14 +85,14 @@ export default async function CategoryPage({ params }: { params: Params }) {
             title={`${meta.label.toUpperCase()} · ${domainPosts.length} ${domainPosts.length === 1 ? 'POST' : 'POSTS'}`}
           />
 
-          <div className="border-t border-line px-[clamp(20px,5vw,80px)]">
+          <div className="site-inner">
             {domainPosts.map((post, i) => (
               <Link
                 key={post.slug}
                 href={`/${domain}/${post.slug}`}
                 className={cn(
                   'group grid grid-cols-[60px_1fr_120px] items-center gap-5',
-                  'border-b border-line py-5 transition-all',
+                  ' py-5 transition-all',
                   'hover:-mx-3 hover:bg-paper-2 hover:px-3',
                 )}
               >
@@ -125,7 +118,7 @@ export default async function CategoryPage({ params }: { params: Params }) {
       <section>
         <SectionHeader num={domainPosts.length > 0 ? '02' : '01'} title="OTHER DOMAINS" />
 
-        <div className="grid grid-cols-3 border-y border-line max-md:grid-cols-1">
+        <div className="grid grid-cols-3  max-md:grid-cols-1 site-inner">
           {otherDomains.map((d) => {
             const m     = DOMAIN_META[d]
             const count = posts.filter(p => p.domain === DOMAIN_CONFIG[d].postsDomain).length
@@ -133,7 +126,7 @@ export default async function CategoryPage({ params }: { params: Params }) {
               <Link
                 key={d}
                 href={`/${d}`}
-                className="border-r border-line p-7 last:border-r-0 transition-colors hover:bg-paper-2 max-md:border-r-0 max-md:border-b max-md:last:border-b-0"
+                className="p-7 last:border-r-0 transition-colors hover:bg-paper-2 max-md:border-r-0 max-md:border-b max-md:last:border-b-0"
               >
                 <div className="flex items-center gap-2.5 mb-3">
                   <span

@@ -49,7 +49,7 @@ export default function ClientReel({
         <span className="ml-auto text-ink-mute">[ SELECTED CLIENTS ]</span>
       </div>
 
-      <div className="relative overflow-hidden border-y border-line" style={EDGE_FADE}>
+      <div className="relative overflow-hidden" style={EDGE_FADE}>
         {/* Two copies — the -50% keyframe makes the loop seamless */}
         <div className="flex w-max animate-[marquee_50s_linear_infinite] hover:[animation-play-state:paused]">
           {[0, 1].map((dup) => (

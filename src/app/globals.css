@@ -29,6 +29,23 @@ body {
   to   { transform: translateX(-50%); }
 }
 
+@utility site-inner {
+  max-width: 1500px;
+  margin-inline: auto;
+  width: 100%;
+}
+
+@utility home-inner {
+  background-image: url('/images/paper-grid.svg');
+  background-size: cover;
+  background-position: center;
+}
+
+@utility grid-bg-transparent {
+  background-image: url('/images/grid-transparent.svg');
+  background-size: cover;
+  background-position: center;
+}
 @theme inline {
   /* Fonts — next/font injects --font-geist-sans/mono/fraunces at runtime */
   --font-sans:  var(--font-geist-sans, 'Geist', ui-sans-serif, system-ui, sans-serif);

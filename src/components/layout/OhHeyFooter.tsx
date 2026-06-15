@@ -32,8 +32,8 @@ export default function OhHeyFooter({
   return (
     <footer
       className={cn(
-        'grid grid-cols-[2fr_1fr_1fr_1fr] gap-8',
-        'px-[clamp(20px,5vw,80px)] py-6 font-mono text-xs',
+        'grid grid-cols-[2fr_1fr_1fr_1fr] gap-8 site-inner',
+        'py-6 font-mono text-xs',
         className,
       )}
     >
@@ -59,7 +59,7 @@ export default function OhHeyFooter({
         </div>
       ))}
 
-      <div className="col-span-full mt-7 flex justify-between border-t border-line pt-7 text-ink-mute">
+      <div className="col-span-full mt-7 flex justify-between pt-7 text-ink-mute">
         <div>© 2026 Bryanna Lynae · ALL RIGHTS RESERVED</div>
         <div>
           {version} ·{' '}

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <pattern id="fine" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="#2f6bed" stroke-width="1" stroke-opacity="0.06"></path>
+    </pattern>
+    <pattern id="major" width="128" height="128" patternUnits="userSpaceOnUse">
+      <path d="M128 0H0V128" fill="none" stroke="#2f6bed" stroke-width="1" stroke-opacity="0.10"></path>
+    </pattern>
+    <radialGradient id="tint" cx="50%" cy="42%" r="78%">
+      <stop offset="0%" stop-color="#fbfdff"></stop>
+      <stop offset="100%" stop-color="#eef3fc"></stop>
+    </radialGradient>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#tint)"></rect>
+  <rect width="1920" height="1080" fill="url(#fine)"></rect>
+  <rect width="1920" height="1080" fill="url(#major)"></rect>
+</svg>

@@ -12,10 +12,11 @@ function SectionHeader({ num, title, action, className }: SectionHeaderProps) {
     <div
       className={cn(
         'flex items-baseline justify-between px-[clamp(20px,5vw,80px)]',
-        'pt-16 pb-7',
+        'pt-16 pb-7 max-w-[1600px] mx-auto w-full',
         className,
       )}
     >
+      
       <div className="font-mono text-xs text-ink-soft">
         <span className="mr-2 text-ink-mute">[{num}]</span>
         {title}
