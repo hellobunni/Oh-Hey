@@ -56,7 +56,7 @@ export const PROJECTS: Project[] = [
     client:   "Zingerman's",
     title:    'A warmer, more considered web presence',
     desc:     'Built and styled custom WordPress themes, handled ongoing maintenance, and extended into print — producing graphic design assets so the brand felt consistent from the homepage to the menu insert.',
-    year:     '2022',
+    year:     '2020',
     role:     'Freelance Contractor',
     headline: "A warmer, more considered web presence for an Ann Arbor institution.",
     overview: "Zingerman's has been a beloved Michigan food brand for decades — known for quality, character, and a cult following that extends well beyond Ann Arbor. What they needed was a digital presence that matched that warmth and earned trust at first glance.",
