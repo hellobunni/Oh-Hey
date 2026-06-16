@@ -5,6 +5,7 @@ import { DomainGrid } from '@/components/home/DomainGrid'
 import { posts } from '@/data/posts'
 import type { Domain } from '@/data/domains'
 import { HomeOutro } from '@/components/home/HomeOutro'
+import { subscribeToNewsletter } from '@/app/actions'
 
 const DOMAIN_KEY: Record<string, Domain> = {
   'Tech':      'tech',
@@ -28,7 +29,7 @@ export default function HomePage() {
       <HeroTerminalOH />
       <LatestWriting posts={latestPosts} className="grid-bg-transparent"/>
       <DomainGrid className="grid-bg-transparent"/>
-
+      <HomeOutro onSubscribe={subscribeToNewsletter} />
     </main>
   )
 }

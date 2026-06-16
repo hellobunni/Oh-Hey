@@ -3,7 +3,7 @@ import type { Project } from '@/data/work.data'
 export function ProjectCard({ project }: { project: Project }) {
   return (
     <a
-      href={project.href ?? `/consulting/work/${project.idx}`}
+      href={project.href ?? `/consulting/work/${project.slug}`}
       className="group flex flex-col border-b border-r border-line bg-paper transition-colors hover:bg-paper-2 max-md:border-r-0"
     >
       {/* cover — accent-tinted stripe with tag + index */}
