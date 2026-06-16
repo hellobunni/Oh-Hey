@@ -1,5 +1,15 @@
 export type ProjectTag = 'Design System' | 'Frontend' | 'Brand + Web' | 'UX Strategy'
 
+export type ProjectStat = {
+  value: string
+  label: string
+}
+
+export type ProjectQuote = {
+  text:        string
+  attribution: string
+}
+
 export type Project = {
   idx:       string
   slug:      string
@@ -10,12 +20,15 @@ export type Project = {
   year:      string
   role:      string
   href?:     string
-  // Detail page fields
+  // Detail modal fields
   headline:  string
   overview:  string
   whatIDid:  string
   outcome:   string
   tags:      string[]
+  image?:    string        // URL — logo on bg; placeholder shown when absent
+  stats?:    ProjectStat[]
+  quote?:    ProjectQuote
 }
 
 export const PROJECTS: Project[] = [

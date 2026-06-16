@@ -1,16 +1,39 @@
 import type { Project } from '@/data/work.data'
 
-export function ProjectCard({ project }: { project: Project }) {
+export function ProjectCard({
+  project,
+  onOpen,
+}: {
+  project: Project
+  onOpen?: (p: Project) => void
+}) {
   return (
     <a
       href={project.href ?? `/consulting/work/${project.slug}`}
+      onClick={(e) => { if (onOpen) { e.preventDefault(); onOpen(project) } }}
       className="group flex flex-col border-b border-r border-line bg-paper transition-colors hover:bg-paper-2 max-md:border-r-0"
     >
-      {/* cover — accent-tinted stripe with tag + index */}
-      <div className="relative flex min-h-[180px] flex-col justify-between border-b border-line bg-kodara-accent-soft-solid p-6">
+      {/* cover — accent-tinted with tag, image/placeholder, index */}
+      <div className="relative flex min-h-[180px] flex-col border-b border-line bg-kodara-accent-soft-solid p-6">
         <span className="font-mono text-xxs uppercase tracking-[0.12em] text-accent">
           ● {project.tag}
         </span>
+
+        {/* Logo image or placeholder */}
+        <div className="my-4 flex flex-1 items-center justify-center overflow-hidden border border-line/40">
+          {project.image ? (
+            <img
+              src={project.image}
+              alt={`${project.client} logo`}
+              className="h-full w-full object-cover"
+            />
+          ) : (
+            <div className="flex h-full w-full min-h-[64px] items-center justify-center bg-ink/[0.06]">
+              <div className="h-5 w-16 rounded-sm bg-ink/10" />
+            </div>
+          )}
+        </div>
+
         <span className="font-mono text-xxs tracking-[0.12em] text-ink-mute">
           PROJECT {project.idx}
         </span>
