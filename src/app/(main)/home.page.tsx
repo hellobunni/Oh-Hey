@@ -28,7 +28,7 @@ export default function HomePage() {
     <main>
       <HeroTerminalOH />
       <LatestWriting posts={latestPosts} className="grid-bg-transparent"/>
-      <DomainGrid className="grid-bg-transparent"/>
+      <DomainGrid className="grid-bg-transparent hidden md:block"/>
       <HomeOutro onSubscribe={subscribeToNewsletter} />
     </main>
   )

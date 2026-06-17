@@ -2,7 +2,7 @@ import { CAPABILITIES } from '@/data/about.data'
 
 export function Capabilities() {
   return (
-    <section className="grid grid-cols-[1fr_2fr] items-start gap-20 border-b border-line px-[clamp(20px,5vw,80px)] py-[72px] max-lg:grid-cols-1 max-lg:gap-10">
+    <section className="grid grid-cols-[1fr_2fr] items-start gap-20 border-b border-line px-[clamp(20px,5vw,80px)] py-18 max-lg:grid-cols-1 max-lg:gap-10">
       <div>
         <div className="mb-4 font-mono text-xs uppercase tracking-[0.18em] text-accent">
           — What I bring

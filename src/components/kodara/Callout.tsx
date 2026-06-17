@@ -25,9 +25,7 @@ function Callout({
 }: CalloutProps) {
   return (
     <section className={cn(
-      'border-b border-line px-[clamp(20px,5vw,80px)] py-24',
-      '[background-image:linear-gradient(to_right,rgba(37,99,235,0.07)_1px,transparent_1px),linear-gradient(to_bottom,rgba(37,99,235,0.07)_1px,transparent_1px)]',
-      '[background-size:calc(100%/12)_96px]',
+      'px-[clamp(20px,5vw,80px)] md:py-20 py-8 bg-size-[calc(100%/12)_98px] grid-bg-transparent',
       className,
     )}>
       <div className="mb-10 font-mono text-sm uppercase tracking-wider text-accent">— The Callout</div>
@@ -36,7 +34,7 @@ function Callout({
         {headline}
       </h2>
 
-      <div className="mt-14 flex flex-wrap items-center justify-between gap-8 border-t border-line pt-8">
+      <div className="md:mt-14 mt-8 flex flex-wrap items-center justify-between md:gap-8 gap-4 md:pt-8">
         <div className="font-mono text-xxs uppercase tracking-wider text-ink-soft">{byline}</div>
         <a href={linkHref} className="border-b border-accent pb-1 font-mono text-xxs uppercase tracking-wider text-accent">
           {linkLabel}

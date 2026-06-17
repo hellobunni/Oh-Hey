@@ -20,7 +20,7 @@ export function ProjectCard({
         </span>
 
         {/* Logo image or placeholder */}
-        <div className="my-4 flex flex-1 items-center justify-center overflow-hidden border border-line/40">
+        <div className="my-4 flex flex-1 items-center justify-center overflow-hidden border border-line">
           {project.image ? (
             <img
               src={project.image}

@@ -23,7 +23,7 @@ function CircleArt() {
   const accent = '#2563eb'
 
   return (
-    <div className="relative z-50 flex h-full min-h-[340px] flex-col border border-line-strong bg-accent-soft">
+    <div className="relative z-50 flex h-full min-h-[340px] flex-col bg-accent-soft">
       {/* accent corner ticks */}
       <span className="absolute -left-px -top-px h-px w-8 bg-accent"  />
       <span className="absolute -left-px -top-px h-8 w-px bg-accent"  />
@@ -75,13 +75,13 @@ export default function HeroTerminalK({
   return (
     <section
       className={cn(
-        'bg-kodara-accent-soft/50 border-b border-line py-12',
+        'bg-kodara-accent-soft/50 py-12',
         '[background-image:linear-gradient(to_right,rgba(37,99,235,0.07)_1px,transparent_1px),linear-gradient(to_bottom,rgba(37,99,235,0.07)_1px,transparent_1px)]',
         '[background-size:calc(100%/12)_85px]',
         className,
       )}
     >
-      <div className="max-w-[1280px] mx-auto px-8 py-16 relative z-10">
+      <div className="max-w-[1280px] mx-auto px-8 md:py-16 relative z-10">
         {/* Meta row */}
         <div className="flex items-center gap-3 font-mono text-xxs text-accent mb-10 tracking-wider">
           <span className="inline-block w-8 h-px bg-ink-soft shrink-0" />
@@ -138,7 +138,7 @@ export default function HeroTerminalK({
           </div>
 
           {/* Right: circle art */}
-          <CircleArt />
+        <div className='col-span-1 h-full hidden md:block'>  <CircleArt /></div>
         </div>
       </div>
     </section>

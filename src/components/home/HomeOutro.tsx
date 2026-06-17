@@ -4,13 +4,13 @@ import { CurrentlyCard } from "./CurrentlyCard"
 
 function HomeOutro({ onSubscribe }: { onSubscribe?: (email: string) => Promise<void> | void }) {
   return (
-    <section className="grid grid-cols-2 border-t border-line max-md:grid-cols-1">
+    <section className="grid grid-cols-2">
       <NewsletterSignup
         onSubscribe={onSubscribe}
-        className="px-20 py-16"
+        className="md:px-20 px-6 md:py-12 py-8 col-span-2 md:col-span-1"
       />
       <CurrentlyCard
-        className="border-l border-line px-20 py-16 max-md:border-l-0 max-md:border-t"
+        className="border-l border-line md:px-20 px-6 md:py-16 py-8 max-md:border-l-0 max-md:border-t"
       />
     </section>
   )

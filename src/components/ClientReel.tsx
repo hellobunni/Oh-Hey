@@ -42,11 +42,11 @@ export default function ClientReel({
   className?: string
 }) {
   return (
-    <section className={cn('border-b border-line bg-paper px-[clamp(20px,5vw,80px)] py-14', className)}>
-      <div className="mb-8 flex items-center gap-3 font-mono text-sm uppercase tracking-wider text-accent">
-        <span className="h-px w-8 bg-accent shrink-0" />
+    <section className={cn(' bg-paper px-[clamp(20px,5vw,80px)] py-8 md:py-14', className)}>
+      <div className="mb-8 flex items-center gap-3 font-mono md:text-sm text-xs uppercase tracking-wider text-accent">
+        <span className="h-px md:w-8 w-4 bg-accent shrink-0" />
         Trusted by teams at
-        <span className="ml-auto text-ink-mute">[ SELECTED CLIENTS ]</span>
+        <span className="ml-auto text-ink-mute hidden md:block">[ SELECTED CLIENTS ]</span>
       </div>
 
       <div className="relative overflow-hidden" style={EDGE_FADE}>
@@ -62,7 +62,7 @@ export default function ClientReel({
                 <div
                   key={id}
                   className={cn(
-                    'flex min-w-[180px] shrink-0 items-center justify-center border-r border-line px-12 py-8',
+                    'flex min-w-[180px] shrink-0 items-center justify-center px-12 md:py-8 py-4',
                     'text-ink-mute opacity-60 transition-[opacity,color] duration-200 hover:text-ink hover:opacity-100',
                   )}
                 >

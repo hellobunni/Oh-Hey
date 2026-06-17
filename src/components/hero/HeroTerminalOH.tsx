@@ -78,9 +78,9 @@ export default function HeroTerminalOH({
         <div className="font-mono text-xs text-ink-mute mb-10">{meta}</div>
 
         {/* Two-column layout */}
-        <div className="grid gap-12 items-start" style={{ gridTemplateColumns: '55fr 45fr' }}>
+        <div className="grid gap-12 items-start grid-cols-2">
           {/* Left: headline + body */}
-          <div>
+          <div className='md:col-span-1 col-span-2'>
             <h1
               className="font-sans font-black text-ink tracking-tight leading-[0.94] mb-8"
               style={{ fontSize: 'clamp(52px, 6.5vw, 80px)' }}
@@ -93,7 +93,7 @@ export default function HeroTerminalOH({
           </div>
 
           {/* Right: terminal card */}
-          <TerminalCard lines={terminalLines} className="self-center" />
+          <TerminalCard lines={terminalLines} className="self-center md:col-span-1 col-span-2" />
         </div>
 
       </div>

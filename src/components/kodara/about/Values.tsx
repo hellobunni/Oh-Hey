@@ -2,7 +2,7 @@ import { VALUES } from '@/data/about.data'
 
 export function Values() {
   return (
-    <section className="border-b border-line px-[clamp(20px,5vw,80px)] py-[72px]">
+    <section className="border-b border-line px-[clamp(20px,5vw,80px)] py-18">
       <div className="mb-12 font-mono text-xs uppercase tracking-[0.18em] text-accent">
         — How I work
       </div>

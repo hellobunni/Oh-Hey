@@ -32,12 +32,12 @@ export default function OhHeyFooter({
   return (
     <footer
       className={cn(
-        'grid grid-cols-[2fr_1fr_1fr_1fr] gap-8 site-inner',
-        'py-6 font-mono text-xs',
+        'grid grid-cols-5 gap-8 site-inner md:px-20 px-6',
+        'md:pt-16 md:pb-3 font-mono text-xs',
         className,
       )}
     >
-      <div>
+      <div className='md:col-span-2 col-span-5'>
         <div className="mb-3.5 font-semibold text-ink">oh-hey-lynae</div>
         <p className="max-w-[280px] font-sans text-xs leading-[1.55] text-ink-soft">
           {blurb}
@@ -45,7 +45,7 @@ export default function OhHeyFooter({
       </div>
 
       {columns.map((col) => (
-        <div key={col.title}>
+        <div key={col.title} className='md:col-span-1 col-span-2'>
           <div className="mb-3.5 text-ink-mute">{col.title}</div>
           {col.links.map((l) => (
             <a
@@ -59,7 +59,7 @@ export default function OhHeyFooter({
         </div>
       ))}
 
-      <div className="col-span-full mt-7 flex justify-between pt-7 text-ink-mute">
+      <div className="col-span-full mt-4 flex md:justify-between justify-center pt-7 text-ink-mute">
         <div>© 2026 Bryanna Lynae · ALL RIGHTS RESERVED</div>
         <div>
           {version} ·{' '}

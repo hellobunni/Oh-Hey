@@ -1,17 +1,8 @@
 'use client'
 
-import Link from 'next/link'
 import { useEffect } from 'react'
 import '../../styles/kodara.css'
-import {
-  hero,
-  approach,
-  offerings,
-  industries,
-  processSteps,
-  cta,
-  footer,
-} from '../../data/consulting'
+
 import {
   FigmaLogo,
   QualigenceLogo,
@@ -25,6 +16,7 @@ import ClientReel from '@/components/ClientReel'
 import { Callout } from '@/components/kodara/Callout'
 import { CtaSection } from '@/components/kodara/CtaSection'
 import { WhatIDo } from '@/components/WhatIDo'
+import { cn } from '@/lib/utils'
 
 const reelLogos = [
   { id: 'stockx',     Logo: StockXLogo },
@@ -64,12 +56,15 @@ export default function ConsultingPage() {
   }, [])
 
   return (
-    <div className="kodara kodara-page">
-       <HeroTerminalK />
+    <div className={cn(
+      'kodara',
+      
+    )}>
+       <HeroTerminalK className='bg-kodara-accent-soft/50' />
        <ClientReel className='bg-kodara-accent-soft/50' />
        <WhatIDo className='bg-kodara-accent-soft/50' theme='kodara' />
        <Callout className='bg-kodara-accent-soft/50' />
-       <CtaSection  className='bg-kodara-accent-soft/50' />
+       <CtaSection  />
     </div>
   )
 }

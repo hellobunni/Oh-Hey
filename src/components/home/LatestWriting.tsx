@@ -22,7 +22,7 @@ function LatestWriting({ posts, num = '01', className }: LatestWritingProps) {
     <section className={className}>
       <SectionHeader num={num} title="LATEST WRITING" action={{ label: 'View archive →', href: '/archive' }} />
 
-      <div className="px-[clamp(20px,5vw,80px)] pb-12 site-inner">
+      <div className="px-[clamp(20px,5vw,80px)] md:pb-12 site-inner">
       {posts.map((p) => {
           const meta = DOMAIN_META[p.domain]
           return (
@@ -30,7 +30,7 @@ function LatestWriting({ posts, num = '01', className }: LatestWritingProps) {
               key={p.n}
               href={p.href}
               className={cn(
-                'group grid grid-cols-[60px_1fr_140px_100px] items-center gap-5',
+                'group grid md:grid-cols-[60px_1fr_140px_100px] items-center gap-5',
                 'py-5 transition-all',
                 'hover:-mx-3 hover:bg-paper-2 hover:px-3',
               )}

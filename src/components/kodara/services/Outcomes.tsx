@@ -2,7 +2,7 @@ import { OUTCOMES } from '@/data/services.data'
 
 export function Outcomes() {
   return (
-    <section className="border-y border-line bg-kodara-accent-soft-solid px-[clamp(20px,5vw,80px)] py-[72px]">
+    <section className="border-y border-line bg-kodara-accent-soft-solid px-[clamp(20px,5vw,80px)] py-18">
       <div className="grid grid-cols-4 border-l border-line max-[640px]:grid-cols-1">
         {OUTCOMES.map((o) => (
           <div key={o.lbl} className="border-b border-r border-t border-line p-8">

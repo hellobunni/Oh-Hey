@@ -48,7 +48,7 @@ export function Nav({
     : undefined
 
   const blurBg = brand === 'kodara'
-    ? 'bg-[color-mix(in_oklab,var(--color-kodara-accent-soft/5)_85%,transparent)]'
+    ? 'bg-kodara-accent-soft-solid/85'
     : 'bg-[color-mix(in_oklab,var(--color-paper)_80%,transparent)]'
 
   return (

@@ -13,7 +13,7 @@ const PRINCIPLES: Principle[] = [
 
 function OperatingPrinciples({ principles = PRINCIPLES, className }: { principles?: Principle[]; className?: string }) {
   return (
-    <section className={cn('border-b border-line px-[clamp(20px,5vw,80px)] py-[72px]', className)}>
+    <section className={cn('border-b border-line px-[clamp(20px,5vw,80px)] py-18', className)}>
       <div className="mb-12 font-mono text-sm uppercase tracking-wider text-accent">— Operating Principles</div>
 
       <div className="grid grid-cols-3 border-l border-t border-line-strong max-md:grid-cols-1">

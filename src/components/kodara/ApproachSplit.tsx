@@ -35,7 +35,7 @@ function List({ title, items }: { title: string; items: string[] }) {
 function ApproachSplit({ className }: { className?: string }) {
   return (
     <section className={cn(
-      'grid grid-cols-[1fr_2fr] gap-16 border-b border-line px-[clamp(20px,5vw,80px)] py-[72px]',
+      'grid grid-cols-[1fr_2fr] gap-16 border-b border-line px-[clamp(20px,5vw,80px)] py-18',
       'max-md:grid-cols-1 max-md:gap-10',
       className,
     )}>

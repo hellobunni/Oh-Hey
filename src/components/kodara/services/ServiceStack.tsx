@@ -2,7 +2,7 @@ import { STACK } from '@/data/services.data'
 
 export function ServiceStack() {
   return (
-    <section className="grid grid-cols-[1fr_2fr] items-start gap-20 border-t border-line px-[clamp(20px,5vw,80px)] py-[72px] max-lg:grid-cols-1 max-lg:gap-10 bg-kodara-accent-soft/20">
+    <section className="grid grid-cols-[1fr_2fr] items-start gap-20 border-t border-line px-[clamp(20px,5vw,80px)] py-18 max-lg:grid-cols-1 max-lg:gap-10 bg-kodara-accent-soft/20">
       <div>
         <div className="mb-4 font-mono text-sm uppercase tracking-wider text-accent">
           Tools &amp; stack

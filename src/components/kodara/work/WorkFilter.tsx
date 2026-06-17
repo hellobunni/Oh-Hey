@@ -15,13 +15,13 @@ export function WorkFilter({
   total:    number
 }) {
   return (
-    <div className="flex flex-wrap border-b border-line px-[clamp(20px,5vw,80px)] font-mono text-xs">
-      {WORK_FILTERS.map((f) => (
+    <div className="flex flex-wrap border-b border-line md:px-[clamp(20px,5vw,80px)] font-mono md:text-xs text-xxs">
+      {WORK_FILTERS.slice(1, 5).map((f) => (
         <button
           key={f}
           onClick={() => onChange(f)}
           className={cn(
-            'border-r border-line px-5 py-[18px] uppercase tracking-wide transition-colors',
+            'border-r border-line px-4 md:px-5 py-[18px] uppercase tracking-wide transition-colors',
             active === f
               ? 'text-accent'
               : 'text-ink-soft hover:bg-paper-2 hover:text-ink',
@@ -30,7 +30,7 @@ export function WorkFilter({
           {f}
         </button>
       ))}
-      <span className="ml-auto py-[18px] pr-0 text-ink-mute">
+      <span className="ml-auto py-[18px] pr-0 text-ink-mute hidden md:block">
         [ {String(shown).padStart(2, '0')} / {String(total).padStart(2, '0')} ]
       </span>
     </div>
