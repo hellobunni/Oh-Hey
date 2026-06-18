@@ -8,6 +8,8 @@ import { cn } from '@/lib/utils'
 export default function AppChrome({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
   const isKodara = pathname.startsWith('/consulting') || pathname === '/questionnaire'
+  const showNav = pathname !== '/consulting/workwithme'
+  const showFooter = pathname !== '/consulting/workwithme'
 
   const KODARA_ITEMS: NavItem[] = [
     { label: 'Work', href: '/consulting/work' },
@@ -19,10 +21,10 @@ export default function AppChrome({ children }: { children: React.ReactNode }) {
   return (
     <div className={cn('min-h-screen flex flex-col font-sans tracking-normal antialiased wrap-anywhere'
     ) }>
-      {!isKodara && <Nav />}
-      {isKodara && <Nav brand="kodara" items={KODARA_ITEMS} ctaLabel="Start a project →" ctaHref="/consulting/contact" linksAlign="center" brandHref="/consulting" />}
+      {showNav && !isKodara && <Nav />}
+      {showNav && isKodara && <Nav brand="kodara" items={KODARA_ITEMS} ctaLabel="Start a project →" ctaHref="/consulting/contact" linksAlign="center" brandHref="/consulting" />}
       {children}
-      <FooterSwitch/>
+      {showFooter && <FooterSwitch />}
     </div>
   )
 }
