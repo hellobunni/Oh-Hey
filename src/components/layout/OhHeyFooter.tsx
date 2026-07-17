@@ -63,7 +63,7 @@ export default function OhHeyFooter({
         <div>© 2026 Bryanna Lynae · ALL RIGHTS RESERVED</div>
         <div>
           {version} ·{' '}
-          <a href="/consulting" className="inline text-accent">↗ kodara/</a>
+          <a href="https://kodaraadvisory.com" target="_blank" rel="noopener noreferrer" className="inline text-accent">↗ kodara/</a>
         </div>
       </div>
     </footer>

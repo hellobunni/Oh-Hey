@@ -47,9 +47,7 @@ export function Nav({
     ? { label: ctaLabel.trim(), href: ctaHref.trim() }
     : undefined
 
-  const blurBg = brand === 'kodara'
-    ? 'bg-kodara-accent-soft-solid/85'
-    : 'bg-[color-mix(in_oklab,var(--color-paper)_80%,transparent)]'
+  const blurBg = 'bg-[color-mix(in_oklab,var(--color-paper)_80%,transparent)]'
 
   return (
     <div className={cn('sticky top-0 z-40', className)}>
