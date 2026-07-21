@@ -5,8 +5,8 @@ import { Resend } from 'resend'
 export async function subscribeToNewsletter(email: string) {
   const resend = new Resend(process.env.RESEND_API_KEY)
   const { error } = await resend.emails.send({
-    from: 'Oh Hey <hi@mail.kodaraadvisory.co>',
-    to: 'kodaraadvisory@gmail.com',
+    from: 'Oh Hey <hi@oheythere.com>',
+    to: process.env.NEWSLETTER_TO_EMAIL ?? 'hi@oheythere.com',
     subject: `New newsletter subscriber — ${email}`,
     html: `
       <div style="font-family:monospace;max-width:600px;margin:0 auto;padding:32px;color:#111;">

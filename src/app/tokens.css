@@ -1,10 +1,6 @@
 /* ═══════════════════════════════════════════════════════════════════════════
-   oh-hey-lynae × Kodara — Design System Tokens
+   oh-hey-lynae — Design System Tokens
    ───────────────────────────────────────────────────────────────────────────
-   Single source of truth for both sibling brands.
-   - oh-hey-lynae (public blog)           — :root
-   - Kodara Direction A (navy/electric) — .kodara
-   - Kodara Direction B (premium black) — .kodara-b
    Dark mode: .dark  |  Density: .density-{packed|cozy|airy}
    Domain palettes: .palette-{spectrum|mono|warm|electric}
 

@@ -61,10 +61,7 @@ export default function OhHeyFooter({
 
       <div className="col-span-full mt-4 flex md:justify-between justify-center pt-7 text-ink-mute">
         <div>© 2026 Bryanna Lynae · ALL RIGHTS RESERVED</div>
-        <div>
-          {version} ·{' '}
-          <a href="https://kodaraadvisory.com" target="_blank" rel="noopener noreferrer" className="inline text-accent">↗ kodara/</a>
-        </div>
+        <div>{version}</div>
       </div>
     </footer>
   )

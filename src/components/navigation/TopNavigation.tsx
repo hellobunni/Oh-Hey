@@ -11,13 +11,6 @@ const OH_HEY_LINKS: NavLink[] = [
   { label: 'About' },
 ]
 
-const KODARA_LINKS: NavLink[] = [
-  { label: 'Approach' },
-  { label: 'Services', active: true },
-  { label: 'Process' },
-  { label: 'Industries' },
-]
-
 interface NavRow {
   name: string
   arg:  string
@@ -39,21 +32,6 @@ const BRAND_ROWS: NavRow[] = [
     name: 'oh-hey-lynae · links right',
     arg:  'brand="oh-hey-lynae" linksAlign="right"',
     node: <TopNav brand="oh-hey-lynae" links={OH_HEY_LINKS} cta={{ label: 'Subscribe →', href: '/subscribe' }} linksAlign="right" />,
-  },
-  {
-    name: 'Kodara · links left',
-    arg:  'brand="kodara" linksAlign="left"',
-    node: <TopNav brand="kodara" links={KODARA_LINKS} cta={{ label: 'Start a project →', href: '/consulting/contact' }} linksAlign="left" />,
-  },
-  {
-    name: 'Kodara · links center',
-    arg:  'brand="kodara" linksAlign="center"',
-    node: <TopNav brand="kodara" links={KODARA_LINKS} cta={{ label: 'Start a project →', href: '/consulting/contact' }} linksAlign="center" />,
-  },
-  {
-    name: 'Kodara · links right',
-    arg:  'brand="kodara" linksAlign="right"',
-    node: <TopNav brand="kodara" links={KODARA_LINKS} cta={{ label: 'Start a project →', href: '/consulting/contact' }} linksAlign="right" />,
   },
 ]
 
@@ -80,15 +58,14 @@ export default function TopNavigation({ className }: TopNavigationProps) {
         Components — Navigation
       </div>
       <h2 className="font-serif text-3xl font-bold mb-2">
-        Two brands, <em>three alignments.</em>
+        Three alignments.
       </h2>
       <p className="font-mono text-sm text-ink-soft mb-8 max-w-2xl leading-relaxed">
-        <code className="text-accent">brand</code> sets the visual identity.{' '}
         <code className="text-accent">linksAlign</code> controls where nav links sit: left, center, or right.
       </p>
 
       <div className="font-mono text-xs tracking-wide uppercase text-ink-soft mb-3">
-        Top nav · 2 brands × 3 alignments
+        Top nav · 3 alignments
       </div>
       <div className="flex flex-col gap-3">
         {BRAND_ROWS.map((row) => (

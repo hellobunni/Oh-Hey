@@ -1,7 +1,7 @@
 import React from 'react'
 import { cn } from '@/lib/utils'
 
-export type BroadsheetBrand = 'oh-hey' | 'lv'
+export type BroadsheetBrand = 'oh-hey'
 
 export interface HeroBroadsheetProps {
   brand?:     BroadsheetBrand
@@ -25,22 +25,10 @@ const GRID_STYLE: Record<BroadsheetBrand, React.CSSProperties> = {
       ')',
     ].join(''),
   },
-  lv: {
-    backgroundImage: [
-      'repeating-linear-gradient(',
-      '  to right,',
-      '  rgba(37,99,235,0.07) 0px,',
-      '  rgba(37,99,235,0.07) 1px,',
-      '  transparent 1px,',
-      '  transparent 12.5%',
-      ')',
-    ].join(''),
-  },
 }
 
 const BRAND_BG: Record<BroadsheetBrand, string> = {
   'oh-hey': 'bg-paper',
-  lv:       'bg-white',
 }
 
 const BRAND_DEFAULTS: Record<BroadsheetBrand, {
@@ -58,16 +46,6 @@ const BRAND_DEFAULTS: Record<BroadsheetBrand, {
       </>
     ),
     sub: "The logbook. Writing, building, lifting, drawing — all of it, nothing siloed.",
-  },
-  lv: {
-    meta:     'DESIGN + ENGINEERING · KODARA',
-    headline: (
-      <>
-        Built for founders{' '}
-        <em className="not-italic text-accent">who ship.</em>
-      </>
-    ),
-    sub: "Senior design and engineering, without the agency overhead.",
   },
 }
 

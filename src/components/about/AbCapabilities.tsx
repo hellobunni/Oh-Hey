@@ -1,4 +1,4 @@
-import { CAPABILITIES } from '@/data/about.data'
+import { CAPABILITIES } from '@content/about.data'
 import { SectionHeader } from '@/components/layout/SectionHeader'
 
 interface AbCapabilitiesProps {

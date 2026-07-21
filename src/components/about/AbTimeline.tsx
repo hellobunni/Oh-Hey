@@ -1,4 +1,4 @@
-import { TIMELINE } from '@/data/about.data'
+import { TIMELINE } from '@content/about.data'
 import { SectionHeader } from '@/components/layout/SectionHeader'
 import { cn } from '@/lib/utils'
 

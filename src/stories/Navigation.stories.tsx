@@ -106,7 +106,7 @@ function MobileNavDemo() {
       {open && (
         <MobileMenu
           items={MOBILE_ITEMS}
-          externalLink={{ label: 'Lunar Kodara' }}
+          externalLink={{ label: 'oh-hey-lynae' }}
         />
       )}
       <div className="h-48 bg-paper-2 flex items-center justify-center font-mono text-xs text-ink-mute">
@@ -164,7 +164,7 @@ function ResponsiveNavDemo() {
           {mobileOpen && (
             <MobileMenu
               items={MOBILE_ITEMS}
-              externalLink={{ label: 'Lunar Kodara' }}
+              externalLink={{ label: 'oh-hey-lynae' }}
             />
           )}
           <div className="h-32 bg-paper-2 flex items-center justify-center font-mono text-xs text-ink-mute">
@@ -240,9 +240,9 @@ export const Breadcrumbs: Story = {
         <Card name="Long path" arg="truncated" bodyClassName="p-6 flex justify-center">
           <Breadcrumb items={[
             { label: '~'            },
-            { label: 'kodara'       },
-            { label: 'services'     },
-            { label: 'design-systems' },
+            { label: 'oh-hey-lynae' },
+            { label: 'writing'      },
+            { label: 'building-with-tanstack' },
           ]} />
         </Card>
       </Grid>
