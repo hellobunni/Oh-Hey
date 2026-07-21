@@ -11,6 +11,7 @@ const meta = {
     variant: {
       control: 'select',
       options: ['default', 'secondary', 'accent', 'ghost'],
+
     },
     size: {
       control: 'select',
@@ -35,10 +36,6 @@ export const Accent: Story = {
   args: { variant: 'accent', children: 'Start questionnaire →' },
 }
 
-export const VegaAccent: Story = {
-  args: { variant: 'vega-accent', children: 'HEY VEGA →' },
-}
-
 export const Ghost: Story = {
   args: { variant: 'ghost', children: 'View all →' },
 }
@@ -49,7 +46,6 @@ export const AllVariants: Story = {
       <Button variant="default">Send message →</Button>
       <Button variant="secondary">View archive</Button>
       <Button variant="accent">Start questionnaire →</Button>
-      <Button variant="vega-accent">HEY VEGA →</Button>
       <Button variant="ghost">View all →</Button>
     </div>
   ),

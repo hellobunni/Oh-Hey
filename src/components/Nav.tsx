@@ -1,50 +1,77 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import Link from 'next/link'
+import { cn } from '@/lib/utils'
+import { TopNav } from '@/components/ui/navigation'
+import MobileNav from '@/components/navigation/MobileNav'
+import type { NavBrand, NavLinksAlign, NavLink, MobileMenuItem } from '@/components/ui/navigation'
 
-const navLinks = [
-  { label: 'Tech', href: '/tech' },
-  { label: 'Fitness', href: '/fitness' },
+// ─── Types ────────────────────────────────────────────────────────────────────
+
+export type NavItem = { label: string; href: string; active?: boolean }
+
+export interface NavProps {
+  brand?:       NavBrand
+  brandHref?:   string
+  items?:       NavItem[]
+  linksAlign?:  NavLinksAlign
+  ctaLabel?:    string
+  ctaHref?:     string
+  className?:   string
+}
+
+// ─── Defaults ─────────────────────────────────────────────────────────────────
+
+const DEFAULT_ITEMS: NavItem[] = [
+  { label: 'Writing',  href: '/archive', active: true },
+  { label: 'Tech',     href: '/tech'     },
+  { label: 'Fitness',  href: '/fitness'  },
   { label: 'Creative', href: '/creative' },
-  { label: 'Nerd Stuff', href: '/nerd-stuff' },
+  { label: 'Nerd',     href: '/nerd'     },
+  { label: 'About',    href: '/about'    },
 ]
 
-export default function Nav() {
-  const [scrolled, setScrolled] = useState(false)
+// ─── Component ────────────────────────────────────────────────────────────────
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 10)
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+export function Nav({
+  brand       = 'oh-hey-lynae',
+  brandHref   = '/',
+  items       = DEFAULT_ITEMS,
+  linksAlign  = 'left',
+  ctaLabel,
+  ctaHref,
+  className,
+}: NavProps) {
+  const navLinks: NavLink[]           = items.map(({ label, href, active }) => ({ label, href, active }))
+  const mobileItems: MobileMenuItem[] = items.map(({ label, href, active }) => ({ label, href, active }))
+  const cta = ctaLabel?.trim() && ctaHref?.trim()
+    ? { label: ctaLabel.trim(), href: ctaHref.trim() }
+    : undefined
+
+  const blurBg = 'bg-[color-mix(in_oklab,var(--color-paper)_80%,transparent)]'
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? 'bg-white/90 backdrop-blur-md border-b border-zinc-200 shadow-sm'
-          : 'bg-transparent'
-      }`}
-    >
-      <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-        <Link
-          href="/"
-          className={`font-black text-lg tracking-tight transition-colors ${
-            scrolled ? 'text-zinc-900 hover:text-zinc-600' : 'text-white hover:text-zinc-200'
-          }`}
-        >
-          oh-hey-lynae
-        </Link>
-        <a
-          href="/work-with-me"
-          className={`text-sm font-semibold transition-colors ${
-            scrolled ? 'text-zinc-900 hover:text-zinc-500' : 'text-white hover:text-zinc-200'
-          }`}
-        >
-          Work with me
-        </a>
-      </nav>
-    </header>
+    <div className={cn('sticky top-0 z-40', className)}>
+      {/* ── Desktop bar (md+) ── */}
+      <div className={cn('hidden md:block backdrop-blur-md', blurBg)}>
+        <TopNav
+          brand={brand}
+          links={navLinks}
+          linksAlign={linksAlign}
+          cta={cta}
+          brandHref={brandHref}
+          className="px-[clamp(20px,5vw,80px)]"
+        />
+      </div>
+
+      {/* ── Mobile bar + drawer (<md) — state lives in MobileNav ── */}
+      <div className={cn('md:hidden backdrop-blur-md', blurBg)}>
+        <MobileNav
+          brand={brand}
+          items={mobileItems}
+          brandHref={brandHref}
+          externalLink={cta}
+        />
+      </div>
+    </div>
   )
 }

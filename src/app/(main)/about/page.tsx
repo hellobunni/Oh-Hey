@@ -1,17 +1,18 @@
+import { AbHero } from '@/components/about/AbHero'
+import { AbTimeline } from '@/components/about/AbTimeline'
+import { AbValues } from '@/components/about/AbValues'
+import { AbCapabilities } from '@/components/about/AbCapabilities'
+import { HomeOutro } from '@/components/home/HomeOutro'
+import { subscribeToNewsletter } from '@/app/actions'
+
 export default function About() {
   return (
-    <main className="page-wrap px-4 py-12">
-      <section className="island-shell rounded-2xl p-6 sm:p-8">
-        <p className="island-kicker mb-2">About</p>
-        <h1 className="display-title mb-3 text-4xl font-bold text-[var(--sea-ink)] sm:text-5xl">
-          A small starter with room to grow.
-        </h1>
-        <p className="m-0 max-w-3xl text-base leading-8 text-[var(--sea-ink-soft)]">
-          Building things on the internet — design systems, frontend, and whatever else
-          needs building. Use this as a clean foundation, then layer in your own routes,
-          styling, and add-ons.
-        </p>
-      </section>
+    <main>
+      <AbHero />
+      <AbTimeline />
+      <AbValues />
+      <AbCapabilities />
+      <HomeOutro onSubscribe={subscribeToNewsletter} />
     </main>
   )
 }

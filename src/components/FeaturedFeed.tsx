@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { posts, domainStyles } from '@/data/posts'
+import { getAllPosts, domainStyles } from '@/lib/posts'
 
 export default function FeaturedFeed() {
   return (
@@ -18,12 +18,12 @@ export default function FeaturedFeed() {
         </div>
 
         <ul className="divide-y divide-zinc-100">
-          {posts.map((post) => {
+          {getAllPosts().map((post) => {
             const styles = domainStyles[post.domain]
             return (
-              <li key={post.id}>
+              <li key={post.slug}>
                 <Link
-                  href={`/posts/${post.id}`}
+                  href={`/posts/${post.slug}`}
                   className="group flex items-center justify-between gap-4 py-4"
                 >
                   <h3 className="text-sm font-medium text-zinc-800 group-hover:text-zinc-500 transition-colors truncate">

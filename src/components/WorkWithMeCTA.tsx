@@ -1,18 +1,25 @@
-export default function WorkWithMeCTA() {
+import { cn } from '@/lib/utils'
+
+export default function WorkWithMeCTA({ className }: { className?: string }) {
   return (
-    <section className="px-6 py-24 border-t border-zinc-100">
-      <div className="max-w-6xl mx-auto flex flex-col sm:flex-row sm:items-center sm:justify-between gap-8">
+    <section className={cn(
+      'border-b border-line px-[clamp(20px,5vw,80px)] py-24',
+      '[background-image:linear-gradient(to_right,rgba(37,99,235,0.07)_1px,transparent_1px),linear-gradient(to_bottom,rgba(37,99,235,0.07)_1px,transparent_1px)]',
+      '[background-size:calc(100%/12)_96px]',
+      className,
+    )}>
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-8">
         <div>
-          <h2 className="text-lg font-bold text-zinc-900 mb-1">
+          <h2 className="font-sans text-lg font-bold text-ink mb-1">
             Want to work together?
           </h2>
-          <p className="text-sm text-zinc-500">
+          <p className="text-sm text-ink-soft">
             I'm available for consulting, collaborations, and projects.
           </p>
         </div>
         <a
           href="/work-with-me"
-          className="inline-flex items-center gap-2 bg-zinc-900 text-white text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-zinc-700 transition-colors shrink-0"
+          className="inline-flex items-center gap-2 bg-ink text-paper font-mono text-xs uppercase tracking-wider px-6 py-3 hover:bg-neutral-800 transition-colors shrink-0"
         >
           Get in touch →
         </a>

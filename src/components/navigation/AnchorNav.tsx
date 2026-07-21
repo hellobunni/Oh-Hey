@@ -18,14 +18,14 @@ const AnchorNav = ({ items, label = '// ON THIS PAGE', className }: AnchorNavPro
 
   return (
     <div className={cn('flex flex-col pl-4 border-l border-line', className)}>
-    <div className="font-mono text-[10px] tracking-[0.1em] text-ink-mute mb-3">
+    <div className="font-mono text-xxs tracking-[0.1em] text-ink-mute mb-3">
       {label}
     </div>
     {items.map((item, i) => (
       <a
         key={item.label}
         className={cn(
-          'relative block py-1.5 font-mono text-[12px] no-underline cursor-pointer transition-colors duration-100',
+          'relative block py-1.5 font-mono text-xs no-underline cursor-pointer transition-colors duration-100',
           i === active ? 'text-ink font-semibold' : 'text-ink-soft hover:text-ink'
         )}
         href={item.href}

@@ -45,7 +45,7 @@ const StepNav = ({ steps, className }: StepNavProps) => {
           {steps.map((step, i) => (
             <div key={step.label} className={stepVariants({ status: step.status })}>
               <div className={stepBarVariants({ status: step.status })} />
-              <span className="text-[10px] tracking-[0.1em] uppercase text-current">
+              <span className="text-xxs tracking-[0.1em] uppercase text-current">
                 {`STEP ${String(i + 1).padStart(2, '0')}`}
               </span>
               {step.label}
