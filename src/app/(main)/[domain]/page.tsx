@@ -1,8 +1,8 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
-import { posts } from '@/data/posts'
-import { DOMAIN_META, type Domain } from '@/data/domains'
+import { getAllPosts } from '@/lib/posts'
+import { DOMAIN_META, type Domain } from '@content/domains'
 import { SectionHeader } from '@/components/layout/SectionHeader'
 const VALID_DOMAINS = ['tech', 'fitness', 'creative', 'nerd'] as const
 type DomainSlug = typeof VALID_DOMAINS[number]
@@ -26,9 +26,10 @@ export default async function CategoryPage({ params }: { params: Params }) {
   if (!VALID_DOMAINS.includes(rawDomain as DomainSlug)) notFound()
   const domain = rawDomain as DomainSlug
 
+  const allPosts     = getAllPosts()
   const meta         = DOMAIN_META[domain]
   const config       = DOMAIN_CONFIG[domain]
-  const domainPosts  = posts.filter(p => p.domain === config.postsDomain)
+  const domainPosts  = allPosts.filter(p => p.domain === config.postsDomain)
   const otherDomains = VALID_DOMAINS.filter(d => d !== domain)
 
   return (
@@ -126,7 +127,7 @@ export default async function CategoryPage({ params }: { params: Params }) {
         <div className="site-inner grid grid-cols-3 px-[clamp(20px,5vw,80px)] pb-12 max-md:grid-cols-1">
           {otherDomains.map((d) => {
             const m     = DOMAIN_META[d]
-            const count = posts.filter(p => p.domain === DOMAIN_CONFIG[d].postsDomain).length
+            const count = allPosts.filter(p => p.domain === DOMAIN_CONFIG[d].postsDomain).length
             return (
               <Link
                 key={d}

@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
-import { posts } from '@/data/posts'
-import { DOMAIN_META, type Domain } from '@/data/domains'
+import { getAllPosts, type Post as LibPost } from '@/lib/posts'
+import { DOMAIN_META, type Domain } from '@content/domains'
 import { SectionHeader } from '@/components/layout/SectionHeader'
 // Maps posts.ts Domain → domains.ts Domain slug
 const DOMAIN_SLUG: Record<string, Domain> = {
@@ -30,7 +30,7 @@ type MappedPost = {
   href:    string
 }
 
-function mapPosts(raw: typeof posts): MappedPost[] {
+function mapPosts(raw: LibPost[]): MappedPost[] {
   return raw.map((p, i) => {
     const domain = DOMAIN_SLUG[p.domain]
     return {
@@ -62,9 +62,10 @@ export default async function ArchivePage({ searchParams }: { searchParams: Sear
     ? (rawDomain as DomainFilter)
     : undefined
 
+  const allPosts = getAllPosts()
   const filtered = activeFilter
-    ? posts.filter(p => DOMAIN_SLUG[p.domain] === activeFilter)
-    : posts
+    ? allPosts.filter(p => DOMAIN_SLUG[p.domain] === activeFilter)
+    : allPosts
 
   const mapped  = mapPosts(filtered)
   const grouped = groupByYear(mapped)
@@ -84,7 +85,7 @@ export default async function ArchivePage({ searchParams }: { searchParams: Sear
           </h1>
 
           <p className="font-mono text-sm text-ink-mute">
-            {posts.length} posts · 4 domains
+            {allPosts.length} posts · 4 domains
           </p>
         </div>
       </section>
@@ -101,11 +102,11 @@ export default async function ArchivePage({ searchParams }: { searchParams: Sear
                 : 'border-line text-ink-soft hover:border-ink hover:text-ink',
             )}
           >
-            All ({posts.length})
+            All ({allPosts.length})
           </Link>
 
           {VALID_FILTERS.map((d) => {
-            const count  = posts.filter(p => DOMAIN_SLUG[p.domain] === d).length
+            const count  = allPosts.filter(p => DOMAIN_SLUG[p.domain] === d).length
             const meta   = DOMAIN_META[d]
             const active = activeFilter === d
             return (

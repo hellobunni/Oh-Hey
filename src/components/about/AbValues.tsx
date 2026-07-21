@@ -1,4 +1,4 @@
-import { VALUES } from '@/data/about.data'
+import { VALUES } from '@content/about.data'
 import { SectionHeader } from '@/components/layout/SectionHeader'
 
 interface AbValuesProps {

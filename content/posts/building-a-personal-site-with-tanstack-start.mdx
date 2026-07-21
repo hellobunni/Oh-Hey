@@ -1,0 +1,16 @@
+---
+title: Building a personal site with TanStack Start
+excerpt: Why I chose TanStack over Next.js and how the DX compares after a week of building.
+domain: Tech
+date: 2026-04-07
+---
+
+I've shipped several personal sites over the years — Gatsby, Next.js, SvelteKit, plain Vite. Each one taught me something. This one taught me that file-based routing doesn't have to mean opinionated everything.
+
+TanStack Start is still young, but the DX is surprisingly tight for a v1. The router is the star: typed params, typed search params, nested layouts, and loaders that actually feel ergonomic. I didn't hit a single "why won't this type-check" moment that lasted more than five minutes.
+
+The part I was most curious about was SSR. TanStack Start handles it through Vinxi under the hood, which means you get server functions, streaming, and edge-ready output without wiring up a custom server. For a personal site that's mostly static content, that's more than enough.
+
+Where it still shows its age is the ecosystem. Plugins, adapters, and third-party integrations are thinner than Next.js. If you need a rich plugin ecosystem or a large community to copy-paste solutions from, stick with Next. But if you want to actually understand your stack and enjoy the process, Start is worth the bet.
+
+I'll keep building here. The repo is clean, the patterns are consistent, and I'm not fighting the framework.

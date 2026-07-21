@@ -12,6 +12,9 @@
     "paths": {
       "@/*": [
         "./src/*"
+      ],
+      "@content/*": [
+        "./content/*"
       ]
     },
     "lib": [

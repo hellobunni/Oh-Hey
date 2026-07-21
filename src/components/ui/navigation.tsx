@@ -4,7 +4,7 @@ import { cn, cva } from '@/lib/utils'
 
 // ─── Top Nav ──────────────────────────────────────────────────────────────────
 
-export type NavBrand     = 'oh-hey-lynae' | 'kodara'
+export type NavBrand     = 'oh-hey-lynae'
 export type NavLinksAlign = 'left' | 'center' | 'right'
 
 export interface NavLink {
@@ -33,7 +33,6 @@ const navContainerVariants = cva(
     variants: {
       brand: {
         'oh-hey-lynae': 'bg-paper border-line',
-        'kodara':        'border-white/[0.07]',
       },
     },
     defaultVariants: { brand: 'oh-hey-lynae' },
@@ -46,7 +45,6 @@ const navBrandVariants = cva(
     variants: {
       brand: {
         'oh-hey-lynae': 'font-mono text-sm font-medium text-ink',
-        'kodara':        'font-mono text-sm font-semibold tracking-[0.1em] text-kodara-ink',
       },
     },
   }
@@ -58,7 +56,6 @@ const navLinkVariants = cva(
     variants: {
       brand: {
         'oh-hey-lynae': 'text-sm text-ink-soft hover:text-ink',
-        'kodara':        'font-mono text-xs tracking-wide uppercase text-kodara-ink-2 hover:text-kodara-accent active:text-kodara-accent',
       },
       active: {
         true:  '',
@@ -66,8 +63,7 @@ const navLinkVariants = cva(
       },
     },
     compoundVariants: [
-      { brand: 'oh-hey-lynae', active: true, class: 'text-accent'        },
-      { brand: 'kodara',        active: true, class: 'text-kodara-accent' },
+      { brand: 'oh-hey-lynae', active: true, class: 'text-accent' },
     ],
     defaultVariants: { active: false },
   }
@@ -79,7 +75,6 @@ const navCtaVariants = cva(
     variants: {
       brand: {
         'oh-hey-lynae': 'py-[7px] px-[14px] text-sm font-medium text-ink border border-line-strong hover:bg-paper-2 transition-colors duration-100',
-        'kodara':        'py-2 px-5 bg-accent font-mono text-xs font-bold tracking-[0.1em] uppercase text-white',
       },
     },
   }
@@ -99,9 +94,6 @@ const BRAND_MARK: Record<NavBrand, React.ReactNode> = {
       <span className="w-3 h-3 bg-accent shrink-0" />
       <span>oh-hey-lynae</span>
     </>
-  ),
-  'kodara': (
-    <img src="/images/branding/svg/kodara-logo.svg" alt="Kodara" className="w-38 h-20" />
   ),
 }
 

@@ -1,7 +1,8 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
-import { posts, getPostBySlug } from '@/data/posts'
-import { DOMAIN_META, type Domain } from '@/data/domains'
+import { getAllPosts, getPostBySlug } from '@/lib/posts'
+import { DOMAIN_META, type Domain } from '@content/domains'
+import { MDXRemote } from 'next-mdx-remote/rsc'
 
 const VALID_DOMAINS = ['tech', 'fitness', 'creative', 'nerd'] as const
 type DomainSlug = typeof VALID_DOMAINS[number]
@@ -14,7 +15,7 @@ const DOMAIN_CONFIG: Record<DomainSlug, { postsDomain: string }> = {
 }
 
 export function generateStaticParams() {
-  return posts.map(post => {
+  return getAllPosts().map(post => {
     const domainSlug = Object.entries(DOMAIN_CONFIG).find(
       ([, cfg]) => cfg.postsDomain === post.domain
     )?.[0]
@@ -35,7 +36,6 @@ export default async function PostPage({ params }: { params: Params }) {
   if (!post || post.domain !== DOMAIN_CONFIG[domain].postsDomain) notFound()
 
   const meta = DOMAIN_META[domain]
-  const paragraphs = post.body.split('\n\n').filter(Boolean)
 
   return (
     <main>
@@ -82,12 +82,8 @@ export default async function PostPage({ params }: { params: Params }) {
           <p className="font-mono text-xs text-ink-mute mb-16">{post.date}</p>
 
           {/* Body */}
-          <div className="flex flex-col gap-6 border-t border-paper-3 pt-12">
-            {paragraphs.map((p, i) => (
-              <p key={i} className="font-sans text-base text-ink-soft leading-[1.8]">
-                {p}
-              </p>
-            ))}
+          <div className="prose prose-zinc max-w-none border-t border-paper-3 pt-12">
+            <MDXRemote source={post.content} />
           </div>
 
           {/* Footer nav */}

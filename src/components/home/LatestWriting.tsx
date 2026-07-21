@@ -1,4 +1,4 @@
-import { DOMAIN_META, type Domain } from '@/data/domains'
+import { DOMAIN_META, type Domain } from '@content/domains'
 import { cn } from '@/lib/utils'
 import { SectionHeader } from '../layout/SectionHeader'
 
