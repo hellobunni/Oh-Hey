@@ -36,8 +36,8 @@ export function AbHero({ className }: AbHeroProps) {
         <div className="grid gap-12 items-start" style={{ gridTemplateColumns: '55fr 45fr' }}>
           <div>
             <h1
-              className="font-sans font-black text-ink tracking-tight leading-[0.94] mb-8"
-              style={{ fontSize: 'clamp(52px, 6.5vw, 80px)' }}
+              className="font-pixel font-bold text-ink leading-[1.15] mb-8"
+              style={{ fontSize: 'clamp(34px, 5.5vw, 58px)' }}
             >
               Hey, I'm<br />
               Bryanna.<br />

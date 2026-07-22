@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { Analytics } from '@vercel/analytics/next'
-import { Geist, Geist_Mono, Fraunces } from 'next/font/google'
+import { Geist, Geist_Mono, Fraunces, Quicksand, Silkscreen } from 'next/font/google'
 import './globals.css'
 import AppChrome from '@/components/layout/AppChrome'
 
@@ -27,6 +27,20 @@ const fraunces = Fraunces({
   display: 'swap',
 })
 
+const quicksand = Quicksand({
+  subsets: ['latin'],
+  variable: '--font-quicksand',
+  weight: ['300', '400', '500', '600', '700'],
+  display: 'swap',
+})
+
+const silkscreen = Silkscreen({
+  subsets: ['latin'],
+  variable: '--font-silkscreen',
+  weight: ['400', '700'],
+  display: 'swap',
+})
+
 export const metadata: Metadata = {
   title: 'oh-hey-lynae',
 }
@@ -36,7 +50,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html
       lang="en"
       data-theme="light"
-      className={`${geistSans.variable} ${geistMono.variable} ${fraunces.variable}`}
+      className={`${geistSans.variable} ${geistMono.variable} ${fraunces.variable} ${quicksand.variable} ${silkscreen.variable}`}
       suppressHydrationWarning
     >
       <head>

@@ -12,19 +12,18 @@ function SectionHeader({ num, title, action, className }: SectionHeaderProps) {
     <div
       className={cn(
         'flex items-baseline justify-between px-[clamp(20px,5vw,80px)]',
-        'pt-16 pb-7 max-w-[1600px] mx-auto w-full',
+        'pt-14 pb-6 max-w-[1600px] mx-auto w-full',
         className,
       )}
     >
-      
-      <div className="font-mono text-xs text-ink-soft">
-        <span className="mr-2 text-ink-mute">[{num}]</span>
-        {title}
+      <div className="flex items-baseline gap-0">
+        <span className="font-pixel text-xs bg-card text-mint px-2.5 py-1.5 mr-3">{num}</span>
+        <span className="font-pixel text-sm text-ink">{title}</span>
       </div>
       {action && (
         <a
           href={action.href}
-          className="border-b border-ink pb-0.5 font-mono text-xs text-ink"
+          className="font-sans font-bold text-sm text-ink-soft hover:text-ink transition-colors duration-100"
         >
           {action.label}
         </a>

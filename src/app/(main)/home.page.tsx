@@ -27,8 +27,8 @@ export default function HomePage() {
   return (
     <main>
       <HeroTerminalOH />
-      <LatestWriting posts={latestPosts} className="grid-bg-transparent"/>
-      <DomainGrid className="grid-bg-transparent hidden md:block"/>
+      <LatestWriting posts={latestPosts} num="02" title="THE DEV LOG" action={{ label: 'Full archive →', href: '/archive' }} className="grid-bg-transparent"/>
+      <DomainGrid num="03" className="grid-bg-transparent hidden md:block"/>
       <HomeOutro onSubscribe={subscribeToNewsletter} />
     </main>
   )

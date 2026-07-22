@@ -9,6 +9,11 @@
 
 body {
   margin: 0;
+  background-color: var(--color-paper);
+  background-image:
+    linear-gradient(var(--color-hairline) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-hairline) 1px, transparent 1px);
+  background-size: 48px 48px;
 }
 
 /* ─── Keyframe animations ─────────────────────────────────────────────────── */
@@ -36,21 +41,25 @@ body {
 }
 
 @utility home-inner {
-  background-image: url('/images/paper-grid.svg');
-  background-size: cover;
-  background-position: center;
+  background-color: var(--color-paper);
+  background-image:
+    linear-gradient(var(--color-hairline) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-hairline) 1px, transparent 1px);
+  background-size: 48px 48px;
 }
 
 @utility grid-bg-transparent {
-  background-image: url('/images/grid-transparent.svg');
-  background-size: cover;
-  background-position: center;
+  background-image:
+    linear-gradient(var(--color-hairline) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-hairline) 1px, transparent 1px);
+  background-size: 48px 48px;
 }
 @theme inline {
   /* Fonts — next/font injects --font-geist-sans/mono/fraunces at runtime */
-  --font-sans:  var(--font-geist-sans, 'Geist', ui-sans-serif, system-ui, sans-serif);
+  --font-sans:  var(--font-quicksand, 'Quicksand', ui-sans-serif, system-ui, sans-serif);
   --font-mono:  var(--font-geist-mono, 'Geist Mono', ui-monospace, monospace);
   --font-serif: var(--font-fraunces, 'Fraunces', Georgia, serif);
+  --font-pixel: var(--font-silkscreen, 'Silkscreen', monospace);
 
   --animate-marquee: marquee 40s linear infinite;
 
@@ -82,19 +91,32 @@ body {
   --leading-relaxed: 1.7;
 
     /* ─── Color — oh-hey-lynae (default light) ───────────────────────────── */
-    --color-paper:      #fafaf7;
-    --color-paper-2:    #f4f3ee;
-    --color-ink:        #0c0c0c;
-    --color-ink-2:      #2a2a28;
-    --color-ink-soft:   #6b6b66;
-    --color-ink-mute:   #a3a39c;
-    --color-line:         rgba(12,12,12,0.08);
-    --color-line-strong:  rgba(12,12,12,0.18);
-    --color-hairline:     rgba(12,12,12,0.06);
+    --color-paper:      #f6f3ec;
+    --color-paper-2:    #eee9dd;
+    --color-ink:        #2b2838;
+    --color-ink-2:      #3d3a4a;
+    --color-ink-soft:   #6d6880;
+    --color-ink-mute:   #9a96b0;
+    --color-line:         rgba(43,40,56,0.08);
+    --color-line-strong:  rgba(43,40,56,0.18);
+    --color-hairline:     rgba(43,40,56,0.06);
 
     /* Brand accent */
-    --color-accent:      #2563eb;
-    --color-accent-soft: rgba(37,99,235,0.10);
+    --color-accent:      #7ed6c0;
+    --color-accent-soft: rgba(126,214,192,0.12);
+
+    /* ─── Brand palette ───────────────────────────────────────────────────── */
+    --color-mint:        #7ed6c0;
+    --color-pink:        #f2a7c3;
+    --color-peri:        #8fa8e8;
+    --color-gold:        #e9c46a;
+    --color-card:        #dcd6ca;
+    --color-card-2:      #eee9dd;
+
+    /* ─── Contrasting surface tokens (flip with theme) ──────────────────── */
+    /* Light mode: dark navy surface on warm bg. Dark mode: warm surface on ink bg. */
+    --color-paper-warm:  #2a2740;
+    --color-paper-ink:   #e8e6f0;
 
     /* ─── Domain colors ───────────────────────────────────────────────────── */
     --color-tech:        #2563eb;
@@ -111,17 +133,23 @@ body {
 /* Semantic tokens auto-flip when data-theme="dark" is on <html>              */
 
 [data-theme="dark"] {
-  --color-paper:       #0f0f0d;
-  --color-paper-2:     #1a1a17;
-  --color-ink:         #f0f0eb;
-  --color-ink-2:       #d4d4cc;
-  --color-ink-soft:    #8a8a84;
-  --color-ink-mute:    #5a5a55;
-  --color-line:        rgba(240,240,235,0.08);
-  --color-line-strong: rgba(240,240,235,0.16);
-  --color-hairline:    rgba(240,240,235,0.05);
+  --color-paper:       #1d1c29;
+  --color-paper-2:     #2a2740;
+  --color-ink:         #e8e6f0;
+  --color-ink-2:       #c8c4dc;
+  --color-ink-soft:    #a9a5c0;
+  --color-ink-mute:    #6d6880;
+  --color-line:        rgba(232,230,240,0.08);
+  --color-line-strong: rgba(232,230,240,0.16);
+  --color-hairline:    rgba(232,230,240,0.05);
 
-  --color-accent:      #4b83f0;
-  --color-accent-soft: rgba(75,131,240,0.12);
+  --color-accent:      #7ed6c0;
+  --color-accent-soft: rgba(126,214,192,0.12);
+
+  --color-card:        #3a3550;
+  --color-card-2:      #2a2740;
+
+  --color-paper-warm:  #f6f3ec;
+  --color-paper-ink:   #2b2838;
 }
 

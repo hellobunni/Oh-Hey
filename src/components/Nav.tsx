@@ -37,8 +37,8 @@ export function Nav({
   brandHref   = '/',
   items       = DEFAULT_ITEMS,
   linksAlign  = 'left',
-  ctaLabel,
-  ctaHref,
+  ctaLabel    = 'SUBSCRIBE',
+  ctaHref     = '#newsletter',
   className,
 }: NavProps) {
   const navLinks: NavLink[]           = items.map(({ label, href, active }) => ({ label, href, active }))

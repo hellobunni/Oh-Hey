@@ -6,16 +6,13 @@ import { LeadCapture } from '@/components/kodara/services/LeadCapture'
 import { Faq } from '@/components/kodara/services/Faq'
 import { SectionHead } from '@/components/kodara/services/_shared'
 import { CtaSection } from '@/components/kodara/CtaSection'
-import ClientReel from '@/components/ClientReel'
 import { SERVICES } from '@/data/services.data'
 
 export default function ServicesPage() {
   return (
     <div>
       <ServicesHero />
-      <ClientReel />
-
-      <SectionHead
+<SectionHead
         label="What I do"
         side="[04 / SERVICES]"
         title={<>Four senior services,<br />scoped to <span className="text-accent">your shape.</span></>}

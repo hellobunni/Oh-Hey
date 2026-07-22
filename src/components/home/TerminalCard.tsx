@@ -121,15 +121,11 @@ function RenderLine({ line }: { line: TerminalLine }) {
 
 export default function TerminalCard({ lines, title, className }: TerminalCardProps) {
   return (
-    <div className={cn('border border-line-strong bg-paper-2', className)}>
+    <div className={cn('border-2 border-card bg-card-2', className)}>
       {/* Header */}
-      <div className="flex items-center gap-[7px] px-4 py-[11px] border-b border-line">
-        {[0, 1, 2].map(i => (
-          <span
-            key={i}
-            className="w-[11px] h-[11px] rounded-full shrink-0"
-            style={{ background: 'rgba(12,12,12,0.15)' }}
-          />
+      <div className="flex items-center gap-[7px] px-4 py-[11px] border-b-2 border-card">
+        {(['bg-pink', 'bg-gold', 'bg-mint'] as const).map((c, i) => (
+          <span key={i} className={`w-[11px] h-[11px] rounded-full shrink-0 ${c}`} />
         ))}
         {title && (
           <span className="ml-auto font-mono text-xxs text-ink-mute tracking-wide">

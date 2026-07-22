@@ -1,101 +1,95 @@
-import type { CSSProperties, ReactNode } from 'react'
 import { cn } from '@/lib/utils'
-import TerminalCard, { type TerminalLine } from '@/components/home/TerminalCard'
-
-export interface TerminalDomain {
-  label: string
-  count: string
-}
 
 export interface HeroTerminalOHProps {
-  meta?:      string
-  headline?:  ReactNode
-  body?:      string
-  about?:     string[]
-  domains?:   TerminalDomain[]
-  /** Override the terminal card lines entirely */
-  lines?:     TerminalLine[]
-  className?: string
-}
-
-const GRID_STYLE: CSSProperties = {
-  backgroundImage:
-    'repeating-linear-gradient(to right, rgba(12,12,12,0.06) 0px, rgba(12,12,12,0.06) 1px, transparent 1px, transparent 14.285%)',
-}
-
-const DEFAULT_HEADLINE: React.ReactNode = (
-  <>
-    Notes from<br />
-    a curious<br />
-    <span className="text-accent">/</span>{' '}generalist.
-  </>
-)
-
-const DEFAULT_ABOUT = [
-  '// I write code, ship sites,',
-  '// pull heavy, draw weird,',
-  '// and collect too much plastic.',
-]
-
-const DEFAULT_DOMAINS: TerminalDomain[] = [
-  { label: 'tech',     count: '14 posts' },
-  { label: 'fitness',  count: '09 posts' },
-  { label: 'creative', count: '06 posts' },
-  { label: 'nerd',     count: '11 posts' },
-]
-
-function buildLines(about: string[], domains: TerminalDomain[]): TerminalLine[] {
-  return [
-    { type: 'command', text: 'cat about.txt' },
-    ...about.map(text => ({ type: 'comment' as const, text })),
-    { type: 'gap' },
-    { type: 'command', text: 'ls -l ./domains' },
-    {
-      type:  'listing',
-      items: domains.map(d => ({ label: d.label, value: d.count })),
-    },
-    { type: 'cursor' },
-  ]
+  eyebrow?:     string
+  headline?:    React.ReactNode
+  body?:        React.ReactNode
+  primaryCta?:  { label: string; href: string }
+  secondaryCta?:{ label: string; href: string }
+  social?:      string
+  imageSrc?:    string
+  imageTag?:    string
+  className?:   string
 }
 
 export default function HeroTerminalOH({
-  meta     = '~/oh-hey-lynae · idx 026 · updated Apr 2026',
-  headline = DEFAULT_HEADLINE,
-  body     = "A logbook of things I'm building, lifting, drawing, and obsessing over. Frontend craft sits next to print zines, squat PRs, and Lego shelves. Nothing here pretends to be siloed.",
-  about    = DEFAULT_ABOUT,
-  domains  = DEFAULT_DOMAINS,
-  lines,
+  eyebrow     = '● LIVE TUES / THURS / SUN · 7PM',
+  headline    = (
+    <>
+      OH HEY!<br />
+      COZY GAMES,<br />
+      <span className="text-mint">CHAOTIC ENERGY.</span>
+    </>
+  ),
+  body        = (
+    <>
+      New games every week with <strong className="text-ink">one winking bunny</strong> — plus
+      the dev log where I build things, lift things, and draw things between streams.
+    </>
+  ),
+  primaryCta  = { label: '▶ LATEST VIDEO', href: '#videos' },
+  secondaryCta= { label: 'READ THE LOG',   href: '#log'    },
+  social      = '@ohheylynae everywhere — clips on TikTok',
+  imageSrc    = '/avatar-bust.png',
+  imageTag    = 'PRESS START',
   className,
 }: HeroTerminalOHProps) {
-  const terminalLines = lines ?? buildLines(about, domains)
-
   return (
-    <section
-      className="home-inner"
-    >
-      <div className="site-inner px-[clamp(20px,5vw,80px)] py-16">
-        {/* Meta row */}
-        <div className="font-mono text-xs text-ink-mute mb-10">{meta}</div>
+    <section className={cn('home-inner border-b-2 border-card py-[72px_0_64px]', className)}>
+      <div className="site-inner px-[clamp(20px,5vw,80px)] py-[72px] md:py-[72px_0_64px]">
+        <div
+          className="grid gap-14 items-center max-md:grid-cols-1"
+          style={{ gridTemplateColumns: '1.3fr 1fr' }}
+        >
+          {/* ── Left ── */}
+          <div>
+            <div className="font-pixel text-xs text-pink mb-5">{eyebrow}</div>
 
-        {/* Two-column layout */}
-        <div className="grid gap-12 items-start grid-cols-2">
-          {/* Left: headline + body */}
-          <div className='md:col-span-1 col-span-2'>
             <h1
-              className="font-sans font-black text-ink tracking-tight leading-[0.94] mb-8"
-              style={{ fontSize: 'clamp(52px, 6.5vw, 80px)' }}
+              className="font-pixel font-bold text-ink leading-[1.15]"
+              style={{ fontSize: 'clamp(34px, 5.5vw, 58px)' }}
             >
               {headline}
             </h1>
-            <p className="font-sans text-body text-ink-soft leading-normal max-w-[460px]">
+
+            <p className="font-sans font-medium text-ink-soft mt-[22px] max-w-[460px]" style={{ fontSize: '17px' }}>
               {body}
             </p>
+
+            <div className="flex gap-3.5 mt-8 flex-wrap">
+              <a
+                href={primaryCta.href}
+                className="font-pixel text-xs bg-mint text-ink px-5 py-[13px] shadow-[4px_4px_0_rgba(0,0,0,0.35)] transition-[transform,box-shadow] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0_rgba(0,0,0,0.35)]"
+              >
+                {primaryCta.label}
+              </a>
+              <a
+                href={secondaryCta.href}
+                className="font-pixel text-xs bg-transparent text-mint border-2 border-mint px-5 py-[13px] shadow-[4px_4px_0_rgba(0,0,0,0.35)] transition-[transform,box-shadow] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0_rgba(0,0,0,0.35)]"
+              >
+                {secondaryCta.label}
+              </a>
+            </div>
+
+            {social && (
+              <div className="mt-6 font-sans font-semibold text-sm text-peri">{social}</div>
+            )}
           </div>
 
-          {/* Right: terminal card */}
-          <TerminalCard lines={terminalLines} className="self-center md:col-span-1 col-span-2" />
+          {/* ── Right: mascot ── */}
+          <div className="relative justify-self-center max-md:order-first">
+            <img
+              src={imageSrc}
+              alt="ohheylynae mascot"
+              style={{ width: 'min(320px, 70vw)', display: 'block', border: '3px solid var(--color-mint)', boxShadow: '8px 8px 0 rgba(0,0,0,0.4)' }}
+            />
+            {imageTag && (
+              <span className="absolute bottom-[-14px] left-[-14px] font-pixel text-xs bg-pink text-ink px-[11px] py-[7px] shadow-[3px_3px_0_rgba(0,0,0,0.35)]">
+                {imageTag}
+              </span>
+            )}
+          </div>
         </div>
-
       </div>
     </section>
   )

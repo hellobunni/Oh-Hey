@@ -1,71 +1,26 @@
 import { cn } from '@/lib/utils'
 
-type FooterColumn = { title: string; links: { label: string; href: string }[] }
-
 interface OhHeyFooterProps {
-  blurb?: string
-  columns?: FooterColumn[]
-  version?: string
   className?: string
 }
 
-const DEFAULT_COLUMNS: FooterColumn[] = [
-  { title: 'DOMAINS', links: [
-    { label: 'Tech', href: '#' }, { label: 'Fitness', href: '#' },
-    { label: 'Creative', href: '#' }, { label: 'Nerd Stuff', href: '#' },
-  ]},
-  { title: 'SITE', links: [
-    { label: 'Archive', href: '/archive' }, { label: 'About', href: '/about' },
-    { label: 'Now', href: '/now' }, { label: 'RSS', href: '/rss.xml' },
-  ]},
-  { title: 'ELSEWHERE', links: [
-    { label: 'GitHub', href: 'https://github.com/hellobunni' }, { label: 'Instagram', href: 'https://www.instagram.com/ohheylynae/' }
-  ]},
-]
-
-export default function OhHeyFooter({
-  blurb = 'A logbook by Bryanna Lynae. Built with care & caffeine in 2026.',
-  columns = DEFAULT_COLUMNS,
-  version = 'v3.0.0',
-  className,
-}: OhHeyFooterProps) {
+export default function OhHeyFooter({ className }: OhHeyFooterProps) {
   return (
-    <footer
-      className={cn(
-        'grid grid-cols-5 gap-8 site-inner md:px-20 px-6',
-        'md:pt-16 md:pb-3 font-mono text-xs',
-        className,
-      )}
-    >
-      <div className='md:col-span-2 col-span-5'>
-        <div className="mb-3.5 font-semibold text-ink">oh-hey-lynae</div>
-        <p className="max-w-[280px] font-sans text-xs leading-[1.55] text-ink-soft">
-          {blurb}
-        </p>
-      </div>
-
-      {columns.map((col) => (
-        <div key={col.title} className='md:col-span-1 col-span-2'>
-          <div className="mb-3.5 text-ink-mute">{col.title}</div>
-          {col.links.map((l) => (
-            <a
-              key={l.label}
-              href={l.href}
-              className="block py-1 text-ink-soft transition-colors hover:text-ink"
-            >
-              {l.label}
-            </a>
-          ))}
+    <footer className={cn('border-t-2 border-card px-6 py-8', className)}>
+      <div className="max-w-[1080px] mx-auto flex items-center gap-4 flex-wrap">
+        <span className="w-[34px] h-[34px] border-2 border-mint bg-card-2 shrink-0" />
+        <span className="font-pixel text-xs text-mint">OHHEYLYNAE</span>
+        <span className="font-pixel text-[9px] text-ink-soft">© 2026 · GG</span>
+        <div className="ml-auto flex gap-[18px] font-sans font-semibold text-sm">
+          <a href="/rss.xml"                         className="text-ink-soft hover:text-mint transition-colors">RSS</a>
+          <a href="/about"                            className="text-ink-soft hover:text-mint transition-colors">About</a>
+          <a href="/now"                              className="text-ink-soft hover:text-mint transition-colors">Now</a>
+          <a href="https://kodaraadvisory.com"        className="text-peri   hover:text-mint transition-colors">↗ kodara</a>
         </div>
-      ))}
-
-      <div className="col-span-full mt-4 flex md:justify-between justify-center pt-7 text-ink-mute">
-        <div>© 2026 Bryanna Lynae · ALL RIGHTS RESERVED</div>
-        <div>{version}</div>
       </div>
     </footer>
   )
 }
 
 export { OhHeyFooter }
-export type { OhHeyFooterProps, FooterColumn }
+export type { OhHeyFooterProps }
