@@ -126,7 +126,7 @@ export default function HeroTerminalK({
 
             {/* CTAs */}
             <div className="flex items-center gap-3">
-              <a href={primaryCta.href} className={buttonVariants({ variant: 'kodara-accent', size: 'default' })}>
+              <a href={primaryCta.href} className={buttonVariants({ variant: 'accent', size: 'default' })}>
                 {primaryCta.label}
               </a>
               {secondaryCta && (
