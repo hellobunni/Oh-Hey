@@ -30,7 +30,7 @@ function CtaSection({
         <p className="mx-auto mt-6 max-w-[540px] text-base text-ink-2">{body}</p>
         <div className="mt-10">
           <a href={cta.href}>
-            <Button variant="kodara-accent" size="default">{cta.label}</Button>
+            <Button variant="accent" size="default">{cta.label}</Button>
           </a>
         </div>
       </div>
