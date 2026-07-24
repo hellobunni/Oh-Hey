@@ -1,4 +1,4 @@
-import { cn } from '@/lib/utils';
+import React from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
 const meta = {
@@ -9,147 +9,84 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-// ─── Helpers ─────────────────────────────────────────────────────────────────
+// ─── Brand Palette (hex reference) ────────────────────────────────────────────
 
-function Swatch({ token, label }: { token: string; label?: string }) {
-  return (
-    <div className="flex flex-col gap-2">
-      <div
-        className="w-full aspect-square border border-black/10"
-        style={{ background: `var(${token})` }}
-      />
-      <div style={{ fontFamily: 'font-mono', fontSize: '11px', lineHeight: 1.4 }}>
-        <div style={{ fontWeight: 500 }}>{token}</div>
-        {label && <div style={{ color: 'var(--ink-soft, #6b6b66)', marginTop: '2px' }}>{label}</div>}
-      </div>
-    </div>
-  )
-}
+const OHL_PALETTE = [
+  { name: 'Deep',       hex: '#100f1a', label: 'canvas / page bg',    token: '--color-deep' },
+  { name: 'Ink',        hex: '#1d1c29', label: 'surface / cards',      token: '--color-paper-2 (dark)' },
+  { name: 'Card',       hex: '#2b2a3d', label: 'panels',               token: '--color-card (dark)' },
+  { name: 'Primary',    hex: '#7ed6c0', label: 'primary / CTA',        token: '--color-primary' },
+  { name: 'Accent',     hex: '#f2a7c3', label: 'accent / alert',       token: '--color-accent' },
+  { name: 'Alert',      hex: '#e0559b', label: 'alert on light bg',    token: '--color-alert' },
+  { name: 'Link',       hex: '#8fa8e8', label: 'links / info',         token: '--color-link' },
+  { name: 'Paper',      hex: '#f6f3ec', label: 'light surface / bg',   token: '--color-paper (light)' },
+  { name: 'Navy',       hex: '#3a3550', label: 'text on paper',        token: '--color-ink (light)' },
+]
 
-function Group({ title, children }: { title: string; children: React.ReactNode }) {
-  return (
-    <div style={{ marginBottom: '48px' }}>
-      <div style={{ fontFamily: 'font-mono', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--ink-soft, #6b6b66)', marginBottom: '16px' }}>
-        {title}
-      </div>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(100px, 1fr))', gap: '16px' }}>
-        {children}
-      </div>
-    </div>
-  )
-}
-
-// ─── Base Palette ─────────────────────────────────────────────────────────────
-
-export const Base: Story = {
-  name: 'Base — oh-hey-lynae',
+export const BrandPalette: Story = {
+  name: 'Colors — OHL brand palette',
   render: () => (
     <div>
-      <Group title="Surface">
-        <Swatch token="--color-paper"   label="Main bg" />
-        <Swatch token="--color-paper-2" label="Cards / panels" />
-      </Group>
-
-      <Group title="Ink">
-        <Swatch token="--color-ink"      label="Primary text" />
-        <Swatch token="--color-ink-2"    label="Prose body" />
-        <Swatch token="--color-ink-soft" label="Meta / secondary" />
-        <Swatch token="--color-ink-mute" label="Placeholders" />
-      </Group>
-
-      <Group title="Accent">
-        <Swatch token="--color-accent"      label="Brand blue" />
-        <Swatch token="--color-accent-soft" label="Tinted bg" />
-      </Group>
-
-      <Group title="Lines">
-        <Swatch token="--color-hairline"    label="Hairline" />
-        <Swatch token="--color-line"        label="Default border" />
-        <Swatch token="--color-line-strong" label="Emphasis border" />
-      </Group>
-    </div>
-  ),
-}
-
-// ─── Domain Colors ────────────────────────────────────────────────────────────
-
-export const Domain: Story = {
-  name: 'Domain — category colors',
-  render: () => (
-    <div>
-      <Group title="Foreground">
-        <Swatch token="--color-tech"     label="Tech" />
-        <Swatch token="--color-fitness"  label="Fitness" />
-        <Swatch token="--color-creative" label="Creative" />
-        <Swatch token="--color-nerd"     label="Nerd" />
-      </Group>
-
-      <Group title="Background tints">
-        <Swatch token="--color-tech-bg"     label="Tech bg" />
-        <Swatch token="--color-fitness-bg"  label="Fitness bg" />
-        <Swatch token="--color-creative-bg" label="Creative bg" />
-        <Swatch token="--color-nerd-bg"     label="Nerd bg" />
-      </Group>
-    </div>
-  ),
-}
-
-
-// ─── Domain Palette Variants ──────────────────────────────────────────────────
-
-const DOMAINS = ['Tech', 'Fitness', 'Creative', 'Nerd'] as const
-
-const PALETTES = [
-  { name: 'Spectrum (default)', cls: 'palette-spectrum', colors: ['#2563eb', '#059669', '#ea580c', '#7c3aed'] },
-  { name: 'Monochrome',         cls: 'palette-mono',     colors: ['#0c0c0c', '#0c0c0c', '#0c0c0c', '#0c0c0c'] },
-  { name: 'Warm earth',         cls: 'palette-warm',     colors: ['#b45309', '#15803d', '#be185d', '#7c2d12'] },
-  { name: 'Electric',           cls: 'palette-electric', colors: ['#06b6d4', '#84cc16', '#f43f5e', '#a855f7'] },
-] as const
-
-export const DomainPaletteVariants: Story = {
-  name: 'Domain — palette variants',
-  render: () => (
-    <div>
-      <h3 className="ds-h3" style={{ marginBottom: '8px' }}>Domain palette variants</h3>
-      <div className="comp-meta" style={{ marginBottom: '24px', fontFamily: 'font-mono', fontSize: '12px', color: 'var(--color-ink-soft)' }}>
-        Swap class on root:{' '}
-        <code style={{ color: 'var(--color-accent)' }}>
-          .palette-&#123;spectrum | mono | warm | electric&#125;
-        </code>
-      </div>
-
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '24px' }}>
-        {PALETTES.map((palette) => (
-          <div key={palette.cls} className={palette.cls}>
-            <div style={{
-              display: 'inline-flex', alignItems: 'center',
-              border: '1px solid var(--color-line, #e2e2dc)',
-              borderRadius: '6px', padding: '3px 10px',
-              fontFamily: 'font-mono', fontSize: '11px',
-              marginBottom: '12px',
-            }}>
-              <strong>{palette.name}</strong>
-            </div>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
-              {DOMAINS.map((domain, i) => (
-                <span key={domain} style={{
-                  display: 'inline-flex', alignItems: 'center', gap: '6px',
-                  border: '1px solid var(--color-line, #e2e2dc)',
-                  borderRadius: '6px', padding: '3px 10px',
-                  fontFamily: 'font-mono', fontSize: '11px',
-                }}>
-                  <span style={{
-                    display: 'inline-block', width: '12px', height: '12px',
-                    borderRadius: '2px', background: palette.colors[i], flexShrink: 0,
-                  }} />
-                  {domain}
-                </span>
-              ))}
-            </div>
+      <div className="font-mono text-xs uppercase tracking-widest text-ink-soft mb-2">Foundations · Colors</div>
+      <h2 className="font-pixel text-2xl text-primary mb-1">BRAND PALETTE</h2>
+      <p className="font-sans text-sm text-ink-soft mb-8 max-w-xl leading-relaxed">
+        Nine palette values. Always use CSS tokens — never hardcode hex. Tokens auto-flip in dark mode via <code className="font-mono text-xs text-accent">data-theme="dark"</code>.
+      </p>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 16 }}>
+        {OHL_PALETTE.map(({ name, hex, label, token }) => (
+          <div key={token} style={{ width: 140 }}>
+            <div style={{ height: 80, background: hex, borderRadius: 10, border: '1px solid rgba(0,0,0,0.06)' }} />
+            <div className="font-sans font-bold text-sm mt-2">{name}</div>
+            <div className="font-mono text-ink-soft" style={{ fontSize: 10, letterSpacing: '0.04em', marginTop: 2 }}>{hex}</div>
+            <div className="font-sans text-ink-mute" style={{ fontSize: 11, marginTop: 2 }}>{label}</div>
+            <div className="font-mono text-link" style={{ fontSize: 10, marginTop: 3 }}>{token}</div>
           </div>
         ))}
       </div>
     </div>
   ),
 }
+
+export const SurfaceContrast: Story = {
+  name: 'Colors — surface contrast',
+  parameters: { backgrounds: { default: 'deep' } },
+  render: () => (
+    <div style={{ display: 'flex', gap: 24, flexWrap: 'wrap' }}>
+      <div style={{ background: '#100f1a', padding: 28, borderRadius: 14, minWidth: 260, flex: 1 }}>
+        <div className="font-pixel text-xs text-accent mb-4 tracking-widest">DARK MODE</div>
+        <div style={{ background: '#1d1c29', borderRadius: 12, padding: 18, marginBottom: 10 }}>
+          <div className="font-pixel text-sm text-primary mb-1">Surface card</div>
+          <div className="font-sans text-xs" style={{ color: '#8a869e' }}>#1D1C29 · --color-paper-2 (dark)</div>
+        </div>
+        <div style={{ background: '#2b2a3d', borderRadius: 12, padding: 18 }}>
+          <div className="font-pixel text-sm text-link mb-1">Panel card</div>
+          <div className="font-sans text-xs" style={{ color: '#8a869e' }}>#2B2A3D · --color-card (dark)</div>
+        </div>
+        <div style={{ marginTop: 10, borderTop: '1px solid rgba(232,230,240,0.08)', paddingTop: 10 }}>
+          <div className="font-sans text-xs" style={{ color: '#7ed6c0' }}>✦ Mint text on deep canvas</div>
+          <div className="font-sans text-xs" style={{ color: '#f2a7c3', marginTop: 4 }}>✦ Pink alert on deep canvas</div>
+          <div className="font-sans text-xs" style={{ color: '#8fa8e8', marginTop: 4 }}>✦ Periwinkle link on deep canvas</div>
+        </div>
+      </div>
+
+      <div style={{ background: '#f6f3ec', padding: 28, borderRadius: 14, minWidth: 260, flex: 1, border: '1px solid rgba(0,0,0,0.07)' }}>
+        <div className="font-pixel text-xs text-alert mb-4 tracking-widest">LIGHT MODE</div>
+        <div style={{ background: '#eee9dd', borderRadius: 12, padding: 18, marginBottom: 10 }}>
+          <div className="font-pixel text-sm" style={{ color: '#3a3550' }}>Surface card</div>
+          <div className="font-sans text-xs" style={{ color: '#6d6880', marginTop: 4 }}>#EEE9DD · --color-paper-2 (light)</div>
+        </div>
+        <div style={{ background: '#dcd6ca', borderRadius: 12, padding: 18 }}>
+          <div className="font-pixel text-sm" style={{ color: '#3a3550' }}>Panel card</div>
+          <div className="font-sans text-xs" style={{ color: '#6d6880', marginTop: 4 }}>#DCD6CA · --color-card (light)</div>
+        </div>
+        <div style={{ marginTop: 10, borderTop: '1px solid rgba(43,40,56,0.08)', paddingTop: 10 }}>
+          <div className="font-sans text-xs text-primary">✦ Mint accent on paper</div>
+          <div className="font-sans text-xs text-alert" style={{ marginTop: 4 }}>✦ Hot-pink alert on paper</div>
+          <div className="font-sans text-xs text-link" style={{ marginTop: 4 }}>✦ Periwinkle link on paper</div>
+        </div>
+      </div>
+    </div>
+  ),
+}
+
 

@@ -14,6 +14,12 @@ const badgeVariants = cva(
         outline:     "border-border text-foreground [a]:hover:bg-muted [a]:hover:text-muted-foreground",
         ghost:       "border-transparent hover:bg-muted hover:text-muted-foreground dark:hover:bg-muted/50",
         link:        "border-transparent text-primary underline-offset-4 hover:underline",
+        // ─── OHL brand badges ──────────────────────────────────────────
+        mint:        "bg-primary text-[#1d1c29] border-transparent font-sans font-bold rounded-full border-0",
+        "pink-outline": "text-accent border-accent border-2 font-sans font-bold rounded-full",
+        episode:     "bg-link text-[#1d1c29] border-transparent font-pixel rounded-none",
+        periwinkle:  "bg-link text-[#1d1c29] border-transparent font-sans font-bold",
+        offline:     "bg-card text-ink-soft border-transparent font-sans font-bold",
         // ─── Domain variants ───────────────────────────────────────────
         tech:        "text-tech",
         fitness:     "text-fitness",

@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&family=Quicksand:wght@500;600;700&display=swap');
 @import "./tokens.css";
 @import "tailwindcss";
 
@@ -9,12 +10,17 @@
 
 body {
   margin: 0;
-  background-color: var(--color-paper);
+  font-family: var(--font-sans);
+  background: var(--color-ink);
+  color: white;
   background-image:
     linear-gradient(var(--color-hairline) 1px, transparent 1px),
     linear-gradient(90deg, var(--color-hairline) 1px, transparent 1px);
   background-size: 48px 48px;
 }
+
+a { color: var(--color-link); }
+a:hover { color: color-mix(in oklch, var(--color-link) 80%, white); }
 
 /* ─── Keyframe animations ─────────────────────────────────────────────────── */
 
@@ -101,15 +107,15 @@ body {
     --color-line-strong:  rgba(43,40,56,0.18);
     --color-hairline:     rgba(43,40,56,0.06);
 
-    /* Brand accent */
-    --color-accent:      #7ed6c0;
-    --color-accent-soft: rgba(126,214,192,0.12);
-
     /* ─── Brand palette ───────────────────────────────────────────────────── */
-    --color-mint:        #7ed6c0;
-    --color-pink:        #f2a7c3;
-    --color-peri:        #8fa8e8;
-    --color-gold:        #e9c46a;
+    --color-primary:      #7ed6c0;
+    --color-primary-soft: rgba(126,214,192,0.12);
+    --color-accent:       #f2a7c3;
+    --color-accent-soft:  rgba(242,167,195,0.12);
+    --color-link:         #8fa8e8;
+    --color-alert:        #e0559b;
+    --color-gold:         #e9c46a;
+    --color-deep:        #100f1a;
     --color-card:        #dcd6ca;
     --color-card-2:      #eee9dd;
 
@@ -129,25 +135,72 @@ body {
     --color-nerd-bg:     rgba(124,58,237,0.08);
 }
 
+@theme {
+  /* ─── Brand colors ──────────────────────────────────────────────────────── */
+  --color-ink:     #1d1c29;   /* surface bg */
+  --color-card:    #2b2a3d;   /* panels */
+  --color-primary: #7ed6c0;   /* primary action */
+  --color-accent:  #f2a7c3;   /* accent / alert */
+  --color-link:    #8fa8e8;   /* links / info */
+  --color-paper:   #f6f3ec;   /* light surface */
+  --color-navy:    #3a3550;   /* text on paper */
+  --color-alert:   #e0559b;   /* alert on paper */
+
+  /* ─── Fonts ─────────────────────────────────────────────────────────────── */
+  --font-display: "Silkscreen", monospace;
+  --font-sans:    "Quicksand", sans-serif;
+
+  /* ─── Semantic type scale ────────────────────────────────────────────────── */
+  --text-h1: 4rem;
+  --text-h1--line-height: 1;
+  --text-h2: 2.5rem;
+  --text-h2--line-height: 1.1;
+  --text-h3: 1.5rem;
+  --text-h3--line-height: 1.2;
+  --text-body: 1rem;
+  --text-body--line-height: 1.6;
+  --text-small: 0.75rem;
+  --text-small--line-height: 1.4;
+
+  /* ─── Spacing ────────────────────────────────────────────────────────────── */
+  --spacing-1:  0.25rem;
+  --spacing-2:  0.5rem;
+  --spacing-4:  1rem;
+  --spacing-6:  1.5rem;
+  --spacing-8:  2rem;
+  --spacing-12: 3rem;
+
+  /* ─── Radius ─────────────────────────────────────────────────────────────── */
+  --radius-none: 0px;
+  --radius-sm:   8px;
+  --radius-md:   16px;
+  --radius-full: 9999px;
+}
+
 /* ─── Dark theme token overrides ──────────────────────────────────────────── */
 /* Semantic tokens auto-flip when data-theme="dark" is on <html>              */
 
 [data-theme="dark"] {
-  --color-paper:       #1d1c29;
-  --color-paper-2:     #2a2740;
+  --color-paper:       #100f1a;
+  --color-paper-2:     #1d1c29;
   --color-ink:         #e8e6f0;
-  --color-ink-2:       #c8c4dc;
-  --color-ink-soft:    #a9a5c0;
-  --color-ink-mute:    #6d6880;
+  --color-ink-2:       #c9c5e0;
+  --color-ink-soft:    #8a869e;
+  --color-ink-mute:    #444258;
   --color-line:        rgba(232,230,240,0.08);
   --color-line-strong: rgba(232,230,240,0.16);
   --color-hairline:    rgba(232,230,240,0.05);
 
-  --color-accent:      #7ed6c0;
-  --color-accent-soft: rgba(126,214,192,0.12);
+  --color-primary:      #7ed6c0;
+  --color-primary-soft: rgba(126,214,192,0.12);
+  --color-accent:       #f2a7c3;
+  --color-accent-soft:  rgba(242,167,195,0.12);
+  --color-link:         #8fa8e8;
+  --color-alert:        #e0559b;
 
-  --color-card:        #3a3550;
-  --color-card-2:      #2a2740;
+  --color-card:         #2b2a3d;
+  --color-card-2:       #1d1c29;
+  --color-deep:         #100f1a;
 
   --color-paper-warm:  #f6f3ec;
   --color-paper-ink:   #2b2838;

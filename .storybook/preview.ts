@@ -12,9 +12,10 @@ const preview: Preview = {
     backgrounds: {
       default: 'paper',
       values: [
-        { name: 'paper', value: '#fafaf7' },
-        { name: 'lv-navy', value: '#0a1424' },
-        { name: 'white', value: '#ffffff' },
+        { name: 'paper',   value: '#f6f3ec' },
+        { name: 'ink',     value: '#1d1c29' },
+        { name: 'deep',    value: '#100f1a' },
+        { name: 'white',   value: '#ffffff' },
       ],
     },
     controls: {

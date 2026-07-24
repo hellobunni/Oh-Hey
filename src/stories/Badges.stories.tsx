@@ -10,110 +10,61 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-// ─── Data ─────────────────────────────────────────────────────────────────────
+// ─── OHL Brand Badges ─────────────────────────────────────────────────────────
 
-const DOMAINS = [
-  { label: 'Tech',      variant: 'tech'     },
-  { label: 'Fitness',   variant: 'fitness'  },
-  { label: 'Creative',  variant: 'creative' },
-  { label: 'Nerd Stuff',variant: 'nerd'     },
-] as const
-
-// ─── Helpers ──────────────────────────────────────────────────────────────────
-
-
-// ─── Domain Tags & Status Pills ───────────────────────────────────────────────
-
-export const DomainTags: Story = {
-  name: 'Badges — domain tags & pills',
+export const OHLBrandBadges: Story = {
+  name: 'Badges — OHL brand variants',
   render: () => (
     <div>
-      <div className="font-mono text-xs tracking-wide uppercase text-ink-soft mb-2">09 · Components — Badges &amp; Tags</div>
-      <h2 className="font-serif text-3xl font-bold mb-8">
-        Domain tags &amp; status pills.
-      </h2>
+      <div className="font-mono text-xs tracking-wide uppercase text-ink-soft mb-2">OHL · Brand badge variants</div>
+      <h2 className="font-pixel text-2xl text-primary mb-1">BRAND BADGES</h2>
+      <p className="font-sans text-sm text-ink-soft mb-8 max-w-xl leading-relaxed">
+        Three OHL-specific badge types for streaming / content contexts. Use <code className="font-mono text-xs text-accent">mint</code> for status (LIVE), <code className="font-mono text-xs text-accent">pink-outline</code> for soft alerts (NEW), and <code className="font-mono text-xs text-accent">episode</code> for labeling content (EP.12).
+      </p>
 
-      {/* Squared */}
-      <div className="font-mono text-xs tracking-wide uppercase text-ink-soft mb-3">Squared — terminal / post-row contexts</div>
-      <div className="flex flex-wrap items-center gap-2 p-6 bg-paper-2 border border-line rounded-md mb-10">
-        {DOMAINS.map(({ label, variant }) => (
-          <Badge key={variant} variant={variant} shape="square">
-            <span className={`badge-dot badge-${variant} w-1.5 h-1.5 rounded-full shrink-0`} />
-            {label}
-          </Badge>
-        ))}
-      </div>
-      <div className="font-mono text-xs mb-8 text-ink-soft">Squared variant for terminal/post-row contexts.</div>
-
-      {/* Pill */}
-      <div className="font-mono text-xs tracking-wide uppercase text-ink-soft mb-3">Pill — editorial / featured contexts</div>
-      <div className="flex flex-wrap items-center gap-2 p-6 bg-paper-2 border border-line rounded-md mb-10">
-        {DOMAINS.map(({ label, variant }) => (
-          <Badge key={variant} variant={variant} shape="pill">
-            <span className={`badge-dot badge-${variant} w-1.5 h-1.5 rounded-full shrink-0`} />
-            {label}
-          </Badge>
-        ))}
-      </div>
-      <div className="font-mono text-xs mb-8 text-ink-soft">Pill variant for editorial/featured contexts.</div>
-    </div>
-  ),
-}
-
-// ─── All Variants Side-by-Side ────────────────────────────────────────────────
-
-export const AllVariants: Story = {
-  name: 'Badges — all variants',
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
-      {(['square', 'pill'] as const).map((shape) => (
-        <div key={shape}>
-          <div className="font-mono text-xs tracking-wide uppercase text-ink-soft mb-3">{shape === 'square' ? 'Squared' : 'Pill'}</div>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-            {DOMAINS.map(({ label, variant }) => (
-              <Badge key={variant} variant={variant} shape={shape}>
-                <span style={{
-                  width: 6, height: 6, borderRadius: '50%', flexShrink: 0,
-                  background: `var(--color-${variant})`,
-                }} />
-                {label}
-              </Badge>
-            ))}
+      <div className="flex flex-col gap-8">
+        {/* Live / status */}
+        <div>
+          <div className="font-mono text-xs uppercase tracking-wide text-ink-soft mb-3">Mint filled — status / live</div>
+          <div className="flex gap-3 items-center p-5 bg-paper-2 border border-line" style={{ borderRadius: 10 }}>
+            <Badge variant="mint">● LIVE</Badge>
+            <Badge variant="mint">ONLINE</Badge>
+            <Badge variant="mint">ACTIVE</Badge>
           </div>
         </div>
-      ))}
+
+        {/* Alert / new */}
+        <div>
+          <div className="font-mono text-xs uppercase tracking-wide text-ink-soft mb-3">Pink outline — alert / new</div>
+          <div className="flex gap-3 items-center p-5 bg-paper-2 border border-line" style={{ borderRadius: 10 }}>
+            <Badge variant="pink-outline">NEW</Badge>
+            <Badge variant="pink-outline">UPDATED</Badge>
+            <Badge variant="pink-outline">ALERT</Badge>
+          </div>
+        </div>
+
+        {/* Episode chip */}
+        <div>
+          <div className="font-mono text-xs uppercase tracking-wide text-ink-soft mb-3">Episode chip — pixel / sharp</div>
+          <div className="flex gap-3 items-center p-5 bg-paper-2 border border-line" style={{ borderRadius: 10 }}>
+            <Badge variant="episode">EP.01</Badge>
+            <Badge variant="episode">EP.12</Badge>
+            <Badge variant="episode">S2 · E4</Badge>
+            <Badge variant="episode">CLIP</Badge>
+          </div>
+        </div>
+
+        {/* Dark context */}
+        <div>
+          <div className="font-mono text-xs uppercase tracking-wide text-ink-soft mb-3">In dark context</div>
+          <div className="flex gap-3 items-center p-5 border border-line" style={{ background: '#1d1c29', borderRadius: 10 }}>
+            <Badge variant="mint">● LIVE</Badge>
+            <Badge variant="pink-outline">NEW</Badge>
+            <Badge variant="episode">EP.07</Badge>
+          </div>
+        </div>
+      </div>
     </div>
   ),
 }
 
-// ─── CSS Class Usage ──────────────────────────────────────────────────────────
-
-export const CSSClasses: Story = {
-  name: 'Badges — CSS classes',
-  render: () => (
-    <div>
-      <div className="font-mono text-xs tracking-wide uppercase text-ink-soft mb-3">Via .badge + .badge-&#123;domain&#125; classes</div>
-      <div className="flex flex-wrap items-center gap-2 p-6 bg-paper-2 border border-line rounded-md mb-10 flex-col">
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-          {DOMAINS.map(({ label, variant }) => (
-            <span key={variant} className={`badge badge-${variant}`}>
-              <span className="badge-dot" />
-              {label}
-            </span>
-          ))}
-        </div>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-          {DOMAINS.map(({ label, variant }) => (
-            <span key={variant} className={`badge badge-pill badge-${variant}`}>
-              <span className="badge-dot" />
-              {label}
-            </span>
-          ))}
-        </div>
-      </div>
-      <div className="font-mono text-xs mb-8 text-ink-soft">
-        Raw CSS — no JS required. Use when rendering server-side markup or in MDX.
-      </div>
-    </div>
-  ),
-}
