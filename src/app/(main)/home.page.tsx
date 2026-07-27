@@ -1,10 +1,10 @@
 
-import HeroTerminalOH from '@/components/hero/HeroTerminalOH'
-import { LatestWriting } from '@/components/home/LatestWriting'
-import { DomainGrid } from '@/components/home/DomainGrid'
+import HeroTerminalOH from '@/components/brands/oh-hey/hero/HeroTerminalOH'
+import { LatestWriting } from '@/components/brands/oh-hey/home/LatestWriting'
+import { DomainGrid } from '@/components/brands/oh-hey/home/DomainGrid'
 import { getAllPosts } from '@/lib/posts'
 import type { Domain } from '@content/domains'
-import { HomeOutro } from '@/components/home/HomeOutro'
+import { HomeOutro } from '@/components/brands/oh-hey/home/HomeOutro'
 import { subscribeToNewsletter } from '@/app/actions'
 
 const DOMAIN_KEY: Record<string, Domain> = {

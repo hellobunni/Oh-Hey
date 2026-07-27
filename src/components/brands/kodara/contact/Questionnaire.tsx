@@ -3,8 +3,8 @@
 import { useState } from 'react'
 import { STEPS } from '@/data/questionnaire.data'
 import { CAL_URL } from '@/data/contact.data'
-import { ProgressRail } from '@/components/kodara/start/ProgressRail'
-import { ChoiceCard } from '@/components/kodara/start/ChoiceCard'
+import { ProgressRail } from '@/components/brands/kodara/start/ProgressRail'
+import { ChoiceCard } from '@/components/brands/kodara/start/ChoiceCard'
 import { submitQuestionnaire } from '@/app/consulting/contact/actions'
 
 interface Props {

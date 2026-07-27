@@ -1,11 +1,11 @@
 import { VALUES } from '@content/about.data'
 import { SectionHeader } from '@/components/layout/SectionHeader'
 
-interface AbValuesProps {
+interface ValuesProps {
   className?: string
 }
 
-export function AbValues({ className }: AbValuesProps) {
+export function Values({ className }: ValuesProps) {
   return (
     <section className={className}>
       <SectionHeader num="02" title="HOW I WORK" />

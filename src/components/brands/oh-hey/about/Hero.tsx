@@ -1,5 +1,5 @@
 import { cn } from '@/lib/utils'
-import TerminalCard, { type TerminalLine } from '@/components/home/TerminalCard'
+import TerminalCard, { type TerminalLine } from '@/components/brands/oh-hey/home/TerminalCard'
 
 const TERMINAL_LINES: TerminalLine[] = [
   { type: 'command', text: 'cat about.txt' },
@@ -21,11 +21,11 @@ const TERMINAL_LINES: TerminalLine[] = [
   { type: 'cursor' },
 ]
 
-interface AbHeroProps {
+interface HeroProps {
   className?: string
 }
 
-export function AbHero({ className }: AbHeroProps) {
+export function Hero({ className }: HeroProps) {
   return (
     <section
       className={cn('bg-paper border-b border-line grid-bg-transparent', className)}

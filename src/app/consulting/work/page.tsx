@@ -2,11 +2,11 @@
 
 import { useState } from 'react'
 import { PROJECTS, type Project } from '@/data/work.data'
-import { PageHero } from '@/components/kodara/shared/PageHero'
-import { WorkFilter } from '@/components/kodara/work/WorkFilter'
-import { ProjectCard } from '@/components/kodara/work/ProjectCard'
-import { CaseStudyModal } from '@/components/kodara/work/CaseStudyModal'
-import { CtaSection } from '@/components/kodara/CtaSection'
+import { PageHero } from '@/components/brands/kodara/shared/PageHero'
+import { WorkFilter } from '@/components/brands/kodara/work/WorkFilter'
+import { ProjectCard } from '@/components/brands/kodara/work/ProjectCard'
+import { CaseStudyModal } from '@/components/brands/kodara/work/CaseStudyModal'
+import { CtaSection } from '@/components/brands/kodara/CtaSection'
 
 export default function WorkPage() {
   const [active, setActive] = useState('All')

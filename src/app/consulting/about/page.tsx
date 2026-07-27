@@ -1,9 +1,9 @@
-import { PageHero } from '@/components/kodara/shared/PageHero'
-import { AboutIntro } from '@/components/kodara/about/AboutIntro'
-import { Timeline } from '@/components/kodara/about/Timeline'
-import { Values } from '@/components/kodara/about/Values'
-import { Capabilities } from '@/components/kodara/about/Capabilities'
-import { CtaSection } from '@/components/kodara/CtaSection'
+import { PageHero } from '@/components/brands/kodara/shared/PageHero'
+import { AboutIntro } from '@/components/brands/kodara/about/AboutIntro'
+import { Timeline } from '@/components/brands/kodara/about/Timeline'
+import { Values } from '@/components/brands/kodara/about/Values'
+import { Capabilities } from '@/components/brands/kodara/about/Capabilities'
+import { CtaSection } from '@/components/brands/kodara/CtaSection'
 
 export default function AboutPage() {
   return (

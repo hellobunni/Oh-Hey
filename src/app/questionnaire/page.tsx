@@ -1,4 +1,4 @@
-import { Questionnaire } from '@/components/kodara/contact/Questionnaire'
+import { Questionnaire } from '@/components/brands/kodara/contact/Questionnaire'
 
 export default function QuestionnairePage() {
   return <Questionnaire />

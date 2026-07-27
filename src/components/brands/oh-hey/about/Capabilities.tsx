@@ -1,11 +1,11 @@
 import { CAPABILITIES } from '@content/about.data'
 import { SectionHeader } from '@/components/layout/SectionHeader'
 
-interface AbCapabilitiesProps {
+interface CapabilitiesProps {
   className?: string
 }
 
-export function AbCapabilities({ className }: AbCapabilitiesProps) {
+export function Capabilities({ className }: CapabilitiesProps) {
   return (
     <section className={className}>
       <SectionHeader num="03" title="CAPABILITIES" />

@@ -1,4 +1,4 @@
-import { NewsletterSignup } from "../NewsletterSignup"
+import { NewsletterSignup } from "@/components/NewsletterSignup"
 import { CurrentlyCard } from "./CurrentlyCard"
 import FollowStrip from "./FollowStrip"
 

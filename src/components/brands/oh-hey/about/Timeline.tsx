@@ -2,11 +2,11 @@ import { TIMELINE } from '@content/about.data'
 import { SectionHeader } from '@/components/layout/SectionHeader'
 import { cn } from '@/lib/utils'
 
-interface AbTimelineProps {
+interface TimelineProps {
   className?: string
 }
 
-export function AbTimeline({ className }: AbTimelineProps) {
+export function Timeline({ className }: TimelineProps) {
   return (
     <section className={className}>
       <SectionHeader num="01" title="BACKGROUND" />

@@ -1,6 +1,6 @@
-import { CtaSection } from '@/components/kodara/CtaSection'
-import { ApproachSplit } from '@/components/kodara/ApproachSplit'
-import { OperatingPrinciples } from '@/components/kodara/OperatingPrinciples'
+import { CtaSection } from '@/components/brands/kodara/CtaSection'
+import { ApproachSplit } from '@/components/brands/kodara/ApproachSplit'
+import { OperatingPrinciples } from '@/components/brands/kodara/OperatingPrinciples'
 
 
 const STEPS = [

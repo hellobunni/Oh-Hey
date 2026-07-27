@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation'
 import { PROJECTS } from '@/data/work.data'
-import { CtaSection } from '@/components/kodara/CtaSection'
+import { CtaSection } from '@/components/brands/kodara/CtaSection'
 
 const GRID =
   '[background-image:linear-gradient(to_right,rgba(37,99,235,0.07)_1px,transparent_1px),linear-gradient(to_bottom,rgba(37,99,235,0.07)_1px,transparent_1px)] [background-size:calc(100%/12)_96px]'

@@ -1,6 +1,6 @@
 import { DOMAIN_META, type Domain } from '@content/domains'
 import { cn } from '@/lib/utils'
-import { SectionHeader } from '../layout/SectionHeader'
+import { SectionHeader } from '@/components/layout/SectionHeader'
 
 export type Post = {
   n: string

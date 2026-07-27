@@ -1,11 +1,11 @@
 'use client'
 
 import { useState } from 'react'
-import { PageHero } from '@/components/kodara/shared/PageHero'
-import { ContactLane } from '@/components/kodara/contact/ContactLane'
-import { DirectChannels } from '@/components/kodara/contact/DirectChannels'
-import { WhatNext } from '@/components/kodara/contact/WhatNext'
-import { Questionnaire } from '@/components/kodara/contact/Questionnaire'
+import { PageHero } from '@/components/brands/kodara/shared/PageHero'
+import { ContactLane } from '@/components/brands/kodara/contact/ContactLane'
+import { DirectChannels } from '@/components/brands/kodara/contact/DirectChannels'
+import { WhatNext } from '@/components/brands/kodara/contact/WhatNext'
+import { Questionnaire } from '@/components/brands/kodara/contact/Questionnaire'
 import { CAL_URL } from '@/data/contact.data'
 
 type Mode = 'contact' | 'questionnaire'

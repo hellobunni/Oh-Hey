@@ -1,17 +1,17 @@
-import { AbHero } from '@/components/about/AbHero'
-import { AbTimeline } from '@/components/about/AbTimeline'
-import { AbValues } from '@/components/about/AbValues'
-import { AbCapabilities } from '@/components/about/AbCapabilities'
-import { HomeOutro } from '@/components/home/HomeOutro'
+import { Hero } from '@/components/brands/oh-hey/about/Hero'
+import { Timeline } from '@/components/brands/oh-hey/about/Timeline'
+import { Values } from '@/components/brands/oh-hey/about/Values'
+import { Capabilities } from '@/components/brands/oh-hey/about/Capabilities'
+import { HomeOutro } from '@/components/brands/oh-hey/home/HomeOutro'
 import { subscribeToNewsletter } from '@/app/actions'
 
 export default function About() {
   return (
     <main>
-      <AbHero />
-      <AbTimeline />
-      <AbValues />
-      <AbCapabilities />
+      <Hero />
+      <Timeline />
+      <Values />
+      <Capabilities />
       <HomeOutro onSubscribe={subscribeToNewsletter} />
     </main>
   )

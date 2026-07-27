@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
-import { WorkspaceTools } from '@/components/kodara/WorkspaceTools'
-import { TicketForm } from '@/components/kodara/TicketForm'
+import { WorkspaceTools } from '@/components/brands/kodara/WorkspaceTools'
+import { TicketForm } from '@/components/brands/kodara/TicketForm'
 
 
 export const metadata: Metadata = {
