@@ -1,5 +1,5 @@
-import { Nav } from '@/components/Nav'
-import OhHeyFooter from '@/components/layout/OhHeyFooter'
+import { Nav } from '@/components/navigation/Nav'
+import Footer from '@/components/layout/Footer'
 
 export default function AppChrome({ children }: { children: React.ReactNode }) {
   return (
@@ -7,7 +7,7 @@ export default function AppChrome({ children }: { children: React.ReactNode }) {
       <Nav />
       {children}
       <div className="grid-bg-transparent">
-        <OhHeyFooter />
+        <Footer />
       </div>
     </div>
   )

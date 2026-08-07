@@ -1,5 +1,6 @@
 import React from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
+import { Circle } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
 
 const meta = {
@@ -9,8 +10,6 @@ const meta = {
 
 export default meta
 type Story = StoryObj<typeof meta>
-
-// ─── OHL Brand Badges ─────────────────────────────────────────────────────────
 
 export const OHLBrandBadges: Story = {
   name: 'Badges — OHL brand variants',
@@ -23,17 +22,18 @@ export const OHLBrandBadges: Story = {
       </p>
 
       <div className="flex flex-col gap-8">
-        {/* Live / status */}
         <div>
           <div className="font-mono text-xs uppercase tracking-wide text-ink-soft mb-3">Mint filled — status / live</div>
           <div className="flex gap-3 items-center p-5 bg-paper-2 border border-line" style={{ borderRadius: 10 }}>
-            <Badge variant="mint">● LIVE</Badge>
+            <Badge variant="mint" className="inline-flex items-center gap-1.5">
+              <Circle size={7} className="fill-current" strokeWidth={0} aria-hidden />
+              LIVE
+            </Badge>
             <Badge variant="mint">ONLINE</Badge>
             <Badge variant="mint">ACTIVE</Badge>
           </div>
         </div>
 
-        {/* Alert / new */}
         <div>
           <div className="font-mono text-xs uppercase tracking-wide text-ink-soft mb-3">Pink outline — alert / new</div>
           <div className="flex gap-3 items-center p-5 bg-paper-2 border border-line" style={{ borderRadius: 10 }}>
@@ -43,7 +43,6 @@ export const OHLBrandBadges: Story = {
           </div>
         </div>
 
-        {/* Episode chip */}
         <div>
           <div className="font-mono text-xs uppercase tracking-wide text-ink-soft mb-3">Episode chip — pixel / sharp</div>
           <div className="flex gap-3 items-center p-5 bg-paper-2 border border-line" style={{ borderRadius: 10 }}>
@@ -54,11 +53,13 @@ export const OHLBrandBadges: Story = {
           </div>
         </div>
 
-        {/* Dark context */}
         <div>
           <div className="font-mono text-xs uppercase tracking-wide text-ink-soft mb-3">In dark context</div>
           <div className="flex gap-3 items-center p-5 border border-line" style={{ background: '#1d1c29', borderRadius: 10 }}>
-            <Badge variant="mint">● LIVE</Badge>
+            <Badge variant="mint" className="inline-flex items-center gap-1.5">
+              <Circle size={7} className="fill-current" strokeWidth={0} aria-hidden />
+              LIVE
+            </Badge>
             <Badge variant="pink-outline">NEW</Badge>
             <Badge variant="episode">EP.07</Badge>
           </div>
@@ -67,4 +68,3 @@ export const OHLBrandBadges: Story = {
     </div>
   ),
 }
-

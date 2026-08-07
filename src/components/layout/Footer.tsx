@@ -1,71 +1,33 @@
-import { useEffect, useState } from 'react'
+import { ExternalLink } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
-interface KodaraFooterProps {
-  copy?: string
-  links?: { label: string; href: string }[]
+interface FooterProps {
   className?: string
 }
 
-const DEFAULT_LINKS = [
-  { label: 'EMAIL', href: 'mailto:kodaraadvisory@gmail.com' },
-  { label: 'LINKEDIN', href: 'https://www.linkedin.com/in/bryannagardner/' },
-  { label: 'GITHUB', href: 'https://github.com/hellobunni' },
-  { label: 'CLIENT WORKSPACE ↗', href: '/consulting/clients' },
-]
-
-export default function KodaraFooter({
-  copy = '© 2026 · KODARA · A PRACTICE BY Bryanna Lynae',
-  links = DEFAULT_LINKS,
-  className,
-}: KodaraFooterProps) {
-  const [light, setLight] = useState(false)
-
-  useEffect(() => {
-    const stored = (() => {
-      try { return localStorage.getItem('kodara-theme') === 'light' } catch { return false }
-    })()
-    setLight(stored)
-  }, [])
-
-  useEffect(() => {
-    const root = document.querySelector('.dc-root.kodara') ?? document.documentElement
-    root.classList.toggle('theme-light', light)
-    try { localStorage.setItem('kodara-theme', light ? 'light' : 'dark') } catch {}
-  }, [light])
-
+export default function Footer({ className }: FooterProps) {
   return (
-    <footer
-      className={cn(
-        'flex items-center justify-between px-20 py-3',
-        'font-mono text-[9.25px] uppercase tracking-wider text-ink-soft',
-        className,
-      )}
-    >
-      <div>{copy}</div>
-
-      <div className="flex items-center gap-4 ">
-        {links.map((l) => (
-          <a key={l.label} href={l.href} className="transition-colors hover:text-accent">
-            {l.label}
+    <footer className={cn('border-t-2 border-card px-6 py-8', className)}>
+      <div className="max-w-[1080px] mx-auto flex items-center gap-4 flex-wrap">
+        <span className="w-[34px] h-[34px] border-2 border-mint bg-card-2 shrink-0" />
+        <span className="font-pixel text-xs text-mint">OHHEYLYNAE</span>
+        <span className="font-pixel text-[9px] text-ink-soft">© 2026 · GG</span>
+        <div className="ml-auto flex gap-[18px] font-sans font-semibold text-sm">
+          <a href="/rss.xml" className="text-ink-soft hover:text-mint transition-colors">RSS</a>
+          <a href="/about" className="text-ink-soft hover:text-mint transition-colors">About</a>
+          <a href="/now" className="text-ink-soft hover:text-mint transition-colors">Now</a>
+          <a
+            href="https://kodaraadvisory.com"
+            className="inline-flex items-center gap-1 text-link hover:text-mint transition-colors"
+          >
+            <ExternalLink size={12} strokeWidth={2} />
+            kodara
           </a>
-        ))}
-
-        <button
-          type="button"
-          onClick={() => setLight((v) => !v)}
-          aria-label="Toggle theme"
-          className="flex items-center gap-2 uppercase tracking-wider text-ink-soft transition-colors hover:text-accent]"
-        >
-          <span className="flex h-[18px] w-[18px] items-center justify-center border border-line-strong text-xs leading-none text-accent">
-            {light ? '☾' : '☀'}
-          </span>
-          {light ? 'Dark' : 'Light'}
-        </button>
+        </div>
       </div>
     </footer>
   )
 }
 
-export { KodaraFooter }
-export type { KodaraFooterProps }
+export { Footer }
+export type { FooterProps }

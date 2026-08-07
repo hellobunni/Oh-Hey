@@ -1,12 +1,13 @@
 /* ═══════════════════════════════════════════════════════════════════════════
    oh-hey-lynae — Design System Tokens
    ───────────────────────────────────────────────────────────────────────────
-   Dark mode: .dark  |  Density: .density-{packed|cozy|airy}
+   Color themes: :root (light) | [data-theme="dark"]  — see globals.css
+   Density: .density-{packed|cozy|airy}
    Domain palettes: .palette-{spectrum|mono|warm|electric}
 
    Fonts are loaded via next/font/google in layout.tsx and injected as:
      --font-geist-sans, --font-geist-mono, --font-fraunces
-   Fallback: Google Fonts (Geist, Geist Mono, Fraunces) loaded via @import below
+   Fallback: Google Fonts loaded via @import below
    ═══════════════════════════════════════════════════════════════════════════ */
 
    @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Geist+Mono:ital,wght@0,100..900;1,100..900&family=Geist:ital,wght@0,100..900;1,100..900&family=Quicksand:wght@300..700&family=Silkscreen:wght@400;700&display=swap');

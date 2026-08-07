@@ -1,5 +1,5 @@
 import React from 'react'
-import { Menu, X } from 'lucide-react'
+import { ExternalLink, Menu, X } from 'lucide-react'
 import { cn, cva } from '@/lib/utils'
 
 // ─── Top Nav ──────────────────────────────────────────────────────────────────
@@ -204,8 +204,12 @@ function MobileMenu({ items, version = 'VERSION 3.0', externalLink, className }:
       <div className="flex justify-between px-5 py-4 font-mono text-xxs tracking-widest text-ink-mute">
         <span>{version}</span>
         {externalLink && (
-          <a href={externalLink.href} className="hover:text-ink transition-colors duration-100">
-            ↗ {externalLink.label}
+          <a
+            href={externalLink.href}
+            className="inline-flex items-center gap-1 hover:text-ink transition-colors duration-100"
+          >
+            <ExternalLink size={10} strokeWidth={2} />
+            {externalLink.label}
           </a>
         )}
       </div>

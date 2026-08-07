@@ -11,8 +11,8 @@
 body {
   margin: 0;
   font-family: var(--font-sans);
-  background: var(--color-ink);
-  color: white;
+  background: var(--color-paper);
+  color: var(--color-ink);
   background-image:
     linear-gradient(var(--color-hairline) 1px, transparent 1px),
     linear-gradient(90deg, var(--color-hairline) 1px, transparent 1px);
@@ -60,16 +60,104 @@ a:hover { color: color-mix(in oklch, var(--color-link) 80%, white); }
     linear-gradient(90deg, var(--color-hairline) 1px, transparent 1px);
   background-size: 48px 48px;
 }
+/* ─── Color tokens ─────────────────────────────────────────────────────────── */
+/* Light defaults live in @theme (emitted on :root). Dark flips below.        */
+/* Brand accents (primary/accent/link/alert/gold) do not change in dark.      */
+
+@theme {
+  --color-paper:        #F6F3EC;
+  --color-paper-2:      #EEE9DD;
+  --color-ink:          #2B2838;
+  --color-ink-2:        #3D3A4A;
+  --color-ink-soft:     #6D6880;
+  --color-ink-mute:     #9A96B0;
+  --color-line:         rgba(43, 40, 56, 0.08);
+  --color-line-strong:  rgba(43, 40, 56, 0.18);
+  --color-hairline:     rgba(43, 40, 56, 0.06);
+
+  --color-primary:      #7ED6C0;
+  --color-primary-soft: rgba(126, 214, 192, 0.12);
+  --color-accent:       #F2A7C3;
+  --color-accent-soft:  rgba(242, 167, 195, 0.12);
+  --color-link:         #8FA8E8;
+  --color-alert:        #E0559B;
+  --color-gold:         #E9C46A;
+
+  --color-deep:         #100F1A;
+  --color-card:         #2B2A3D;
+  --color-card-2:       #1D1C29;
+
+  --color-paper-warm:   #2A2740;
+  --color-paper-ink:    #E8E6F0;
+
+  --color-navy:         #3A3550;
+
+  --color-tech:         #2563eb;
+  --color-fitness:      #059669;
+  --color-creative:     #ea580c;
+  --color-nerd:         #7c3aed;
+  --color-tech-bg:      rgba(37, 99, 235, 0.08);
+  --color-fitness-bg:   rgba(5, 150, 105, 0.08);
+  --color-creative-bg:  rgba(234, 88, 12, 0.08);
+  --color-nerd-bg:      rgba(124, 58, 237, 0.08);
+
+  /* Type / space / radius (static) */
+  --font-display: "Silkscreen", monospace;
+  --font-sans:    "Quicksand", sans-serif;
+
+  --text-h1: 4rem;
+  --text-h1--line-height: 1;
+  --text-h2: 2.5rem;
+  --text-h2--line-height: 1.1;
+  --text-h3: 1.5rem;
+  --text-h3--line-height: 1.2;
+  --text-body: 1rem;
+  --text-body--line-height: 1.6;
+  --text-small: 0.75rem;
+  --text-small--line-height: 1.4;
+
+  --spacing-1:  0.25rem;
+  --spacing-2:  0.5rem;
+  --spacing-4:  1rem;
+  --spacing-6:  1.5rem;
+  --spacing-8:  2rem;
+  --spacing-12: 3rem;
+
+  --radius-none: 0px;
+  --radius-sm:   8px;
+  --radius-md:   16px;
+  --radius-full: 9999px;
+}
+
+[data-theme="dark"] {
+  --color-paper:        #100F1A;
+  --color-paper-2:      #1D1C29;
+  --color-ink:          #E8E6F0;
+  --color-ink-2:        #C9C5E0;
+  --color-ink-soft:     #8A869E;
+  --color-ink-mute:     #444258;
+  --color-line:         rgba(232, 230, 240, 0.08);
+  --color-line-strong:  rgba(232, 230, 240, 0.16);
+  --color-hairline:     rgba(232, 230, 240, 0.05);
+
+  --color-card:         #2B2A3D;
+  --color-card-2:       #1D1C29;
+  --color-deep:         #100F1A;
+
+  --color-paper-warm:   #F6F3EC;
+  --color-paper-ink:    #2B2838;
+}
+
 @theme inline {
-  /* Fonts — next/font injects --font-geist-sans/mono/fraunces at runtime */
+  /* Fonts — next/font injects variables at runtime */
   --font-sans:  var(--font-quicksand, 'Quicksand', ui-sans-serif, system-ui, sans-serif);
   --font-mono:  var(--font-geist-mono, 'Geist Mono', ui-monospace, monospace);
   --font-serif: var(--font-fraunces, 'Fraunces', Georgia, serif);
   --font-pixel: var(--font-silkscreen, 'Silkscreen', monospace);
+  --font-display: var(--font-silkscreen, 'Silkscreen', monospace);
 
   --animate-marquee: marquee 40s linear infinite;
 
-  /* Type scale — text-t-xs through text-t-6xl */
   --text-xxs: 10px;
   --text-xs:   11px;
   --text-sm:   13px;
@@ -83,126 +171,15 @@ a:hover { color: color-mix(in oklch, var(--color-link) 80%, white); }
   --text-5xl:  96px;
   --text-6xl:  144px;
 
-    /* Letter spacing */
-    --tracking-tight:  -0.045em;
-    --tracking-snug:   -0.025em;
-    --tracking-normal: -0.005em;
-    --tracking-wide:    0.08em;
-    --tracking-wider:   0.18em;
+  --tracking-tight:  -0.045em;
+  --tracking-snug:   -0.025em;
+  --tracking-normal: -0.005em;
+  --tracking-wide:    0.08em;
+  --tracking-wider:   0.18em;
 
-      /* Line heights */
   --leading-tight:   0.92;
   --leading-snug:    1.05;
   --leading-normal:  1.55;
   --leading-relaxed: 1.7;
-
-    /* ─── Color — oh-hey-lynae (default light) ───────────────────────────── */
-    --color-paper:      #f6f3ec;
-    --color-paper-2:    #eee9dd;
-    --color-ink:        #2b2838;
-    --color-ink-2:      #3d3a4a;
-    --color-ink-soft:   #6d6880;
-    --color-ink-mute:   #9a96b0;
-    --color-line:         rgba(43,40,56,0.08);
-    --color-line-strong:  rgba(43,40,56,0.18);
-    --color-hairline:     rgba(43,40,56,0.06);
-
-    /* ─── Brand palette ───────────────────────────────────────────────────── */
-    --color-primary:      #7ed6c0;
-    --color-primary-soft: rgba(126,214,192,0.12);
-    --color-accent:       #f2a7c3;
-    --color-accent-soft:  rgba(242,167,195,0.12);
-    --color-link:         #8fa8e8;
-    --color-alert:        #e0559b;
-    --color-gold:         #e9c46a;
-    --color-deep:        #100f1a;
-    --color-card:        #dcd6ca;
-    --color-card-2:      #eee9dd;
-
-    /* ─── Contrasting surface tokens (flip with theme) ──────────────────── */
-    /* Light mode: dark navy surface on warm bg. Dark mode: warm surface on ink bg. */
-    --color-paper-warm:  #2a2740;
-    --color-paper-ink:   #e8e6f0;
-
-    /* ─── Domain colors ───────────────────────────────────────────────────── */
-    --color-tech:        #2563eb;
-    --color-fitness:     #059669;
-    --color-creative:    #ea580c;
-    --color-nerd:        #7c3aed;
-    --color-tech-bg:     rgba(37,99,235,0.08);
-    --color-fitness-bg:  rgba(5,150,105,0.08);
-    --color-creative-bg: rgba(234,88,12,0.08);
-    --color-nerd-bg:     rgba(124,58,237,0.08);
-}
-
-@theme {
-  /* ─── Brand colors ──────────────────────────────────────────────────────── */
-  --color-ink:     #1d1c29;   /* surface bg */
-  --color-card:    #2b2a3d;   /* panels */
-  --color-primary: #7ed6c0;   /* primary action */
-  --color-accent:  #f2a7c3;   /* accent / alert */
-  --color-link:    #8fa8e8;   /* links / info */
-  --color-paper:   #f6f3ec;   /* light surface */
-  --color-navy:    #3a3550;   /* text on paper */
-  --color-alert:   #e0559b;   /* alert on paper */
-
-  /* ─── Fonts ─────────────────────────────────────────────────────────────── */
-  --font-display: "Silkscreen", monospace;
-  --font-sans:    "Quicksand", sans-serif;
-
-  /* ─── Semantic type scale ────────────────────────────────────────────────── */
-  --text-h1: 4rem;
-  --text-h1--line-height: 1;
-  --text-h2: 2.5rem;
-  --text-h2--line-height: 1.1;
-  --text-h3: 1.5rem;
-  --text-h3--line-height: 1.2;
-  --text-body: 1rem;
-  --text-body--line-height: 1.6;
-  --text-small: 0.75rem;
-  --text-small--line-height: 1.4;
-
-  /* ─── Spacing ────────────────────────────────────────────────────────────── */
-  --spacing-1:  0.25rem;
-  --spacing-2:  0.5rem;
-  --spacing-4:  1rem;
-  --spacing-6:  1.5rem;
-  --spacing-8:  2rem;
-  --spacing-12: 3rem;
-
-  /* ─── Radius ─────────────────────────────────────────────────────────────── */
-  --radius-none: 0px;
-  --radius-sm:   8px;
-  --radius-md:   16px;
-  --radius-full: 9999px;
-}
-
-/* ─── Dark theme token overrides ──────────────────────────────────────────── */
-/* Semantic tokens auto-flip when data-theme="dark" is on <html>              */
-
-[data-theme="dark"] {
-  --color-paper:       #100f1a;
-  --color-paper-2:     #1d1c29;
-  --color-ink:         #e8e6f0;
-  --color-ink-2:       #c9c5e0;
-  --color-ink-soft:    #8a869e;
-  --color-ink-mute:    #444258;
-  --color-line:        rgba(232,230,240,0.08);
-  --color-line-strong: rgba(232,230,240,0.16);
-  --color-hairline:    rgba(232,230,240,0.05);
-
-  --color-primary:      #7ed6c0;
-  --color-primary-soft: rgba(126,214,192,0.12);
-  --color-accent:       #f2a7c3;
-  --color-accent-soft:  rgba(242,167,195,0.12);
-  --color-link:         #8fa8e8;
-  --color-alert:        #e0559b;
-
-  --color-card:         #2b2a3d;
-  --color-card-2:       #1d1c29;
-  --color-deep:         #100f1a;
-
-  --color-paper-warm:  #f6f3ec;
-  --color-paper-ink:   #2b2838;
 }
 

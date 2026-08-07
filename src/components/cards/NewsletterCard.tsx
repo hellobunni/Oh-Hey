@@ -1,8 +1,10 @@
+import type { ReactNode } from 'react'
+import { Mail } from 'lucide-react'
 import { CardShell } from './CardShell'
 import type { NewsletterCardProps } from './types'
 
 export function NewsletterCard({
-  icon = '▣',
+  icon,
   label = 'NEWSLETTER',
   headline,
   tagline,
@@ -10,10 +12,13 @@ export function NewsletterCard({
   href,
   className,
 }: Omit<NewsletterCardProps, 'variant'>) {
+  const resolvedIcon = icon ?? <Mail size={12} strokeWidth={2} aria-hidden />
+
   return (
     <CardShell href={href} className={className}>
-      <div className="card-eyebrow card-eyebrow--accent">
-        {icon}&nbsp;&nbsp;{label}
+      <div className="card-eyebrow card-eyebrow--accent inline-flex items-center gap-2">
+        {resolvedIcon}
+        {label}
       </div>
       <div className="card-title card-title--lg" style={{ marginTop: '14px' }}>
         {headline}
@@ -38,3 +43,6 @@ export function NewsletterCard({
     </CardShell>
   )
 }
+
+// re-export for consumers that typed icon as string previously
+export type { ReactNode }
