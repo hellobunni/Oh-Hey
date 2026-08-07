@@ -1,74 +1,107 @@
 import { mergeProps } from "@base-ui/react/merge-props"
 import { useRender } from "@base-ui/react/use-render"
+import { cva, type VariantProps } from "class-variance-authority"
 
-import { cn, cva, type VariantProps } from "@/lib/utils"
+import { cn } from "@/lib/utils"
 
+/**
+ * Badge — UI status signal (live / new / offline).
+ * Quicksand bold + pill/dot shapes. For numeric quantity, use Count.
+ * Optional interaction for filter chips.
+ */
 const badgeVariants = cva(
-  "group/badge inline-flex items-center gap-1.5 font-mono text-xs py-1 px-2.5 border transition-colors",
+  [
+    "inline-flex items-center justify-center gap-1.5 whitespace-nowrap",
+    "font-sans font-bold",
+  ].join(" "),
   {
     variants: {
-      variant: {
-        default:     "bg-primary text-primary-foreground border-transparent [a]:hover:bg-primary/80",
-        secondary:   "bg-secondary text-secondary-foreground border-transparent [a]:hover:bg-secondary/80",
-        destructive: "bg-destructive/10 text-destructive border-transparent focus-visible:ring-destructive/20 dark:bg-destructive/20 [a]:hover:bg-destructive/20",
-        outline:     "border-border text-foreground [a]:hover:bg-muted [a]:hover:text-muted-foreground",
-        ghost:       "border-transparent hover:bg-muted hover:text-muted-foreground dark:hover:bg-muted/50",
-        link:        "border-transparent text-primary underline-offset-4 hover:underline",
-        // ─── OHL brand badges ──────────────────────────────────────────
-        mint:        "bg-primary text-[#1d1c29] border-transparent font-sans font-bold rounded-full border-0",
-        "pink-outline": "text-accent border-accent border-2 font-sans font-bold rounded-full",
-        episode:     "bg-link text-[#1d1c29] border-transparent font-pixel rounded-none",
-        periwinkle:  "bg-link text-[#1d1c29] border-transparent font-sans font-bold",
-        offline:     "bg-card text-ink-soft border-transparent font-sans font-bold",
-        // ─── Domain variants ───────────────────────────────────────────
-        tech:        "text-tech",
-        fitness:     "text-fitness",
-        creative:    "text-creative",
-        nerd:        "text-nerd",
+      tone: {
+        // mint fill — dark text on brand
+        mint:
+          "bg-primary text-ink dark:text-[#1d1c29] border-0",
+        // pink outline — alert text in light, accent in dark
+        pink:
+          "bg-transparent border-2 border-accent text-alert dark:text-accent",
+        // paper-2 / ink → card / ink-2
+        neutral:
+          "bg-paper-2 text-ink dark:bg-card dark:text-ink-2 border-0",
       },
       shape: {
-        square: "rounded-none",
-        pill:   "rounded-full border-0",
+        pill: "rounded-full",
+        dot:  "rounded-full p-0 border-0 bg-transparent",
+      },
+      size: {
+        sm: "text-[11px] px-[7px] py-0.5",   // 11px / 2×7
+        md: "text-[12px] px-3.5 py-[5px]",   // 12px / 5×14
+      },
+      interactive: {
+        true:  "cursor-pointer transition-transform duration-[var(--dur-1)] ease-[var(--ease-out)] hover:scale-[1.08] active:scale-[0.94]",
+        false: "",
       },
     },
     compoundVariants: [
-      // Squared — colored border at 30% opacity
-      { variant: "tech",     shape: "square", class: "border-tech/30" },
-      { variant: "fitness",  shape: "square", class: "border-fitness/30" },
-      { variant: "creative", shape: "square", class: "border-creative/30" },
-      { variant: "nerd",     shape: "square", class: "border-nerd/30" },
-      // Pill — tinted background
-      { variant: "tech",     shape: "pill", class: "bg-tech-bg" },
-      { variant: "fitness",  shape: "pill", class: "bg-fitness-bg" },
-      { variant: "creative", shape: "pill", class: "bg-creative-bg" },
-      { variant: "nerd",     shape: "pill", class: "bg-nerd-bg" },
+      // pink outline padding accounts for 2px border
+      { tone: "pink", shape: "pill", size: "sm", class: "px-[5px] py-px" },
+      { tone: "pink", shape: "pill", size: "md", class: "px-3 py-[3px]" },
+      // dot — kill tone/size padding; size comes from the indicator
+      { shape: "dot", class: "size-2 p-0 min-w-0 gap-0 border-0" },
     ],
     defaultVariants: {
-      variant: "default",
-      shape: "square",
+      tone: "mint",
+      shape: "pill",
+      size: "md",
+      interactive: false,
     },
   }
 )
 
+const dotToneClass: Record<NonNullable<VariantProps<typeof badgeVariants>["tone"]>, string> = {
+  mint: "bg-primary",
+  pink: "bg-alert",
+  neutral: "bg-ink-mute",
+}
+
+type BadgeProps = useRender.ComponentProps<"span"> &
+  VariantProps<typeof badgeVariants> & {
+    /** Override the indicator color when shape="dot" */
+    dotColor?: string
+  }
+
 function Badge({
   className,
-  variant = "default",
-  shape = "square",
+  tone = "mint",
+  shape = "pill",
+  size = "md",
+  interactive = false,
+  dotColor,
   render,
+  style,
+  children,
   ...props
-}: useRender.ComponentProps<"span"> & VariantProps<typeof badgeVariants>) {
+}: BadgeProps) {
+  const isDot = shape === "dot"
+
   return useRender({
     defaultTagName: "span",
     props: mergeProps<"span">(
       {
-        className: cn(badgeVariants({ variant, shape }), className),
+        className: cn(
+          badgeVariants({ tone, shape, size, interactive }),
+          isDot && !dotColor && dotToneClass[tone ?? "mint"],
+          className
+        ),
+        style: isDot && dotColor ? { backgroundColor: dotColor, ...style } : style,
+        children: isDot ? undefined : children,
+        "aria-hidden": isDot && !props["aria-label"] ? true : undefined,
       },
       props
     ),
     render,
     state: {
       slot: "badge",
-      variant,
+      tone,
+      shape,
     },
   })
 }

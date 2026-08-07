@@ -3,7 +3,7 @@ import { cn } from '@/lib/utils'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
 const meta = {
-  title: 'Design System/Typography',
+  title: 'Foundation/Typography',
   parameters: { layout: 'padded' },
 } satisfies Meta
 
@@ -126,14 +126,14 @@ export const UsagePairings: Story = {
       </div>
 
       {/* Light card — blog/post context */}
-      <div style={{ background: '#f6f3ec', padding: 28, borderRadius: 14, minWidth: 300, flex: 1, border: '1px solid rgba(0,0,0,0.07)' }}>
+      <div style={{ background: '#fbfaf6', padding: 28, borderRadius: 14, minWidth: 300, flex: 1, border: '1px solid rgba(0,0,0,0.07)' }}>
         <div className="font-mono text-xs text-ink-soft mb-3 uppercase tracking-widest">Blog / light context</div>
         <div className="font-pixel" style={{ fontSize: 16, color: '#3a3550', marginBottom: 4 }}>DEV LOG #4</div>
         <div className="font-mono text-xs text-ink-mute mb-4">Jul 21 · 5 min read</div>
         <div className="font-sans" style={{ fontSize: 14, fontWeight: 500, color: '#3a3550', lineHeight: 1.7, marginBottom: 16 }}>
           Body copy runs in Quicksand — readable at length while the pixel headline stays reserved for moments that need punch.
         </div>
-        <button className="font-pixel text-xs" style={{ color: '#f6f3ec', background: '#3a3550', border: 'none', padding: '10px 18px', cursor: 'pointer' }}>
+        <button className="font-pixel text-xs" style={{ color: '#fbfaf6', background: '#3a3550', border: 'none', padding: '10px 18px', cursor: 'pointer' }}>
           READ MORE
         </button>
       </div>

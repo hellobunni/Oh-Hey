@@ -1,77 +1,50 @@
 'use client'
+import { useEffect, useState } from "react";
+import { Lockup } from "../molecules/Lockup";
+import Link from "next/link";
+import { Button } from "../ui/button";
 
-import { cn } from '@/lib/utils'
-import { TopNav } from '@/components/ui/navigation'
-import MobileNav from '@/components/navigation/MobileNav'
-import type { NavBrand, NavLinksAlign, NavLink, MobileMenuItem } from '@/components/ui/navigation'
 
-// ─── Types ────────────────────────────────────────────────────────────────────
-
-export type NavItem = { label: string; href: string; active?: boolean }
-
-export interface NavProps {
-  brand?:       NavBrand
-  brandHref?:   string
-  items?:       NavItem[]
-  linksAlign?:  NavLinksAlign
-  ctaLabel?:    string
-  ctaHref?:     string
-  className?:   string
-}
-
-// ─── Defaults ─────────────────────────────────────────────────────────────────
-
-const DEFAULT_ITEMS: NavItem[] = [
-  { label: 'Writing',  href: '/archive', active: true },
-  { label: 'Tech',     href: '/tech'     },
-  { label: 'Fitness',  href: '/fitness'  },
-  { label: 'Creative', href: '/creative' },
-  { label: 'Nerd',     href: '/nerd'     },
-  { label: 'About',    href: '/about'    },
+const NAV_LINKS = [
+  { label: 'Videos', href: '/videos' },
+  { label: 'Dev Log', href: '/dev-log' },
+  { label: 'Domains', href: '/domains' },
+  { label: 'About', href: '/about' },
 ]
 
-// ─── Component ────────────────────────────────────────────────────────────────
+export function Nav() {
+  const [isDark, setIsDark] = useState(true);
 
-export function Nav({
-  brand       = 'oh-hey-lynae',
-  brandHref   = '/',
-  items       = DEFAULT_ITEMS,
-  linksAlign  = 'left',
-  ctaLabel    = 'SUBSCRIBE',
-  ctaHref     = '#newsletter',
-  className,
-}: NavProps) {
-  const navLinks: NavLink[]           = items.map(({ label, href, active }) => ({ label, href, active }))
-  const mobileItems: MobileMenuItem[] = items.map(({ label, href, active }) => ({ label, href, active }))
-  const cta = ctaLabel?.trim() && ctaHref?.trim()
-    ? { label: ctaLabel.trim(), href: ctaHref.trim() }
-    : undefined
+  useEffect(() => {
+    // Sync with whatever data-theme the FOUC script already set
+    setIsDark(document.documentElement.dataset.theme !== 'light');
+  }, []);
 
-  const blurBg = 'bg-[color-mix(in_oklab,var(--color-paper)_80%,transparent)]'
-
+  function toggleTheme() {
+    setIsDark((prev) => {
+      const next = !prev;
+      const theme = next ? 'dark' : 'light';
+      document.documentElement.dataset.theme = theme;
+      document.documentElement.style.colorScheme = theme;
+      localStorage.setItem('ohl-theme', theme);
+      return next;
+    });
+  }
   return (
-    <div className={cn('sticky top-0 z-40', className)}>
-      {/* ── Desktop bar (md+) ── */}
-      <div className={cn('hidden md:block backdrop-blur-md', blurBg)}>
-        <TopNav
-          brand={brand}
-          links={navLinks}
-          linksAlign={linksAlign}
-          cta={cta}
-          brandHref={brandHref}
-          className="px-[clamp(20px,5vw,80px)]"
-        />
-      </div>
-
-      {/* ── Mobile bar + drawer (<md) — state lives in MobileNav ── */}
-      <div className={cn('md:hidden backdrop-blur-md', blurBg)}>
-        <MobileNav
-          brand={brand}
-          items={mobileItems}
-          brandHref={brandHref}
-          externalLink={cta}
-        />
-      </div>
+<nav className="sticky top-0 z-10">
+  <div className="max-w-8xl mx-auto py-4 px-6 flex items-center gap-3.5">
+    <Lockup variant="transparent" />
+    <div className="border border-blue-500 ml-auto flex gap-5 items-center text-sm">
+      {NAV_LINKS.map((link) => (
+        <Link key={link.href} href={link.href} className="text-ink-soft text-base font-semibold hover:text-ink">{link.label}</Link>
+      ))}
+      <Button variant="display">
+        <Link href="#newsletter">SUBSCRIBE</Link>
+      </Button>
+      <a className="sub-btn" href="ohheylynae Home.html#newsletter">SUBSCRIBE</a>
+      <button onClick={toggleTheme} aria-label="Toggle theme">{isDark ? '☀' : '🌙'}</button>
     </div>
+  </div>
+</nav>
   )
 }

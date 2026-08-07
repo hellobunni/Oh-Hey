@@ -6,7 +6,7 @@ export default function AppChrome({ children }: { children: React.ReactNode }) {
     <div className="min-h-screen flex flex-col font-sans tracking-normal antialiased wrap-anywhere">
       <Nav />
       {children}
-      <div className="grid-bg-transparent">
+      <div className="">
         <Footer />
       </div>
     </div>

@@ -1,4 +1,4 @@
-import { NewsletterSignup } from "@/components/NewsletterSignup"
+import { NewsletterSignup } from "@/components/ui/NewsletterSignup"
 import { CurrentlyCard } from "./CurrentlyCard"
 import FollowStrip from "./FollowStrip"
 

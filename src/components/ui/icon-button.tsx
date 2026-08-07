@@ -15,7 +15,7 @@ const iconButtonVariants = cva(
   {
     variants: {
       variant: {
-        solid: "text-[#1d1c29] bg-primary",
+        solid: "text-card-2 bg-primary",
         outline: "text-ink bg-transparent border-[3px] border-ink",
         ghost: "text-ink-2 bg-paper-2 dark:bg-card",
       },

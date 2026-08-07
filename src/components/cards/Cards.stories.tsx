@@ -1,5 +1,6 @@
 import React from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
+import { Sparkles } from 'lucide-react'
 import { DSCard, OfferingCard, NewsletterCard, FeaturedCard } from '@/components/cards'
 
 const meta = {
@@ -147,7 +148,7 @@ export const NewsletterVariants: Story = {
 
       <SectionLabel>Custom icon + label</SectionLabel>
       <NewsletterCard
-        icon="✦"
+        icon={<Sparkles size={12} strokeWidth={2} aria-hidden />}
         label="WEEKLY DIGEST"
         headline={<>Design that ships.<br />Every Sunday.</>}
         tagline="No tracking. Unsubscribe any time."

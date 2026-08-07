@@ -2,7 +2,7 @@ import React from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
 const meta = {
-  title: 'Design System/Colors',
+  title: 'Foundation/Colors',
   parameters: { layout: 'padded' },
 } satisfies Meta
 
@@ -10,7 +10,7 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 const LIGHT = [
-  { name: 'Paper',       hex: '#F6F3EC', token: '--color-paper' },
+  { name: 'Paper',       hex: '#fbfaf6', token: '--color-paper' },
   { name: 'Paper 2',     hex: '#EEE9DD', token: '--color-paper-2' },
   { name: 'Ink',         hex: '#2B2838', token: '--color-ink' },
   { name: 'Ink 2',       hex: '#3D3A4A', token: '--color-ink-2' },
@@ -37,7 +37,7 @@ const DARK = [
   { name: 'Card',        hex: '#2B2A3D', token: '--color-card' },
   { name: 'Card 2',      hex: '#1D1C29', token: '--color-card-2' },
   { name: 'Deep',        hex: '#100F1A', token: '--color-deep' },
-  { name: 'Paper warm',  hex: '#F6F3EC', token: '--color-paper-warm' },
+  { name: 'Paper warm',  hex: '#fbfaf6', token: '--color-paper-warm' },
   { name: 'Paper ink',   hex: '#2B2838', token: '--color-paper-ink' },
 ]
 
@@ -112,7 +112,7 @@ export const SurfaceContrast: Story = {
         </div>
       </div>
 
-      <div style={{ background: '#F6F3EC', padding: 28, borderRadius: 14, minWidth: 260, flex: 1, border: '1px solid rgba(43,40,56,0.08)' }}>
+      <div style={{ background: '#fbfaf6', padding: 28, borderRadius: 14, minWidth: 260, flex: 1, border: '1px solid rgba(43,40,56,0.08)' }}>
         <div className="font-pixel text-xs text-alert mb-4 tracking-widest">LIGHT MODE</div>
         <div style={{ background: '#EEE9DD', borderRadius: 12, padding: 18, marginBottom: 10 }}>
           <div className="font-pixel text-sm" style={{ color: '#2B2838' }}>paper-2</div>

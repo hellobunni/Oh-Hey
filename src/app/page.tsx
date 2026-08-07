@@ -1,10 +1,6 @@
 import HeroTerminalOH from '@/components/hero/HeroTerminalOH'
-import { LatestWriting } from '@/components/home/LatestWriting'
-import { DomainGrid } from '@/components/home/DomainGrid'
 import { getAllPosts } from '@/lib/posts'
 import type { Domain } from '@content/domains'
-import { HomeOutro } from '@/components/home/HomeOutro'
-import { subscribeToNewsletter } from '@/app/actions'
 
 const DOMAIN_KEY: Record<string, Domain> = {
   'Tech':      'tech',
@@ -26,9 +22,6 @@ export default function HomePage() {
   return (
     <main>
       <HeroTerminalOH />
-      <LatestWriting posts={latestPosts} num="02" title="THE DEV LOG" action={{ label: 'Full archive →', href: '/archive' }} className="grid-bg-transparent"/>
-      <DomainGrid num="03" className="grid-bg-transparent hidden md:block"/>
-      <HomeOutro onSubscribe={subscribeToNewsletter} />
     </main>
   )
 }

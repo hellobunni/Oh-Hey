@@ -2,7 +2,7 @@ import React from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
 const meta = {
-  title: 'Design System/Spacing & Radius',
+  title: 'Foundation/Spacing & Radius',
   parameters: { layout: 'padded' },
 } satisfies Meta
 

@@ -1,6 +1,7 @@
 'use client'
 import { useState, type FormEvent } from 'react'
 import { Check } from 'lucide-react'
+import { Avatar } from '@/components/ui/avatar'
 import { cn } from '@/lib/utils'
 
 interface NewsletterSignupProps {
@@ -26,11 +27,11 @@ function NewsletterSignup({ onSubscribe, className }: NewsletterSignupProps) {
 
   return (
     <div className={cn('text-center', className)}>
-      <img
-        src="/avatar-round.png"
-        alt="ohheylynae"
-        className="w-[88px] h-[88px] rounded-full mx-auto mb-[22px]"
-        style={{ border: '3px solid var(--color-pink)' }}
+      <Avatar
+        variant="round"
+        size={88}
+        ring="accent"
+        className="mx-auto mb-[22px]"
       />
       <h3 className="font-pixel text-2xl text-ink leading-snug">
         ONE LETTER,{' '}

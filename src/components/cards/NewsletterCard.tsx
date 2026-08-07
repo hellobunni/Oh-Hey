@@ -1,4 +1,3 @@
-import type { ReactNode } from 'react'
 import { Mail } from 'lucide-react'
 import { CardShell } from './CardShell'
 import type { NewsletterCardProps } from './types'
@@ -42,7 +41,5 @@ export function NewsletterCard({
       )}
     </CardShell>
   )
-}
+} 
 
-// re-export for consumers that typed icon as string previously
-export type { ReactNode }

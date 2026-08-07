@@ -1,4 +1,3 @@
-import { Circle } from 'lucide-react'
 import { Avatar } from '@/components/ui/avatar'
 import { Badge } from '@/components/ui/badge'
 import { cn } from '@/lib/utils'
@@ -8,6 +7,10 @@ type StreamHeaderBarProps = {
   name?: string
   tagline?: string
   live?: boolean
+  /** When offline: show OFFLINE badge (default) or hide it entirely */
+  showOfflineBadge?: boolean
+  /** Clicking the bar → channel/profile */
+  href?: string
   className?: string
 }
 
@@ -16,12 +19,19 @@ function StreamHeaderBar({
   name = 'OHHEYLYNAE',
   tagline = 'cozy games & chaos',
   live = false,
+  showOfflineBadge = true,
+  href,
   className,
 }: StreamHeaderBarProps) {
+  const Comp = href ? 'a' : 'div'
+
   return (
-    <div
+    <Comp
+      {...(href ? { href } : {})}
       className={cn(
-        'w-80 bg-[#1d1c29] rounded-2xl px-5 py-4 flex items-center gap-3.5',
+        'flex w-80 items-center gap-3.5 rounded-2xl bg-card-2 px-5 py-4 no-underline',
+        'transition-colors duration-200 ease',
+        href && 'cursor-pointer hover:bg-[color-mix(in_oklch,var(--color-card-2)_82%,white)]',
         !live && 'opacity-70',
         className
       )}
@@ -31,7 +41,7 @@ function StreamHeaderBar({
         size={52}
         ring={live ? 'primary' : 'none'}
       />
-      <div className="flex-1 min-w-0">
+      <div className="min-w-0 flex-1">
         <div
           className={cn(
             'font-pixel text-base',
@@ -40,22 +50,25 @@ function StreamHeaderBar({
         >
           {name}
         </div>
-        <div className="font-sans font-semibold text-xs text-ink-soft truncate">
+        <div className="truncate font-sans text-xs font-semibold text-ink-soft">
           {tagline}
         </div>
       </div>
+
       {live ? (
-        <Badge variant="mint" shape="pill" className="inline-flex items-center gap-1.5">
-          <Circle size={7} className="fill-current" strokeWidth={0} aria-hidden />
+        <Badge tone="mint" className="inline-flex items-center gap-1.5">
+          <span
+            aria-hidden
+            className="size-1.5 rounded-full bg-current shadow-[0_0_0_0_var(--color-primary-soft)] animate-[glow-pulse_1.8s_var(--ease-out)_infinite]"
+          />
           LIVE
         </Badge>
-      ) : (
-        <Badge variant="offline" shape="pill">
-          OFFLINE
-        </Badge>
-      )}
-    </div>
+      ) : showOfflineBadge ? (
+        <Badge tone="neutral">OFFLINE</Badge>
+      ) : null}
+    </Comp>
   )
 }
 
 export { StreamHeaderBar }
+export type { StreamHeaderBarProps }

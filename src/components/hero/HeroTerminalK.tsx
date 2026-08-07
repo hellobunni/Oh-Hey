@@ -1,4 +1,5 @@
 import React from 'react'
+import { ArrowRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { buttonVariants } from '@/components/ui/button'
 
@@ -68,7 +69,7 @@ export default function HeroTerminalK({
   headline     = DEFAULT_HEADLINE,
   body         = 'Kodara is the consulting practice of Bryanna Gardner — 12 years of brand, product, and engineering, accelerated by AI. Strategic depth and execution speed in a single engagement, without the agency overhead.',
   stats        = DEFAULT_STATS,
-  primaryCta   = { label: 'START THE QUESTIONNAIRE →', href: '/consulting/contact' },
+  primaryCta   = { label: 'START THE QUESTIONNAIRE', href: '/consulting/contact' },
   secondaryCta = { label: 'VIEW SERVICES', href: '/consulting/services' },
   className,
 }: HeroTerminalLVProps) {
@@ -128,6 +129,7 @@ export default function HeroTerminalK({
             <div className="flex items-center gap-3">
               <a href={primaryCta.href} className={buttonVariants({ variant: 'primary', size: 'md' })}>
                 {primaryCta.label}
+                <ArrowRight size={14} strokeWidth={3} aria-hidden />
               </a>
               {secondaryCta && (
                 <a href={secondaryCta.href} className={buttonVariants({ variant: 'secondary', size: 'md' })}>

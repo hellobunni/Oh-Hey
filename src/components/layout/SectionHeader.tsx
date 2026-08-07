@@ -1,8 +1,9 @@
+import { ArrowRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 interface SectionHeaderProps {
-  num: string          // "01"
-  title: string        // "LATEST WRITING"
+  num: string
+  title: string
   action?: { label: string; href: string }
   className?: string
 }
@@ -23,9 +24,10 @@ function SectionHeader({ num, title, action, className }: SectionHeaderProps) {
       {action && (
         <a
           href={action.href}
-          className="font-sans font-bold text-sm text-ink-soft hover:text-ink transition-colors duration-100"
+          className="inline-flex items-center gap-1.5 font-sans font-bold text-sm text-ink-soft hover:text-ink transition-colors duration-100"
         >
-          {action.label}
+          {action.label.replace(/\s*→\s*$/, '')}
+          <ArrowRight size={14} strokeWidth={2.5} aria-hidden />
         </a>
       )}
     </div>

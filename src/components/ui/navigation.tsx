@@ -1,5 +1,6 @@
 import React from 'react'
 import { ExternalLink, Menu, X } from 'lucide-react'
+import { Avatar } from '@/components/ui/avatar'
 import { cn, cva } from '@/lib/utils'
 
 // ─── Top Nav ──────────────────────────────────────────────────────────────────
@@ -91,12 +92,7 @@ const linksAlignClass: Record<NavLinksAlign, string> = {
 const BRAND_MARK: Record<NavBrand, React.ReactNode> = {
   'oh-hey-lynae': (
     <>
-      <img
-        src="/avatar-face.png"
-        alt="ohheylynae"
-        className="w-[40px] h-[40px] shrink-0"
-        style={{ border: '2px solid var(--color-mint)', imageRendering: 'auto' }}
-      />
+      <Avatar variant="face" size={40} ring="primary" className="border-2" />
       <span>OHHEYLYNAE</span>
     </>
   ),

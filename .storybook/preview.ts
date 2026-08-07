@@ -4,7 +4,9 @@ import '../src/app/globals.css'
 const preview: Preview = {
   decorators: [
     (Story) => {
-      document.documentElement.classList.remove('dark')
+      const root = document.documentElement
+      root.dataset.theme = root.dataset.theme || 'light'
+      root.style.colorScheme = root.dataset.theme === 'dark' ? 'dark' : 'light'
       return Story()
     },
   ],
@@ -12,26 +14,22 @@ const preview: Preview = {
     backgrounds: {
       default: 'paper',
       values: [
-        { name: 'paper',   value: '#f6f3ec' },
-        { name: 'ink',     value: '#1d1c29' },
-        { name: 'deep',    value: '#100f1a' },
-        { name: 'white',   value: '#ffffff' },
+        { name: 'paper', value: '#fbfaf6' },
+        { name: 'ink', value: '#1d1c29' },
+        { name: 'deep', value: '#100f1a' },
+        { name: 'white', value: '#ffffff' },
       ],
     },
     controls: {
       matchers: {
-       color: /(background|color)$/i,
-       date: /Date$/i,
+        color: /(background|color)$/i,
+        date: /Date$/i,
       },
     },
-
     a11y: {
-      // 'todo' - show a11y violations in the test UI only
-      // 'error' - fail CI on a11y violations
-      // 'off' - skip a11y checks entirely
-      test: 'todo'
-    }
+      test: 'todo',
+    },
   },
-};
+}
 
-export default preview;
+export default preview

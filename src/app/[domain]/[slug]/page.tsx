@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
+import { ArrowLeft, ArrowRight } from 'lucide-react'
 import { getAllPosts, getPostBySlug } from '@/lib/posts'
 import { DOMAIN_META, type Domain } from '@content/domains'
 import { MDXRemote } from 'next-mdx-remote/rsc'
@@ -90,15 +91,17 @@ export default async function PostPage({ params }: { params: Params }) {
           <div className="mt-20 pt-8 flex items-center justify-between">
             <Link
               href={`/${domain}`}
-              className="font-mono text-xs text-ink-mute hover:text-ink transition-colors"
+              className="inline-flex items-center gap-1 font-mono text-xs text-ink-mute hover:text-ink transition-colors"
             >
-              ← {meta.label}
+              <ArrowLeft size={12} strokeWidth={2} aria-hidden />
+              {meta.label}
             </Link>
             <Link
               href="/archive"
-              className="font-mono text-xs text-ink-mute hover:text-ink transition-colors"
+              className="inline-flex items-center gap-1 font-mono text-xs text-ink-mute hover:text-ink transition-colors"
             >
-              all posts →
+              all posts
+              <ArrowRight size={12} strokeWidth={2} aria-hidden />
             </Link>
           </div>
 

@@ -17,7 +17,7 @@ const buttonVariants = cva(
       variant: {
         // mint fill — text stays dark on brand in both themes
         primary:
-          "bg-primary text-[#1d1c29] hover:bg-primary",
+          "bg-primary text-card-2 hover:bg-primary",
         // pink outline — alert text in light, accent text in dark
         accent:
           "border-[3px] border-accent bg-transparent text-alert dark:text-accent",
@@ -25,6 +25,8 @@ const buttonVariants = cva(
         secondary:
           "border-[3px] border-ink bg-transparent text-ink",
         // paper/card surface — flips with theme
+        display:
+        "font-pixel font-sm text-soft-ink bg-card-2 border-2 border-card py-2 px-4 cursor-pointer",
         ghost:
           "font-sans font-bold bg-paper-2 text-ink-2 dark:bg-card rounded-lg normal-case tracking-wide",
         // muted inline link — flips with ink-mute

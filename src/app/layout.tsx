@@ -1,9 +1,10 @@
 import type { Metadata } from 'next'
 import { Analytics } from '@vercel/analytics/next'
-import { Geist, Geist_Mono, Fraunces, Quicksand, Silkscreen } from 'next/font/google'
+import { Fraunces, Geist, Geist_Mono, Quicksand, Silkscreen } from 'next/font/google'
 import './globals.css'
 import AppChrome from '@/components/layout/AppChrome'
 
+/** Geist stays on next/font — not in the Google Fonts @import (Fraunces/Quicksand/Silkscreen). */
 const geistSans = Geist({
   subsets: ['latin'],
   variable: '--font-geist-sans',
@@ -49,16 +50,21 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
-      data-theme="light"
+      data-theme="dark"
       className={`${geistSans.variable} ${geistMono.variable} ${fraunces.variable} ${quicksand.variable} ${silkscreen.variable}`}
       suppressHydrationWarning
     >
       <head>
         {/* Reads localStorage before first paint to prevent FOUC */}
-        <script dangerouslySetInnerHTML={{ __html: `(function(){var t=localStorage.getItem('theme')||'light';var r=t==='auto'?(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'):t;document.documentElement.dataset.theme=r;document.documentElement.style.colorScheme=r;})()` }} />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){var t=localStorage.getItem('ohl-theme')||'light';document.documentElement.dataset.theme=t;document.documentElement.style.colorScheme=t;})()`,
+          }}
+        />
       </head>
-      <body className="antialiased wrap-anywhere" suppressHydrationWarning>
+      <body className="antialiased wrap-anywhere m-0 bg-paper text-ink font-sans" suppressHydrationWarning>
         <AppChrome>{children}</AppChrome>
+        <Analytics />
       </body>
     </html>
   )
