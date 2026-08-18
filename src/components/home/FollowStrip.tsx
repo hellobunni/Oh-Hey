@@ -1,6 +1,12 @@
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight } from "lucide-react";
 
-const PLATFORMS = ['YOUTUBE', 'TIKTOK', 'INSTAGRAM', 'TWITCH', 'DISCORD'] as const
+const PLATFORMS = [
+  "YOUTUBE",
+  "TIKTOK",
+  "INSTAGRAM",
+  "TWITCH",
+  "DISCORD",
+] as const;
 
 export default function FollowStrip() {
   return (
@@ -14,12 +20,12 @@ export default function FollowStrip() {
           <a
             key={p}
             href="#"
-            className="font-pixel text-xs px-3.5 py-2.5 border-2 border-card text-ink-soft bg-paper transition-colors hover:border-mint hover:text-mint"
+            className="font-pixel text-xs px-3.5 py-2.5 border-2 border-card text-ink-soft bg-paper transition-colors hover:border-mint hover:text-primary"
           >
             {p}
           </a>
         ))}
       </div>
     </section>
-  )
+  );
 }

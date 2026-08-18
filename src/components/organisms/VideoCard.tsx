@@ -1,26 +1,26 @@
-'use client'
+"use client";
 
-import { useState, type MouseEventHandler } from 'react'
-import { Avatar } from '@/components/ui/avatar'
-import { cn } from '@/lib/utils'
+import { useState, type MouseEventHandler } from "react";
+import { Avatar } from "@/components/ui/avatar";
+import { cn } from "@/lib/utils";
 
 type VideoCardProps = {
-  thumbnail?: string
-  duration: string
-  title: string
-  channel: string
-  views: string
-  avatarSrc?: string
+  thumbnail?: string;
+  duration: string;
+  title: string;
+  channel: string;
+  views: string;
+  avatarSrc?: string;
   /** Whole card click → opens video */
-  href?: string
+  href?: string;
   /** Avatar click → channel page (separate from card) */
-  channelHref?: string
+  channelHref?: string;
   /** Watched progress 0–1. Shows sliver + muted title. */
-  progress?: number
+  progress?: number;
   /** Force loading skeleton (otherwise waits for image load). */
-  loading?: boolean
-  className?: string
-}
+  loading?: boolean;
+  className?: string;
+};
 
 function VideoCard({
   thumbnail,
@@ -35,30 +35,30 @@ function VideoCard({
   loading: loadingProp,
   className,
 }: VideoCardProps) {
-  const [imgLoaded, setImgLoaded] = useState(!thumbnail)
-  const loading = loadingProp || (Boolean(thumbnail) && !imgLoaded)
-  const watched = progress != null && progress > 0
-  const progressPct = watched ? Math.min(100, Math.max(0, progress * 100)) : 0
+  const [imgLoaded, setImgLoaded] = useState(!thumbnail);
+  const loading = loadingProp || (Boolean(thumbnail) && !imgLoaded);
+  const watched = progress != null && progress > 0;
+  const progressPct = watched ? Math.min(100, Math.max(0, progress * 100)) : 0;
 
-  const Comp = href ? 'a' : 'div'
+  const Comp = href ? "a" : "div";
 
   const onChannelClick: MouseEventHandler = (e) => {
-    if (!channelHref) return
-    e.preventDefault()
-    e.stopPropagation()
-    window.location.assign(channelHref)
-  }
+    if (!channelHref) return;
+    e.preventDefault();
+    e.stopPropagation();
+    window.location.assign(channelHref);
+  };
 
   return (
     <Comp
       {...(href ? { href } : {})}
       className={cn(
-        'group relative block w-72 overflow-hidden rounded-2xl bg-card-2 no-underline',
-        'shadow-[0_0_0_transparent] transition-[transform,box-shadow] duration-200 ease',
-        'hover:-translate-y-1.5 hover:shadow-[0_12px_28px_rgba(0,0,0,0.35)]',
-        'active:-translate-y-0.5 active:scale-[0.98]',
-        href && 'cursor-pointer',
-        className
+        "group relative block overflow-hidden rounded-2xl bg-card-2 no-underline",
+        "shadow-[0_0_0_transparent] transition-[transform,box-shadow] duration-200 ease",
+        "hover:-translate-y-1.5 hover:shadow-[0_12px_28px_rgba(0,0,0,0.35)]",
+        "active:-translate-y-0.5 active:scale-[0.98]",
+        href && "cursor-pointer",
+        className,
       )}
     >
       {/* Thumbnail */}
@@ -70,10 +70,10 @@ function VideoCard({
             alt=""
             onLoad={() => setImgLoaded(true)}
             className={cn(
-              'absolute inset-0 size-full object-cover opacity-90',
-              'transition-transform duration-300 ease',
-              'group-hover:scale-105',
-              loading && 'opacity-0'
+              "absolute inset-0 size-full object-cover opacity-90",
+              "transition-transform duration-300 ease",
+              "group-hover:scale-105",
+              loading && "opacity-0",
             )}
           />
         )}
@@ -124,8 +124,8 @@ function VideoCard({
         <div className="min-w-0">
           <div
             className={cn(
-              'font-sans text-sm font-bold',
-              watched ? 'text-ink-mute' : 'text-white'
+              "font-sans text-sm font-bold",
+              watched ? "text-ink-mute" : "text-white",
             )}
           >
             {title}
@@ -136,8 +136,8 @@ function VideoCard({
         </div>
       </div>
     </Comp>
-  )
+  );
 }
 
-export { VideoCard }
-export type { VideoCardProps }
+export { VideoCard };
+export type { VideoCardProps };

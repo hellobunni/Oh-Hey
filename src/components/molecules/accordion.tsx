@@ -1,25 +1,25 @@
-'use client'
+"use client";
 
-import { Accordion as AccordionPrimitive } from '@base-ui/react/accordion'
-import type { ReactNode } from 'react'
+import { Accordion as AccordionPrimitive } from "@base-ui/react/accordion";
+import type { ReactNode } from "react";
 
-import { cn } from '@/lib/utils'
+import { cn } from "@/lib/utils";
 
 type AccordionItemData = {
-  value: string
-  title: string
-  content: ReactNode
-}
+  value: string;
+  title: string;
+  content: ReactNode;
+};
 
 type AccordionProps = {
-  items: AccordionItemData[]
+  items: AccordionItemData[];
   /** Allow multiple panels open. Default false (FAQ single-open). */
-  multiple?: boolean
-  defaultValue?: string[]
-  value?: string[]
-  onValueChange?: (value: string[]) => void
-  className?: string
-}
+  multiple?: boolean;
+  defaultValue?: string[];
+  value?: string[];
+  onValueChange?: (value: string[]) => void;
+  className?: string;
+};
 
 /**
  * Accordion — FAQ / collapsible groups.
@@ -39,22 +39,22 @@ function Accordion({
       defaultValue={defaultValue}
       value={value}
       onValueChange={onValueChange}
-      className={cn('w-full', className)}
+      className={cn("w-full", className)}
     >
       {items.map((item, i) => (
         <AccordionPrimitive.Item
           key={item.value}
           value={item.value}
-          className={cn(i > 0 && 'border-t border-line')}
+          className={cn(i > 0 && "border-t border-line")}
         >
           <AccordionPrimitive.Header>
             <AccordionPrimitive.Trigger
               className={cn(
-                'group flex w-full cursor-pointer items-center justify-between gap-4',
-                'bg-transparent py-3.5 text-left font-sans text-sm font-bold',
-                'text-ink-mute transition-colors duration-200 ease',
-                'hover:text-ink data-[panel-open]:text-ink',
-                'dark:hover:text-white dark:data-[panel-open]:text-white'
+                "group flex w-full cursor-pointer items-center justify-between gap-4",
+                "bg-transparent py-3.5 text-left font-sans text-sm font-bold",
+                "text-ink-mute transition-colors duration-200 ease",
+                "hover:text-ink data-[panel-open]:text-ink",
+                "dark:hover:text-white dark:data-[panel-open]:text-white",
               )}
             >
               {item.title}
@@ -71,20 +71,20 @@ function Accordion({
           </AccordionPrimitive.Header>
           <AccordionPrimitive.Panel
             className={cn(
-              'h-[var(--accordion-panel-height)] overflow-hidden',
-              'transition-[height] duration-[250ms] ease',
-              'data-[ending-style]:h-0 data-[starting-style]:h-0'
+              "h-[var(--accordion-panel-height)] overflow-hidden",
+              "transition-[height] duration-[250ms] ease",
+              "data-[ending-style]:h-0 data-[starting-style]:h-0",
             )}
           >
-            <div className="pb-4 font-sans text-[13px] leading-relaxed text-ink-soft">
+            <div className="pb-4 font-sans text-sm leading-relaxed text-ink-soft">
               {item.content}
             </div>
           </AccordionPrimitive.Panel>
         </AccordionPrimitive.Item>
       ))}
     </AccordionPrimitive.Root>
-  )
+  );
 }
 
-export { Accordion }
-export type { AccordionProps, AccordionItemData }
+export { Accordion };
+export type { AccordionProps, AccordionItemData };

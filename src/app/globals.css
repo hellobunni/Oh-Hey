@@ -7,126 +7,133 @@
 /* Brand accents (primary/accent/link/alert/gold) do not change in dark.     */
 
 @theme {
-  --color-paper:        #fbfaf6;
-  --color-paper-2:      #EEE9DD;
-  --color-ink:          #2B2838;
-  --color-ink-2:        #3D3A4A;
-  --color-ink-soft:     #6D6880;
-  --color-ink-mute:     #9A96B0;
-  --color-line:         rgba(43, 40, 56, 0.08);
-  --color-line-strong:  rgba(43, 40, 56, 0.18);
-  --color-hairline:     rgba(43, 40, 56, 0.06);
+  --color-paper: #fbfaf6;
+  --color-paper-2: #eee9dd;
+  --color-ink: #2b2838;
+  --color-ink-2: #3d3a4a;
+  --color-ink-soft: #6d6880;
+  --color-ink-mute: #9a96b0;
+  --color-line: rgba(43, 40, 56, 0.08);
+  --color-line-strong: rgba(43, 40, 56, 0.18);
+  --color-hairline: rgba(43, 40, 56, 0.06);
 
-  --color-primary:      #7ED6C0;
+  --color-primary: #7ed6c0;
   --color-primary-soft: rgba(126, 214, 192, 0.12);
-  --color-accent:       #F2A7C3;
-  --color-accent-soft:  rgba(242, 167, 195, 0.12);
-  --color-link:         #8FA8E8;
-  --color-alert:        #E0559B;
-  --color-gold:         #E9C46A;
+  --color-accent: #f2a7c3;
+  --color-accent-soft: rgba(242, 167, 195, 0.12);
+  --color-link: #8fa8e8;
+  --color-alert: #e0559b;
+  --color-gold: #e9c46a;
 
-  --color-deep:         #100F1A;
-  --color-card:         #2B2A3D;
-  --color-card-2:       #1D1C29;
+  --color-deep: #100f1a;
+  --color-card: #2b2a3d;
+  --color-card-2: #1d1c29;
 
-  --color-paper-warm:   #2A2740;
-  --color-paper-ink:    #E8E6F0;
+  --color-paper-warm: #2a2740;
+  --color-paper-ink: #e8e6f0;
 
-  --color-navy:         #3A3550;
+  --color-navy: #3a3550;
 
-  --color-tech:         #2563eb;
-  --color-fitness:      #059669;
-  --color-creative:     #ea580c;
-  --color-nerd:         #7c3aed;
-  --color-tech-bg:      rgba(37, 99, 235, 0.08);
-  --color-fitness-bg:   rgba(5, 150, 105, 0.08);
-  --color-creative-bg:  rgba(234, 88, 12, 0.08);
-  --color-nerd-bg:      rgba(124, 58, 237, 0.08);
+  --color-tech: #2563eb;
+  --color-fitness: #059669;
+  --color-creative: #ea580c;
+  --color-nerd: #7c3aed;
+  --color-tech-bg: rgba(37, 99, 235, 0.08);
+  --color-fitness-bg: rgba(5, 150, 105, 0.08);
+  --color-creative-bg: rgba(234, 88, 12, 0.08);
+  --color-nerd-bg: rgba(124, 58, 237, 0.08);
 
   /* Motion */
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-in:  cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-in: cubic-bezier(0.7, 0, 0.84, 0);
   --dur-1: 120ms;
   --dur-2: 200ms;
   --dur-3: 320ms;
   --dur-4: 600ms;
 
   /* Space / radius */
-  --spacing-1:  0.25rem;
-  --spacing-2:  0.5rem;
-  --spacing-4:  1rem;
-  --spacing-6:  1.5rem;
-  --spacing-8:  2rem;
+  --spacing-1: 0.25rem;
+  --spacing-2: 0.5rem;
+  --spacing-4: 1rem;
+  --spacing-6: 1.5rem;
+  --spacing-8: 2rem;
   --spacing-12: 3rem;
 
   --radius-none: 0px;
-  --radius-sm:   8px;
-  --radius-md:   16px;
+  --radius-sm: 8px;
+  --radius-md: 16px;
   --radius-full: 9999px;
 }
 
 /* Dark theme — overrides the same --color-* vars utilities read */
 [data-theme="dark"] {
-  --color-paper:        #100F1A;
-  --color-paper-2:      #1D1C29;
-  --color-ink:          #E8E6F0;
-  --color-ink-2:        #C9C5E0;
-  --color-ink-soft:     #8A869E;
-  --color-ink-mute:     #444258;
-  --color-line:         rgba(232, 230, 240, 0.08);
-  --color-line-strong:  rgba(232, 230, 240, 0.16);
-  --color-hairline:     rgba(232, 230, 240, 0.05);
+  --color-paper: #100f1a;
+  --color-paper-2: #1d1c29;
+  --color-ink: #e8e6f0;
+  --color-ink-2: #c9c5e0;
+  --color-ink-soft: #8a869e;
+  --color-ink-mute: #444258;
+  --color-line: rgba(232, 230, 240, 0.08);
+  --color-line-strong: rgba(232, 230, 240, 0.16);
+  --color-hairline: rgba(232, 230, 240, 0.05);
 
-  --color-card:         #2B2A3D;
-  --color-card-2:       #1D1C29;
-  --color-deep:         #100F1A;
+  --color-card: #2b2a3d;
+  --color-card-2: #1d1c29;
+  --color-deep: #100f1a;
 
-  --color-paper-warm:   #fbfaf6;
-  --color-paper-ink:    #2B2838;
+  --color-paper-warm: #fbfaf6;
+  --color-paper-ink: #2b2838;
 }
 
 /* Fonts — @theme inline so utilities reference next/font CSS vars injected on <html> */
 @theme inline {
-  --font-sans:    var(--font-quicksand,  "Quicksand",  ui-sans-serif, system-ui, sans-serif);
-  --font-serif:   var(--font-fraunces,   "Fraunces",   Georgia, serif);
-  --font-mono:    var(--font-geist-mono, "Geist Mono", ui-monospace, monospace);
-  --font-pixel:   var(--font-silkscreen, "Silkscreen", monospace);
+  --font-sans: var(
+    --font-quicksand,
+    "Quicksand",
+    ui-sans-serif,
+    system-ui,
+    sans-serif
+  );
+  --font-serif: var(--font-fraunces, "Fraunces", Georgia, serif);
+  --font-mono: var(--font-geist-mono, "Geist Mono", ui-monospace, monospace);
+  --font-pixel: var(--font-silkscreen, "Silkscreen", monospace);
   --font-display: var(--font-silkscreen, "Silkscreen", monospace);
 }
 
 /* Type scale / tracking */
 @theme inline {
-
   --animate-marquee: marquee 40s linear infinite;
 
   --text-xxs: 10px;
-  --text-xs:  11px;
-  --text-sm:  13px;
+  --text-xs: 11px;
+  --text-sm: 13px;
   --text-body: 15px;
-  --text-md:  18px;
-  --text-lg:  22px;
-  --text-xl:  28px;
+  --text-md: 18px;
+  --text-lg: 22px;
+  --text-xl: 28px;
   --text-2xl: 36px;
   --text-3xl: 48px;
   --text-4xl: 64px;
   --text-5xl: 96px;
   --text-6xl: 144px;
 
-  --tracking-tight:  -0.045em;
-  --tracking-snug:   -0.025em;
+  --tracking-tight: -0.045em;
+  --tracking-snug: -0.025em;
   --tracking-normal: -0.005em;
-  --tracking-wide:    0.08em;
-  --tracking-wider:   0.18em;
+  --tracking-wide: 0.08em;
+  --tracking-wider: 0.18em;
 
-  --leading-tight:   0.92;
-  --leading-snug:    1.05;
-  --leading-normal:  1.55;
+  --leading-tight: 0.92;
+  --leading-snug: 1.05;
+  --leading-normal: 1.55;
   --leading-relaxed: 1.7;
 }
 
 /* ─── Base ───────────────────────────────────────────────────────────────── */
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 /* ─── Layout utilities ───────────────────────────────────────────────────── */
@@ -135,7 +142,6 @@
   max-width: 1500px;
   margin-inline: auto;
   width: 100%;
-  border: 1px solid red;
 }
 
 @utility home-inner {
@@ -156,32 +162,61 @@
 /* ─── Keyframes ──────────────────────────────────────────────────────────── */
 
 @keyframes marquee {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 @keyframes toast-enter {
-  from { transform: translateX(-28px); opacity: 0; }
-  to   { transform: translateX(0); opacity: 1; }
+  from {
+    transform: translateX(-28px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
 @keyframes toast-exit {
-  from { transform: translateX(0); opacity: 1; }
-  to   { transform: translateX(28px); opacity: 0; }
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(28px);
+    opacity: 0;
+  }
 }
 
 @keyframes toast-enter-right {
-  from { transform: translateX(28px); opacity: 0; }
-  to   { transform: translateX(0); opacity: 1; }
+  from {
+    transform: translateX(28px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
 @keyframes toast-exit-right {
-  from { transform: translateX(0); opacity: 1; }
-  to   { transform: translateX(28px); opacity: 0; }
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(28px);
+    opacity: 0;
+  }
 }
 
 @keyframes glow-pulse {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
     box-shadow: 0 0 0 0 var(--color-primary-soft);
   }
@@ -192,11 +227,24 @@
 }
 
 @keyframes shimmer {
-  from { background-position: 200% 0; }
-  to   { background-position: -200% 0; }
+  from {
+    background-position: 200% 0;
+  }
+  to {
+    background-position: -200% 0;
+  }
 }
 
 @keyframes today-pulse {
-  0%, 100% { background-color: var(--color-primary-soft); }
-  40%      { background-color: color-mix(in oklch, var(--color-primary) 28%, transparent); }
+  0%,
+  100% {
+    background-color: var(--color-primary-soft);
+  }
+  40% {
+    background-color: color-mix(
+      in oklch,
+      var(--color-primary) 28%,
+      transparent
+    );
+  }
 }

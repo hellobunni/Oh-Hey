@@ -1,13 +1,17 @@
-import { NewsletterSignup } from "@/components/ui/NewsletterSignup"
-import { CurrentlyCard } from "./CurrentlyCard"
-import FollowStrip from "./FollowStrip"
+import { NewsletterSignup } from "@/components/ui/NewsletterSignup";
+import { CurrentlyCard } from "./CurrentlyCard";
+import FollowStrip from "./FollowStrip";
 
-function HomeOutro({ onSubscribe }: { onSubscribe?: (email: string) => Promise<void> | void }) {
+function HomeOutro({
+  onSubscribe,
+}: {
+  onSubscribe?: (email: string) => Promise<void> | void;
+}) {
   return (
     <>
       <FollowStrip />
 
-      <section id="newsletter" className="border-b-2 border-card py-[72px] px-6">
+      <section id="newsletter" className="border-b-2 border-card py-18 px-6">
         <NewsletterSignup onSubscribe={onSubscribe} />
       </section>
 
@@ -17,7 +21,7 @@ function HomeOutro({ onSubscribe }: { onSubscribe?: (email: string) => Promise<v
         </div>
       </section>
     </>
-  )
+  );
 }
 
-export { HomeOutro }
+export { HomeOutro };

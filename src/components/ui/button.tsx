@@ -1,7 +1,7 @@
-import { Button as ButtonPrimitive } from "@base-ui/react/button"
-import { cva, type VariantProps } from "class-variance-authority"
+import { Button as ButtonPrimitive } from "@base-ui/react/button";
+import { cva, type VariantProps } from "class-variance-authority";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
   [
@@ -16,17 +16,15 @@ const buttonVariants = cva(
     variants: {
       variant: {
         // mint fill — text stays dark on brand in both themes
-        primary:
-          "bg-primary text-card-2 hover:bg-primary",
+        primary: "bg-primary text-card-2 hover:bg-primary",
         // pink outline — alert text in light, accent text in dark
         accent:
           "border-[3px] border-accent bg-transparent text-alert dark:text-accent",
         // ink outline — flips with theme ink tokens
-        secondary:
-          "border-[3px] border-ink bg-transparent text-ink",
+        secondary: "border-[3px] border-ink bg-transparent text-ink",
         // paper/card surface — flips with theme
         display:
-        "font-pixel font-sm text-soft-ink bg-card-2 border-2 border-card py-2 px-4 cursor-pointer",
+          "inline-flex items-center font-px text-xs font-black text-ink-soft tracking-wider bg-accent shadow-[3px_3px_0_rgba(0,0,0,0.35)] transition-all duration-150 hover:bg-primary hover:text-ink hover:-translate-x-px hover:-translate-y-px hover:shadow-[4px_4px_0_rgba(0,0,0,0.35)]",
         ghost:
           "font-sans font-bold bg-paper-2 text-ink-2 dark:bg-card rounded-lg normal-case tracking-wide",
         // muted inline link — flips with ink-mute
@@ -34,9 +32,9 @@ const buttonVariants = cva(
           "font-sans font-bold bg-transparent text-ink-mute normal-case tracking-wide underline-offset-4 hover:underline hover:brightness-100",
       },
       size: {
-        sm: "text-xs px-3.5 py-2",   // 11px / 14×8
-        md: "text-sm px-5 py-3",     // 12px / 20×12
-        lg: "text-base px-7 py-4",     // 16px / 28×16
+        sm: "text-xs px-3.5 py-2", // 11px / 14×8
+        md: "text-sm px-5 py-3", // 12px / 20×12
+        lg: "text-base px-7 py-4", // 16px / 28×16
         icon: "size-9 text-[12px]",
       },
     },
@@ -44,8 +42,8 @@ const buttonVariants = cva(
       variant: "primary",
       size: "md",
     },
-  }
-)
+  },
+);
 
 function Button({
   className,
@@ -59,7 +57,7 @@ function Button({
       className={cn(buttonVariants({ variant, size }), className)}
       {...props}
     />
-  )
+  );
 }
 
-export { Button, buttonVariants }
+export { Button, buttonVariants };

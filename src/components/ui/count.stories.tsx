@@ -1,40 +1,43 @@
-import React from 'react'
-import type { Meta, StoryObj } from '@storybook/react-vite'
-import { Count } from '@/components/ui/count'
-import { Avatar } from '@/components/ui/avatar'
+import React from "react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { Count } from "@/components/ui/count";
+import { Avatar } from "@/components/ui/avatar";
 
 const meta = {
-  title: 'Atoms/Count',
+  title: "Atoms/Count",
   component: Count,
-  parameters: { layout: 'centered' },
+  parameters: { layout: "centered" },
   argTypes: {
-    tone: { control: 'select', options: ['alert', 'primary'] },
-    shape: { control: 'select', options: ['circle', 'dot'] },
-    size: { control: 'select', options: ['sm', 'md'] },
-    placement: { control: 'select', options: ['standalone', 'overlay'] },
-    value: { control: { type: 'number', min: 0, max: 200 } },
-    max: { control: { type: 'number', min: 1, max: 99 } },
+    tone: { control: "select", options: ["alert", "primary"] },
+    shape: { control: "select", options: ["circle", "dot"] },
+    size: { control: "select", options: ["sm", "md"] },
+    placement: { control: "select", options: ["standalone", "overlay"] },
+    value: { control: { type: "number", min: 0, max: 200 } },
+    max: { control: { type: "number", min: 1, max: 99 } },
   },
-  args: { value: 3, tone: 'alert', shape: 'circle', size: 'md' },
-} satisfies Meta<typeof Count>
+  args: { value: 3, tone: "alert", shape: "circle", size: "md" },
+} satisfies Meta<typeof Count>;
 
-export default meta
-type Story = StoryObj<typeof meta>
+export default meta;
+type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {}
+export const Default: Story = {};
 
 export const LightDark: Story = {
-  name: 'Light / Dark mode',
-  parameters: { layout: 'fullscreen' },
+  name: "Light / Dark mode",
+  parameters: { layout: "fullscreen" },
   render: () => (
     <div className="flex flex-col gap-7 bg-deep p-12 text-paper-ink">
       <div className="font-pixel text-[22px] text-primary">COUNT — ATOM</div>
-      <p className="max-w-[760px] font-sans text-[13px] font-semibold text-ink-soft">
-        Numeric indicator, standalone or overlaid on an icon/avatar. Not a Tag (no text label) or
-        Badge (no status meaning) — it communicates quantity only.
+      <p className="max-w-[760px] font-sans text-sm font-semibold text-ink-soft">
+        Numeric indicator, standalone or overlaid on an icon/avatar. Not a Tag
+        (no text label) or Badge (no status meaning) — it communicates quantity
+        only.
       </p>
 
-      <div className="border-b-2 border-card pb-2 font-pixel text-[15px] text-accent">VARIANTS</div>
+      <div className="border-b-2 border-card pb-2 font-pixel text-[15px] text-accent">
+        VARIANTS
+      </div>
 
       <div className="flex flex-wrap gap-8">
         {/* Light */}
@@ -75,10 +78,10 @@ export const LightDark: Story = {
       </div>
     </div>
   ),
-}
+};
 
 export const Showcase: Story = {
-  name: 'Count — showcase',
+  name: "Count — showcase",
   render: () => (
     <div>
       <div className="mb-2 font-mono text-xs uppercase tracking-widest text-ink-soft">
@@ -86,12 +89,15 @@ export const Showcase: Story = {
       </div>
       <h2 className="mb-1 font-pixel text-2xl text-primary">COUNT</h2>
       <p className="mb-8 max-w-xl font-sans text-sm leading-relaxed text-ink-soft">
-        Quantity only. Truncates above <code className="font-mono text-xs text-accent">max</code>{' '}
-        (default 99). Alert for notifications, primary for positive counts. Overlay adds a surface
-        cutout ring for avatar/icon corners.
+        Quantity only. Truncates above{" "}
+        <code className="font-mono text-xs text-accent">max</code> (default 99).
+        Alert for notifications, primary for positive counts. Overlay adds a
+        surface cutout ring for avatar/icon corners.
       </p>
 
-      <div className="mb-3 font-mono text-xs uppercase tracking-wide text-ink-soft">Tones</div>
+      <div className="mb-3 font-mono text-xs uppercase tracking-wide text-ink-soft">
+        Tones
+      </div>
       <div
         className="mb-8 flex flex-wrap items-center gap-4 border border-line bg-paper-2 p-5"
         style={{ borderRadius: 10 }}
@@ -115,7 +121,9 @@ export const Showcase: Story = {
         <Count value={42} max={9} />
       </div>
 
-      <div className="mb-3 font-mono text-xs uppercase tracking-wide text-ink-soft">Sizes</div>
+      <div className="mb-3 font-mono text-xs uppercase tracking-wide text-ink-soft">
+        Sizes
+      </div>
       <div
         className="mb-8 flex flex-wrap items-center gap-4 border border-line bg-paper-2 p-5"
         style={{ borderRadius: 10 }}
@@ -158,7 +166,9 @@ export const Showcase: Story = {
         </div>
       </div>
 
-      <div className="mb-3 font-mono text-xs uppercase tracking-wide text-ink-soft">Dark context</div>
+      <div className="mb-3 font-mono text-xs uppercase tracking-wide text-ink-soft">
+        Dark context
+      </div>
       <div
         data-theme="dark"
         className="flex flex-wrap items-center gap-5 border border-line bg-paper p-5"
@@ -175,4 +185,4 @@ export const Showcase: Story = {
       </div>
     </div>
   ),
-}
+};

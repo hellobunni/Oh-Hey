@@ -1,5 +1,5 @@
-import { Nav } from '@/components/navigation/Nav'
-import Footer from '@/components/layout/Footer'
+import { Nav } from "@/components/navigation/Nav";
+import Footer from "@/components/layout/Footer";
 
 export default function AppChrome({ children }: { children: React.ReactNode }) {
   return (
@@ -10,5 +10,5 @@ export default function AppChrome({ children }: { children: React.ReactNode }) {
         <Footer />
       </div>
     </div>
-  )
+  );
 }
