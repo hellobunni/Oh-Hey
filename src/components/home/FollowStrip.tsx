@@ -20,7 +20,7 @@ export default function FollowStrip() {
           <a
             key={p}
             href="#"
-            className="font-pixel text-xs px-3.5 py-2.5 border-2 border-card text-ink-soft bg-paper transition-colors hover:border-mint hover:text-primary"
+            className="font-pixel text-xs px-3.5 py-2.5 border-2 border-card text-ink-soft bg-paper transition-colors hover:border-primary hover:text-primary"
           >
             {p}
           </a>

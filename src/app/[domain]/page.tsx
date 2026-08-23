@@ -1,21 +1,12 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
-import { getAllPosts } from '@/lib/posts'
-import { DOMAIN_META, type Domain } from '@content/domains'
+import { formatPostDate, getAllPosts } from '@/lib/posts'
+import { DOMAINS, DOMAIN_META, isDomain, type Domain } from '@content/domains'
 import { SectionHeader } from '@/components/layout/SectionHeader'
-const VALID_DOMAINS = ['tech', 'fitness', 'creative', 'nerd'] as const
-type DomainSlug = typeof VALID_DOMAINS[number]
-
-const DOMAIN_CONFIG: Record<DomainSlug, { postsDomain: string; desc: string }> = {
-  tech:     { postsDomain: 'Tech',       desc: 'Frontend craft, dev tools, building in public.' },
-  fitness:  { postsDomain: 'Fitness',    desc: 'Strength training, running, the boring middle.' },
-  creative: { postsDomain: 'Creative',   desc: 'Prints, process, gouache vs procreate.' },
-  nerd:     { postsDomain: 'Nerd Stuff', desc: 'Comics, cards, gaming, the Lego shelf.' },
-}
 
 export function generateStaticParams() {
-  return VALID_DOMAINS.map(domain => ({ domain }))
+  return DOMAINS.map(domain => ({ domain }))
 }
 
 type Params = Promise<{ domain: string }>
@@ -23,14 +14,13 @@ type Params = Promise<{ domain: string }>
 export default async function CategoryPage({ params }: { params: Params }) {
   const { domain: rawDomain } = await params
 
-  if (!VALID_DOMAINS.includes(rawDomain as DomainSlug)) notFound()
-  const domain = rawDomain as DomainSlug
+  if (!isDomain(rawDomain)) notFound()
+  const domain: Domain = rawDomain
 
   const allPosts     = getAllPosts()
   const meta         = DOMAIN_META[domain]
-  const config       = DOMAIN_CONFIG[domain]
-  const domainPosts  = allPosts.filter(p => p.domain === config.postsDomain)
-  const otherDomains = VALID_DOMAINS.filter(d => d !== domain)
+  const domainPosts  = allPosts.filter(p => p.domain === meta.label)
+  const otherDomains = DOMAINS.filter(d => d !== domain)
 
   return (
     <main>
@@ -59,7 +49,7 @@ export default async function CategoryPage({ params }: { params: Params }) {
           </h1>
 
           <p className="font-sans text-base text-ink-soft max-w-[460px] mb-4">
-            {config.desc}
+            {meta.desc}
           </p>
 
           <p className="font-mono text-xs text-ink-mute">
@@ -110,7 +100,7 @@ export default async function CategoryPage({ params }: { params: Params }) {
                       </span>
                     </span>
 
-                    <span className="text-right font-mono text-xs text-ink-soft">{post.date}</span>
+                    <time dateTime={post.date} className="text-right font-mono text-xs text-ink-soft">{formatPostDate(post.date)}</time>
                   </Link>
                 ))}
               </div>
@@ -127,7 +117,7 @@ export default async function CategoryPage({ params }: { params: Params }) {
         <div className="site-inner grid grid-cols-3 px-[clamp(20px,5vw,80px)] pb-12 max-md:grid-cols-1">
           {otherDomains.map((d) => {
             const m     = DOMAIN_META[d]
-            const count = allPosts.filter(p => p.domain === DOMAIN_CONFIG[d].postsDomain).length
+            const count = allPosts.filter(p => p.domain === DOMAIN_META[d].label).length
             return (
               <Link
                 key={d}

@@ -1,6 +1,5 @@
-"use client";
-
-import { useState, type MouseEventHandler } from "react";
+import Image from "next/image";
+import Link from "next/link";
 import { Avatar } from "@/components/ui/avatar";
 import { cn } from "@/lib/utils";
 
@@ -17,10 +16,20 @@ type VideoCardProps = {
   channelHref?: string;
   /** Watched progress 0–1. Shows sliver + muted title. */
   progress?: number;
-  /** Force loading skeleton (otherwise waits for image load). */
+  /** Force the loading skeleton. */
   loading?: boolean;
+  /** Skip lazy loading — set on above-the-fold cards so the thumb can be the LCP. */
+  priority?: boolean;
+  /** Layout hint for the responsive srcset. Defaults to the 1/2/3-col grid. */
+  sizes?: string;
   className?: string;
 };
+
+/** Matches the home grid: 1 col → 2 at md → 3 at lg. */
+const DEFAULT_SIZES = "(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw";
+
+const focusRing =
+  "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary";
 
 function VideoCard({
   thumbnail,
@@ -32,28 +41,19 @@ function VideoCard({
   href,
   channelHref,
   progress,
-  loading: loadingProp,
+  loading = false,
+  priority = false,
+  sizes = DEFAULT_SIZES,
   className,
 }: VideoCardProps) {
-  const [imgLoaded, setImgLoaded] = useState(!thumbnail);
-  const loading = loadingProp || (Boolean(thumbnail) && !imgLoaded);
   const watched = progress != null && progress > 0;
   const progressPct = watched ? Math.min(100, Math.max(0, progress * 100)) : 0;
-
-  const Comp = href ? "a" : "div";
-
-  const onChannelClick: MouseEventHandler = (e) => {
-    if (!channelHref) return;
-    e.preventDefault();
-    e.stopPropagation();
-    window.location.assign(channelHref);
-  };
+  const showThumb = Boolean(thumbnail) && !loading;
 
   return (
-    <Comp
-      {...(href ? { href } : {})}
+    <div
       className={cn(
-        "group relative block overflow-hidden rounded-2xl bg-card-2 no-underline",
+        "group relative overflow-hidden rounded-2xl bg-card-2",
         "shadow-[0_0_0_transparent] transition-[transform,box-shadow] duration-200 ease",
         "hover:-translate-y-1.5 hover:shadow-[0_12px_28px_rgba(0,0,0,0.35)]",
         "active:-translate-y-0.5 active:scale-[0.98]",
@@ -63,25 +63,27 @@ function VideoCard({
     >
       {/* Thumbnail */}
       <div className="relative h-40 overflow-hidden bg-deep">
-        {thumbnail && (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            src={thumbnail}
-            alt=""
-            onLoad={() => setImgLoaded(true)}
-            className={cn(
-              "absolute inset-0 size-full object-cover opacity-90",
-              "transition-transform duration-300 ease",
-              "group-hover:scale-105",
-              loading && "opacity-0",
-            )}
-          />
-        )}
-
-        {loading && (
+        {/* Skeleton sits *under* the image — the thumb paints over it once decoded,
+            so no load listener (and no client boundary) is needed. */}
+        {(loading || showThumb) && (
           <div
             aria-hidden
             className="absolute inset-0 animate-[shimmer_1.4s_linear_infinite] bg-[linear-gradient(90deg,var(--color-card)_0%,var(--color-card-2)_40%,var(--color-card)_80%)] bg-[length:200%_100%]"
+          />
+        )}
+
+        {showThumb && (
+          <Image
+            src={thumbnail!}
+            alt=""
+            fill
+            sizes={sizes}
+            priority={priority}
+            className={cn(
+              "object-cover opacity-90",
+              "transition-transform duration-300 ease",
+              "group-hover:scale-105",
+            )}
           />
         )}
 
@@ -107,17 +109,27 @@ function VideoCard({
         )}
       </div>
 
+      {/* Card-wide target. Stretched over the card rather than wrapping it, so the
+          channel link can be a sibling instead of an <a> nested in an <a>. */}
+      {href && (
+        <Link
+          href={href}
+          className={cn("absolute inset-0 z-20 rounded-2xl", focusRing)}
+        >
+          <span className="sr-only">{title}</span>
+        </Link>
+      )}
+
       {/* Meta */}
       <div className="flex gap-2.5 p-3.5">
         {channelHref ? (
-          <button
-            type="button"
+          <Link
+            href={channelHref}
             aria-label={`${channel} channel`}
-            onClick={onChannelClick}
-            className="shrink-0 cursor-pointer border-0 bg-transparent p-0"
+            className={cn("relative z-30 shrink-0 rounded-full", focusRing)}
           >
             <Avatar src={avatarSrc} size={32} ring="primary" />
-          </button>
+          </Link>
         ) : (
           <Avatar src={avatarSrc} size={32} ring="primary" />
         )}
@@ -125,7 +137,7 @@ function VideoCard({
           <div
             className={cn(
               "font-sans text-sm font-bold",
-              watched ? "text-ink-mute" : "text-white",
+              watched ? "text-ink-mute" : "text-ink",
             )}
           >
             {title}
@@ -135,7 +147,7 @@ function VideoCard({
           </div>
         </div>
       </div>
-    </Comp>
+    </div>
   );
 }
 

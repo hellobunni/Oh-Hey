@@ -32,7 +32,14 @@ const config: StorybookConfig = {
         ...aliasArray,
         { find: '@', replacement: path.resolve(dirname, '../src') },
         { find: '@content', replacement: path.resolve(dirname, '../content') },
+        // No Next runtime under react-vite — next/image needs a plain <img> stand-in.
+        { find: /^next\/image$/, replacement: path.resolve(dirname, './next-image-stub.tsx') },
       ],
+    }
+    // next/link reads this at module scope; there is no `process` in the browser build.
+    config.define = {
+      ...(config.define ?? {}),
+      'process.env.__NEXT_ROUTER_BASEPATH': '""',
     }
     config.plugins = [
       ...(config.plugins ?? []),

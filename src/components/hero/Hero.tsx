@@ -40,8 +40,8 @@ export default function Hero({
   className,
 }: HeroProps) {
   return (
-    <section className={cn("home-inner py-[72px_0_64px]", className)}>
-      <div className="site-inner px-[clamp(20px,5vw,80px)] py-18 md:py-[72px_0_64px]">
+    <section className={cn("home-inner", className)}>
+      <div className="site-inner px-[clamp(20px,5vw,80px)] py-18 md:pb-16">
         <div
           className="grid gap-14 items-center max-md:grid-cols-1"
           style={{ gridTemplateColumns: "1.3fr 1fr" }}
@@ -76,7 +76,7 @@ export default function Hero({
               </a>
               <a
                 href={secondaryCta.href}
-                className="font-pixel text-xs bg-paper text-primary border-2 border-mint px-5 py-3.5 shadow-[4px_4px_0_rgba(0,0,0,0.35)] transition-[transform,box-shadow] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0_rgba(0,0,0,0.35)]"
+                className="font-pixel text-xs bg-paper text-primary border-2 border-primary px-5 py-3.5 shadow-[4px_4px_0_rgba(0,0,0,0.35)] transition-[transform,box-shadow] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0_rgba(0,0,0,0.35)]"
               >
                 {secondaryCta.label}
               </a>

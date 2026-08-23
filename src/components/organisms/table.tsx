@@ -113,7 +113,7 @@ function TableCell({
   return (
     <td
       className={cn(
-        "font-sans text-sm-ink border-t border-line",
+        "font-sans text-sm text-ink border-t border-line",
         density === "compact" ? "px-3.5 py-2" : "px-[18px] py-3.5",
         className,
       )}

@@ -1,6 +1,4 @@
 import { cn } from "@/lib/utils";
-import { ArrowRight } from "lucide-react";
-import Link from "next/link";
 import { VideoCard, type VideoCardProps } from "../organisms/VideoCard";
 import { SectionHeader } from "../layout/SectionHeader";
 
@@ -15,8 +13,8 @@ type LatestVideosProps = {
 
 export default function LatestVideos({ videos }: LatestVideosProps) {
   return (
-    <section className={cn("home-inner py-[72px_0_64px] border-y")}>
-      <div className="site-inner px-[clamp(20px,5vw,80px)] py-18 md:py-[72px_0_64px]">
+    <section className={cn("home-inner border-y")}>
+      <div className="site-inner px-[clamp(20px,5vw,80px)] py-18 md:pb-16">
         {/** SECTION HEADING */}
         <SectionHeader
           num="01"

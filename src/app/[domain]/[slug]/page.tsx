@@ -1,28 +1,15 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { ArrowLeft, ArrowRight } from 'lucide-react'
-import { getAllPosts, getPostBySlug } from '@/lib/posts'
-import { DOMAIN_META, type Domain } from '@content/domains'
+import { formatPostDate, getAllPosts, getPostBySlug } from '@/lib/posts'
+import { DOMAIN_META, domainFromLabel, isDomain, type Domain } from '@content/domains'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 
-const VALID_DOMAINS = ['tech', 'fitness', 'creative', 'nerd'] as const
-type DomainSlug = typeof VALID_DOMAINS[number]
-
-const DOMAIN_CONFIG: Record<DomainSlug, { postsDomain: string }> = {
-  tech:     { postsDomain: 'Tech' },
-  fitness:  { postsDomain: 'Fitness' },
-  creative: { postsDomain: 'Creative' },
-  nerd:     { postsDomain: 'Nerd Stuff' },
-}
-
 export function generateStaticParams() {
-  return getAllPosts().map(post => {
-    const domainSlug = Object.entries(DOMAIN_CONFIG).find(
-      ([, cfg]) => cfg.postsDomain === post.domain
-    )?.[0]
-    if (!domainSlug) return null
-    return { domain: domainSlug, slug: post.slug }
-  }).filter(Boolean)
+  return getAllPosts().flatMap(post => {
+    const domain = domainFromLabel(post.domain)
+    return domain ? [{ domain, slug: post.slug }] : []
+  })
 }
 
 type Params = Promise<{ domain: string; slug: string }>
@@ -30,11 +17,11 @@ type Params = Promise<{ domain: string; slug: string }>
 export default async function PostPage({ params }: { params: Params }) {
   const { domain: rawDomain, slug } = await params
 
-  if (!VALID_DOMAINS.includes(rawDomain as DomainSlug)) notFound()
-  const domain = rawDomain as DomainSlug
+  if (!isDomain(rawDomain)) notFound()
+  const domain: Domain = rawDomain
 
   const post = getPostBySlug(slug)
-  if (!post || post.domain !== DOMAIN_CONFIG[domain].postsDomain) notFound()
+  if (!post || post.domain !== DOMAIN_META[domain].label) notFound()
 
   const meta = DOMAIN_META[domain]
 
@@ -80,10 +67,10 @@ export default async function PostPage({ params }: { params: Params }) {
             {post.excerpt}
           </p>
 
-          <p className="font-mono text-xs text-ink-mute mb-16">{post.date}</p>
+          <time dateTime={post.date} className="block font-mono text-xs text-ink-mute mb-16">{formatPostDate(post.date)}</time>
 
           {/* Body */}
-          <div className="prose prose-zinc max-w-none border-t border-paper-3 pt-12">
+          <div className="prose prose-zinc max-w-none border-t border-line pt-12">
             <MDXRemote source={post.content} />
           </div>
 

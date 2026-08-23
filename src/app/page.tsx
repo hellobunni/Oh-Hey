@@ -1,27 +1,27 @@
 import Hero from "@/components/hero/Hero";
 import LatestVideos from "@/components/home/LatestVideos";
 import { LatestWriting } from "@/components/home/LatestWriting";
-import { getAllPosts } from "@/lib/posts";
-import type { Domain } from "@content/domains";
-
-const DOMAIN_KEY: Record<string, Domain> = {
-  Tech: "tech",
-  Fitness: "fitness",
-  Creative: "creative",
-  "Nerd Stuff": "nerd",
-};
+import { formatPostDate, getAllPosts } from "@/lib/posts";
+import { domainFromLabel } from "@content/domains";
 
 export default function HomePage() {
   const latestPosts = getAllPosts()
     .slice(0, 5)
-    .map((p, i) => ({
-      n: String(i + 1).padStart(2, "0"),
-      title: p.title,
-      excerpt: p.excerpt,
-      domain: DOMAIN_KEY[p.domain],
-      date: p.date,
-      href: `/${DOMAIN_KEY[p.domain]}/${p.slug}`,
-    }));
+    .flatMap((p, i) => {
+      const domain = domainFromLabel(p.domain);
+      // A post with an unrecognised frontmatter domain has no route to link to.
+      if (!domain) return [];
+      return [
+        {
+          n: String(i + 1).padStart(2, "0"),
+          title: p.title,
+          excerpt: p.excerpt,
+          domain,
+          date: formatPostDate(p.date),
+          href: `/${domain}/${p.slug}`,
+        },
+      ];
+    });
 
   const latestVideos = [
     {

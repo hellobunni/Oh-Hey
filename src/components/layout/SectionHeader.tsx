@@ -25,13 +25,13 @@ function SectionHeader({ num, title, action, className }: SectionHeaderProps) {
         <span className="font-pixel text-sm text-ink">{title}</span>
       </div>
       {action && (
-        <a
+        <Link
           href={action.href}
           className="inline-flex items-center gap-1.5 font-sans font-bold text-sm text-ink-soft hover:text-ink transition-colors duration-100"
         >
           {action.label.replace(/\s*→\s*$/, "")}
           <ArrowRight size={14} strokeWidth={2.5} aria-hidden />
-        </a>
+        </Link>
       )}
     </div>
   );

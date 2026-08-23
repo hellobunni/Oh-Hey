@@ -1,53 +1,39 @@
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
-import { getAllPosts, type Post as LibPost } from '@/lib/posts'
-import { DOMAIN_META, type Domain } from '@content/domains'
+import { formatPostDate, getAllPosts, postYear, type Post as LibPost } from '@/lib/posts'
+import { DOMAINS, DOMAIN_META, domainFromLabel, isDomain, type Domain } from '@content/domains'
 import { SectionHeader } from '@/components/layout/SectionHeader'
-// Maps posts.ts Domain → domains.ts Domain slug
-const DOMAIN_SLUG: Record<string, Domain> = {
-  'Tech':       'tech',
-  'Fitness':    'fitness',
-  'Creative':   'creative',
-  'Nerd Stuff': 'nerd',
-}
-
-const VALID_FILTERS = ['tech', 'fitness', 'creative', 'nerd'] as const
-type DomainFilter = typeof VALID_FILTERS[number]
-
-const DOMAIN_LABELS: Record<DomainFilter, string> = {
-  tech:     'Tech',
-  fitness:  'Fitness',
-  creative: 'Creative',
-  nerd:     'Nerd Stuff',
-}
 
 type MappedPost = {
   n:       string
   title:   string
   excerpt: string
   domain:  Domain
+  /** ISO — drives grouping and the <time datetime> attribute. */
   date:    string
   href:    string
 }
 
 function mapPosts(raw: LibPost[]): MappedPost[] {
-  return raw.map((p, i) => {
-    const domain = DOMAIN_SLUG[p.domain]
-    return {
+  return raw.flatMap((p, i) => {
+    const domain = domainFromLabel(p.domain)
+    // A post with an unrecognised frontmatter domain has no route to link to.
+    if (!domain) return []
+    return [{
       n:       String(i + 1).padStart(2, '0'),
       title:   p.title,
       excerpt: p.excerpt,
       domain,
       date:    p.date,
       href:    `/${domain}/${p.slug}`,
-    }
+    }]
   })
 }
 
 function groupByYear(mapped: MappedPost[]): [string, MappedPost[]][] {
   const map = new Map<string, MappedPost[]>()
   for (const post of mapped) {
-    const year = post.date.split(', ').at(-1) ?? '2026'
+    const year = postYear(post.date)
     if (!map.has(year)) map.set(year, [])
     map.get(year)!.push(post)
   }
@@ -58,13 +44,11 @@ type SearchParams = Promise<{ domain?: string }>
 
 export default async function ArchivePage({ searchParams }: { searchParams: SearchParams }) {
   const { domain: rawDomain } = await searchParams
-  const activeFilter = VALID_FILTERS.includes(rawDomain as DomainFilter)
-    ? (rawDomain as DomainFilter)
-    : undefined
+  const activeFilter: Domain | undefined = isDomain(rawDomain) ? rawDomain : undefined
 
   const allPosts = getAllPosts()
   const filtered = activeFilter
-    ? allPosts.filter(p => DOMAIN_SLUG[p.domain] === activeFilter)
+    ? allPosts.filter(p => domainFromLabel(p.domain) === activeFilter)
     : allPosts
 
   const mapped  = mapPosts(filtered)
@@ -85,7 +69,7 @@ export default async function ArchivePage({ searchParams }: { searchParams: Sear
           </h1>
 
           <p className="font-mono text-sm text-ink-mute">
-            {allPosts.length} posts · 4 domains
+            {allPosts.length} posts · {DOMAINS.length} domains
           </p>
         </div>
       </section>
@@ -105,8 +89,8 @@ export default async function ArchivePage({ searchParams }: { searchParams: Sear
             All ({allPosts.length})
           </Link>
 
-          {VALID_FILTERS.map((d) => {
-            const count  = allPosts.filter(p => DOMAIN_SLUG[p.domain] === d).length
+          {DOMAINS.map((d) => {
+            const count  = allPosts.filter(p => domainFromLabel(p.domain) === d).length
             const meta   = DOMAIN_META[d]
             const active = activeFilter === d
             return (
@@ -124,7 +108,7 @@ export default async function ArchivePage({ searchParams }: { searchParams: Sear
                   className="h-1.5 w-1.5 rounded-full shrink-0"
                   style={{ background: meta.var }}
                 />
-                {DOMAIN_LABELS[d]} ({count})
+                {meta.label} ({count})
               </Link>
             )
           })}
@@ -185,7 +169,7 @@ export default async function ArchivePage({ searchParams }: { searchParams: Sear
                       {meta.label}
                     </span>
 
-                    <span className="text-right font-mono text-xs text-ink-soft">{post.date}</span>
+                    <time dateTime={post.date} className="text-right font-mono text-xs text-ink-soft">{formatPostDate(post.date)}</time>
                   </Link>
                 )
               })}

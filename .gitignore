@@ -17,8 +17,6 @@ next-env.d.ts
 *storybook.log
 storybook-static
 .vercel
-<<<<<<< HEAD
-=======
+tsconfig.tsbuildinfo
 .env*.local
->>>>>>> d44ae0fcfcf7a589454ff07977c7e729281afc90
 .env*

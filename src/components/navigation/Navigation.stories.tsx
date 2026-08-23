@@ -3,7 +3,6 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import {
   TopNav, MobileMenu} from '@/components/ui/navigation'
 import { cn, cva } from '@/lib/utils'
-import TopNavigation from '@/components/navigation/TopNavigation'
 import Breadcrumb from '@/components/navigation/Breadcrumb'
 import AnchorNav from '@/components/navigation/AnchorNav'
 import Pagination from '@/components/navigation/Pagination'
@@ -75,9 +74,31 @@ const OH_A_LINKS = [
   { label: 'About' },
 ]
 
+const TOP_NAV_ALIGNMENTS = ['left', 'center', 'right'] as const
+
 export const TopNavBrands: Story = {
   name: 'Navigation — top nav brands',
-  render: () => <TopNavigation />,
+  render: () => (
+    <>
+      <SectionLabel>Top nav · 3 alignments</SectionLabel>
+      <Grid cols={1}>
+        {TOP_NAV_ALIGNMENTS.map((align) => (
+          <Card
+            key={align}
+            name={`oh-hey-lynae · links ${align}`}
+            arg={`linksAlign="${align}"`}
+          >
+            <TopNav
+              brand="oh-hey-lynae"
+              links={OH_A_LINKS}
+              cta={{ label: 'Subscribe →', href: '/subscribe' }}
+              linksAlign={align}
+            />
+          </Card>
+        ))}
+      </Grid>
+    </>
+  ),
 }
 
 // ─── Mobile Nav ───────────────────────────────────────────────────────────────

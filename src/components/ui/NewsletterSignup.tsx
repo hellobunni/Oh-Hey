@@ -60,7 +60,7 @@ function NewsletterSignup({ onSubscribe, className }: NewsletterSignupProps) {
             className={cn(
               "flex-1 min-w-0 border-2 border-r-0 border-card bg-card-2 px-4 py-[15px]",
               "font-sans font-semibold text-base text-ink placeholder:text-ink-soft",
-              "outline-none focus:border-mint transition-colors",
+              "outline-none focus:border-primary transition-colors",
             )}
           />
           <button
