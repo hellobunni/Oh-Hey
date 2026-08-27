@@ -9,12 +9,19 @@ import { cn } from '@/lib/utils'
 import { Lockup } from '../molecules/Lockup'
 import { buttonVariants } from '../ui/button'
 
-const NAV_LINKS = [
-  { label: 'Videos', href: '/videos' },
-  { label: 'Dev Log', href: '/dev-log' },
-  { label: 'Domains', href: '/domains' },
-  { label: 'About', href: '/about' },
-] as const
+const COMING_SOON = process.env.NEXT_PUBLIC_COMING_SOON === 'true'
+
+const NAV_LINKS = COMING_SOON
+  ? [
+      { label: 'Videos', href: '/videos' },
+      { label: "What's Coming", href: '#whats-coming' },
+    ]
+  : [
+      { label: 'Videos', href: '/videos' },
+      { label: 'Dev Log', href: '/dev-log' },
+      { label: 'Domains', href: '/domains' },
+      { label: 'About', href: '/about' },
+    ]
 
 const focusRing =
   'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-mint'
@@ -94,14 +101,14 @@ export function Nav() {
 
           <li>
             <Link
-              href="#newsletter"
+              href={COMING_SOON ? '#newsletter' : '#newsletter'}
               className={cn(
-                buttonVariants({ variant: 'display', size: 'sm' }),
+                buttonVariants({ variant: COMING_SOON ? 'primary' : 'display', size: 'sm' }),
                 'py-3',
                 focusRing,
               )}
             >
-              Subscribe
+              {COMING_SOON ? 'Contribute' : 'Subscribe'}
             </Link>
           </li>
 

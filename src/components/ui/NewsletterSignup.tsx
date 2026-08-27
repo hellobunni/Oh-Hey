@@ -6,10 +6,12 @@ import { cn } from '@/lib/utils'
 
 interface NewsletterSignupProps {
   onSubscribe?: (email: string) => Promise<void> | void
+  headline?: React.ReactNode
+  body?: React.ReactNode
   className?: string
 }
 
-function NewsletterSignup({ onSubscribe, className }: NewsletterSignupProps) {
+function NewsletterSignup({ onSubscribe, headline, body, className }: NewsletterSignupProps) {
   const [email, setEmail] = useState('')
   const [status, setStatus] = useState<'idle' | 'loading' | 'done'>('idle')
 
@@ -34,11 +36,12 @@ function NewsletterSignup({ onSubscribe, className }: NewsletterSignupProps) {
         className="mx-auto mb-[22px]"
       />
       <h3 className="font-px text-2xl text-ink leading-snug">
-        ONE LETTER,{' '}
-        <span className="text-pink">EVERY OTHER SUNDAY.</span>
+        {headline ?? (
+          <>ONE LETTER,{' '}<span className="text-pink">EVERY OTHER SUNDAY.</span></>
+        )}
       </h3>
       <p className="mt-3.5 font-sans font-medium text-sm text-ink-soft max-w-[400px] mx-auto">
-        Whatever I made, lifted, drew, or read that week. No tracking, no sponsors, easy unsubscribe.
+        {body ?? 'Whatever I made, lifted, drew, or read that week. No tracking, no sponsors, easy unsubscribe.'}
       </p>
 
       {status === 'done' ? (

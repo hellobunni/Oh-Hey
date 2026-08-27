@@ -9,6 +9,7 @@ export interface YoutubeVideo {
   type: string
   length: number
   date: string
+  thumbnailUrl?: string
 }
 
 function parseDuration(iso: string): number {
@@ -71,6 +72,7 @@ export async function getLatestVideos(limit = 5): Promise<YoutubeVideo[]> {
       type: 'video',
       length: durationMap[videoId] ?? 0,
       date: snippet.publishedAt?.slice(0, 10) ?? '',
+      thumbnailUrl: snippet.thumbnails?.high?.url ?? snippet.thumbnails?.default?.url,
     }
   })
 }
