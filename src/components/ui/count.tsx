@@ -13,8 +13,8 @@ const countVariants = cva(
   {
     variants: {
       tone: {
-        alert:   "bg-alert text-white dark:text-card-2",
-        primary: "bg-primary text-card-2",
+        alert: "bg-alert text-white dark:text-card-2",
+        mint:  "bg-mint text-card-2",
       },
       shape: {
         circle: "rounded-full",

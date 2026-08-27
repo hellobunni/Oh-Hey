@@ -18,7 +18,7 @@ const stepVariants = cva(
     variants: {
       status: {
         done:    'text-ink-soft',
-        active:  'text-accent',
+        active:  'text-pink',
         pending: 'text-ink-mute',
       },
     },
@@ -31,7 +31,7 @@ const stepBarVariants = cva(
     variants: {
       status: {
         done:    'right-0 bg-ink',
-        active:  'w-1/2 bg-accent',
+        active:  'w-1/2 bg-pink',
         pending: 'right-0 bg-transparent',
       },
     },

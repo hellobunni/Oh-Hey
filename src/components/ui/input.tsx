@@ -14,7 +14,7 @@ function Input({ className, type, ...props }: React.ComponentProps<"input">) {
         "placeholder:text-ink-mute",
         "transition-colors duration-[var(--dur-2)] ease-[var(--ease-out)]",
         "dark:border-ink-mute dark:bg-deep",
-        "focus:border-primary",
+        "focus:border-mint",
         "disabled:cursor-not-allowed disabled:border-line-strong/60 disabled:bg-paper-2 disabled:text-ink-mute",
         "dark:disabled:border-transparent dark:disabled:bg-card dark:disabled:text-ink-soft",
         "aria-invalid:border-red-600 dark:aria-invalid:border-alert",

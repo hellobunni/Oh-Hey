@@ -21,7 +21,7 @@ export function Timeline({ className }: TimelineProps) {
               'transition-colors hover:bg-paper-2 hover:-mx-3 hover:px-3',
             )}
           >
-            <div className="font-mono text-xs text-accent pt-0.5">{entry.year}</div>
+            <div className="font-mono text-xs text-pink pt-0.5">{entry.year}</div>
             <div>
               <div className="font-sans text-base font-semibold tracking-[-0.01em] text-ink mb-1">
                 {entry.t}

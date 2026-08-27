@@ -66,7 +66,7 @@ export default async function CategoryPage({ params }: { params: Params }) {
               <p className="font-mono text-sm text-ink-mute mb-3">// nothing published here yet</p>
               <p className="font-sans text-sm text-ink-soft">
                 Posts in this domain are on the way.{' '}
-                <Link href="/archive" className="text-accent border-b border-accent/40">
+                <Link href="/archive" className="text-pink border-b border-pink/40">
                   Browse all writing →
                 </Link>
               </p>

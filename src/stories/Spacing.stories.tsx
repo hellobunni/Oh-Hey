@@ -36,7 +36,7 @@ export const SpacingScale: Story = {
   render: () => (
     <div>
       <div className="font-mono text-xs uppercase tracking-widest text-ink-soft mb-2">03 · Foundations — Spacing</div>
-      <h2 className="font-pixel text-2xl text-primary mb-1">SPACING SCALE</h2>
+      <h2 className="font-px text-2xl text-mint mb-1">SPACING SCALE</h2>
       <p className="font-sans text-sm text-ink-soft mb-8 max-w-xl leading-relaxed">
         Based on a 4px grid. Use multiples of 4 for all spatial decisions. 16px is the base unit for most layout gaps and card padding.
       </p>
@@ -45,7 +45,7 @@ export const SpacingScale: Story = {
         {SPACING.map(({ value, label, note }) => (
           <div key={value} style={{ display: 'grid', gridTemplateColumns: '48px 56px 1fr', alignItems: 'center', gap: 16, padding: '14px 0', borderBottom: '1px solid var(--color-line)' }}>
             <div className="font-mono text-xs text-ink-mute">{label}</div>
-            <div style={{ height: value, width: value, background: 'var(--color-primary)', flexShrink: 0 }} />
+            <div style={{ height: value, width: value, background: 'var(--color-mint)', flexShrink: 0 }} />
             <div className="font-sans text-sm text-ink-soft">{note}</div>
           </div>
         ))}
@@ -59,7 +59,7 @@ export const BorderRadius: Story = {
   render: () => (
     <div>
       <div className="font-mono text-xs uppercase tracking-widest text-ink-soft mb-2">03 · Foundations — Border Radius</div>
-      <h2 className="font-pixel text-2xl text-accent mb-1">BORDER RADIUS</h2>
+      <h2 className="font-px text-2xl text-pink mb-1">BORDER RADIUS</h2>
       <p className="font-sans text-sm text-ink-soft mb-8 max-w-xl leading-relaxed">
         Pixel UI elements (buttons, chips, toasts, inputs) use <strong>0</strong> radius. Surface containers use 8–16px. Avatars and status pills use full/pill.
       </p>
@@ -72,9 +72,9 @@ export const BorderRadius: Story = {
               height: 72,
               background: 'var(--color-card)',
               borderRadius: value,
-              border: '2px solid var(--color-primary)',
+              border: '2px solid var(--color-mint)',
             }} />
-            <div className="font-pixel text-xs text-primary text-center">{label}</div>
+            <div className="font-px text-xs text-mint text-center">{label}</div>
             <div className="font-sans text-ink-soft text-center" style={{ fontSize: 11, maxWidth: 88 }}>{note}</div>
           </div>
         ))}
@@ -84,7 +84,7 @@ export const BorderRadius: Story = {
         <div className="font-mono text-xs uppercase tracking-wide text-ink-soft mb-4">In practice</div>
         <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', alignItems: 'center' }}>
           {/* Sharp button */}
-          <button style={{ fontFamily: 'var(--font-pixel)', fontSize: 12, color: '#1d1c29', background: 'var(--color-primary)', border: 'none', padding: '10px 20px', borderRadius: 0, cursor: 'pointer' }}>
+          <button style={{ fontFamily: 'var(--font-px)', fontSize: 12, color: '#1d1c29', background: 'var(--color-mint)', border: 'none', padding: '10px 20px', borderRadius: 0, cursor: 'pointer' }}>
             SHARP BUTTON
           </button>
           {/* Rounded input */}
@@ -94,11 +94,11 @@ export const BorderRadius: Story = {
             style={{ fontFamily: 'var(--font-sans)', fontSize: 13, fontWeight: 600, color: 'var(--color-ink)', background: 'var(--color-paper-2)', border: '2px solid var(--color-line-strong)', borderRadius: 8, padding: '10px 14px' }}
           />
           {/* Card preview */}
-          <div style={{ background: 'var(--color-card)', borderRadius: 14, padding: '10px 16px', fontFamily: 'var(--font-pixel)', fontSize: 11, color: 'var(--color-link)' }}>
+          <div style={{ background: 'var(--color-card)', borderRadius: 14, padding: '10px 16px', fontFamily: 'var(--font-px)', fontSize: 11, color: 'var(--color-peri)' }}>
             CARD — 14px
           </div>
           {/* Pill badge */}
-          <span style={{ fontFamily: 'var(--font-sans)', fontWeight: 700, fontSize: 12, color: '#1d1c29', background: 'var(--color-primary)', borderRadius: 9999, padding: '5px 14px' }}>
+          <span style={{ fontFamily: 'var(--font-sans)', fontWeight: 700, fontSize: 12, color: '#1d1c29', background: 'var(--color-mint)', borderRadius: 9999, padding: '5px 14px' }}>
             PILL BADGE
           </span>
         </div>

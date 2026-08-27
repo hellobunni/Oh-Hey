@@ -47,7 +47,7 @@ export const Showcase: Story = {
         <div className="mb-2 font-mono text-xs uppercase tracking-widest text-ink-soft">
           Molecules · Toast / Notification
         </div>
-        <h2 className="mb-1 font-pixel text-2xl text-primary">TOAST</h2>
+        <h2 className="mb-1 font-px text-2xl text-mint">TOAST</h2>
         <p className="mb-8 max-w-xl font-sans text-sm leading-relaxed text-ink-soft">
           System feedback — left-border accent only. Success/info auto-dismiss 4s; error persists.
           Distinct from AlertToast (social/stream events).

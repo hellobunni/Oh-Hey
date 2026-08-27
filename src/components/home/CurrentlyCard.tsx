@@ -18,7 +18,7 @@ const DEFAULT_ITEMS: CurrentlyItem[] = [
 function CurrentlyCard({ items = DEFAULT_ITEMS, updated = 'Apr 2026', className }: CurrentlyCardProps) {
   return (
     <div className={className}>
-      <div className="inline-flex items-center gap-2 font-mono text-sm font-medium uppercase tracking-wide text-accent">
+      <div className="inline-flex items-center gap-2 font-mono text-sm font-medium uppercase tracking-wide text-pink">
         <Square size={12} strokeWidth={2.5} aria-hidden />
         Currently
       </div>
@@ -45,7 +45,7 @@ function CurrentlyCard({ items = DEFAULT_ITEMS, updated = 'Apr 2026', className 
 
       <div className="mt-4 font-mono text-xxs uppercase tracking-wider text-ink-mute">
         Updated {updated} ·{' '}
-        <a href="/now" className="text-accent">full /now page →</a>
+        <a href="/now" className="text-pink">full /now page →</a>
       </div>
     </div>
   )

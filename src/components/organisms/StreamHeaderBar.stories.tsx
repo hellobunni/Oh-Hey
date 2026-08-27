@@ -29,11 +29,11 @@ export const Showcase: Story = {
       <div className="mb-2 font-mono text-xs uppercase tracking-widest text-ink-soft">
         Organisms · Stream Header Bar
       </div>
-      <h2 className="mb-1 font-pixel text-2xl text-primary">STREAM HEADER</h2>
+      <h2 className="mb-1 font-px text-2xl text-mint">STREAM HEADER</h2>
       <p className="mb-8 max-w-xl font-sans text-sm leading-relaxed text-ink-soft">
-        Live shows a mint <code className="font-mono text-xs text-accent">● LIVE</code> badge with a
+        Live shows a mint <code className="font-mono text-xs text-pink">● LIVE</code> badge with a
         continuous glow-pulse (1.8s). Offline mutes the bar and shows a neutral badge (or hides it).
-        When <code className="font-mono text-xs text-accent">href</code> is set, hover lightens the
+        When <code className="font-mono text-xs text-pink">href</code> is set, hover lightens the
         bar and the whole unit routes to profile.
       </p>
 

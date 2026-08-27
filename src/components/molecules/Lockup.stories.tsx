@@ -26,11 +26,11 @@ export const Showcase: Story = {
       <div className="mb-2 font-mono text-xs uppercase tracking-widest text-ink-soft">
         Molecules · Lockup
       </div>
-      <h2 className="mb-1 font-pixel text-2xl text-primary">LOCKUP</h2>
+      <h2 className="mb-1 font-px text-2xl text-mint">LOCKUP</h2>
       <p className="mb-8 max-w-xl font-sans text-sm leading-relaxed text-ink-soft">
         Avatar + wordmark. Hover tilts the avatar −2° and scales to 1.06 with a pink ring;
         active presses to .96. Wordmark stays static. Pass{' '}
-        <code className="font-mono text-xs text-accent">href</code> to make the whole lockup a link.
+        <code className="font-mono text-xs text-pink">href</code> to make the whole lockup a link.
       </p>
 
       <div className="mb-3 font-mono text-xs uppercase tracking-wide text-ink-soft">

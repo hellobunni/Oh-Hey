@@ -41,11 +41,11 @@ function LatestWriting({ posts, num = '01', title = 'LATEST WRITING', action, cl
                 <span className="font-mono text-xs text-ink-soft/50 w-7 shrink-0">{p.n}</span>
 
                 <span className="flex-1 min-w-0">
-                  <span className="block font-pixel text-sm text-paper-ink leading-snug">{p.title}</span>
+                  <span className="block font-px text-sm text-paper-ink leading-snug">{p.title}</span>
                   <span className="mt-1 block font-sans text-xs text-paper-ink/60 truncate">{p.excerpt}</span>
                 </span>
 
-                <span className={cn('font-pixel text-[9px] px-[7px] py-1 text-ink shrink-0', meta.chip)}>
+                <span className={cn('font-px text-[9px] px-[7px] py-1 text-ink shrink-0', meta.chip)}>
                   {meta.label.toUpperCase()}
                 </span>
 

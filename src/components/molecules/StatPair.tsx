@@ -7,17 +7,17 @@ type StatPairProps = {
   /** Numeric or formatted string. Null/undefined/"" → empty dash. */
   value: string | number | null | undefined
   label: string
-  /** Token color for the value — defaults to periwinkle/link */
-  tone?: 'link' | 'primary' | 'accent' | 'gold'
+  /** Token color for the value — defaults to periwinkle/peri */
+  tone?: 'peri' | 'mint' | 'pink' | 'gold'
   /** Optional click — filters/drills into that stat */
   onClick?: MouseEventHandler<HTMLButtonElement>
   className?: string
 }
 
 const tones = {
-  link: 'text-link',
-  primary: 'text-primary',
-  accent: 'text-accent',
+  peri: 'text-peri',
+  mint: 'text-mint',
+  pink: 'text-pink',
   gold: 'text-gold',
 } as const
 
@@ -80,7 +80,7 @@ function easeOut(t: number): number {
 function StatPair({
   value,
   label,
-  tone = 'link',
+  tone = 'peri',
   onClick,
   className,
 }: StatPairProps) {
@@ -167,8 +167,8 @@ function StatPair({
     <>
       <span
         className={cn(
-          'font-pixel text-2xl transition-colors duration-[400ms] ease-out',
-          flashing ? 'text-primary' : tones[tone]
+          'font-px text-2xl transition-colors duration-[400ms] ease-out',
+          flashing ? 'text-mint' : tones[tone]
         )}
       >
         {display}

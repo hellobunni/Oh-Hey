@@ -36,7 +36,7 @@ export const Showcase: Story = {
       <div className="mb-2 font-mono text-xs uppercase tracking-widest text-ink-soft">
         Organisms · Schedule Panel
       </div>
-      <h2 className="mb-1 font-pixel text-2xl text-primary">SCHEDULE</h2>
+      <h2 className="mb-1 font-px text-2xl text-mint">SCHEDULE</h2>
       <p className="mb-8 max-w-xl font-sans text-sm leading-relaxed text-ink-soft">
         Today: mint left border, tinted bg, TODAY tag, one-shot pulse. Hover on interactive rows
         lifts to 4% white and reveals add-to-calendar. Selected is a static 4% highlight. Empty

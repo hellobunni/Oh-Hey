@@ -7,7 +7,7 @@ const AVATARS = {
 } as const
 
 type AvatarVariant = keyof typeof AVATARS
-type AvatarRing = 'primary' | 'accent' | 'none'
+type AvatarRing = 'mint' | 'pink' | 'none'
 type AvatarPresence = 'online' | 'offline' | 'none'
 
 type AvatarShape = 'circle' | 'square' | 'no-border'
@@ -41,7 +41,7 @@ function Avatar({
   src,
   variant = 'face',
   size = 64,
-  ring = 'primary',
+  ring = 'mint',
   shape = 'circle',
   presence = 'none',
   inactive = false,
@@ -52,8 +52,8 @@ function Avatar({
   const effectiveRing = shape === 'no-border' ? 'none' : ring
 
   const rings = {
-    primary: inactive ? 'border-ink-mute' : 'border-primary',
-    accent: 'border-accent',
+    mint: inactive ? 'border-ink-mute' : 'border-mint',
+    pink: 'border-pink',
     none: 'border-transparent',
   }
 
@@ -99,7 +99,7 @@ function Avatar({
           aria-hidden
           className={cn(
             'absolute bottom-0.5 right-0.5 rounded-full border-2 border-card-2',
-            presence === 'online' && 'bg-primary',
+            presence === 'online' && 'bg-mint',
             presence === 'offline' && 'bg-ink-mute'
           )}
           style={{ width: dotSize, height: dotSize }}

@@ -17,12 +17,12 @@ const badgeVariants = cva(
   {
     variants: {
       tone: {
-        // mint fill — dark text on brand
+        // mint fill — dark text on brand in both themes
         mint:
-          "bg-primary text-ink dark:text-[#1d1c29] border-0",
-        // pink outline — alert text in light, accent in dark
+          "bg-mint text-deep border-0",
+        // pink outline — alert text in light, pink in dark
         pink:
-          "bg-transparent border-2 border-accent text-alert dark:text-accent",
+          "bg-transparent border-2 border-pink text-alert dark:text-pink",
         // paper-2 / ink → card / ink-2
         neutral:
           "bg-paper-2 text-ink dark:bg-card dark:text-ink-2 border-0",
@@ -57,7 +57,7 @@ const badgeVariants = cva(
 )
 
 const dotToneClass: Record<NonNullable<VariantProps<typeof badgeVariants>["tone"]>, string> = {
-  mint: "bg-primary",
+  mint: "bg-mint",
   pink: "bg-alert",
   neutral: "bg-ink-mute",
 }

@@ -23,7 +23,7 @@ type AlertToastProps = {
   src?: string
   headline: string
   subtext?: ReactNode
-  tone?: 'accent' | 'primary'
+  tone?: 'pink' | 'mint'
   icon?: ReactNode
   /** Optional link/action inside the toast */
   cta?: AlertToastCta
@@ -47,7 +47,7 @@ function AlertToast({
   src,
   headline,
   subtext,
-  tone = 'accent',
+  tone = 'pink',
   icon,
   cta,
   dismissible = true,
@@ -152,7 +152,7 @@ function AlertToast({
   }
 
   const border =
-    tone === 'primary' ? 'border-primary text-primary' : 'border-accent text-accent'
+    tone === 'mint' ? 'border-mint text-mint' : 'border-pink text-pink'
 
   const motionClass =
     phase === 'enter'
@@ -181,10 +181,10 @@ function AlertToast({
       )}
       style={dragX > 0 ? { transform: `translateX(${dragX}px)`, opacity: Math.max(0.35, 1 - dragX / 160) } : undefined}
     >
-      {icon ?? <Avatar src={src} size={28} ring="primary" />}
+      {icon ?? <Avatar src={src} size={28} ring="mint" />}
 
       <div className="min-w-0 flex-1">
-        <div className="font-pixel text-[10px]">
+        <div className="font-px text-[10px]">
           {headline}
           {subtext != null && (
             <>

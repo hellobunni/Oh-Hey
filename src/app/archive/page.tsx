@@ -121,7 +121,7 @@ export default async function ArchivePage({ searchParams }: { searchParams: Sear
       {grouped.length === 0 ? (
         <div className="px-[clamp(20px,5vw,80px)] py-24 max-w-[1500px] mx-auto">
           <p className="font-mono text-sm text-ink-mute mb-2">// nothing here yet</p>
-          <Link href="/archive" className="font-sans text-sm text-accent border-b border-accent/40">
+          <Link href="/archive" className="font-sans text-sm text-pink border-b border-pink/40">
             View all posts →
           </Link>
         </div>

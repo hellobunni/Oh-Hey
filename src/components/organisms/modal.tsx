@@ -101,7 +101,7 @@ function ModalContent({
         )}
       >
         <div className="mb-3 flex items-start justify-between gap-3">
-          <Dialog.Title className="font-pixel text-[15px] uppercase tracking-wider text-ink">
+          <Dialog.Title className="font-px text-[15px] uppercase tracking-wider text-ink">
             {title}
           </Dialog.Title>
           <Dialog.Close

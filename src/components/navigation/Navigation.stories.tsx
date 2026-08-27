@@ -54,7 +54,7 @@ function Card({ name, arg, children, bodyClassName }: {
     <div className="border border-line-strong flex flex-col">
       <div className="flex justify-between items-center py-2 px-3 border-b border-line bg-paper-2 font-mono text-xs">
         <span className="font-medium">{name}</span>
-        {arg && <span className="text-accent">{arg}</span>}
+        {arg && <span className="text-pink">{arg}</span>}
       </div>
       <div className={cn(bodyClassName)}>
         {children}
@@ -144,7 +144,7 @@ export const MobileNavStory: Story = {
       <SectionLabel>Mobile nav · interactive</SectionLabel>
       <p className="font-mono text-xs text-ink-mute mb-6 max-w-md leading-relaxed">
         Tap the hamburger to open the drawer. Tap again (or press Esc) to close.
-        Items render as <code className="text-accent">&lt;a&gt;</code> when an href is provided.
+        Items render as <code className="text-pink">&lt;a&gt;</code> when an href is provided.
       </p>
       <MobileNavDemo />
     </div>
@@ -197,11 +197,11 @@ function ResponsiveNavDemo() {
       {/* Annotation */}
       <div className="border border-line bg-paper-2 px-4 py-3 font-mono text-xs text-ink-soft leading-relaxed max-w-lg">
         <span className="text-ink font-medium block mb-1">How they connect</span>
-        Both use the same <code className="text-accent">TopNav</code> primitive.
-        Desktop passes <code className="text-accent">links</code> + <code className="text-accent">cta</code>.
-        Mobile passes <code className="text-accent">mobile</code> + <code className="text-accent">menuOpen</code> + <code className="text-accent">onMenuClick</code>,
-        then conditionally renders <code className="text-accent">MobileMenu</code> below.
-        The <code className="text-accent">MobileNav</code> component wires this up with managed state.
+        Both use the same <code className="text-pink">TopNav</code> primitive.
+        Desktop passes <code className="text-pink">links</code> + <code className="text-pink">cta</code>.
+        Mobile passes <code className="text-pink">mobile</code> + <code className="text-pink">menuOpen</code> + <code className="text-pink">onMenuClick</code>,
+        then conditionally renders <code className="text-pink">MobileMenu</code> below.
+        The <code className="text-pink">MobileNav</code> component wires this up with managed state.
       </div>
     </div>
   )

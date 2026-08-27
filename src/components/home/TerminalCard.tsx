@@ -64,7 +64,7 @@ function RenderLine({ line }: { line: TerminalLine }) {
     case "command":
       return (
         <div>
-          <span className="text-accent select-none">$ </span>
+          <span className="text-pink select-none">$ </span>
           {line.text}
         </div>
       );
@@ -118,7 +118,7 @@ function RenderLine({ line }: { line: TerminalLine }) {
     case "cursor":
       return (
         <div>
-          <span className="text-accent select-none">$ </span>
+          <span className="text-pink select-none">$ </span>
           <BlinkCursor />
         </div>
       );

@@ -31,7 +31,7 @@ export const Showcase: Story = {
       <div className="mb-2 font-mono text-xs uppercase tracking-widest text-ink-soft">
         Organisms · Video Card
       </div>
-      <h2 className="mb-1 font-pixel text-2xl text-primary">VIDEO CARD</h2>
+      <h2 className="mb-1 font-px text-2xl text-mint">VIDEO CARD</h2>
       <p className="mb-8 max-w-xl font-sans text-sm leading-relaxed text-ink-soft">
         Hover lifts the card −6px with shadow and zooms the thumb 1.05 (.3s); duration badge stays
         fixed. Press settles to −2px / .98. Loading shows a shimmer skeleton; watched mutes the title

@@ -23,7 +23,7 @@ const Breadcrumb = ({items, sep='/', className} : BreadcrumbProps) => {
         return (
           <React.Fragment key={item.label}>
             {isLast
-              ? <span className="text-accent">{item.label}</span>
+              ? <span className="text-pink">{item.label}</span>
               : <a className="text-ink-soft no-underline cursor-pointer transition-colors duration-100 hover:text-ink" href={item.href}>{item.label}</a>
             }
             {!isLast && <span className="text-ink-mute">{sep}</span>}

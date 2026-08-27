@@ -36,12 +36,12 @@ export function Hero({ className }: HeroProps) {
         <div className="grid gap-12 items-start" style={{ gridTemplateColumns: '55fr 45fr' }}>
           <div>
             <h1
-              className="font-pixel font-bold text-ink leading-[1.15] mb-8"
+              className="font-px font-bold text-ink leading-[1.15] mb-8"
               style={{ fontSize: 'clamp(34px, 5.5vw, 58px)' }}
             >
               Hey, I'm<br />
               Bryanna.<br />
-              <span className="text-accent">/</span>{' '}generalist.
+              <span className="text-pink">/</span>{' '}generalist.
             </h1>
             <p className="font-sans text-base text-ink-soft leading-normal max-w-[460px]">
               I started in brand studios and crossed into code — and never looked back.

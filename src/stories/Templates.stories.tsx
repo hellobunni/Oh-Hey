@@ -44,9 +44,9 @@ export const ChannelHome: Story = {
         />
       </div>
       <div className="flex gap-2.5">
-        <StatPair value="1,204" label="FOLLOWERS" tone="primary" className="w-auto flex-1 text-center" />
-        <StatPair value="4.2K" label="VIEWS" tone="primary" className="w-auto flex-1 text-center" />
-        <StatPair value="312" label="SUBS" tone="primary" className="w-auto flex-1 text-center" />
+        <StatPair value="1,204" label="FOLLOWERS" tone="mint" className="w-auto flex-1 text-center" />
+        <StatPair value="4.2K" label="VIEWS" tone="mint" className="w-auto flex-1 text-center" />
+        <StatPair value="312" label="SUBS" tone="mint" className="w-auto flex-1 text-center" />
       </div>
     </div>
   ),
@@ -59,7 +59,7 @@ export const BlogPost: Story = {
     <div className="flex max-w-md flex-col gap-3.5 rounded-2xl border border-line bg-paper p-6">
       <div className="flex items-center gap-2.5">
         <Avatar size={36} ring="none" className="border-2 border-navy" />
-        <div className="font-pixel text-[13px] text-navy">DEV LOG #4</div>
+        <div className="font-px text-[13px] text-navy">DEV LOG #4</div>
         <div className="ml-auto font-sans text-[11px] font-semibold text-ink-mute">Jul 21</div>
       </div>
       <p className="font-sans text-sm font-medium leading-relaxed text-ink-2">

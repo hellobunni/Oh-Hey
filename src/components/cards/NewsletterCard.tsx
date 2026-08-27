@@ -33,7 +33,7 @@ export function NewsletterCard({
             fontFamily: 'var(--font-mono)',
             fontSize: '11px',
             letterSpacing: '0.08em',
-            color: 'var(--color-accent)',
+            color: 'var(--color-pink)',
           }}
         >
           {cta}

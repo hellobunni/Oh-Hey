@@ -44,10 +44,10 @@ export const Showcase: Story = {
       <div className="mb-2 font-mono text-xs uppercase tracking-widest text-ink-soft">
         Molecules · Accordion
       </div>
-      <h2 className="mb-1 font-pixel text-2xl text-primary">ACCORDION</h2>
+      <h2 className="mb-1 font-px text-2xl text-mint">ACCORDION</h2>
       <p className="mb-8 max-w-xl font-sans text-sm leading-relaxed text-ink-soft">
         Quicksand bold 14px headers, +/− convention, hairline dividers. FAQ uses single-open;
-        set <code className="font-mono text-xs text-accent">multiple</code> for independent toggles.
+        set <code className="font-mono text-xs text-pink">multiple</code> for independent toggles.
       </p>
 
       <div className="mb-3 font-mono text-xs uppercase tracking-wide text-ink-soft">

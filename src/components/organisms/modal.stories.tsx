@@ -35,7 +35,7 @@ export const Showcase: Story = {
       <div className="mb-2 font-mono text-xs uppercase tracking-widest text-ink-soft">
         Organisms · Modal / Dialog
       </div>
-      <h2 className="mb-1 font-pixel text-2xl text-primary">MODAL</h2>
+      <h2 className="mb-1 font-px text-2xl text-mint">MODAL</h2>
       <p className="mb-8 max-w-xl font-sans text-sm leading-relaxed text-ink-soft">
         Scrim rgba(0,0,0,.6). Silkscreen title, Quicksand body. Cancel = ghost, confirm = primary
         or pink (destructive). Focus trap + Esc. Scale .95→1 entrance.

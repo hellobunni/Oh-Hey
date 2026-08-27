@@ -63,7 +63,7 @@ export const Showcase: Story = {
       <div className="mb-2 font-mono text-xs uppercase tracking-widest text-ink-soft">
         Organisms · Table
       </div>
-      <h2 className="mb-1 font-pixel text-2xl text-primary">TABLE</h2>
+      <h2 className="mb-1 font-px text-2xl text-mint">TABLE</h2>
       <p className="mb-8 max-w-xl font-sans text-sm leading-relaxed text-ink-soft">
         Muted uppercase headers, zebra rows, Badge pills for status. Row hover lifts slightly.
         Density default (14×18) or compact (8×14).

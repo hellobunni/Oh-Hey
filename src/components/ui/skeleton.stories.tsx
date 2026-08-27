@@ -24,7 +24,7 @@ export const Showcase: Story = {
       <div className="mb-2 font-mono text-xs uppercase tracking-widest text-ink-soft">
         Atoms · Skeleton
       </div>
-      <h2 className="mb-1 font-pixel text-2xl text-primary">SKELETON</h2>
+      <h2 className="mb-1 font-px text-2xl text-mint">SKELETON</h2>
       <p className="mb-8 max-w-xl font-sans text-sm leading-relaxed text-ink-soft">
         Loading placeholder — shape mirrors the real surface (thumbnail, avatar, text). Shimmer
         1.4s linear. Never mix with spinners on the same view.

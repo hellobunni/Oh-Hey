@@ -37,7 +37,8 @@ function Lockup({
       {...(href ? { href } : {})}
       className={cn(
         "group inline-flex w-fit items-center gap-3 no-underline",
-        href && "cursor-pointer",
+        href &&
+          "cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-mint",
         wrapperVariants[variant],
         className
       )}
@@ -46,14 +47,16 @@ function Lockup({
         src={src}
         size={size}
         shape={avatarShape}
+        // Visible name beside the mark — keep the image decorative for SRs
+        alt=""
         className={cn(
           "transition-[transform,border-color] duration-200 ease",
-          "group-hover:-rotate-[2deg] group-hover:scale-[1.06] group-hover:border-accent",
+          "group-hover:-rotate-[2deg] group-hover:scale-[1.06] group-hover:border-pink",
           "group-active:rotate-0 group-active:scale-[0.96]"
         )}
       />
       <span
-        className="font-pixel text-primary"
+        className="font-px text-mint"
         style={{ fontSize: Math.max(14, size * 0.42) }}
       >
         {name}

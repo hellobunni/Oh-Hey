@@ -68,7 +68,7 @@ export const LightDark: Story = {
         data-theme="light"
         className="flex w-[420px] flex-col gap-3.5 rounded-2xl bg-paper p-8"
       >
-        <div className="font-pixel text-xs text-ink">LIGHT MODE</div>
+        <div className="font-px text-xs text-ink">LIGHT MODE</div>
         <div className="flex flex-wrap items-center gap-2.5">
           <Button variant="primary">Primary</Button>
           <Button variant="accent">Accent</Button>
@@ -83,7 +83,7 @@ export const LightDark: Story = {
         data-theme="dark"
         className="flex w-[420px] flex-col gap-3.5 rounded-2xl border border-line bg-paper p-8"
       >
-        <div className="font-pixel text-xs text-primary">DARK MODE</div>
+        <div className="font-px text-xs text-mint">DARK MODE</div>
         <div className="flex flex-wrap items-center gap-2.5">
           <Button variant="primary">Primary</Button>
           <Button variant="accent">Accent</Button>
@@ -120,7 +120,7 @@ export const Showcase: Story = {
   render: () => (
     <div>
       <div className="font-mono text-xs uppercase tracking-widest text-ink-soft mb-2">Atoms · Buttons</div>
-      <h2 className="font-pixel text-2xl text-primary mb-1">BUTTONS</h2>
+      <h2 className="font-px text-2xl text-mint mb-1">BUTTONS</h2>
       <p className="font-sans text-sm text-ink-soft mb-8 max-w-xl leading-relaxed">
         Primary/accent/secondary keep brand hexes across themes — ghost and textLink flip via paper/ink tokens.
         Silkscreen + sharp corners for filled/outline; Quicksand + <code className="font-mono text-xs">rounded-lg</code> on ghost.
@@ -179,12 +179,12 @@ export const Showcase: Story = {
 
       {/* Usage notes */}
       <div style={{ borderTop: '1px solid var(--color-line)', paddingTop: 20, display: 'flex', flexDirection: 'column', gap: 8 }}>
-        <div className="font-mono text-xs text-ink-soft"><span className="text-primary">primary</span> — Mint fill, dark text (fixed on brand).</div>
-        <div className="font-mono text-xs text-ink-soft"><span className="text-accent">accent</span> — Pink 3px outline; alert text in light, accent in dark.</div>
+        <div className="font-mono text-xs text-ink-soft"><span className="text-mint">primary</span> — Mint fill, dark text (fixed on brand).</div>
+        <div className="font-mono text-xs text-ink-soft"><span className="text-pink">accent</span> — Pink 3px outline; alert text in light, accent in dark.</div>
         <div className="font-mono text-xs text-ink-soft"><span className="text-ink">secondary</span> — Ink 3px outline; flips with theme.</div>
         <div className="font-mono text-xs text-ink-soft"><span className="text-ink-soft">ghost</span> — Paper-2 / card surface, rounded-lg.</div>
         <div className="font-mono text-xs text-ink-soft"><span className="text-ink-mute">textLink</span> — Inline muted link via ink-mute.</div>
-        <div className="font-mono text-xs text-ink-soft"><span className="text-primary">IconButton</span> — solid / outline / ghost · optional rounded.</div>
+        <div className="font-mono text-xs text-ink-soft"><span className="text-mint">IconButton</span> — solid / outline / ghost · optional rounded.</div>
       </div>
     </div>
   ),

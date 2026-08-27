@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils"
 const tagVariants = cva(
   [
     "inline-flex items-center gap-1.5 whitespace-nowrap",
-    "font-pixel uppercase tracking-wider rounded-none",
+    "font-px uppercase tracking-wider rounded-none",
   ].join(" "),
   {
     variants: {
@@ -20,10 +20,10 @@ const tagVariants = cva(
           "bg-paper-2 text-ink dark:bg-card dark:text-ink-2",
         // mint fill — dark text on brand in both themes
         primary:
-          "bg-primary text-card-2",
-        // pink outline — alert text in light, accent in dark
+          "bg-mint text-card-2",
+        // pink outline — alert text in light, pink in dark
         outline:
-          "bg-transparent border-2 border-accent text-alert dark:text-accent",
+          "bg-transparent border-2 border-pink text-alert dark:text-pink",
         // domain category colors (square outline chips)
         tech:     "text-tech border border-tech/30 bg-transparent",
         fitness:  "text-fitness border border-fitness/30 bg-transparent",

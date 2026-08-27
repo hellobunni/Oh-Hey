@@ -77,7 +77,7 @@ function NavItemGroup({
       <span
         aria-hidden
         className={cn(
-          'pointer-events-none absolute bottom-3 left-0 h-0.5 bg-primary',
+          'pointer-events-none absolute bottom-3 left-0 h-0.5 bg-mint',
           indicator.ready
             ? 'transition-[transform,width] duration-200 ease'
             : 'opacity-0'
@@ -98,7 +98,7 @@ function NavItemGroup({
           'transition-colors duration-200 ease',
           disabled && 'cursor-not-allowed opacity-40',
           !disabled && 'cursor-pointer',
-          !disabled && (active || hovered) && 'font-bold text-primary',
+          !disabled && (active || hovered) && 'font-bold text-mint',
           !disabled && !active && !hovered && 'font-semibold text-ink-soft'
         )
 

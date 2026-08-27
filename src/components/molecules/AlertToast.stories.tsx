@@ -10,7 +10,7 @@ const meta = {
   parameters: { layout: 'padded' },
   tags: ['autodocs'],
   argTypes: {
-    tone: { control: 'select', options: ['accent', 'primary'] },
+    tone: { control: 'select', options: ['pink', 'mint'] },
     headline: { control: 'text' },
     subtext: { control: 'text' },
     duration: { control: { type: 'number', min: 0, max: 10000, step: 500 } },
@@ -20,7 +20,7 @@ const meta = {
   args: {
     headline: 'NEW SUB!',
     subtext: 'welcome, mochi',
-    tone: 'accent',
+    tone: 'pink',
     duration: 0,
     instant: true,
     dismissible: true,
@@ -44,7 +44,7 @@ export const Showcase: Story = {
         <div className="mb-2 font-mono text-xs uppercase tracking-widest text-ink-soft">
           Molecules · Alert Toast
         </div>
-        <h2 className="mb-1 font-pixel text-2xl text-primary">ALERT TOAST</h2>
+        <h2 className="mb-1 font-px text-2xl text-mint">ALERT TOAST</h2>
         <p className="mb-8 max-w-xl font-sans text-sm leading-relaxed text-ink-soft">
           Temporal notification — slides in from the left (.45s), holds ~4s, slides out to the right
           (.4s). Hover pauses the timer and lifts slightly. Dismiss via X or swipe right. Optional CTA
@@ -70,7 +70,7 @@ export const Showcase: Story = {
           ) : (
             <button
               type="button"
-              className="cursor-pointer border-2 border-primary bg-transparent px-3 py-2 font-pixel text-[11px] text-primary"
+              className="cursor-pointer border-2 border-mint bg-transparent px-3 py-2 font-px text-[11px] text-mint"
               onClick={() => {
                 setKey((k) => k + 1)
                 setVisible(true)
@@ -95,9 +95,9 @@ export const Showcase: Story = {
           <AlertToast
             instant
             duration={0}
-            tone="primary"
+            tone="mint"
             headline="INCOMING RAID"
-            icon={<Sparkles size={16} className="text-primary" strokeWidth={2} aria-hidden />}
+            icon={<Sparkles size={16} className="text-mint" strokeWidth={2} aria-hidden />}
             subtext="pixelwitch — 84 raiders"
             cta={{ label: 'Join raid', onClick: fn() }}
           />
@@ -119,9 +119,9 @@ export const Showcase: Story = {
           <AlertToast
             instant
             duration={0}
-            tone="primary"
+            tone="mint"
             headline="CLIP SAVED"
-            icon={<Sparkles size={16} className="text-primary" strokeWidth={2} aria-hidden />}
+            icon={<Sparkles size={16} className="text-mint" strokeWidth={2} aria-hidden />}
             subtext="cozy run · 0:42"
           />
         </div>

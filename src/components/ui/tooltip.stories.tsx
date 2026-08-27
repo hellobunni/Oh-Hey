@@ -30,7 +30,7 @@ export const Showcase: Story = {
       <div className="mb-2 font-mono text-xs uppercase tracking-widest text-ink-soft">
         Atoms · Tooltip
       </div>
-      <h2 className="mb-1 font-pixel text-2xl text-primary">TOOLTIP</h2>
+      <h2 className="mb-1 font-px text-2xl text-mint">TOOLTIP</h2>
       <p className="mb-8 max-w-xl font-sans text-sm leading-relaxed text-ink-soft">
         Always deep ink bg for contrast. Quicksand 11px. 200ms delay-in, 0 delay-out. Fade + 4px
         slide from the trigger side.

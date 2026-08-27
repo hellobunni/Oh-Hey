@@ -39,13 +39,13 @@ function StreamHeaderBar({
       <Avatar
         src={avatarSrc}
         size={52}
-        ring={live ? 'primary' : 'none'}
+        ring={live ? 'mint' : 'none'}
       />
       <div className="min-w-0 flex-1">
         <div
           className={cn(
-            'font-pixel text-base',
-            live ? 'text-primary' : 'text-ink-mute'
+            'font-px text-base',
+            live ? 'text-mint' : 'text-ink-mute'
           )}
         >
           {name}
@@ -59,7 +59,7 @@ function StreamHeaderBar({
         <Badge tone="mint" className="inline-flex items-center gap-1.5">
           <span
             aria-hidden
-            className="size-1.5 rounded-full bg-current shadow-[0_0_0_0_var(--color-primary-soft)] animate-[glow-pulse_1.8s_var(--ease-out)_infinite]"
+            className="size-1.5 rounded-full bg-current animate-glow"
           />
           LIVE
         </Badge>

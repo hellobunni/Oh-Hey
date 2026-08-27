@@ -1,57 +1,37 @@
-import Hero from "@/components/hero/Hero";
-import LatestVideos from "@/components/home/LatestVideos";
-import { LatestWriting } from "@/components/home/LatestWriting";
-import { formatPostDate, getAllPosts } from "@/lib/posts";
-import { domainFromLabel } from "@content/domains";
 
-export default function HomePage() {
-  const latestPosts = getAllPosts()
-    .slice(0, 5)
-    .flatMap((p, i) => {
-      const domain = domainFromLabel(p.domain);
-      // A post with an unrecognised frontmatter domain has no route to link to.
-      if (!domain) return [];
-      return [
-        {
-          n: String(i + 1).padStart(2, "0"),
-          title: p.title,
-          excerpt: p.excerpt,
-          domain,
-          date: formatPostDate(p.date),
-          href: `/${domain}/${p.slug}`,
-        },
-      ];
-    });
+import Hero from '@/components/hero/Hero'
+import { LatestWriting } from '@/components/home/LatestWriting'
+import LatestVideos from '@/components/organisms/LatestVideos'
+import { getAllPosts } from '@/lib/posts'
+import { getLatestVideos } from '@/lib/youtube'
+import type { Domain } from '@content/domains'
 
-  const latestVideos = [
-    {
-      title: "I BEAT IT BLINDFOLDED",
-      channel: "ohheylynae",
-      views: "12K views",
-      duration: "10:00",
-      href: "/videos/i-beat-it-blindfolded",
-    },
-    {
-      title: "I BEAT IT BLINDFOLDED",
-      channel: "ohheylynae",
-      views: "12K views",
-      duration: "10:00",
-      href: "/videos/i-beat-it-blindfolded",
-    },
-    {
-      title: "I BEAT IT BLINDFOLDED",
-      channel: "ohheylynae",
-      views: "12K views",
-      duration: "10:00",
-      href: "/videos/i-beat-it-blindfolded",
-    },
-  ];
+const DOMAIN_KEY: Record<string, Domain> = {
+  'Tech':      'tech',
+  'Fitness':   'fitness',
+  'Creative':  'creative',
+  'Nerd Stuff': 'nerd',
+}
+
+export default async function HomePage() {
+  const latestPosts = getAllPosts().slice(0, 5).map((p, i) => ({
+    n:       String(i + 1).padStart(2, '0'),
+    title:   p.title,
+    excerpt: p.excerpt,
+    domain:  DOMAIN_KEY[p.domain],
+    date:    p.date,
+    href:    `/${DOMAIN_KEY[p.domain]}/${p.slug}`,
+  }))
+
+  const latestVideos = await getLatestVideos(5)
 
   return (
     <main>
-      <Hero />
-      <LatestVideos videos={latestVideos} />
-      <LatestWriting posts={latestPosts} />
+      <Hero/>
+      <div>
+        <LatestVideos videos={latestVideos} num="01" />
+        <LatestWriting posts={latestPosts} num="02" />
+      </div>
     </main>
-  );
+  )
 }
