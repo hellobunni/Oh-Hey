@@ -103,7 +103,7 @@ export function Nav() {
             <Link
               href={COMING_SOON ? '#newsletter' : '#newsletter'}
               className={cn(
-                buttonVariants({ variant: COMING_SOON ? 'primary' : 'display', size: 'sm' }),
+                buttonVariants({ variant: 'display', size: 'sm' }),
                 'py-3',
                 focusRing,
               )}
