@@ -1,5 +1,5 @@
 import React from 'react'
-import { Badge } from '@/components/ui/badge'
+import { Tag } from '@/components/ui/tag'
 import { cn } from '@/lib/utils'
 
 export type Domain = 'tech' | 'fitness' | 'creative' | 'nerd'
@@ -30,10 +30,10 @@ function PostRow({ index, title, domain, date, excerpt, href, className }: PostR
         <span className="post-row-title">{title}</span>
         {excerpt && <span className="post-row-excerpt">{excerpt}</span>}
       </span>
-      <Badge variant={domain} shape="square">
+      <Tag variant={domain}>
         <span style={{ width: 6, height: 6, borderRadius: '50%', flexShrink: 0, background: `var(--color-${domain})` }} />
         {DOMAIN_LABELS[domain]}
-      </Badge>
+      </Tag>
       <span className="post-row-date">{date}</span>
     </>
   )

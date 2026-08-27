@@ -1,6 +1,5 @@
 import React from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import HeroTerminalOH from './HeroTerminalOH'
 import HeroBroadsheet from './HeroBroadsheet'
 
 const meta = {
@@ -10,11 +9,6 @@ const meta = {
 
 export default meta
 type Story = StoryObj<typeof meta>
-
-export const TerminalOH: Story = {
-  name: 'Hero — Terminal (oh-hey)',
-  render: () => <HeroTerminalOH />,
-}
 
 export const BroadsheetOH: Story = {
   name: 'Hero — Broadsheet (oh-hey)',

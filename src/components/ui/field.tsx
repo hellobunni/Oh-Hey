@@ -29,6 +29,8 @@ export interface FieldProps {
 }
 
 // ─── Variants ─────────────────────────────────────────────────────────────────
+// Quicksand throughout — form UI is never pixel type.
+// Focus holds mint; error is red in light / pink in dark; borders flip via tokens.
 
 const wrapperVariants = cva('flex gap-1', {
   variants: {
@@ -41,15 +43,15 @@ const wrapperVariants = cva('flex gap-1', {
 })
 
 const labelVariants = cva(
-  'font-mono text-xs font-medium tracking-wide uppercase flex items-center gap-1.5',
+  'font-sans font-bold text-[11px] tracking-[0.06em] uppercase flex items-center gap-1.5',
   {
     variants: {
       state: {
         default:  'text-ink-soft',
-        focus:    'text-ink-soft',
-        error:    'text-red-600',
+        focus:    'text-ink',
+        error:    'text-red-600 dark:text-pink',
         success:  'text-ink-soft',
-        disabled: 'text-ink-soft',
+        disabled: 'text-ink-mute',
       },
       layout: {
         stacked: 'mb-0.5',
@@ -61,15 +63,18 @@ const labelVariants = cva(
 )
 
 const controlVariants = cva(
-  'flex items-stretch border transition-colors duration-200',
+  [
+    'flex items-stretch rounded-lg border-2 bg-transparent dark:bg-deep',
+    'transition-colors duration-[var(--dur-2)] ease-[var(--ease-out)]',
+  ].join(' '),
   {
     variants: {
       state: {
-        default:  'border-line-strong focus-within:border-ink',
-        focus:    'border-ink',
-        error:    'border-red-600 focus-within:border-red-600',
+        default:  'border-line-strong dark:border-ink-mute focus-within:border-mint',
+        focus:    'border-mint',
+        error:    'border-red-600 dark:border-alert focus-within:border-red-600 dark:focus-within:border-alert',
         success:  'border-[#059669] focus-within:border-[#059669]',
-        disabled: 'border-line-strong bg-paper-2 opacity-60',
+        disabled: 'border-line-strong/60 dark:border-transparent bg-paper-2 dark:bg-card opacity-100',
       },
       layout: {
         stacked: '',
@@ -81,20 +86,20 @@ const controlVariants = cva(
 )
 
 const inputVariants = cva(
-  'flex-1 min-w-0 font-mono text-ink bg-transparent border-0 outline-none placeholder:text-ink-mute',
+  'flex-1 min-w-0 font-sans font-semibold text-ink bg-transparent border-0 outline-none placeholder:text-ink-mute',
   {
     variants: {
       size: {
-        sm: 'px-2.5 py-1.5 text-xs',
-        md: 'px-3.5 py-2.5 text-xs',
-        lg: 'px-[18px] py-3.5 text-body',
+        sm: 'px-2.5 py-1.5 text-[11px]',   // 6×10
+        md: 'px-3.5 py-2.5 text-[13px]',   // 10×14
+        lg: 'px-[18px] py-3.5 text-[15px]', // 14×18
       },
       state: {
         default:  '',
         focus:    '',
         error:    '',
         success:  '',
-        disabled: 'cursor-not-allowed pointer-events-none',
+        disabled: 'text-ink-mute dark:text-ink-soft cursor-not-allowed pointer-events-none',
       },
     },
     defaultVariants: { size: 'md', state: 'default' },
@@ -102,16 +107,16 @@ const inputVariants = cva(
 )
 
 const adornmentVariants = cva(
-  'inline-flex items-center font-mono text-ink-soft bg-paper-2 shrink-0 whitespace-nowrap select-none',
+  'inline-flex items-center font-sans font-semibold text-ink-soft bg-paper-2 dark:bg-card shrink-0 whitespace-nowrap select-none',
   {
     variants: {
       size: {
-        sm: 'px-2 text-xxs',
-        md: 'px-3 text-xs',
-        lg: 'px-4 text-xs',
+        sm: 'px-2 text-[10px]',
+        md: 'px-3 text-[11px]',
+        lg: 'px-4 text-[13px]',
       },
       action: {
-        true:  'cursor-pointer text-accent hover:bg-accent-soft transition-colors duration-100',
+        true:  'cursor-pointer text-mint hover:bg-mint-soft transition-colors duration-[var(--dur-1)]',
         false: '',
       },
     },
@@ -119,11 +124,11 @@ const adornmentVariants = cva(
   }
 )
 
-const subLabelVariants = cva('font-mono text-xs', {
+const subLabelVariants = cva('font-sans font-semibold text-[11px]', {
   variants: {
     type: {
       helper:  'text-ink-soft',
-      error:   'text-red-600',
+      error:   'text-red-600 dark:text-alert',
       success: 'text-[#059669]',
       counter: 'text-ink-mute text-right tabular-nums',
     },
@@ -161,14 +166,15 @@ function Field({
 
   const child = React.cloneElement(children, {
     id:        inputId,
+    disabled:  resolvedState === 'disabled' ? true : children.props.disabled,
     className: cn(
       inputVariants({ size, state: resolvedState as FieldState }),
-      isTextarea && 'resize-vertical min-h-[96px]',
+      isTextarea && 'resize-vertical min-h-[70px]',
       isSelect   && 'appearance-none cursor-pointer pr-9',
       children.props.className,
     ),
     style: isSelect ? {
-      backgroundImage:    `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b6b66' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E")`,
+      backgroundImage:    `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236d6880' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E")`,
       backgroundRepeat:   'no-repeat',
       backgroundPosition: 'right 14px center',
       ...children.props.style,
@@ -188,13 +194,13 @@ function Field({
         htmlFor={inputId}
       >
         {label}
-        {required && <span className="text-red-600" aria-hidden="true">*</span>}
+        {required && <span className="text-red-600 dark:text-alert" aria-hidden="true">*</span>}
       </label>
 
       <div className={controlVariants({ state: resolvedState as FieldState, layout })}>
         {prefix && (
           <span
-            className={cn(adornmentVariants({ size, action: !!prefixAction }), 'border-r border-line-strong')}
+            className={cn(adornmentVariants({ size, action: !!prefixAction }), 'rounded-l-[6px] border-r-2 border-line-strong dark:border-ink-mute')}
             onClick={onPrefixClick}
             role={onPrefixClick ? 'button' : undefined}
             tabIndex={onPrefixClick ? 0 : undefined}
@@ -207,7 +213,7 @@ function Field({
 
         {suffix && (
           <span
-            className={cn(adornmentVariants({ size, action: !!suffixAction }), 'border-l border-line-strong')}
+            className={cn(adornmentVariants({ size, action: !!suffixAction }), 'rounded-r-[6px] border-l-2 border-line-strong dark:border-ink-mute')}
             onClick={onSuffixClick}
             role={onSuffixClick ? 'button' : undefined}
             tabIndex={onSuffixClick ? 0 : undefined}

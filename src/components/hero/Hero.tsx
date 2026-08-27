@@ -1,20 +1,85 @@
-import React from 'react'
+import { Play } from 'lucide-react'
+import { cn } from '@/lib/utils'
+import { buttonVariants } from '../ui/button'
 
-export default function Hero() {
+export interface HeroProps {
+  eyebrow?: React.ReactNode
+  headline?: React.ReactNode
+  body?: React.ReactNode
+  primaryCta?: { label: string; href: string }
+  secondaryCta?: { label: string; href: string }
+  social?: string
+  imageSrc?: string
+  imageTag?: string
+  className?: string
+}
+
+export default function Hero({
+  headline = (
+    <>
+      Design<br />
+      &amp; engineering,<br />
+      <span className="text-mint">on demand.</span>
+    </>
+  ),
+  body = (
+    <>
+      New games every week — plus the dev log where I build things, lift things, and draw things between streams.
+    </>
+  ),
+  primaryCta = { label: 'LATEST VIDEO', href: '#videos' },
+  secondaryCta = { label: 'READ THE LOG', href: '#log' },
+  social = '@ohheylynae everywhere — clips on TikTok',
+  imageSrc = '/avatar-bust.png',
+  className,
+}: HeroProps) {
   return (
-    <section id="hero" className="py-12 border-b border-line hero-section">
-      <div className="ds-sec-label">14 · Patterns — Hero</div>
-      <h2 className="ds-h2">Two hero structures.</h2>
-      <div className="ds-grid-2">
-        <div className="brand-panel">
-          <div className="eyebrow">DIRECTION A · TERMINAL</div>
-          <h4>Notes from <em>/ a curious</em> generalist.</h4>
-          <p>Two-column hero: bold display headline + terminal card with mono context. Used for oh-hey home and LV consulting hero A.</p>
-        </div>
-        <div className="brand-panel">
-          <div className="eyebrow">DIRECTION B · BROADSHEET</div>
-          <h4>A little bit of <em>everything,</em> loudly.</h4>
-          <p>Single-column mega display with editorial italic emphasis, meta row above and sub-grid below. For oh-hey home B and LV consulting B.</p>
+    <section className={cn('home-inner border-b-2 border-paper-2', className)}>
+      <div className="site-inner px-[clamp(20px,5vw,80px)] pt-[72px] pb-[64px]">
+        <div
+          className="grid gap-14 items-center grid-cols-2"
+          style={{ gridTemplateColumns: '1.3fr 1fr' }}
+        >
+          <div className="col-span-2 md:col-span-1">
+
+            <h1
+              className="font-px font-bold text-ink leading-[1.15]"
+              style={{ fontSize: 'clamp(34px, 5.5vw, 58px)' }}
+            >
+              {headline}
+            </h1>
+
+            <p className="font-sans font-medium text-ink-soft mt-[22px] max-w-[460px]" style={{ fontSize: '17px' }}>
+              {body}
+            </p>
+
+            <div className="flex gap-3.5 my-8 flex-wrap">
+              <a
+                href={primaryCta.href}
+                className={cn(buttonVariants({ variant: 'primary', size: 'md' }), 'text-white text-xs shadow-[4px_4px_0_rgba(0,0,0,0.35)] transition-[transform,box-shadow] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0_rgba(0,0,0,0.35)]')}
+              >
+                <Play size={12} fill="currentColor" strokeWidth={0} aria-hidden /> {primaryCta.label}
+              </a>
+              <a
+                href={secondaryCta.href}
+                className={cn(buttonVariants({ variant: 'accent', size: 'md' }), 'bg-white text-xs shadow-[4px_4px_0_rgba(0,0,0,0.35)] transition-[transform,box-shadow] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0_rgba(0,0,0,0.35)]')}
+              >
+                {secondaryCta.label}
+              </a>
+            </div>
+
+            {social && (
+              <div className="mt-6 font-sans font-semibold text-sm text-peri">{social}</div>
+            )}
+          </div>
+
+          <div className="relative justify-self-center max-md:order-first">
+            <img
+              src={imageSrc}
+              alt="ohheylynae mascot"
+              style={{ width: 'min(320px, 70vw)', display: 'block', border: '3px solid var(--color-mint)', boxShadow: '8px 8px 0 rgba(0,0,0,0.4)' }}
+            />
+          </div>
         </div>
       </div>
     </section>

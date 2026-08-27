@@ -1,5 +1,6 @@
 import React from 'react'
-import { Menu, X } from 'lucide-react'
+import { ExternalLink, Menu, X } from 'lucide-react'
+import { Avatar } from '@/components/ui/avatar'
 import { cn, cva } from '@/lib/utils'
 
 // ─── Top Nav ──────────────────────────────────────────────────────────────────
@@ -28,11 +29,11 @@ export interface TopNavProps {
 // ─── CVA variants ─────────────────────────────────────────────────────────────
 
 const navContainerVariants = cva(
-  'flex items-center h-14 border-b px-6',
+  'flex items-center h-14 border-b-2 px-6',
   {
     variants: {
       brand: {
-        'oh-hey-lynae': 'bg-paper border-line',
+        'oh-hey-lynae': 'bg-paper border-card',
       },
     },
     defaultVariants: { brand: 'oh-hey-lynae' },
@@ -40,11 +41,11 @@ const navContainerVariants = cva(
 )
 
 const navBrandVariants = cva(
-  'flex items-center gap-2 no-underline whitespace-nowrap shrink-0',
+  'flex items-center gap-2.5 no-underline whitespace-nowrap shrink-0',
   {
     variants: {
       brand: {
-        'oh-hey-lynae': 'font-mono text-sm font-medium text-ink',
+        'oh-hey-lynae': 'font-px text-sm text-mint',
       },
     },
   }
@@ -63,18 +64,18 @@ const navLinkVariants = cva(
       },
     },
     compoundVariants: [
-      { brand: 'oh-hey-lynae', active: true, class: 'text-accent' },
+      { brand: 'oh-hey-lynae', active: true, class: 'text-pink' },
     ],
     defaultVariants: { active: false },
   }
 )
 
 const navCtaVariants = cva(
-  'shrink-0 no-underline cursor-pointer',
+  'shrink-0 no-underline cursor-pointer transition-all duration-100',
   {
     variants: {
       brand: {
-        'oh-hey-lynae': 'py-[7px] px-[14px] text-sm font-medium text-ink border border-line-strong hover:bg-paper-2 transition-colors duration-100',
+        'oh-hey-lynae': 'font-px text-xs bg-pink text-ink py-2.5 px-3.5 shadow-[3px_3px_0_rgba(0,0,0,0.35)] hover:bg-mint hover:-translate-x-px hover:-translate-y-px hover:shadow-[4px_4px_0_rgba(0,0,0,0.35)]',
       },
     },
   }
@@ -91,8 +92,8 @@ const linksAlignClass: Record<NavLinksAlign, string> = {
 const BRAND_MARK: Record<NavBrand, React.ReactNode> = {
   'oh-hey-lynae': (
     <>
-      <span className="w-3 h-3 bg-accent shrink-0" />
-      <span>oh-hey-lynae</span>
+      <Avatar variant="face" size={40} ring="mint" className="border-2" />
+      <span>OHHEYLYNAE</span>
     </>
   ),
 }
@@ -177,7 +178,7 @@ export interface MobileMenuProps {
 
 function MobileMenu({ items, version = 'VERSION 3.0', externalLink, className }: MobileMenuProps) {
   return (
-    <div className={cn('bg-paper border-x border-b border-line flex flex-col', className)}>
+    <div className={cn('bg-paper border-x-2 border-b-2 border-card flex flex-col', className)}>
       {items.map((item) => {
         const Tag = item.href ? 'a' : 'div'
         return (
@@ -185,8 +186,8 @@ function MobileMenu({ items, version = 'VERSION 3.0', externalLink, className }:
             key={item.label}
             {...(item.href ? { href: item.href } : {})}
             className={cn(
-              'flex items-center justify-between px-5 py-[18px] border-b border-line text-md text-ink no-underline cursor-pointer transition-colors duration-100 hover:bg-paper-2',
-              item.active && 'text-accent',
+              'flex items-center justify-between px-5 py-[18px] border-b border-card text-md text-ink no-underline cursor-pointer transition-colors duration-100 hover:bg-card-2',
+              item.active && 'text-mint',
             )}
           >
             {item.label}
@@ -199,8 +200,12 @@ function MobileMenu({ items, version = 'VERSION 3.0', externalLink, className }:
       <div className="flex justify-between px-5 py-4 font-mono text-xxs tracking-widest text-ink-mute">
         <span>{version}</span>
         {externalLink && (
-          <a href={externalLink.href} className="hover:text-ink transition-colors duration-100">
-            ↗ {externalLink.label}
+          <a
+            href={externalLink.href}
+            className="inline-flex items-center gap-1 hover:text-ink transition-colors duration-100"
+          >
+            <ExternalLink size={10} strokeWidth={2} />
+            {externalLink.label}
           </a>
         )}
       </div>

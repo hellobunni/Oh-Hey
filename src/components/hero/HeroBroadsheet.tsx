@@ -41,7 +41,7 @@ const BRAND_DEFAULTS: Record<BroadsheetBrand, {
     headline: (
       <>
         A little bit of{' '}
-        <em className="not-italic text-accent font-serif">everything,</em>{' '}
+        <em className="not-italic text-pink font-serif">everything,</em>{' '}
         loudly.
       </>
     ),

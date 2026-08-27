@@ -40,7 +40,7 @@ function BrandCard({ name, arg, children }: { name: string; arg: string; childre
     <div className="border border-line-strong flex flex-col">
       <div className="flex justify-between items-center py-2 px-3 border-b border-line bg-paper-2 font-mono text-xs">
         <span className="font-medium">{name}</span>
-        <span className="text-accent">{arg}</span>
+        <span className="text-pink">{arg}</span>
       </div>
       <div>{children}</div>
     </div>
@@ -61,7 +61,7 @@ export default function TopNavigation({ className }: TopNavigationProps) {
         Three alignments.
       </h2>
       <p className="font-mono text-sm text-ink-soft mb-8 max-w-2xl leading-relaxed">
-        <code className="text-accent">linksAlign</code> controls where nav links sit: left, center, or right.
+        <code className="text-pink">linksAlign</code> controls where nav links sit: left, center, or right.
       </p>
 
       <div className="font-mono text-xs tracking-wide uppercase text-ink-soft mb-3">

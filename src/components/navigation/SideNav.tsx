@@ -32,7 +32,7 @@ const SideNav = ({ groups, className }: SideNavProps) => {
                   key={item.label}
                   className={cn(
                     'flex items-center justify-between py-2 font-mono text-sm no-underline cursor-pointer border-b border-line transition-colors duration-100 last:border-b-0',
-                    item.active ? 'text-accent' : 'text-ink-soft hover:text-ink'
+                    item.active ? 'text-pink' : 'text-ink-soft hover:text-ink'
                   )}
                   href={item.href}
                 >

@@ -19,7 +19,7 @@ export interface OfferingCardProps extends BaseCardProps {
 
 export interface NewsletterCardProps extends BaseCardProps {
   variant: 'newsletter'
-  icon?: string
+  icon?: ReactNode
   label?: string
   headline: ReactNode
   tagline?: string

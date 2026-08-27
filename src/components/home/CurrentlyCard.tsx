@@ -1,4 +1,4 @@
-import { cn } from '@/lib/utils'
+import { Square } from 'lucide-react'
 
 type CurrentlyItem = { label: string; value: string }
 
@@ -18,8 +18,9 @@ const DEFAULT_ITEMS: CurrentlyItem[] = [
 function CurrentlyCard({ items = DEFAULT_ITEMS, updated = 'Apr 2026', className }: CurrentlyCardProps) {
   return (
     <div className={className}>
-      <div className="font-mono text-sm font-medium uppercase tracking-wide text-accent">
-        ▣&nbsp;&nbsp;Currently
+      <div className="inline-flex items-center gap-2 font-mono text-sm font-medium uppercase tracking-wide text-pink">
+        <Square size={12} strokeWidth={2.5} aria-hidden />
+        Currently
       </div>
       <h3 className="mt-3.5 text-xl font-bold leading-tight tracking-[-0.02em] text-ink">
         What I'm into<br />right now.
@@ -44,7 +45,7 @@ function CurrentlyCard({ items = DEFAULT_ITEMS, updated = 'Apr 2026', className 
 
       <div className="mt-4 font-mono text-xxs uppercase tracking-wider text-ink-mute">
         Updated {updated} ·{' '}
-        <a href="/now" className="text-accent">full /now page →</a>
+        <a href="/now" className="text-pink">full /now page →</a>
       </div>
     </div>
   )

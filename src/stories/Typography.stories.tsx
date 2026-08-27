@@ -1,68 +1,105 @@
+import React from 'react'
 import { cn } from '@/lib/utils'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
 const meta = {
-  title: 'Design System/Typography',
+  title: 'Foundation/Typography',
   parameters: { layout: 'padded' },
 } satisfies Meta
 
 export default meta
 type Story = StoryObj<typeof meta>
 
-// ─── Font Families ──────────────────────────────────────────────────────────
+// ─── Font Families ────────────────────────────────────────────────────────────
 
 export const Families: Story = {
-  name: 'Font Families',
+  name: 'Type — font families',
   render: () => (
-    <div className="grid grid-cols-3 gap-4">
-      <div>
-        <div className="font-mono uppercase mb-3 text-xs tracking-wide text-gray-500">--font-sans</div>
-        <div className="font-sans text-4xl font-bold tracking-tight leading-tight">Geist</div>
-        <p className="font-mono mt-3 text-sm text-gray-500">Workhorse sans. 300–900. Used for everything except metadata and editorial italics.</p>
-      </div>
-      <div>
-        <div className="font-mono uppercase mb-3 text-xs" style={{ fontSize: '11px', letterSpacing: '0.1em', color: 'var(--ink-soft)'}}>--font-mono</div>
-        <div className="font-mono text-4xl font-medium tracking-tight leading-tight">Geist Mono</div>
-        <p className="mt-3 font-mono text-sm text-gray-500">Metadata, labels, eyebrows, technical context. Brings the "engineered" signal.</p>
-      </div>
-      <div>
-        <div className="font-mono uppercase text-xs tracking-wide text-gray-500">--font-serif</div>
-        <div className="font-serif italic text-3xl font-light tracking-tight leading-tight">Fraunces</div>
-        <p className="mt-3 font-mono text-sm" style={{ color: 'var(--ink-soft)', lineHeight: 1.5 }}>Italic-only. Used for editorial accents inside sans headlines — never as body or solo display.</p>
+    <div>
+      <div className="font-mono text-xs uppercase tracking-widest text-ink-soft mb-2">02 · Foundations — Typography</div>
+      <h2 className="font-px text-2xl text-mint mb-8">FONT FAMILIES</h2>
+      <div className="grid grid-cols-1 gap-8" style={{ maxWidth: 860 }}>
+
+        {/* Silkscreen */}
+        <div style={{ borderBottom: '1px solid var(--color-line)', paddingBottom: 24 }}>
+          <div className="font-mono text-xs uppercase tracking-widest text-ink-soft mb-3">--font-px · Silkscreen</div>
+          <div className="font-px mb-3" style={{ fontSize: 56, color: 'var(--color-mint)', lineHeight: 1.1 }}>OHHEYLYNAE</div>
+          <div className="font-px text-ink-soft mb-3" style={{ fontSize: 18 }}>ABCDEFGHIJKLMNOPQRSTUVWXYZ · 0123456789</div>
+          <div className="flex gap-3 flex-wrap">
+            <span className="font-mono text-xs text-ink-soft px-2 py-1 border border-line">Display · headlines · wordmarks</span>
+            <span className="font-mono text-xs text-pink px-2 py-1 border border-line">Max 5 words · never body copy</span>
+          </div>
+        </div>
+
+        {/* Quicksand */}
+        <div style={{ borderBottom: '1px solid var(--color-line)', paddingBottom: 24 }}>
+          <div className="font-mono text-xs uppercase tracking-widest text-ink-soft mb-3">--font-sans · Quicksand</div>
+          <div className="font-sans mb-3" style={{ fontSize: 48, fontWeight: 700, color: 'var(--color-peri)', lineHeight: 1.15 }}>The quick bunny jumps</div>
+          <div className="font-sans mb-2" style={{ fontSize: 16, fontWeight: 500 }}>Weight 500 — body copy and descriptions</div>
+          <div className="font-sans mb-2" style={{ fontSize: 16, fontWeight: 600 }}>Weight 600 — UI labels and subtext</div>
+          <div className="font-sans mb-3" style={{ fontSize: 16, fontWeight: 700 }}>Weight 700 — bold, badges, buttons</div>
+          <div className="flex gap-3 flex-wrap">
+            <span className="font-mono text-xs text-ink-soft px-2 py-1 border border-line">Body · descriptions · UI labels</span>
+            <span className="font-mono text-xs text-mint px-2 py-1 border border-line">Weights: 500 / 600 / 700</span>
+          </div>
+        </div>
+
+        {/* Geist Mono */}
+        <div>
+          <div className="font-mono text-xs uppercase tracking-widest text-ink-soft mb-3">--font-mono · Geist Mono</div>
+          <div className="font-mono mb-3" style={{ fontSize: 32, color: 'var(--color-ink-soft)', lineHeight: 1.2 }}>EYEBROW · LABEL · DATE · TAG</div>
+          <div className="font-mono mb-3 text-sm">Metadata, labels, eyebrows, tokens, technical context — the "engineered" signal</div>
+          <div className="flex gap-3 flex-wrap">
+            <span className="font-mono text-xs text-ink-soft px-2 py-1 border border-line">Metadata · dates · code · tags</span>
+          </div>
+        </div>
       </div>
     </div>
   ),
 }
 
-// ─── Type Scale ──────────────────────────────────────────────────────────────
+// ─── Type Scale ───────────────────────────────────────────────────────────────
 
-const scaleSteps = [
-  { token: '--text-xs',    px: '11px',  sample: 'EYEBROWS · LABELS · METADATA', classes: 'font-mono text-xs uppercase tracking-wide' },
-  { token: '--text-sm',    px: '13px',  sample: 'Secondary text · monospace dates · captions',  classes: 'font-mono text-sm' },
-  { token: '--text-body',  px: '15px',  sample: 'Body copy at the default density.',                  classes: "text-body"},
-  { token: '--text-md',    px: '18px',  sample: 'Lead paragraphs and list items in editorial layouts.', classes: "text-md" },
-  { token: '--text-lg',    px: '22px',  sample: 'Sub-headlines and card titles.',  classes: "text-lg font-semibold" },
-  { token: '--text-xl',    px: '28px',  sample: 'Section headings (h3).',  classes: "text-xl font-bold tracking-snug" },
-  { token: '--text-2xl',   px: '36px',  sample: 'Secondary display (h2).',  classes: "text-2xl font-bold tracking-snug" },
-  { token: '--text-3xl',   px: '48px',  sample: 'Primary display.', classes: "text-3xl font-bold tracking-snug leading-snug" },
-  { token: '--text-4xl',   px: '64px',  sample: 'Page heading.', classes: "text-4xl font-bold tracking-tight leading-tight" },
-  { token: '--text-5xl',   px: '96px',  sample: 'Hero.',    classes: "text-5xl font-bold tracking-tight leading-tight" },
-  { token: '--text-6xl',   px: '144px', sample: 'Broadsheet.',    classes: "text-6xl font-bold tracking-tight leading-tight" },
+const DISPLAY_SCALE = [
+  { label: 'H1',    px: '64px',  cls: 'font-px', sample: 'OhHeyLynae',          color: 'var(--color-mint)' },
+  { label: 'H2',    px: '40px',  cls: 'font-px', sample: 'Stream Schedule',      color: 'var(--color-mint)' },
+  { label: 'H3',    px: '24px',  cls: 'font-px', sample: 'Episode 12',           color: 'var(--color-pink)' },
+]
+
+const TEXT_SCALE = [
+  { label: 'Body',    px: '16px', w: 600,  sample: 'Quicksand at 16 — the quick brown fox jumps over the lazy dog.' },
+  { label: 'Small',   px: '12px', w: 600,  sample: 'Caption / label text — metadata and secondary info.' },
+  { label: 'Mono XS', px: '11px', w: 400,  sample: 'EYEBROW · LABEL · APR 7, 2026', mono: true },
 ]
 
 export const TypeScale: Story = {
-  name: 'Type Scale',
+  name: 'Type — scale',
   render: () => (
     <div>
-      <div className="font-mono uppercase mb-6 tracking-wide text-xs text-gray-500">
-        Scale ratio ≈ 1.20 · Anchor: 15px body
+      <div className="font-mono text-xs uppercase tracking-widest text-ink-soft mb-2">Type scale</div>
+
+      {/* Display / Silkscreen */}
+      <div className="font-mono text-xs uppercase tracking-widest text-pink mb-3 mt-6">Display — Silkscreen</div>
+      <div className="flex flex-col" style={{ borderTop: '1px solid var(--color-line)' }}>
+        {DISPLAY_SCALE.map(({ label, px, sample, color }) => (
+          <div key={label} className="grid items-baseline gap-4 py-4" style={{ gridTemplateColumns: '60px 40px 1fr', borderBottom: '1px solid var(--color-line)' }}>
+            <div className="font-mono text-xs text-ink-soft">{label}</div>
+            <div className="font-mono text-xs text-ink-mute">{px}</div>
+            <div className="font-px" style={{ fontSize: px, color, lineHeight: 1.1 }}>{sample}</div>
+          </div>
+        ))}
       </div>
-      <div className="flex flex-col">
-        {scaleSteps.map(({ token, px, sample, classes }) => (
-          <div key={token} className="grid grid-cols-[100px_52px_1fr] items-baseline gap-4 py-3 border-b border-gray-200">
-            <div className="font-mono text-xs text-gray-500">{token}</div>
-            <div className="font-mono text-xs text-gray-500">{px}</div>
-            <div className={cn( classes)}>{sample}</div>
+
+      {/* Text / Quicksand */}
+      <div className="font-mono text-xs uppercase tracking-widest text-peri mb-3 mt-8">Text — Quicksand</div>
+      <div className="flex flex-col" style={{ borderTop: '1px solid var(--color-line)' }}>
+        {TEXT_SCALE.map(({ label, px, w, sample, mono }) => (
+          <div key={label} className="grid items-baseline gap-4 py-4" style={{ gridTemplateColumns: '60px 40px 1fr', borderBottom: '1px solid var(--color-line)' }}>
+            <div className="font-mono text-xs text-ink-soft">{label}</div>
+            <div className="font-mono text-xs text-ink-mute">{px}</div>
+            <div style={{ fontFamily: mono ? 'var(--font-mono)' : 'var(--font-sans)', fontSize: px, fontWeight: w, lineHeight: 1.5 }}>
+              {sample}
+            </div>
           </div>
         ))}
       </div>
@@ -70,20 +107,37 @@ export const TypeScale: Story = {
   ),
 }
 
-// ─── Editorial Pairing ───────────────────────────────────────────────────────
+// ─── Usage Pairings ───────────────────────────────────────────────────────────
 
-export const EditorialPairing: Story = {
-  name: 'Editorial Pairing',
+export const UsagePairings: Story = {
+  name: 'Type — pairings in context',
   render: () => (
-    <div>
-      <div style={{ fontSize: '64px', fontWeight: 800, letterSpacing: '-0.045em', lineHeight: 1 }}>
-        A little bit of{' '}
-        <em style={{ fontFamily: 'var(--font-serif)', fontWeight: 300, fontStyle: 'italic' }}>everything</em>
-        , loudly.
+    <div style={{ display: 'flex', gap: 24, flexWrap: 'wrap' }}>
+
+      {/* Dark card — streaming context */}
+      <div style={{ background: '#1d1c29', padding: 28, borderRadius: 14, minWidth: 300, flex: 1 }}>
+        <div className="font-mono text-xs text-ink-soft mb-3 uppercase tracking-widest">Streaming / dark context</div>
+        <div className="font-px text-mint" style={{ fontSize: 22, marginBottom: 8 }}>OHHEYLYNAE</div>
+        <div className="font-sans" style={{ fontSize: 13, fontWeight: 600, color: '#8a869e', marginBottom: 16 }}>cozy games &amp; chaos</div>
+        <div className="font-px text-peri" style={{ fontSize: 14, marginBottom: 8 }}>SCHEDULE</div>
+        <div className="font-sans" style={{ fontSize: 13, fontWeight: 600, color: '#e8e6f0', marginBottom: 4 }}>Tues 7pm — Variety</div>
+        <div className="font-sans" style={{ fontSize: 13, fontWeight: 600, color: '#e8e6f0', marginBottom: 4 }}>Thurs 7pm — Art</div>
+        <div className="font-sans" style={{ fontSize: 13, fontWeight: 600, color: '#e8e6f0' }}>Sun 3pm — Chill</div>
       </div>
-      <div style={{ fontFamily: 'font-mono', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--ink-soft)', marginTop: '24px' }}>
-        Sans + italic-serif fragment · use sparingly — one emphasis word per headline
+
+      {/* Light card — blog/post context */}
+      <div style={{ background: '#fbfaf6', padding: 28, borderRadius: 14, minWidth: 300, flex: 1, border: '1px solid rgba(0,0,0,0.07)' }}>
+        <div className="font-mono text-xs text-ink-soft mb-3 uppercase tracking-widest">Blog / light context</div>
+        <div className="font-px" style={{ fontSize: 16, color: '#3a3550', marginBottom: 4 }}>DEV LOG #4</div>
+        <div className="font-mono text-xs text-ink-mute mb-4">Jul 21 · 5 min read</div>
+        <div className="font-sans" style={{ fontSize: 14, fontWeight: 500, color: '#3a3550', lineHeight: 1.7, marginBottom: 16 }}>
+          Body copy runs in Quicksand — readable at length while the pixel headline stays reserved for moments that need punch.
+        </div>
+        <button className="font-px text-xs" style={{ color: '#fbfaf6', background: '#3a3550', border: 'none', padding: '10px 18px', cursor: 'pointer' }}>
+          READ MORE
+        </button>
       </div>
+
     </div>
   ),
 }

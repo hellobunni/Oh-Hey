@@ -1,61 +1,93 @@
-@import "./tokens.css";
 @import "tailwindcss";
 
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
-*, *::before, *::after {
-  box-sizing: border-box;
-}
+/* ═══════════════════════════════════════════════════════════════
+   OhHeyLynae — design tokens
+   Brand accents (mint/pink/peri/alert/gold) never flip.
+   Semantic neutrals resolve through raw CSS vars that flip
+   on :root vs [data-theme="dark"].
+   ═══════════════════════════════════════════════════════════════ */
 
-body {
-  margin: 0;
-}
+@theme {
+  /* Brand accents — same hex in both surfaces */
+  --color-mint:      #7ED6C0;
+  --color-mint-soft: rgba(126, 214, 192, 0.12);
+  --color-pink:      #F2A7C3;
+  --color-pink-soft: rgba(242, 167, 195, 0.12);
+  --color-peri:      #8FA8E8;
+  --color-alert:     #E0559B;
+  --color-gold:      #E9C46A;
 
-/* ─── Keyframe animations ─────────────────────────────────────────────────── */
+  /* Fixed dark surfaces — never flip */
+  --color-deep:        #100F1A;
+  --color-card:        #2B2A3D;
+  --color-card-2:      #2A2740;
+  --color-paper-fixed: #F6F3EC;
+  --color-navy:        #3A3550;
 
-@keyframes cs-pulse {
-  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 var(--color-accent-soft); }
-  50%       { opacity: 0.5; box-shadow: 0 0 0 6px transparent; }
-}
+  /* Semantic — resolved at runtime via raw CSS vars so they flip */
+  --color-paper:       var(--paper);
+  --color-paper-2:     var(--paper-2);
+  --color-ink:         var(--ink);
+  --color-ink-2:       var(--ink-2);
+  --color-ink-soft:    var(--ink-soft);
+  --color-ink-mute:    var(--ink-mute);
+  --color-line:        var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-hairline:    var(--hairline);
 
+  /* Inverted writing-surface pair — flips so the card always contrasts */
+  --color-paper-warm:  var(--paper-warm);
+  --color-paper-ink:   var(--paper-ink);
 
-@keyframes cs-blink { 50% { opacity: 0; } }
+  /* Domain accent colors */
+  --color-tech:        #2563eb;
+  --color-fitness:     #059669;
+  --color-creative:    #ea580c;
+  --color-nerd:        #7c3aed;
+  --color-tech-bg:     rgba(37, 99, 235, 0.08);
+  --color-fitness-bg:  rgba(5, 150, 105, 0.08);
+  --color-creative-bg: rgba(234, 88, 12, 0.08);
+  --color-nerd-bg:     rgba(124, 58, 237, 0.08);
 
-.cs-pulse { animation: cs-pulse 1.8s var(--ease-out) infinite; }
-.cs-blink { animation: cs-blink 1.1s steps(1) infinite; }
+  /* Fonts */
+  --font-px:    var(--font-silkscreen, "Silkscreen", monospace);
+  --font-sans:  var(--font-quicksand,  "Quicksand",  ui-sans-serif, system-ui, sans-serif);
+  --font-serif: var(--font-fraunces,   "Fraunces",   Georgia, serif);
+  --font-mono:  var(--font-geist-mono, "Geist Mono", ui-monospace, monospace);
 
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
+  /* Motion */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in:  cubic-bezier(0.7, 0, 0.84, 0);
+  --dur-1: 120ms;
+  --dur-2: 200ms;
+  --dur-3: 320ms;
+  --dur-4: 600ms;
 
-@utility site-inner {
-  max-width: 1500px;
-  margin-inline: auto;
-  width: 100%;
-}
+  /* Spacing */
+  --spacing-1:  0.25rem;
+  --spacing-2:  0.5rem;
+  --spacing-4:  1rem;
+  --spacing-6:  1.5rem;
+  --spacing-8:  2rem;
+  --spacing-12: 3rem;
 
-@utility home-inner {
-  background-image: url('/images/paper-grid.svg');
-  background-size: cover;
-  background-position: center;
-}
+  /* Radius */
+  --radius-none: 0px;
+  --radius-sm:   8px;
+  --radius-md:   16px;
+  --radius-full: 9999px;
 
-@utility grid-bg-transparent {
-  background-image: url('/images/grid-transparent.svg');
-  background-size: cover;
-  background-position: center;
-}
-@theme inline {
-  /* Fonts — next/font injects --font-geist-sans/mono/fraunces at runtime */
-  --font-sans:  var(--font-geist-sans, 'Geist', ui-sans-serif, system-ui, sans-serif);
-  --font-mono:  var(--font-geist-mono, 'Geist Mono', ui-monospace, monospace);
-  --font-serif: var(--font-fraunces, 'Fraunces', Georgia, serif);
+  /* Hard pixel shadows — offset, zero blur */
+  --shadow-px-sm:     3px 3px 0 rgba(0,0,0,0.35);
+  --shadow-px:        4px 4px 0 rgba(0,0,0,0.35);
+  --shadow-px-lg:     6px 6px 0 rgba(0,0,0,0.35);
+  --shadow-px-card:   6px 6px 0 rgba(0,0,0,0.5);
+  --shadow-px-card-lg: 8px 8px 0 rgba(0,0,0,0.5);
 
-  --animate-marquee: marquee 40s linear infinite;
-
-  /* Type scale — text-t-xs through text-t-6xl */
-  --text-xxs: 10px;
+  /* Type scale */
+  --text-xxs:  10px;
   --text-xs:   11px;
   --text-sm:   13px;
   --text-body: 15px;
@@ -68,60 +100,178 @@ body {
   --text-5xl:  96px;
   --text-6xl:  144px;
 
-    /* Letter spacing */
-    --tracking-tight:  -0.045em;
-    --tracking-snug:   -0.025em;
-    --tracking-normal: -0.005em;
-    --tracking-wide:    0.08em;
-    --tracking-wider:   0.18em;
+  --tracking-tight:  -0.045em;
+  --tracking-snug:   -0.025em;
+  --tracking-normal: -0.005em;
+  --tracking-wide:    0.08em;
+  --tracking-wider:   0.18em;
 
-      /* Line heights */
   --leading-tight:   0.92;
   --leading-snug:    1.05;
   --leading-normal:  1.55;
   --leading-relaxed: 1.7;
 
-    /* ─── Color — oh-hey-lynae (default light) ───────────────────────────── */
-    --color-paper:      #fafaf7;
-    --color-paper-2:    #f4f3ee;
-    --color-ink:        #0c0c0c;
-    --color-ink-2:      #2a2a28;
-    --color-ink-soft:   #6b6b66;
-    --color-ink-mute:   #a3a39c;
-    --color-line:         rgba(12,12,12,0.08);
-    --color-line-strong:  rgba(12,12,12,0.18);
-    --color-hairline:     rgba(12,12,12,0.06);
-
-    /* Brand accent */
-    --color-accent:      #2563eb;
-    --color-accent-soft: rgba(37,99,235,0.10);
-
-    /* ─── Domain colors ───────────────────────────────────────────────────── */
-    --color-tech:        #2563eb;
-    --color-fitness:     #059669;
-    --color-creative:    #ea580c;
-    --color-nerd:        #7c3aed;
-    --color-tech-bg:     rgba(37,99,235,0.08);
-    --color-fitness-bg:  rgba(5,150,105,0.08);
-    --color-creative-bg: rgba(234,88,12,0.08);
-    --color-nerd-bg:     rgba(124,58,237,0.08);
+  /* Animation names exposed as @theme for Tailwind animate-* utilities */
+  --animate-marquee:    marquee 40s linear infinite;
+  --animate-pop-in:     ohl-pop-in 0.28s cubic-bezier(0.34, 1.4, 0.64, 1) both;
+  --animate-pop-out:    ohl-pop-out 0.4s ease both;
+  --animate-slide-in:   ohl-slide-in 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-slide-out:  ohl-slide-out 0.4s ease both;
+  --animate-bounce-in:  ohl-bounce-in 0.5s cubic-bezier(0.34, 1.4, 0.64, 1) both;
+  --animate-shake:      ohl-shake 0.4s ease both;
+  --animate-glow:       ohl-glow-pulse 1.8s ease-in-out infinite;
+  --animate-shimmer:    ohl-shimmer 1.4s linear infinite;
 }
 
-/* ─── Dark theme token overrides ──────────────────────────────────────────── */
-/* Semantic tokens auto-flip when data-theme="dark" is on <html>              */
+/* ── Light paper (default) ────────────────────────────────── */
+:root {
+  --paper:       #F6F3EC;
+  --paper-2:     #EEE9DD;
+  --ink:         #2B2838;
+  --ink-2:       #3D3A4A;
+  --ink-soft:    #6D6880;
+  --ink-mute:    #9A96B0;
+  --line:        rgba(43, 40, 56, 0.08);
+  --line-strong: rgba(43, 40, 56, 0.18);
+  --hairline:    rgba(43, 40, 56, 0.06);
+  --grid:        rgba(43, 40, 56, 0.04);
 
+  /* Inverted writing-surface pair */
+  --paper-warm:  #2A2740;
+  --paper-ink:   #E8E6F0;
+}
+
+/* ── Dark ink ─────────────────────────────────────────────── */
 [data-theme="dark"] {
-  --color-paper:       #0f0f0d;
-  --color-paper-2:     #1a1a17;
-  --color-ink:         #f0f0eb;
-  --color-ink-2:       #d4d4cc;
-  --color-ink-soft:    #8a8a84;
-  --color-ink-mute:    #5a5a55;
-  --color-line:        rgba(240,240,235,0.08);
-  --color-line-strong: rgba(240,240,235,0.16);
-  --color-hairline:    rgba(240,240,235,0.05);
+  --paper:       #100F1A;
+  --paper-2:     #1D1C29;
+  --ink:         #E8E6F0;
+  --ink-2:       #C9C5E0;
+  --ink-soft:    #8A869E;
+  --ink-mute:    #444258;
+  --line:        rgba(232, 230, 240, 0.08);
+  --line-strong: rgba(232, 230, 240, 0.16);
+  --hairline:    rgba(232, 230, 240, 0.05);
+  --grid:        rgba(232, 230, 240, 0.03);
 
-  --color-accent:      #4b83f0;
-  --color-accent-soft: rgba(75,131,240,0.12);
+  /* Inverted writing-surface pair flips */
+  --paper-warm:  #F6F3EC;
+  --paper-ink:   #2B2838;
 }
 
+/* ── Base ─────────────────────────────────────────────────── */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* ── Layout utilities ─────────────────────────────────────── */
+
+@utility site-inner {
+  max-width: 1500px;
+  margin-inline: auto;
+  width: 100%;
+}
+
+@utility home-inner {
+  background-color: var(--color-paper);
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+@utility grid-bg-transparent {
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* Shadow utilities */
+@utility shadow-px-sm     { box-shadow: var(--shadow-px-sm); }
+@utility shadow-px        { box-shadow: var(--shadow-px); }
+@utility shadow-px-lg     { box-shadow: var(--shadow-px-lg); }
+@utility shadow-px-card   { box-shadow: var(--shadow-px-card); }
+@utility shadow-px-card-lg { box-shadow: var(--shadow-px-card-lg); }
+
+/* ═══════════════════════════════════════════════════════════════
+   Keyframes
+   ═══════════════════════════════════════════════════════════════ */
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ohl-* — the eight canonical OhHeyLynae motion keyframes */
+
+@keyframes ohl-pop-in {
+  0%   { opacity: 0; transform: scale(0.8); }
+  60%  { opacity: 1; transform: scale(1.04); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes ohl-pop-out {
+  0%   { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(0.8); }
+}
+
+@keyframes ohl-slide-in {
+  0%   { opacity: 0; transform: translateX(-24px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes ohl-slide-out {
+  0%   { opacity: 1; transform: translateX(0); }
+  100% { opacity: 0; transform: translateX(-24px); }
+}
+
+@keyframes ohl-bounce-in {
+  0%   { opacity: 0; transform: translateY(-18px) scale(0.94); }
+  55%  { opacity: 1; transform: translateY(4px) scale(1.02); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes ohl-shake {
+  0%, 100%  { transform: translateX(0); }
+  20%, 60%  { transform: translateX(-5px); }
+  40%, 80%  { transform: translateX(5px); }
+}
+
+@keyframes ohl-glow-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(126, 214, 192, 0.55); }
+  50%      { box-shadow: 0 0 12px 4px rgba(126, 214, 192, 0.15); }
+}
+
+@keyframes ohl-shimmer {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Legacy keyframes kept for backward compat with existing components */
+
+@keyframes toast-enter {
+  from { transform: translateX(-28px); opacity: 0; }
+  to   { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes toast-exit {
+  from { transform: translateX(0); opacity: 1; }
+  to   { transform: translateX(28px); opacity: 0; }
+}
+
+@keyframes toast-enter-right {
+  from { transform: translateX(28px); opacity: 0; }
+  to   { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes toast-exit-right {
+  from { transform: translateX(0); opacity: 1; }
+  to   { transform: translateX(28px); opacity: 0; }
+}
+
+@keyframes today-pulse {
+  0%, 100% { background-color: var(--color-mint-soft); }
+  40%      { background-color: color-mix(in oklch, var(--color-mint) 28%, transparent); }
+}

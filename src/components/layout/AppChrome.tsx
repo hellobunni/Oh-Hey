@@ -1,14 +1,14 @@
-import { Nav } from '@/components/Nav'
-import OhHeyFooter from '@/components/layout/OhHeyFooter'
+import { Nav } from "@/components/navigation/Nav";
+import Footer from "@/components/layout/Footer";
 
 export default function AppChrome({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-h-screen flex flex-col font-sans tracking-normal antialiased wrap-anywhere">
       <Nav />
       {children}
-      <div className="grid-bg-transparent">
-        <OhHeyFooter />
+      <div className="">
+        <Footer />
       </div>
     </div>
-  )
+  );
 }

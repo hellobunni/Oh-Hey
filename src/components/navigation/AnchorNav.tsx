@@ -33,7 +33,7 @@ const AnchorNav = ({ items, label = '// ON THIS PAGE', className }: AnchorNavPro
       >
         <span className={cn(
           'absolute left-[-17px] top-0 bottom-0 w-0.5 transition-colors duration-100',
-          i === active ? 'bg-accent' : 'bg-transparent'
+          i === active ? 'bg-pink' : 'bg-transparent'
         )} />
         {item.label}
       </a>

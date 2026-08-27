@@ -1,5 +1,13 @@
 import type { NextConfig } from 'next'
 
-const nextConfig: NextConfig = {}
+const nextConfig: NextConfig = {
+  images: {
+    // VideoCard thumbnails come from YouTube; next/image rejects unlisted hosts.
+    remotePatterns: [
+      { protocol: 'https', hostname: 'i.ytimg.com' },
+      { protocol: 'https', hostname: 'img.youtube.com' },
+    ],
+  },
+}
 
 export default nextConfig

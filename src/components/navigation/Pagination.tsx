@@ -1,33 +1,37 @@
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { cva } from 'class-variance-authority'
 import React from 'react'
 
 export interface PaginationProps {
-    total:      number
-    current:    number
-    onChange?:  (page: number) => void
-    className?: string
-  }
-  
-  const pgVariants = cva(
-    'inline-flex items-center justify-center min-w-[40px] h-10 px-2 font-mono text-xs bg-transparent border-none border-r border-line-strong cursor-pointer transition-colors duration-100 last:border-r-0',
-    {
-      variants: {
-        state: {
-          default:  'text-ink-soft hover:bg-paper-2 hover:text-ink',
-          active:   'bg-ink text-white cursor-default',
-          disabled: 'text-ink-mute cursor-not-allowed',
-          ellipsis: 'border-none cursor-default text-ink-soft',
-        },
+  total: number
+  current: number
+  onChange?: (page: number) => void
+  className?: string
+}
+
+const pgVariants = cva(
+  'inline-flex items-center justify-center min-w-[40px] h-10 px-2 font-mono text-xs bg-transparent border-none border-r border-line-strong cursor-pointer transition-colors duration-100 last:border-r-0',
+  {
+    variants: {
+      state: {
+        default: 'text-ink-soft hover:bg-paper-2 hover:text-ink',
+        active: 'bg-ink text-white cursor-default',
+        disabled: 'text-ink-mute cursor-not-allowed',
+        ellipsis: 'border-none cursor-default text-ink-soft',
       },
-      defaultVariants: { state: 'default' },
-    }
-  )
+    },
+    defaultVariants: { state: 'default' },
+  }
+)
 
 const Pagination = ({ total, current, onChange, className }: PaginationProps) => {
   const [page, setPage] = React.useState(current)
 
-  const go = (p: number) => { setPage(p); onChange?.(p) }
+  const go = (p: number) => {
+    setPage(p)
+    onChange?.(p)
+  }
 
   const pages: Array<number | '…'> = []
   if (total <= 7) {
@@ -42,13 +46,38 @@ const Pagination = ({ total, current, onChange, className }: PaginationProps) =>
 
   return (
     <div className={cn('inline-flex border border-line-strong', className)}>
-      <button className={pgVariants({ state: page === 1 ? 'disabled' : 'default' })} onClick={() => page > 1 && go(page - 1)}>←</button>
+      <button
+        type="button"
+        aria-label="Previous page"
+        className={pgVariants({ state: page === 1 ? 'disabled' : 'default' })}
+        onClick={() => page > 1 && go(page - 1)}
+      >
+        <ChevronLeft size={14} strokeWidth={2} />
+      </button>
       {pages.map((p, i) =>
-        p === '…'
-          ? <button key={`ellipsis-${i}`} className={pgVariants({ state: 'ellipsis' })}>…</button>
-          : <button key={p} className={pgVariants({ state: p === page ? 'active' : 'default' })} onClick={() => go(p as number)}>{p}</button>
+        p === '…' ? (
+          <button key={`ellipsis-${i}`} type="button" className={pgVariants({ state: 'ellipsis' })}>
+            …
+          </button>
+        ) : (
+          <button
+            key={p}
+            type="button"
+            className={pgVariants({ state: p === page ? 'active' : 'default' })}
+            onClick={() => go(p as number)}
+          >
+            {p}
+          </button>
+        )
       )}
-      <button className={pgVariants({ state: page === total ? 'disabled' : 'default' })} onClick={() => page < total && go(page + 1)}>→</button>
+      <button
+        type="button"
+        aria-label="Next page"
+        className={pgVariants({ state: page === total ? 'disabled' : 'default' })}
+        onClick={() => page < total && go(page + 1)}
+      >
+        <ChevronRight size={14} strokeWidth={2} />
+      </button>
     </div>
   )
 }
