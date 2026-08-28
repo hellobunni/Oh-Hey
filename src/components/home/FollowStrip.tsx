@@ -1,6 +1,12 @@
 import { ArrowRight } from 'lucide-react'
 
-const PLATFORMS = ['YOUTUBE', 'TIKTOK', 'INSTAGRAM', 'TWITCH', 'DISCORD'] as const
+const PLATFORMS = [
+  { label: 'YOUTUBE',   href: 'https://www.youtube.com/@ohheylynae' },
+  { label: 'TIKTOK',    href: 'https://www.tiktok.com/@ohheylynae' },
+  { label: 'INSTAGRAM', href: 'https://www.instagram.com/ohheylynae' },
+  { label: 'TWITCH',    href: 'https://www.twitch.tv/ohheylynae' },
+  { label: 'DISCORD',   href: 'https://discord.gg/ohheylynae' },
+] as const
 
 export default function FollowStrip() {
   return (
@@ -12,11 +18,13 @@ export default function FollowStrip() {
         </span>
         {PLATFORMS.map((p) => (
           <a
-            key={p}
-            href="#"
+            key={p.label}
+            href={p.href}
+            target="_blank"
+            rel="noopener noreferrer"
             className="font-px text-xs px-3.5 py-2.5 border-2 border-card text-ink-soft bg-paper transition-colors hover:border-mint hover:text-mint"
           >
-            {p}
+            {p.label}
           </a>
         ))}
       </div>
