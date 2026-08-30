@@ -9,6 +9,7 @@ import LatestVideos from '@/components/organisms/LatestVideos'
 import { NewsletterSignup } from '@/components/ui/NewsletterSignup'
 import { getAllPosts } from '@/lib/posts'
 import { getLatestVideos } from '@/lib/youtube'
+import { subscribeToNewsletter } from '@/app/actions'
 import type { Domain } from '@content/domains'
 
 const COMING_SOON = process.env.NEXT_PUBLIC_COMING_SOON === 'true'
@@ -31,6 +32,7 @@ export default async function HomePage() {
         <WhatsComingSection />
         <section id="newsletter" className="border-t-2 border-paper-2 py-20 px-6">
           <NewsletterSignup
+            onSubscribe={subscribeToNewsletter}
             headline={
               <>GET THE{' '}<span className="text-mint">START SIGNAL.</span></>
             }
